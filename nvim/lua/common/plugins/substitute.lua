@@ -3,7 +3,7 @@ return {
     keys = {
         'cx',
     },
-    event = { 
+    event = {
         'BufReadPost',
         'BufNewFile',
     },

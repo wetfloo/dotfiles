@@ -9,7 +9,7 @@ return {
     build = ":TSUpdate",
     config = function()
         local is_nvim = not vim.g.vscode
-        
+
         -- [[ Configure Treesitter ]]
         -- See `:help nvim-treesitter`
 
