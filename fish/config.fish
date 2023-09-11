@@ -12,6 +12,11 @@ for file in ~/.config/fish/conf.d/*.fish
     source
 end
 
+# Load os-specific stuff
+for file in ~/.config/fish/.os_local/*.fish
+    source
+end
+
 #   if status is-interactive
 #       # Configure auto-attach/exit to your likings (default is off).
 #       set ZELLIJ_AUTO_ATTACH false
