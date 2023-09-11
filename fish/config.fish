@@ -31,8 +31,10 @@ end
 #   end
 
 # Apply .profile: use this to put fish compatible .profile stuff in
-if test -f ~/.fish_profile
-    source ~/.fish_profile
+for file in .profile, .zprofil, .zprofile
+    if test -f ~/$file
+        source ~/$file 
+    end
 end
 
 alias zall='eza -al --color=auto --group-directories-first --icons' # all files and dirs, long format
@@ -42,6 +44,4 @@ alias zt='eza -aT --color=auto --group-directories-first --icons' # tree listing
 alias zd="eza -a | rg '^\.'" # show only dotfiles
 
 alias fuz='cd ~ && cd $(fd . -t d | fzf)'
-alias fuzh='cd ~ && cd $(fd -H . -t d | fzf)'
-
-# alias cat='bat --style header --style rule --style snip --style changes --style header'
+alias fuza='cd ~ && cd $(fd -H . -t d | fzf)'
