@@ -1,0 +1,219 @@
+let mapleader = " "
+function! s:is_intellij()
+    has('ide') && &ide=~? 'intellij'
+endfunction
+function! s:is_android_studio()
+    return has('ide') && &ide=~? 'android studio'
+endfunction
+" Show a few lines of context around the cursor. Note that this makes the
+" text scroll if you mouse-click near the start or end of the window.
+set scrolloff=5
+
+set ideavimsupport=dialog
+" Turns off all bells.
+set visualbell
+set noerrorbells
+
+set argtextobj
+let g:argtextobj_pairs="[:],(:),<:>"
+
+set exchange
+set commentary
+
+" Set current mode ideavim is in
+set showmode
+
+" Throws an exception on IdeaVim error.
+set ideastrictmode
+
+" Enable relative numbers without needing a plugin
+set number relativenumber
+
+" Keep the previous mode when renaming items
+set idearefactormode=keep
+
+" Do incremental searching.
+set incsearch
+
+" Smart case search
+set smartcase ignorecase
+
+" Smart joining of lines, examples here: https://github.com/JetBrains/ideavim/blob/master/doc/ideajoin-examples.md
+set ideajoin
+
+" Surround plugin for wrapping things into brackets
+set surround
+
+" Switch keyboard locale automatically
+set keep-english-in-normal-and-restore-in-insert
+
+" Move around the file faster than before
+set sneak
+
+" Match in languages that don't use braces
+set matchit
+
+" Highlight jumpable characters
+set quickscope
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+let g:qs_accepted_chars = [
+ 'a', 'b', 'c', 'd', 'e',
+ 'f', 'g', 'h', 'i', 'j',
+ 'k', 'l', 'm', 'n', 'o',
+ 'p', 'q', 'r', 's', 't',
+ 'u', 'v', 'w', 'x', 'y',
+ 'z',
+ 'A', 'B', 'C', 'D',
+ 'E', 'F', 'G', 'H', 'I',
+ 'J', 'K', 'L', 'M', 'N',
+ 'O', 'P', 'Q', 'R', 'S',
+ 'T', 'U', 'V', 'W', 'X',
+ 'Y', 'Z',
+ '0', '1', '2', '3', '4',
+ '5', '6', '7', '8', '9',
+]
+let g:qs_primary_color = '#fa579c'
+let g:qs_secondary_color = '#add149'
+
+" Make the yanked region apparent!
+Plug 'machakann/vim-highlightedyank'
+" A negative number would make the highlight persistent.
+let g:highlightedyank_highlight_duration='2000'
+let g:highlightedyank_highlight_color='rgba(20, 180, 255, 25)'
+
+" Vim bindings support in file explorer
+set NERDTree
+
+" Y yanks till end of line, inclusively
+nnoremap Y y$
+
+" Change indentation from visual mode without going back to normal every time
+vnoremap < <gv
+vnoremap > >gv
+
+" Keep the cursor centered
+noremap <C-d> <C-d>zz
+noremap <C-u> <C-u>zz
+noremap <C-f> <C-f>zz
+noremap <C-b> <C-b>zz
+
+" yank till start, move to last character of yanked region, and then one more
+nnoremap <leader>Y y^`]l
+nnoremap <leader>C c^
+nnoremap <leader>D d^
+
+" Do stuff using the system register
+xnoremap <leader>y "+y
+xnoremap <leader>d "+d
+xnoremap <leader>p "+p
+nnoremap <leader>y "+y
+nnoremap <leader>d "+d
+nnoremap <leader>p "+p
+
+" Function body magic
+nnoremap yo 0v%l%y`[
+nnoremap do 0v%l%d
+nnoremap co 0v%l%c
+
+" Swap around 0 and ^, because 0 is easier to reach
+noremap 0 ^
+noremap ^ 0
+
+" Pasting over something in visual mode doesn't overwrite the current buffer
+xnoremap p "_dP
+
+" Hacky way to move stuff to a new line after commas, but will do for now
+" Useful for newlining list of arguments
+nnoremap <leader>n f,a<CR><Esc>
+nnoremap <leader>b f.i<CR><Esc>f.
+map <Leader>c <action>(RenameElement)
+
+" Move around tabs
+map <A-h> <action>(PreviousTab)
+map <A-l> <action>(NextTab)
+map <A-k> <action>(Back)
+map <A-j> <action>(Forward)
+" Manage open/close tabs
+map <A-d> <action>(CloseEditor)
+map <A-\> <action>(CloseAllEditorsButActive)
+map <A-u> <action>(ReopenClosedTab)
+" Blow away all tool windows
+map <leader>\ <action>(HideAllWindows)
+
+map <leader>i <action>(Generate)
+map <leader>e <action>(ShowErrorDescription)
+
+" Finds
+map <leader>fc <action>(GotoClass)
+map <leader>ff <action>(GotoFile)
+map <leader>fs <action>(GotoSymbol)
+map <leader>fx <action>(GotoAction)
+map <leader>fr <action>(RecentFiles)
+
+" GOTOs
+map <leader>gu <action>(ShowUsages)
+map <leader>gi <action>(GotoImplementation)
+map <leader>gI <action>(GotoSuperMethod)
+map <leader>gg <action>(GotoDeclaration)
+map <leader>gh <action>(CallHierarchy)
+
+map <leader>t <action>(ActivateProjectToolWindow)
+
+
+" All kinds of splits to move between multiple tabs and windows
+map <leader>dv <action>(SplitVertically)
+map <leader>dh <action>(SplitHorizontally)
+map <leader>du <action>(Unsplit)
+map <leader>ds <action>(MoveEditorToOppositeTabGroup)
+map <leader>dn <action>(EditSourceInNewWindow)
+map <C-w> <action>(NextWindow)
+sethandler <c-h> a:vim
+sethandler <c-l> a:vim
+sethandler <c-j> a:vim
+sethandler <c-k> a:vim
+noremap <c-h> <c-w>h
+noremap <c-l> <c-w>l
+noremap <c-j> <c-w>j
+noremap <c-k> <c-w>k
+
+" Make things run
+map <leader>rd <action>(Debug)
+map <leader>re <action>(AndroidConnectDebuggerAction)
+map <leader>rr <action>(Run)
+if is_intellij()
+    map <leader>rp <action>(ExternalSystem.ProjectRefreshAction)
+elseif is_android_studio()
+    map <leader>rp <action>(Android.SyncProject)
+endif
+map <leader>rs <action>(Stop)
+map <leader>rb <action>(MakeGradleProject)
+
+map <leader>sf <action>(ReformatCode)
+
+" Things related to visuals in the editor
+" Collapse garbage "documentation"
+map <leader>vv <action>(CollapseDocComments)
+map <leader>vd <action>(ExpandDocComments)
+map <leader>vt <action>(ToggleInlayHintsGloballyAction)
+map <leader>vf <action>(ToggleFullScreen)
+map <leader>vz <action>(ToggleDistractionFreeMode)
+map <Leader>' <action>(MarkNotificationsAsRead)
+
+" Debugging
+map <leader>ov <action>(Debugger.EvaluateInConsole)
+map <leader>od <action>(Debugger.RemoveAllBreakpointsInFile)
+map <leader>oD <action>(Debugger.RemoveAllBreakpoints)
+map <leader>oo <action>(ToggleLineBreakpoint)
+map <leader>om <action>(XDebugger.MuteBreakpoints)
+
+" Move lines in visual and normal modes
+nnoremap <A-p> :mo -2<CR>
+nnoremap <A-n> :mo +1<CR>
+xnoremap <A-p> :'<,'> mo -2<CR>gv=gv
+xnoremap <A-n> :'<,'> mo '>+<CR>gv=gv
+
+map <leader>kc <action>(Compare.SameVersion)
+
+nnoremap <leader>; m`lb~``
+
+set history=1000

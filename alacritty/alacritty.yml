@@ -1,0 +1,13 @@
+import:
+  - ~/.config/alacritty/catppuccin/catppuccin-mocha.yml
+
+window:
+  startup_mode: Fullscreen
+
+key_bindings:
+  - { key: F11, action: ToggleFullscreen }
+
+font:
+  normal:
+    family: "IosevkaTerm Nerd Font"
+  size: 12
