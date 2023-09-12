@@ -17,31 +17,14 @@ for file in ~/.config/fish/.os_local/*.fish
     source
 end
 
-#   if status is-interactive
-#       # Configure auto-attach/exit to your likings (default is off).
-#       set ZELLIJ_AUTO_ATTACH false
-#       set ZELLIJ_AUTO_EXIT true
-#       eval (zellij setup --generate-auto-start fish | string collect)
-#   end
-#   if not set -q ZELLIJ
-#       if test "$ZELLIJ_AUTO_ATTACH" = "true"
-#           zellij attach -c
-#       else
-#           zellij
-#       end
-#
-#       if test "$ZELLIJ_AUTO_EXIT" = "true"
-#           kill $fish_pid
-#       end
-#   end
-
 # Apply .profile: use this to put fish compatible .profile stuff in
 for file in .profile, .zprofil, .zprofile
     if test -f ~/$file
-        source ~/$file 
+        source ~/$file
     end
 end
 
+# TODO: make this a bunch of functions with key args
 alias zall='eza -al --color=auto --group-directories-first --icons' # all files and dirs, long format
 alias zal='eza -a --color=auto --group-directories-first --icons' # all files and dirs
 alias zl='eza -l --color=auto --group-directories-first --icons' # long format
