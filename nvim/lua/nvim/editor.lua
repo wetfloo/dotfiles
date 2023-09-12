@@ -28,14 +28,11 @@ vim.wo.signcolumn = 'yes'
 
 vim.opt.fillchars = { eob = '*' }
 
--- Making it more comfortable to work with mutliple splits
+-- Making it more comfortable to work with mutliple splits.
+-- The rest of keybinds are provided by vim-tmux-navigator.
 
 vim.keymap.set({ 'n', 'x' }, '<leader>dv', '<C-w>v', { desc = '[D]ivide (split) vertically' })
 vim.keymap.set({ 'n', 'x' }, '<leader>dh', '<C-w>s', { desc = '[D]ivide (split) horizontally' })
-vim.keymap.set({ 'n', 'x' }, '<C-k>', '<C-w>k', { desc = 'To split above' })
-vim.keymap.set({ 'n', 'x' }, '<C-j>', '<C-w>j', { desc = 'To split below' })
-vim.keymap.set({ 'n', 'x' }, '<C-h>', '<C-w>h', { desc = 'To split on the left' })
-vim.keymap.set({ 'n', 'x' }, '<C-l>', '<C-w>l', { desc = 'To split on the right' })
 
 -- Move between tabs more easily
 
