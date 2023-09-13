@@ -168,6 +168,8 @@ map <leader>ds <action>(MoveEditorToOppositeTabGroup)
 map <leader>dn <action>(EditSourceInNewWindow)
 map <A-h> <action>(StretchSplitToLeft)
 map <A-l> <action>(StretchSplitToRight)
+map <A-k> <action>(StretchSplitToTop)
+map <A-j> <action>(StretchSplitToBottom)
 map <C-w> <action>(NextWindow)
 sethandler <c-h> a:vim
 sethandler <c-l> a:vim
