@@ -42,10 +42,10 @@ vim.keymap.set({ 'n', 'x' }, '<A-d>', ':bdelete<CR>', { silent = true })
 
 -- Move around buffers as if they're tabs
 
-vim.keymap.set('n', '<A-h>', ':bprev<CR>', { desc = 'Go to the previous buffer', silent = true })
-vim.keymap.set('n', '<A-l>', ':bnext<CR>', { desc = 'Go to the next buffer', silent = true })
-vim.keymap.set('n', '<A-d>', ':Bdelete<CR>', { desc = 'Delete the current buffer', silent = true })
-vim.keymap.set('n', '<A-D>', ':Bwipeout<CR>', { desc = 'Wipe out the current buffer', silent = true })
+vim.keymap.set('n', '<A-,>', ':bprev<CR>', { desc = 'Go to the previous buffer', silent = true })
+vim.keymap.set('n', '<A-.>', ':bnext<CR>', { desc = 'Go to the next buffer', silent = true })
+vim.keymap.set('n', '<A-x>', ':Bdelete<CR>', { desc = 'Delete the current buffer', silent = true })
+vim.keymap.set('n', '<A-X>', ':Bwipeout<CR>', { desc = 'Wipe out the current buffer', silent = true })
 
 -- Open up a file explorer
 
