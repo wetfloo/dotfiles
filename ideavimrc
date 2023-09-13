@@ -129,8 +129,8 @@ nnoremap <leader>b f.i<CR><Esc>f.
 map <Leader>c <action>(RenameElement)
 
 " Move around tabs
-map <A-h> <action>(PreviousTab)
-map <A-l> <action>(NextTab)
+map <A-,> <action>(PreviousTab)
+map <A-.> <action>(NextTab)
 map <A-k> <action>(Back)
 map <A-j> <action>(Forward)
 " Manage open/close tabs
