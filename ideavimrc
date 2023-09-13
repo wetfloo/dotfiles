@@ -166,6 +166,8 @@ map <leader>dh <action>(SplitHorizontally)
 map <leader>du <action>(Unsplit)
 map <leader>ds <action>(MoveEditorToOppositeTabGroup)
 map <leader>dn <action>(EditSourceInNewWindow)
+map <A-h> <action>(StretchSplitToLeft)
+map <A-l> <action>(StretchSplitToRight)
 map <C-w> <action>(NextWindow)
 sethandler <c-h> a:vim
 sethandler <c-l> a:vim
