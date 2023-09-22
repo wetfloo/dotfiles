@@ -6,14 +6,14 @@ return {
     config = function()
         require('catppuccin').setup(
             {
-                transparent_background = true,
+                transparent_background = not vim.g.started_by_firenvim,
                 flavour = 'mocha',
                 integrations = {
                     -- cmp = true,
-                    -- telescope = true,
+                    telescope = true,
                     neotree = true,
                     -- which_key = true,
-                    -- treesitter = true,
+                    treesitter = true,
                     -- harpoon = true,
                     -- mason = true,
                 },
