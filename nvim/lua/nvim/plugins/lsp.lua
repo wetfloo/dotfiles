@@ -1,17 +1,15 @@
+-- TODO disable inline warnings
 return {
     'neovim/nvim-lspconfig',
     dependencies = {
         {
             'williamboman/mason.nvim',
-
-            -- Uses the defeault implementation
-
-            config = true,
+            config = true, -- Uses the defeault implementation
         },
         'williamboman/mason-lspconfig.nvim',
 
-
         'folke/neodev.nvim',
+
         {
             'hrsh7th/nvim-cmp',
             dependencies = {
@@ -39,18 +37,18 @@ return {
             lsp_nmap('<leader>c', vim.lsp.buf.rename, 'Rename')
             lsp_nmap('<A-CR>', vim.lsp.buf.code_action, 'Code action')
 
-            lsp_nmap('gg', vim.lsp.buf.definition, 'Go to definition')
-            lsp_nmap('gu', require('telescope.builtin').lsp_references, 'Go to usages')
-            lsp_nmap('gi', require('telescope.builtin').lsp_implementations, 'Go to implementation')
+            lsp_nmap('<leader>gg', vim.lsp.buf.definition, 'Go to definition')
+            lsp_nmap('<leader>gu', require('telescope.builtin').lsp_references, 'Go to usages')
+            lsp_nmap('<leader>gi', require('telescope.builtin').lsp_implementations, 'Go to implementation')
             lsp_nmap('<leader>gd', vim.lsp.buf.type_definition, 'Go to definition')
             lsp_nmap('<leader>fS', require('telescope.builtin').lsp_document_symbols, 'Find symbol')
             lsp_nmap('<leader>fs', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Go to symbol')
 
             lsp_nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-            lsp_nmap('<A-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
-            lsp_nmap('<leader>e', vim.diagnostic.open_float(), 'Hover error')
+            lsp_nmap('<leader>K', vim.lsp.buf.signature_help, 'Signature Documentation')
+            lsp_nmap('<leader>e', vim.diagnostic.open_float, 'Hover error')
 
-            lsp_nmap('gG', vim.lsp.buf.declaration, 'Go to declaration')
+            lsp_nmap('<leader>gG', vim.lsp.buf.declaration, 'Go to declaration')
             lsp_nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, 'Add workspace directory')
             lsp_nmap('<leader>wd', vim.lsp.buf.remove_workspace_folder, 'Remove workspace directory')
             lsp_nmap('<leader>wl', function()
@@ -58,8 +56,6 @@ return {
             end, 'Workspace directories list')
 
             local reformat_desc = 'Format current buffer with LSP'
-
-            -- TODO: nvim still says that there's no such function as Format
 
             vim.api.nvim_buf_create_user_command(
                 bufnr,
@@ -76,6 +72,7 @@ return {
                 {
                     silent = true,
                     desc = reformat_desc,
+                    buffer = bufnr,
                 }
             )
         end
@@ -92,7 +89,7 @@ return {
         local capabilities = vim.lsp.protocol.make_client_capabilities()
         capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
-        require('neodev').setup()
+        require('neodev').setup({})
 
         require('mason-lspconfig').setup({
             ensure_installed = vim.tbl_keys(servers),

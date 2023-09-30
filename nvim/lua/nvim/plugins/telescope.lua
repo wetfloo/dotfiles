@@ -27,9 +27,7 @@ return {
 
         pcall(require('telescope').load_extension, 'fzf')
 
-        local telescope = require('telescope.builtin')
-
-        vim.keymap.set({ 'n' }, '<leader>ff', telescope.find_files, { desc = '[F]ind [F]iles' })
-        vim.keymap.set({ 'n' }, '<leader>fg', telescope.live_grep, { desc = '[F]ind by [G]rep' })
+        vim.keymap.set({ 'n' }, '<leader>ff', require('telescope.builtin').find_files, { desc = 'Find files' })
+        vim.keymap.set({ 'n' }, '<leader>fg', require('telescope.builtin').live_grep, { desc = 'Find with grep' })
     end,
 }
