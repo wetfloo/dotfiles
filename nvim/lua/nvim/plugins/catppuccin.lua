@@ -15,7 +15,7 @@ return {
                     -- which_key = true,
                     treesitter = true,
                     -- harpoon = true,
-                    -- mason = true,
+                    mason = true,
                 },
             }
         )
