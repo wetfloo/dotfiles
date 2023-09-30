@@ -23,8 +23,9 @@ set commentary
 " Set current mode ideavim is in
 set showmode
 
-" Throws an exception on IdeaVim error.
-set ideastrictmode
+" Do not enable strict mode, apparently it is bad
+" and is reserved for internal use only
+" https://youtrack.jetbrains.com/issue/VIM-2886/Search-buffer-freezing-crashing-IdeaVim-and-make-some-shortcuts-doesnt-work-anymore#focus=Comments-27-6964014.0-0
 
 " Enable relative numbers without needing a plugin
 set number relativenumber
