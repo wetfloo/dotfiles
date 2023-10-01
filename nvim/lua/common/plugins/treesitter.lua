@@ -16,10 +16,8 @@ return {
         -- Unfold everything upon entering a new buffer.
 
         vim.api.nvim_create_autocmd(
-            'BufReadPost,FileReadPost',
-            {
-                command = 'normal zR',
-            }
+            { 'BufReadPost', 'FileReadPost' },
+            { command = 'normal zR' }
         )
 
 
