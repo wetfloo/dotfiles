@@ -29,7 +29,11 @@ return {
 
                 ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'typescript', 'vimdoc', 'vim' },
                 auto_install = true,
-                highlight = { enable = not vim.g.vscode },
+                highlight = {
+                    enable = not vim.g.vscode,
+                    -- https://github.com/catppuccin/nvim#wrong-treesitter-highlights
+                    additional_vim_regex_highlighting = false,
+                },
                 indent = { enable = not vim.g.vscode, disable = { 'python' } },
                 incremental_selection = {
                     enable = true,
