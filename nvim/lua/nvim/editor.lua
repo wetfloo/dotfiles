@@ -24,12 +24,13 @@ vim.wo.relativenumber = true
 
 vim.wo.signcolumn = 'yes'
 
--- Change empty line chars
+-- Disable netrw, since I'm using neotree
 
-vim.opt.fillchars = { eob = '*' }
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
 -- Making it more comfortable to work with mutliple splits.
--- The rest of keybinds are provided by vim-tmux-navigator.
+-- The rest of keybinds are provided by the tmux plugin.
 
 vim.keymap.set({ 'n', 'x' }, '<leader>dv', '<C-w>v', { desc = 'Divide (split) vertically' })
 vim.keymap.set({ 'n', 'x' }, '<leader>dh', '<C-w>s', { desc = 'Divide (split) horizontally' })
@@ -47,9 +48,6 @@ vim.keymap.set('n', '<A-.>', ':bnext<CR>', { desc = 'Go to the next buffer', sil
 vim.keymap.set('n', '<A-d>', ':Bdelete<CR>', { desc = 'Delete the current buffer', silent = true })
 vim.keymap.set('n', '<A-D>', ':Bwipeout<CR>', { desc = 'Wipe out the current buffer', silent = true })
 
--- Open up a file explorer
-
-vim.keymap.set('n', '<leader>tt', ':Neotree action=focus<CR>', { desc = 'Neotree focus', silent = true })
 vim.keymap.set('n', '<leader>tu', ':UndotreeShow<CR> :UndotreeFocus<CR>', { desc = 'Undotree focus', silent = true })
 
 -- Remap for dealing with word wrap
