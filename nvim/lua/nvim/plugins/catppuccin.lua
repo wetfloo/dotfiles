@@ -8,7 +8,7 @@ return {
         require('catppuccin').setup(
             {
                 transparent_background = not vim.g.started_by_firenvim,
-                flavour = 'mocha',
+                flavour = require('nvim.prefs').catppuccin_flavor(),
                 show_end_of_buffer = false,
                 integrations = {
                     cmp = true,
