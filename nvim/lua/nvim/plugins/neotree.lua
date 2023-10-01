@@ -54,6 +54,8 @@ return {
             { text = "󰌵", texthl = "DiagnosticSignHint" }
         )
 
+        -- TODO: figure out why this config doesn't seem to apply
+
         require('neo-tree').setup(
             {
                 close_if_last_window = true,
