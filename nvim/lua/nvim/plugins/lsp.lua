@@ -1,6 +1,3 @@
--- TODO disable inline warnings
--- https://github.com/neovim/nvim-lspconfig/issues/662
-
 return {
     'neovim/nvim-lspconfig',
     dependencies = {
