@@ -4,6 +4,7 @@ vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
 return {
     'nvim-neo-tree/neo-tree.nvim',
     version = 'v3.x',
+    enabled = false,
     dependencies = {
         'nvim-lua/plenary.nvim',
         'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
