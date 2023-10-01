@@ -27,20 +27,27 @@ return {
 
                 -- enable tabline with harpoon marks (status line on the top)
                 tabline = false,
+
+                menu = {
+                    width = vim.api.nvim_win_get_width(0) - 16,
+                },
             }
         )
+
         local mark = require('harpoon.mark')
         local ui = require('harpoon.ui')
 
-        vim.keymap.set('n', '<leader>hh', mark.add_file)
+        vim.keymap.set('n', '<leader>hh', function() mark.add_file() end)
+        vim.keymap.set('n', '<leader>hd', function() mark.rm_file() end)
+        vim.keymap.set('n', '<leader>hD', mark.clear_all)
         vim.keymap.set('n', '<leader>hm', ui.toggle_quick_menu)
         vim.keymap.set('n', '<leader>hn', ui.nav_next)
         vim.keymap.set('n', '<leader>hp', ui.nav_prev)
+
         for i = 1, 9 do
-            local function nav()
-                ui.nav_file(i)
-            end
-            vim.keymap.set('n', '<leader>h' .. i, nav)
+            vim.keymap.set('n', '<A-' .. i .. '>', function() ui.nav_file(i) end)
         end
+
+        require('telescope').load_extension('harpoon')
     end,
 }
