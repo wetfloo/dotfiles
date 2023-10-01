@@ -40,15 +40,15 @@ vim.keymap.set('x', '>', '>gv', { desc = 'Indent left' })
 
 -- Yank/delete/change to the start of the line
 
-vim.keymap.set('n', '<leader>Y', 'y0`]', { desc = '[Y]ank to the start of the line' })
-vim.keymap.set('n', '<leader>C', 'c0', { desc = '[C]hange to the start of the line' })
-vim.keymap.set('n', '<leader>D', 'd0', { desc = '[D]elete to the start of the line' })
+vim.keymap.set('n', '<leader>Y', 'y0`]', { desc = 'Yank to the start of the line' })
+vim.keymap.set('n', '<leader>C', 'c0', { desc = 'Change to the start of the line' })
+vim.keymap.set('n', '<leader>D', 'd0', { desc = 'Delete to the start of the line' })
 
 -- Plus register made convenient
 
-vim.keymap.set({ 'n', 'x' }, '<leader>y', '"+y', { desc = '[Y]ank to + register' })
-vim.keymap.set({ 'n', 'x' }, '<leader>d', '"+d', { desc = '[D]elete to + register' })
-vim.keymap.set({ 'n', 'x' }, '<leader>p', '"+p', { desc = '[P]aste from + register' })
+vim.keymap.set({ 'n', 'x' }, '<leader>y', '"+y', { desc = 'Yank to + register' })
+vim.keymap.set({ 'n', 'x' }, '<leader>d', '"+d', { desc = 'Delete to + register' })
+vim.keymap.set({ 'n', 'x' }, '<leader>p', '"+p', { desc = 'Paste from + register' })
 
 
 -- Paste over the text without losing current unnamed register
