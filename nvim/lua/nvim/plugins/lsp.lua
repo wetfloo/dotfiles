@@ -107,6 +107,7 @@ return {
             end
         })
 
+        -- :help diagnostic-highlights
         vim.diagnostic.config(
             {
                 virtual_text = {
@@ -114,9 +115,6 @@ return {
                 },
             }
         )
-        -- :help diagnostic-highlights
-        -- :help guisp
-        vim.cmd('highlight DiagnosticUnderlineWarn guisp=#ff00ff')
 
         local cmp = require('cmp')
         local luasnip = require('luasnip')
