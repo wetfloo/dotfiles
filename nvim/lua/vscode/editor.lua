@@ -37,8 +37,8 @@ vscode_map('x', '<leader>sf', 'editor.action.formatSelection')
 
 -- Making it more comfortable to work with mutliple splits
 
-vscode_map({ 'n', 'x' }, '<leader>dv', 'workbench.action.splitEditorRight', { desc = '[D]ivide (split) vertically' })
-vscode_map({ 'n', 'x' }, '<leader>dh', 'workbench.action.splitEditorDown', { desc = '[D]ivide (split) horizontally' })
+vscode_map({ 'n', 'x' }, '<leader>dv', 'workbench.action.splitEditorRight', { desc = 'Divide (split) vertically' })
+vscode_map({ 'n', 'x' }, '<leader>dh', 'workbench.action.splitEditorDown', { desc = 'Divide (split) horizontally' })
 vscode_map({ 'n', 'x' }, '<C-k>', 'workbench.action.focusAboveGroup', { desc = 'To split above' })
 vscode_map({ 'n', 'x' }, '<C-j>', 'workbench.action.focusBelowGroup', { desc = 'To split below' })
 vscode_map({ 'n', 'x' }, '<C-h>', 'workbench.action.focusLeftGroup', { desc = 'To split on the left' })
@@ -61,9 +61,9 @@ vscode_map(
 
 -- Find stuff
 
-vscode_map({ 'n', 'x' }, '<leader>ff', 'workbench.action.quickOpen', { desc = '[F]ind [F]iles' })
-vscode_map({ 'n', 'x' }, '<leader>fg', 'workbench.action.findInFiles', { desc = '[F]ind with [G]rep' })
-vscode_map({ 'n', 'x' }, '<leader>fs', 'workbench.action.showAllSymbols', { desc = '[F]ind [S]ymbol' })
+vscode_map({ 'n', 'x' }, '<leader>ff', 'workbench.action.quickOpen', { desc = 'Find Files' })
+vscode_map({ 'n', 'x' }, '<leader>fg', 'workbench.action.findInFiles', { desc = 'Find with Grep' })
+vscode_map({ 'n', 'x' }, '<leader>fs', 'workbench.action.showAllSymbols', { desc = 'Find Symbol' })
 
 -- Debugging
 

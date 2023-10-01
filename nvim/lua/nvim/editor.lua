@@ -31,8 +31,8 @@ vim.opt.fillchars = { eob = '*' }
 -- Making it more comfortable to work with mutliple splits.
 -- The rest of keybinds are provided by vim-tmux-navigator.
 
-vim.keymap.set({ 'n', 'x' }, '<leader>dv', '<C-w>v', { desc = '[D]ivide (split) vertically' })
-vim.keymap.set({ 'n', 'x' }, '<leader>dh', '<C-w>s', { desc = '[D]ivide (split) horizontally' })
+vim.keymap.set({ 'n', 'x' }, '<leader>dv', '<C-w>v', { desc = 'Divide (split) vertically' })
+vim.keymap.set({ 'n', 'x' }, '<leader>dh', '<C-w>s', { desc = 'Divide (split) horizontally' })
 
 -- Move between tabs more easily
 
@@ -60,6 +60,6 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 -- Move selected stuff around
 
 vim.keymap.set('n', '<A-p>', ":mo -2<CR>", { desc = "Move selection one line up", silent = true })
-vim.keymap.set('n', '<A-n>', ":mo +1<CR>", { desc = "Move selection one line down", silent = true  })
-vim.keymap.set('x', '<A-p>', ":'<,'> mo -2<CR>gv=gv", { desc = "Move selection one line up", silent = true  })
-vim.keymap.set('x', '<A-n>', ":'<,'> mo '>+<CR>gv=gv", { desc = "Move selection one line down", silent = true  })
+vim.keymap.set('n', '<A-n>', ":mo +1<CR>", { desc = "Move selection one line down", silent = true })
+vim.keymap.set('x', '<A-p>', ":'<,'> mo -2<CR>gv=gv", { desc = "Move selection one line up", silent = true })
+vim.keymap.set('x', '<A-n>', ":'<,'> mo '>+<CR>gv=gv", { desc = "Move selection one line down", silent = true })
