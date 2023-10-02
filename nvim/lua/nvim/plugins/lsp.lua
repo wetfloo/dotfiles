@@ -104,15 +104,6 @@ return {
             end
         })
 
-        -- :help diagnostic-highlights
-        vim.diagnostic.config(
-            {
-                virtual_text = {
-                    severity = vim.diagnostic.severity.ERROR,
-                },
-            }
-        )
-
         local cmp = require('cmp')
         local luasnip = require('luasnip')
         require('luasnip.loaders.from_vscode').lazy_load()
