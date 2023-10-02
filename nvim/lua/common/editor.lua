@@ -28,6 +28,9 @@ vim.o.undofile = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
+-- Remove the timeout, let me think sometimes, alright?
+vim.o.timeout = false
+
 -- 0 is more reachable than ^, is sometimes useful
 
 vim.keymap.set('n', '0', '^')
