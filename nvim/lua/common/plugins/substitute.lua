@@ -1,11 +1,10 @@
+local leader_prefix = require('utils').leader_prefix
+
 return {
     "gbprod/substitute.nvim",
     keys = {
-        'cx',
-    },
-    event = {
-        'BufReadPost',
-        'BufNewFile',
+        { 'cx', mode = 'n' },
+        { leader_prefix('X'), mode = 'x' },
     },
     config = function()
         require('substitute').setup({})
