@@ -61,3 +61,26 @@ vim.keymap.set('n', '<A-p>', ":mo -2<CR>", { desc = "Move selection one line up"
 vim.keymap.set('n', '<A-n>', ":mo +1<CR>", { desc = "Move selection one line down", silent = true })
 vim.keymap.set('x', '<A-p>', ":'<,'> mo -2<CR>gv=gv", { desc = "Move selection one line up", silent = true })
 vim.keymap.set('x', '<A-n>', ":'<,'> mo '>+<CR>gv=gv", { desc = "Move selection one line down", silent = true })
+
+-- :help diagnostic-highlights
+vim.diagnostic.config(
+    {
+        virtual_text = {
+            severity = vim.diagnostic.severity.ERROR,
+        },
+    }
+)
+
+-- Define signs on the left for diagnostics.
+
+local signs = {
+    Error = '󱇎',
+    Hint = '󰌵',
+    Warn = '󰀦',
+    Info = '󰋼',
+    Ok = '󰸞',
+}
+for type, icon in pairs(signs) do
+    local highlight = 'DiagnosticSign' .. type
+    vim.fn.sign_define(highlight, { text = icon, texthl = highlight, numhl = '', })
+end
