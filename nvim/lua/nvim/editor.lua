@@ -62,6 +62,18 @@ vim.keymap.set('n', '<A-n>', ":mo +1<CR>", { desc = "Move selection one line dow
 vim.keymap.set('x', '<A-p>', ":'<,'> mo -2<CR>gv=gv", { desc = "Move selection one line up", silent = true })
 vim.keymap.set('x', '<A-n>', ":'<,'> mo '>+<CR>gv=gv", { desc = "Move selection one line down", silent = true })
 
+--- Centers the view after moving using 'zz'
+local function move_and_center(mode, action, opts)
+    vim.keymap.set(mode, action, action .. 'zz', opts)
+end
+
+move_and_center({ 'n', 'x' }, '<C-d>')
+move_and_center({ 'n', 'x' }, '<C-u>')
+move_and_center({ 'n', 'x' }, '<C-b>')
+move_and_center({ 'n', 'x' }, '<C-f>')
+move_and_center({ 'n', 'x' }, 'n')
+move_and_center({ 'n', 'x' }, 'N')
+
 -- :help diagnostic-highlights
 vim.diagnostic.config(
     {
