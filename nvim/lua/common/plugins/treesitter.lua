@@ -8,19 +8,6 @@ return {
     },
     build = ':TSUpdate',
     config = function()
-        -- Working folding, yay!
-
-        vim.opt.foldmethod = 'expr'
-        vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
-
-        -- Unfold everything upon entering a new buffer.
-
-        vim.api.nvim_create_autocmd(
-            { 'BufReadPost', 'FileReadPost' },
-            { command = 'normal zR' }
-        )
-
-
         require('nvim-treesitter.configs').setup(
         ---@diagnostic disable-next-line: missing-fields
             {
