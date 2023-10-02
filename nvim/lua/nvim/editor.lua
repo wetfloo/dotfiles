@@ -73,13 +73,7 @@ vim.diagnostic.config(
 
 -- Define signs on the left for diagnostics.
 
-local signs = {
-    Error = '󱇎',
-    Hint = '󰌵',
-    Warn = '󰀦',
-    Info = '󰋼',
-    Ok = '󰸞',
-}
+local signs = require('nvim.prefs').diagnostic_signs()
 for type, icon in pairs(signs) do
     local highlight = 'DiagnosticSign' .. type
     vim.fn.sign_define(highlight, { text = icon, texthl = highlight, numhl = '', })
