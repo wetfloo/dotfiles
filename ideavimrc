@@ -23,6 +23,9 @@ set commentary
 " Set current mode ideavim is in
 set showmode
 
+" Remove the timeout, let me think sometimes, alright?
+set notimeout
+
 " Do not enable strict mode, apparently it is bad
 " and is reserved for internal use only
 " https://youtrack.jetbrains.com/issue/VIM-2886/Search-buffer-freezing-crashing-IdeaVim-and-make-some-shortcuts-doesnt-work-anymore#focus=Comments-27-6964014.0-0
