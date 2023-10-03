@@ -29,6 +29,11 @@ vim.wo.signcolumn = 'yes'
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+-- Meme remap
+
+vim.keymap.set('', '<C-c>', '<Esc>', { noremap = true })
+vim.keymap.set('', '<Esc>', '<C-c>', { noremap = true })
+
 -- Making it more comfortable to work with mutliple splits.
 -- The rest of keybinds are provided by the tmux plugin.
 
