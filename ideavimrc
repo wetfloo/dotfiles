@@ -95,6 +95,10 @@ nnoremap Y y$
 vnoremap < <gv
 vnoremap > >gv
 
+" Meme remaps
+noremap <C-c> <Esc>
+noremap <Esc> <C-c>
+
 " Keep the cursor centered
 noremap <C-d> <C-d>zz
 noremap <C-u> <C-u>zz
