@@ -7,9 +7,17 @@ return {
     config = function()
         require('catppuccin').setup(
             {
-                transparent_background = not vim.g.started_by_firenvim,
+                -- transparent_background = not vim.g.started_by_firenvim,
+                transparent_background = false,
                 flavour = require('nvim.prefs').catppuccin_flavor(),
                 show_end_of_buffer = false,
+                color_overrides = {
+                    mocha = {
+                        base = '#14141f',
+                        mantle = '#101019',
+                        crust = '#0c0c13',
+                    },
+                },
                 integrations = {
                     cmp = true,
                     telescope = true,
