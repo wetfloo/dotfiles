@@ -31,20 +31,14 @@ vim.g.loaded_netrwPlugin = 1
 
 -- Meme remap
 
-vim.keymap.set('', '<C-c>', '<Esc>', { noremap = true })
-vim.keymap.set('', '<Esc>', '<C-c>', { noremap = true })
+vim.keymap.set('', '<C-c>', '<Esc>')
+vim.keymap.set('', '<Esc>', '<C-c>')
 
 -- Making it more comfortable to work with mutliple splits.
 -- The rest of keybinds are provided by the tmux plugin.
 
 vim.keymap.set({ 'n', 'x' }, '<leader>dv', '<C-w>v', { desc = 'Divide (split) vertically' })
 vim.keymap.set({ 'n', 'x' }, '<leader>dh', '<C-w>s', { desc = 'Divide (split) horizontally' })
-
--- Move between tabs more easily
-
-vim.keymap.set({ 'n', 'x' }, '<A-l>', ':bnext<CR>', { silent = true })
-vim.keymap.set({ 'n', 'x' }, '<A-h>', ':bprev<CR>', { silent = true })
-vim.keymap.set({ 'n', 'x' }, '<A-d>', ':bdelete<CR>', { silent = true })
 
 -- Move around buffers as if they're tabs
 
@@ -53,8 +47,6 @@ vim.keymap.set('n', '<A-.>', ':bnext<CR>', { desc = 'Go to the next buffer', sil
 vim.keymap.set('n', '<A-d>', ':Bdelete<CR>', { desc = 'Delete the current buffer', silent = true })
 vim.keymap.set('n', '<A-D>', ':Bwipeout<CR>', { desc = 'Wipe out the current buffer', silent = true })
 
-vim.keymap.set('n', '<leader>tu', ':UndotreeShow<CR> :UndotreeFocus<CR>', { desc = 'Undotree focus', silent = true })
-
 -- Remap for dealing with word wrap
 
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
@@ -62,8 +54,8 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 
 -- Move selected stuff around
 
-vim.keymap.set('n', '<A-p>', ":mo -2<CR>", { desc = "Move selection one line up", silent = true })
-vim.keymap.set('n', '<A-n>', ":mo +1<CR>", { desc = "Move selection one line down", silent = true })
+vim.keymap.set('n', '<A-p>', ":mo -2<CR>", { desc = "Move current line one line up", silent = true })
+vim.keymap.set('n', '<A-n>', ":mo +1<CR>", { desc = "Move current line one line down", silent = true })
 vim.keymap.set('x', '<A-p>', ":'<,'> mo -2<CR>gv=gv", { desc = "Move selection one line up", silent = true })
 vim.keymap.set('x', '<A-n>', ":'<,'> mo '>+<CR>gv=gv", { desc = "Move selection one line down", silent = true })
 
