@@ -20,6 +20,8 @@ return {
                     leap = true,
                     indent_blankline = true,
                     gitsigns = true,
+                    ufo = true,
+                    which_key = true,
                     dap = {
                         enabled = true,
                         enabled_ui = true,

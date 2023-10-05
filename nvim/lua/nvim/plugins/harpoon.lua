@@ -37,17 +37,25 @@ return {
         local mark = require('harpoon.mark')
         local ui = require('harpoon.ui')
 
-        vim.keymap.set('n', '<leader>hh', function() mark.add_file() end)
-        vim.keymap.set('n', '<leader>hd', function() mark.rm_file() end)
-        vim.keymap.set('n', '<leader>hD', mark.clear_all)
-        vim.keymap.set('n', '<leader>hm', ui.toggle_quick_menu)
-        vim.keymap.set('n', '<leader>hn', ui.nav_next)
-        vim.keymap.set('n', '<leader>hp', ui.nav_prev)
+        vim.keymap.set('n', '<leader>hh', function() mark.add_file() end, { desc = 'Add a bookmark' })
+        vim.keymap.set('n', '<leader>hd', function() mark.rm_file() end, { desc = 'Remove current file\'s bookmark' })
+        vim.keymap.set('n', '<leader>hD', mark.clear_all, { desc = 'Delete ALL bookmarks' })
+        vim.keymap.set('n', '<leader>hm', ui.toggle_quick_menu, { desc = 'Show bookmarks menu' })
+        vim.keymap.set('n', '<leader>hn', ui.nav_next, { desc = 'Next bookmark' })
+        vim.keymap.set('n', '<leader>hp', ui.nav_prev, { desc = 'Previous bookmark' })
 
         for i = 1, 9 do
-            vim.keymap.set('n', '<A-' .. i .. '>', function() ui.nav_file(i) end)
+            vim.keymap.set(
+                'n',
+                '<A-' .. i .. '>',
+                function()
+                    ui.nav_file(i)
+                end,
+                { desc = 'Go to bookmark' .. 'i' }
+            )
         end
 
-        require('telescope').load_extension('harpoon')
+        -- Doesn't work properly, for some reason
+        -- require('telescope').load_extension('harpoon')
     end,
 }

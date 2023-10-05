@@ -51,9 +51,13 @@ return {
                         settings = servers[server_name],
                         filetypes = (servers[server_name] or {}).filetypes,
                         on_attach = function(_, bufnr)
+                            local function lsp_desc(desc)
+                                return desc .. '(LSP)'
+                            end
+
                             local function lsp_nmap(keys, func, desc)
                                 if desc then
-                                    desc = 'LSP: ' .. desc
+                                    desc = lsp_desc(desc)
                                 end
 
                                 vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
@@ -82,7 +86,7 @@ return {
                                 print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
                             end, 'Workspace directories list')
 
-                            local reformat_desc = 'Format current buffer with LSP'
+                            local reformat_desc = lsp_desc('Format current buffer')
                             vim.api.nvim_buf_create_user_command(
                                 bufnr,
                                 'Format',

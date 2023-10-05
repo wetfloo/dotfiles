@@ -1,6 +1,6 @@
 return {
     'tpope/vim-sleuth',
-    event = { 
+    event = {
         'BufReadPost',
         'BufNewFile',
     },
