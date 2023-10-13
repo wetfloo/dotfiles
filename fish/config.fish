@@ -33,3 +33,5 @@ alias zd="eza -a | rg '^\.'" # show only dotfiles
 
 alias fuz='cd ~ && cd $(fd . -t d | fzf)'
 alias fuza='cd ~ && cd $(fd -H . -t d | fzf)'
+
+starship init fish | source
