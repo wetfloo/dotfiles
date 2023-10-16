@@ -1,5 +1,5 @@
 local function eviline_cfg()
-    local flavor = require('nvim.prefs').catppuccin_flavor()
+    local flavor = require('nvim.prefs').catppuccin_flavor
     local colors = require('catppuccin.palettes').get_palette(flavor)
     local prefs = require('nvim.prefs')
     local lualine = require('lualine')
@@ -75,8 +75,8 @@ local function eviline_cfg()
 
     ins_left({ 'location' })
 
-    local prefs_diagnostic_signs = prefs.diagnostic_signs()
-    for k, v in pairs(prefs_diagnostic_signs) do
+    local prefs_diagnostic_signs = prefs.diagnostic_signs
+    for _, v in pairs(prefs_diagnostic_signs) do
         prefs_diagnostic_signs.k = v .. ' '
     end
     local symbols = {
@@ -156,7 +156,7 @@ local function eviline_cfg()
 
     ins_right {
         'diff',
-        symbols = prefs.git_signs(),
+        symbols = prefs.git_signs,
         diff_color = {
             added = { fg = colors.green },
             modified = { fg = colors.yellow },

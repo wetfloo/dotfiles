@@ -1,4 +1,16 @@
+local function readonlify_table(table)
+    setmetatable(
+        table,
+        {
+            __index = table,
+            __newindex = function() end,
+        }
+    )
+end
+
 local M = {}
+
+M.readonlify_table = readonlify_table
 
 --- Example
 ---
@@ -14,4 +26,5 @@ function M.leader_prefix(keys)
     return vim.g.mapleader .. keys
 end
 
+readonlify_table(M)
 return M
