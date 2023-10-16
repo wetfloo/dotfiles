@@ -9,7 +9,7 @@ return {
             {
                 -- transparent_background = not vim.g.started_by_firenvim,
                 transparent_background = false,
-                flavour = require('nvim.prefs').catppuccin_flavor(),
+                flavour = require('nvim.prefs').catppuccin_flavor,
                 show_end_of_buffer = false,
                 color_overrides = {
                     mocha = {
