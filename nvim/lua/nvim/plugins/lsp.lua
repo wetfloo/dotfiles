@@ -188,20 +188,5 @@ return {
                 )
             }
         )
-
-        lspconfig.lua_ls.setup(
-            {
-                on_attach = on_attach,
-                root_dir = lspconfig.util.root_pattern('init.lua'),
-                settings = {
-                    Lua = {
-                        workspace = {
-                            -- https://github.com/LunarVim/LunarVim/issues/4049
-                            checkThirdParty = false,
-                        },
-                    }
-                },
-            }
-        )
     end,
 }
