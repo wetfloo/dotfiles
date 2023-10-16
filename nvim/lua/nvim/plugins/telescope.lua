@@ -12,7 +12,7 @@ return {
         },
     },
     config = function()
-        require('telescope').setup ({
+        require('telescope').setup({
             defaults = {
                 mappings = {
                     i = {
@@ -27,7 +27,38 @@ return {
 
         pcall(require('telescope').load_extension, 'fzf')
 
-        vim.keymap.set({ 'n' }, '<leader>ff', require('telescope.builtin').find_files, { desc = 'Find files' })
-        vim.keymap.set({ 'n' }, '<leader>fg', require('telescope.builtin').live_grep, { desc = 'Find with grep' })
+        local custom_pickers = require('nvim.plugins.utils.telescope_pickers')
+        vim.keymap.set(
+            '',
+            '<leader>ff',
+            function()
+                custom_pickers.pretty_files_picker({ picker = 'find_files' })
+            end,
+            { desc = 'Find files' }
+        )
+        vim.keymap.set(
+            '',
+            '<leader>fk',
+            function()
+                custom_pickers.pretty_files_picker({ picker = 'git_files' })
+            end,
+            { desc = 'Find git files' }
+        )
+        vim.keymap.set(
+            '',
+            '<leader>fg',
+            function()
+                custom_pickers.pretty_grep_picker({ picker = 'live_grep' })
+            end,
+            { desc = 'Find with grep' }
+        )
+        vim.keymap.set(
+            '',
+            '<leader>fb',
+            function()
+                custom_pickers.pretty_buffers_picker()
+            end,
+            { desc = 'Find buffer' }
+        )
     end,
 }

@@ -8,8 +8,10 @@ local function on_attach(_, bufnr)
             desc = lsp_desc(desc)
         end
 
-        vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
+        vim.keymap.set('', keys, func, { buffer = bufnr, desc = desc })
     end
+
+    local custom_pickers = require('nvim.plugins.utils.telescope_pickers')
 
     lsp_nmap('<leader>c', vim.lsp.buf.rename, 'Rename')
     lsp_nmap('<A-CR>', vim.lsp.buf.code_action, 'Code action')
@@ -19,9 +21,21 @@ local function on_attach(_, bufnr)
     lsp_nmap('<leader>gi', require('telescope.builtin').lsp_implementations,
         'Go to implementation')
     lsp_nmap('<leader>gd', vim.lsp.buf.type_definition, 'Go to definition')
-    lsp_nmap('<leader>fS', require('telescope.builtin').lsp_document_symbols, 'Find symbol')
-    lsp_nmap('<leader>fs', require('telescope.builtin').lsp_dynamic_workspace_symbols,
-        'Go to symbol')
+
+    lsp_nmap(
+        '<leader>fS',
+        function()
+            custom_pickers.pretty_document_symbols()
+        end,
+        'Find symbol in the current document'
+    )
+    lsp_nmap(
+        '<leader>fs',
+        function()
+            custom_pickers.pretty_workspace_symbols()
+        end,
+        'Go to symbol'
+    )
 
     lsp_nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
     lsp_nmap('<leader>K', vim.lsp.buf.signature_help, 'Signature Documentation')
@@ -172,6 +186,21 @@ return {
                     'deno.jsonc',
                     'lock.json'
                 )
+            }
+        )
+
+        lspconfig.lua_ls.setup(
+            {
+                on_attach = on_attach,
+                root_dir = lspconfig.util.root_pattern('init.lua'),
+                settings = {
+                    Lua = {
+                        workspace = {
+                            -- https://github.com/LunarVim/LunarVim/issues/4049
+                            checkThirdParty = false,
+                        },
+                    }
+                },
             }
         )
     end,
