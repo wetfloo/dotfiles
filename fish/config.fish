@@ -1,6 +1,8 @@
 # Hide welcome message
 set fish_greeting
 
+fish_vi_key_bindings
+
 # Set some environment variables (-x stands for environment)
 set -x COLORTERM truecolor
 set -x EDITOR nvim
