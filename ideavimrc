@@ -224,6 +224,20 @@ nnoremap <A-n> :mo +1<CR>
 xnoremap <A-p> :'<,'> mo -2<CR>gv=gv
 xnoremap <A-n> :'<,'> mo '>+<CR>gv=gv
 
+" Harpoon!
+map <leader>hh <action>(AddToHarpoon)
+map <leader>hm <action>(ShowHarpoon)
+map <A-1> <action>(GotoHarpoon1)
+map <A-2> <action>(GotoHarpoon2)
+map <A-3> <action>(GotoHarpoon3)
+map <A-4> <action>(GotoHarpoon4)
+map <A-5> <action>(GotoHarpoon5)
+map <leader>h1 <action>(SetHarpoon1)
+map <leader>h2 <action>(SetHarpoon2)
+map <leader>h3 <action>(SetHarpoon3)
+map <leader>h4 <action>(SetHarpoon4)
+map <leader>h5 <action>(SetHarpoon5)
+
 map <leader>kc <action>(Compare.SameVersion)
 
 nnoremap <leader>; m`lb~``
