@@ -53,7 +53,7 @@ return {
             )
 
             vim.keymap.set(
-                'n',
+                '',
                 '<A-' .. i .. '>',
                 function()
                     ui.nav_file(i)
