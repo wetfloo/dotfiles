@@ -37,15 +37,15 @@ vim.keymap.set('', '<Esc>', '<C-c>')
 -- Making it more comfortable to work with mutliple splits.
 -- The rest of keybinds are provided by the tmux plugin.
 
-vim.keymap.set({ 'n', 'x' }, '<leader>dv', '<C-w>v', { desc = 'Divide (split) vertically' })
-vim.keymap.set({ 'n', 'x' }, '<leader>dh', '<C-w>s', { desc = 'Divide (split) horizontally' })
+vim.keymap.set('', '<leader>dv', '<C-w>v', { desc = 'Divide (split) vertically' })
+vim.keymap.set('', '<leader>dh', '<C-w>s', { desc = 'Divide (split) horizontally' })
 
 -- Move around buffers as if they're tabs
 
-vim.keymap.set('n', '<A-,>', ':bprev<CR>', { desc = 'Go to the previous buffer', silent = true })
-vim.keymap.set('n', '<A-.>', ':bnext<CR>', { desc = 'Go to the next buffer', silent = true })
-vim.keymap.set('n', '<A-d>', ':Bdelete<CR>', { desc = 'Delete the current buffer', silent = true })
-vim.keymap.set('n', '<A-D>', ':Bwipeout<CR>', { desc = 'Wipe out the current buffer', silent = true })
+vim.keymap.set('', '<A-,>', ':bprev<CR>', { desc = 'Go to the previous buffer', silent = true })
+vim.keymap.set('', '<A-.>', ':bnext<CR>', { desc = 'Go to the next buffer', silent = true })
+vim.keymap.set('', '<A-d>', ':Bdelete<CR>', { desc = 'Delete the current buffer', silent = true })
+vim.keymap.set('', '<A-D>', ':Bwipeout<CR>', { desc = 'Wipe out the current buffer', silent = true })
 
 -- Remap for dealing with word wrap
 

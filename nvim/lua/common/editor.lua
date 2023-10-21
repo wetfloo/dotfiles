@@ -30,8 +30,8 @@ vim.o.smartcase = true
 
 -- 0 is more reachable than ^, is sometimes useful
 
-vim.keymap.set('n', '0', '^')
-vim.keymap.set('n', '^', '0')
+vim.keymap.set({ 'n', 'x' }, '0', '^')
+vim.keymap.set({ 'n', 'x' }, '^', '0')
 
 -- Make visual line indentation less painful
 
