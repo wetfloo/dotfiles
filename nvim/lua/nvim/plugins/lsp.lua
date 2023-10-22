@@ -1,35 +1,41 @@
 local function on_attach(_, bufnr)
     local function lsp_desc(desc)
-        return desc .. '(LSP)'
+        return desc .. ' (LSP)'
     end
 
-    local function lsp_nmap(keys, func, desc)
+    local function lsp_map(keys, func, desc, mode_override)
         if desc then
             desc = lsp_desc(desc)
         end
 
-        vim.keymap.set('', keys, func, { buffer = bufnr, desc = desc })
+        local mode
+        if mode_override ~= nil then
+            mode = mode_override
+        else
+            mode = ''
+        end
+        vim.keymap.set(mode, keys, func, { buffer = bufnr, desc = desc })
     end
 
     local custom_pickers = require('nvim.plugins.utils.telescope_pickers')
 
-    lsp_nmap('<leader>c', vim.lsp.buf.rename, 'Rename')
-    lsp_nmap('<A-CR>', vim.lsp.buf.code_action, 'Code action')
+    lsp_map('<leader>c', vim.lsp.buf.rename, 'Rename')
+    lsp_map('<A-CR>', vim.lsp.buf.code_action, 'Code action')
 
-    lsp_nmap('<leader>gg', vim.lsp.buf.definition, 'Go to definition')
-    lsp_nmap('<leader>gu', require('telescope.builtin').lsp_references, 'Go to usages')
-    lsp_nmap('<leader>gi', require('telescope.builtin').lsp_implementations,
+    lsp_map('<leader>gg', vim.lsp.buf.definition, 'Go to definition')
+    lsp_map('<leader>gu', require('telescope.builtin').lsp_references, 'Go to usages')
+    lsp_map('<leader>gi', require('telescope.builtin').lsp_implementations,
         'Go to implementation')
-    lsp_nmap('<leader>gd', vim.lsp.buf.type_definition, 'Go to definition')
+    lsp_map('<leader>gd', vim.lsp.buf.type_definition, 'Go to definition')
 
-    lsp_nmap(
+    lsp_map(
         '<leader>fS',
         function()
             custom_pickers.pretty_document_symbols()
         end,
         'Find symbol in the current document'
     )
-    lsp_nmap(
+    lsp_map(
         '<leader>fs',
         function()
             custom_pickers.pretty_workspace_symbols()
@@ -37,14 +43,17 @@ local function on_attach(_, bufnr)
         'Go to symbol'
     )
 
-    lsp_nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-    lsp_nmap('<leader>K', vim.lsp.buf.signature_help, 'Signature Documentation')
-    lsp_nmap('<leader>e', vim.diagnostic.open_float, 'Hover error')
+    lsp_map('K', vim.lsp.buf.hover, 'Hover Documentation', { 'n', 'x' })
+    lsp_map('<leader>K', vim.lsp.buf.signature_help, 'Signature Documentation', { 'n', 'x' })
 
-    lsp_nmap('<leader>gG', vim.lsp.buf.declaration, 'Go to declaration')
-    lsp_nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, 'Add workspace directory')
-    lsp_nmap('<leader>wd', vim.lsp.buf.remove_workspace_folder, 'Remove workspace directory')
-    lsp_nmap('<leader>wl', function()
+    lsp_map('<leader>ee', vim.diagnostic.open_float, 'Hover error')
+    lsp_map('<leader>ep', vim.diagnostic.goto_prev, 'Show previous diagnostic')
+    lsp_map('<leader>en', vim.diagnostic.goto_next, 'Show next diagnostic')
+
+    lsp_map('<leader>gG', vim.lsp.buf.declaration, 'Go to declaration')
+    lsp_map('<leader>wa', vim.lsp.buf.add_workspace_folder, 'Add workspace directory')
+    lsp_map('<leader>wd', vim.lsp.buf.remove_workspace_folder, 'Remove workspace directory')
+    lsp_map('<leader>wl', function()
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end, 'Workspace directories list')
 
@@ -58,7 +67,7 @@ local function on_attach(_, bufnr)
         { desc = reformat_desc }
     )
     vim.keymap.set(
-        'n',
+        '',
         '<leader>sf',
         ':Format<CR>',
         {
@@ -148,28 +157,36 @@ return {
                     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
                     ['<C-f>'] = cmp.mapping.scroll_docs(4),
                     ['<C-Space>'] = cmp.mapping.complete {},
-                    ['<CR>'] = cmp.mapping.confirm {
-                        behavior = cmp.ConfirmBehavior.Replace,
-                        select = true,
-                    },
-                    ['<Tab>'] = cmp.mapping(function(fallback)
-                        if cmp.visible() then
-                            cmp.select_next_item()
-                        elseif luasnip.expand_or_locally_jumpable() then
-                            luasnip.expand_or_jump()
-                        else
-                            fallback()
-                        end
-                    end, { 'i', 's' }),
-                    ['<S-Tab>'] = cmp.mapping(function(fallback)
-                        if cmp.visible() then
-                            cmp.select_prev_item()
-                        elseif luasnip.locally_jumpable(-1) then
-                            luasnip.jump(-1)
-                        else
-                            fallback()
-                        end
-                    end, { 'i', 's' }),
+                    ['<CR>'] = cmp.mapping.confirm(
+                        {
+                            behavior = cmp.ConfirmBehavior.Replace,
+                            select = true,
+                        }
+                    ),
+                    ['<Tab>'] = cmp.mapping(
+                        function(fallback)
+                            if cmp.visible() then
+                                cmp.select_next_item()
+                            elseif luasnip.expand_or_locally_jumpable() then
+                                luasnip.expand_or_jump()
+                            else
+                                fallback()
+                            end
+                        end,
+                        { 'i', 's' }
+                    ),
+                    ['<S-Tab>'] = cmp.mapping(
+                        function(fallback)
+                            if cmp.visible() then
+                                cmp.select_prev_item()
+                            elseif luasnip.locally_jumpable(-1) then
+                                luasnip.jump(-1)
+                            else
+                                fallback()
+                            end
+                        end,
+                        { 'i', 's' }
+                    ),
                 },
                 sources = {
                     { name = 'nvim_lsp' },
