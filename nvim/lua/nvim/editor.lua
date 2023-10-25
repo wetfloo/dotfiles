@@ -29,6 +29,8 @@ vim.wo.signcolumn = 'yes'
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+vim.o.cursorline = true
+
 -- Meme remap
 
 vim.keymap.set('', '<C-c>', '<Esc>')
