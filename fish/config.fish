@@ -37,10 +37,3 @@ alias fuz='cd ~ && cd $(fd . -t d | fzf)'
 alias fuza='cd ~ && cd $(fd -H . -t d | fzf)'
 
 starship init fish | source
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-if test -f /usr/bin/conda
-    eval /usr/bin/conda "shell.fish" "hook" $argv | source
-end
-# <<< conda initialize <<<
