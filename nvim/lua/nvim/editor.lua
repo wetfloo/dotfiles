@@ -51,8 +51,8 @@ vim.keymap.set('', '<A-D>', ':Bwipeout<CR>', { desc = 'Wipe out the current buff
 
 -- Remap for dealing with word wrap + keep cursor centered
 
-vim.keymap.set('n', 'k', "v:count == 0 ? 'gkzz' : 'kzz'", { expr = true, silent = true })
-vim.keymap.set('n', 'j', "v:count == 0 ? 'gjzz' : 'jzz'", { expr = true, silent = true })
+vim.keymap.set('n', 'k', "v:count == 0 ? 'gkzz' : 'k'", { expr = true, silent = true })
+vim.keymap.set('n', 'j', "v:count == 0 ? 'gjzz' : 'j'", { expr = true, silent = true })
 
 -- Move selected stuff around
 
