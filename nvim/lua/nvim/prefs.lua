@@ -16,5 +16,6 @@ M.git_signs = {
     removed = '󰍴',
 }
 
-require('utils').readonlify_table(M)
+M.centering = true
+
 return M
