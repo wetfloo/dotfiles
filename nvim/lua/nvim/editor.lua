@@ -49,10 +49,10 @@ vim.keymap.set('', '<A-.>', ':bnext<CR>', { desc = 'Go to the next buffer', sile
 vim.keymap.set('', '<A-d>', ':Bdelete<CR>', { desc = 'Delete the current buffer', silent = true })
 vim.keymap.set('', '<A-D>', ':Bwipeout<CR>', { desc = 'Wipe out the current buffer', silent = true })
 
--- Remap for dealing with word wrap
+-- Remap for dealing with word wrap + keep cursor centered
 
-vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+vim.keymap.set('n', 'k', "v:count == 0 ? 'gkzz' : 'kzz'", { expr = true, silent = true })
+vim.keymap.set('n', 'j', "v:count == 0 ? 'gjzz' : 'jzz'", { expr = true, silent = true })
 
 -- Move selected stuff around
 
@@ -72,6 +72,8 @@ move_and_center({ 'n', 'x' }, '<C-b>')
 move_and_center({ 'n', 'x' }, '<C-f>')
 move_and_center({ 'n', 'x' }, 'n')
 move_and_center({ 'n', 'x' }, 'N')
+move_and_center({ 'n', 'x' }, 'gg')
+move_and_center({ 'n', 'x' }, 'G')
 
 -- :help diagnostic-highlights
 vim.diagnostic.config(
