@@ -35,7 +35,6 @@ vim.o.guicursor = 'n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20,a:blinkon500'
 -- Meme remap
 
 vim.keymap.set('', '<C-c>', '<Esc>')
-vim.keymap.set('', '<Esc>', '<C-c>')
 
 -- Making it more comfortable to work with mutliple splits.
 -- The rest of keybinds are provided by the tmux plugin.
