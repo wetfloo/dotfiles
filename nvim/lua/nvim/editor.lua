@@ -16,7 +16,7 @@ vim.o.showmode = false
 -- Visual editor stuff: no line wraps, scrolloff, relative line numbers
 
 vim.o.wrap = false
-vim.o.scrolloff = 5
+vim.o.scrolloff = 0
 vim.wo.number = true
 vim.wo.relativenumber = true
 
