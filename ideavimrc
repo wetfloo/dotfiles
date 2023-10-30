@@ -104,6 +104,8 @@ noremap <C-d> <C-d>zz
 noremap <C-u> <C-u>zz
 noremap <C-f> <C-f>zz
 noremap <C-b> <C-b>zz
+noremap <expr> j v:count == 0 ? 'gjzz' : 'j'
+noremap <expr> k v:count == 0 ? 'gkzz' : 'k'
 
 " yank till start, move to last character of yanked region, and then one more
 nnoremap <leader>Y y^`]l
