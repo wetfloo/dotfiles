@@ -98,10 +98,6 @@ return {
                 'rafamadriz/friendly-snippets',
             },
         },
-        {
-            'lewis6991/gitsigns.nvim',
-            opts = {},
-        },
     },
     config = function()
         local lspconfig = require('lspconfig')
