@@ -13,9 +13,9 @@ vim.o.termguicolors = true
 
 vim.o.showmode = false
 
--- Visual editor stuff: no line wraps, scrolloff, relative line numbers
+-- Visual editor stuff: line wraps, scrolloff, relative line numbers
 
-vim.o.wrap = false
+vim.o.wrap = true
 vim.o.scrolloff = 0
 vim.wo.number = true
 vim.wo.relativenumber = true
@@ -51,8 +51,8 @@ vim.keymap.set('', '<A-D>', ':Bwipeout<CR>', { desc = 'Wipe out the current buff
 
 -- Remap for dealing with word wrap + keep cursor centered
 
-vim.keymap.set('n', 'k', "v:count == 0 ? 'gkzz' : 'k'", { expr = true, silent = true })
-vim.keymap.set('n', 'j', "v:count == 0 ? 'gjzz' : 'j'", { expr = true, silent = true })
+vim.keymap.set({ 'n', 'x' }, 'k', "v:count == 0 ? 'gkzz' : 'k'", { expr = true, silent = true })
+vim.keymap.set({ 'n', 'x' }, 'j', "v:count == 0 ? 'gjzz' : 'j'", { expr = true, silent = true })
 
 -- Move selected stuff around
 
