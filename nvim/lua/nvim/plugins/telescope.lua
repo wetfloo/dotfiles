@@ -28,6 +28,8 @@ return {
         pcall(require('telescope').load_extension, 'fzf')
 
         local custom_pickers = require('nvim.plugins.utils.telescope_pickers')
+        local builtin = require('telescope.builtin')
+
         vim.keymap.set(
             '',
             '<leader>ff',
@@ -59,6 +61,14 @@ return {
                 custom_pickers.pretty_buffers_picker()
             end,
             { desc = 'Find buffer' }
+        )
+        vim.keymap.set(
+            '',
+            '<leader>fl',
+            function()
+                builtin.resume()
+            end,
+            { desc = 'Last picker' }
         )
     end,
 }
