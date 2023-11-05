@@ -134,7 +134,7 @@ local function eviline_cfg()
     -- Add components to right sections
     ins_right(
         {
-            'o:encoding',   -- option component same as &encoding in viml
+            'o:encoding', -- option component same as &encoding in viml
             fmt = string.lower,
             cond = conditions.hide_in_width,
             color = { fg = colors.green, gui = 'bold' },
@@ -210,6 +210,10 @@ return {
         'nvim-tree/nvim-web-devicons',
     },
     config = function()
+        -- Since we have a status line already, don't duplicate current mode display
+
+        vim.o.showmode = false
+
         my_cfg()
     end
 }
