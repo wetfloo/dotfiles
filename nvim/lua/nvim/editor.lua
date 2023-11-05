@@ -9,10 +9,6 @@ vim.opt.expandtab = true
 
 vim.o.termguicolors = true
 
--- Since we have a status line already, don't duplicate current mode display
-
-vim.o.showmode = false
-
 -- Visual editor stuff: line wraps, scrolloff, relative line numbers
 
 vim.o.wrap = true
