@@ -5,7 +5,8 @@ return {
     },
 
     config = function()
-        require('harpoon').setup(
+        local harpoon = require('harpoon')
+        harpoon.setup(
             {
                 -- sets the marks upon calling `toggle` on the ui, instead of require `:w`.
                 save_on_toggle = false,
@@ -27,12 +28,26 @@ return {
 
                 -- enable tabline with harpoon marks (status line on the top)
                 tabline = false,
-
-                menu = {
-                    width = vim.api.nvim_win_get_width(0) - 16,
-                },
             }
         )
+
+        local resize_group = vim.api.nvim_create_augroup('HarpoonResize', { clear = true })
+        vim.api.nvim_create_autocmd(
+            'VimResized',
+            {
+                callback = function()
+                    harpoon.setup(
+                        {
+                            menu = {
+                                width = vim.api.nvim_win_get_width(0) - 16,
+                            }
+                        }
+                    )
+                end,
+                group = resize_group,
+            }
+        )
+
 
         local mark = require('harpoon.mark')
         local ui = require('harpoon.ui')
