@@ -109,6 +109,13 @@ return {
                     telemetry = { enable = false },
                 },
             },
+            rust_analyzer = {
+                ["rust_analyzer"] = {
+                    checkOnSave = {
+                        command = 'clippy',
+                    },
+                }
+            },
         }
 
         local capabilities = vim.lsp.protocol.make_client_capabilities()
