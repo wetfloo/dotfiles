@@ -6,6 +6,13 @@ return {
 
     config = function()
         local harpoon = require('harpoon')
+        local function harpoon_width()
+            local window_width = vim.api.nvim_win_get_width(0)
+            local h_padding_horizontal = 4
+            local h_width = window_width - h_padding_horizontal
+            local h_width_max = 120
+            return math.min(h_width, h_width_max)
+        end
         harpoon.setup(
             {
                 -- sets the marks upon calling `toggle` on the ui, instead of require `:w`.
@@ -28,6 +35,10 @@ return {
 
                 -- enable tabline with harpoon marks (status line on the top)
                 tabline = false,
+
+                menu = {
+                    width = harpoon_width(),
+                },
             }
         )
 
@@ -39,7 +50,7 @@ return {
                     harpoon.setup(
                         {
                             menu = {
-                                width = vim.api.nvim_win_get_width(0) - 16,
+                                width = harpoon_width(),
                             }
                         }
                     )
