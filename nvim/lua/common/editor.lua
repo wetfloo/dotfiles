@@ -28,11 +28,6 @@ vim.o.undofile = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
--- 0 is more reachable than ^, is sometimes useful
-
-vim.keymap.set({ 'n', 'x' }, '0', '^')
-vim.keymap.set({ 'n', 'x' }, '^', '0')
-
 -- Make visual line indentation less painful
 
 vim.keymap.set('x', '<', '<gv', { desc = 'Indent right' })
