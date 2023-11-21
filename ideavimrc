@@ -158,6 +158,7 @@ map <leader>ff <action>(GotoFile)
 map <leader>fs <action>(GotoSymbol)
 map <leader>fx <action>(GotoAction)
 map <leader>fr <action>(RecentFiles)
+map <leader>fg <action>(FindInPath)
 
 " GOTOs
 map <leader>gu <action>(ShowUsages)
