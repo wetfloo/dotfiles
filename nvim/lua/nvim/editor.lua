@@ -37,6 +37,7 @@ vim.keymap.set('', '<C-c>', '<Esc>')
 
 vim.keymap.set('', '<leader>dv', '<C-w>v', { desc = 'Divide (split) vertically' })
 vim.keymap.set('', '<leader>dh', '<C-w>s', { desc = 'Divide (split) horizontally' })
+vim.keymap.set('', '<leader>du', function() vim.cmd('on') end, { desc = 'Close all other windows (unsplit)' })
 
 -- Move around buffers as if they're tabs
 
