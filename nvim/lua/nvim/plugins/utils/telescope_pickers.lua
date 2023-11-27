@@ -66,7 +66,7 @@ function M.pretty_files_picker(picker_opts)
     --          ultimately be used by Telescope to display the entry by executing its 'display' key function.
     --          This reduces our work by only having to replace the 'display' function in said table instead
     --          of having to manipulate the rest of the data too.
-    local originalEntryMaker = telescope_make_entry.gen_from_file(options)
+    local og_entry_maker = telescope_make_entry.gen_from_file(options)
 
     -- INSIGHT: 'entry_maker' is the hardcoded name of the option Telescope reads to obtain the function that
     --          will generate each entry.
@@ -74,7 +74,7 @@ function M.pretty_files_picker(picker_opts)
     --          raw (type 'any) and must be transformed into an entry table.
     options.entry_maker = function(line)
         -- Generate the Original Entry table
-        local originalEntryTable = originalEntryMaker(line)
+        local og_entry_table = og_entry_maker(line)
 
         -- INSIGHT: An "entry display" is an abstract concept that defines the "container" within which data
         --          will be displayed inside the picker, this means that we must define options that define
@@ -100,27 +100,27 @@ function M.pretty_files_picker(picker_opts)
         --          be deferred to allow lazy loading.
         --
         -- HELP: Read the 'make_entry.lua' file for more info on how all of this works
-        originalEntryTable.display = function(entry)
+        og_entry_table.display = function(entry)
             -- Get the Tail and the Path to display
-            local tail, pathToDisplay = get_path_and_tail(entry.value)
+            local tail, path_to_display = get_path_and_tail(entry.value)
 
             -- Add an extra space to the tail so that it looks nicely separated from the path
-            local tailForDisplay = tail .. ' '
+            local tail_for_display = tail .. ' '
 
             -- Get the Icon with its corresponding Highlight information
-            local icon, iconHighlight = telescope_utils.get_devicons(tail)
+            local icon, icon_highlight = telescope_utils.get_devicons(tail)
 
             -- INSIGHT: This return value should be a tuple of 2, where the first value is the actual value
             --          and the second one is the highlight information, this will be done by the displayer
             --          internally and return in the correct format.
             return displayer({
-                { icon,          iconHighlight },
-                tailForDisplay,
-                { pathToDisplay, 'TelescopeResultsComment' },
+                { icon,          icon_highlight },
+                tail_for_display,
+                { path_to_display, 'TelescopeResultsComment' },
             })
         end
 
-        return originalEntryTable
+        return og_entry_table
     end
 
     -- Finally, check which file picker was requested and open it with its associated options
@@ -167,7 +167,7 @@ function M.pretty_grep_picker(picker_opts)
     --          ultimately be used by Telescope to display the entry by executing its 'display' key function.
     --          This reduces our work by only having to replace the 'display' function in said table instead
     --          of having to manipulate the rest of the data too.
-    local originalEntryMaker = telescope_make_entry.gen_from_vimgrep(options)
+    local og_entry_maker = telescope_make_entry.gen_from_vimgrep(options)
 
     -- INSIGHT: 'entry_maker' is the hardcoded name of the option Telescope reads to obtain the function that
     --          will generate each entry.
@@ -175,7 +175,7 @@ function M.pretty_grep_picker(picker_opts)
     --          raw (type 'any) and must be transformed into an entry table.
     options.entry_maker = function(line)
         -- Generate the Original Entry table
-        local originalEntryTable = originalEntryMaker(line)
+        local og_entry_table = og_entry_maker(line)
 
         -- INSIGHT: An "entry display" is an abstract concept that defines the "container" within which data
         --          will be displayed inside the picker, this means that we must define options that define
@@ -202,15 +202,15 @@ function M.pretty_grep_picker(picker_opts)
         --          be deferred to allow lazy loading.
         --
         -- HELP: Read the 'make_entry.lua' file for more info on how all of this works
-        originalEntryTable.display = function(entry)
+        og_entry_table.display = function(entry)
             ---- Get File columns data ----
             -------------------------------
 
             -- Get the Tail and the Path to display
-            local tail, pathToDisplay = get_path_and_tail(entry.filename)
+            local tail, path_to_display = get_path_and_tail(entry.filename)
 
             -- Get the Icon with its corresponding Highlight information
-            local icon, iconHighlight = telescope_utils.get_devicons(tail)
+            local icon, icon_highlight = telescope_utils.get_devicons(tail)
 
             ---- Format Text for display ----
             ---------------------------------
@@ -232,7 +232,7 @@ function M.pretty_grep_picker(picker_opts)
             tail = tail .. coordinates
 
             -- Add an extra space to the tail so that it looks nicely separated from the path
-            local tailForDisplay = tail .. ' '
+            local tail_for_display = tail .. ' '
 
             -- Encode text if necessary
             local text = options.file_encoding and vim.iconv(entry.text, options.file_encoding, "utf8") or entry.text
@@ -241,14 +241,14 @@ function M.pretty_grep_picker(picker_opts)
             --          and the second one is the highlight information, this will be done by the displayer
             --          internally and return in the correct format.
             return displayer({
-                { icon,          iconHighlight },
-                tailForDisplay,
-                { pathToDisplay, 'TelescopeResultsComment' },
+                { icon,          icon_highlight },
+                tail_for_display,
+                { path_to_display, 'TelescopeResultsComment' },
                 text
             })
         end
 
-        return originalEntryTable
+        return og_entry_table
     end
 
     -- Finally, check which file picker was requested and open it with its associated options
@@ -305,10 +305,10 @@ function M.pretty_document_symbols(local_opts)
 
     local options = local_opts or {}
 
-    local originalEntryMaker = telescope_make_entry.gen_from_lsp_symbols(options)
+    local og_entry_maker = telescope_make_entry.gen_from_lsp_symbols(options)
 
     options.entry_maker = function(line)
-        local originalEntryTable = originalEntryMaker(line)
+        local og_entry_table = og_entry_maker(line)
 
         local displayer = telescope_entry_display.create({
             separator = ' ',
@@ -319,7 +319,7 @@ function M.pretty_document_symbols(local_opts)
             },
         })
 
-        originalEntryTable.display = function(entry)
+        og_entry_table.display = function(entry)
             return displayer {
                 string.format("%s", kind_icons[(entry.symbol_type:lower():gsub("^%l", string.upper))]),
                 { entry.symbol_type:lower(), 'TelescopeResultsVariable' },
@@ -327,7 +327,7 @@ function M.pretty_document_symbols(local_opts)
             }
         end
 
-        return originalEntryTable
+        return og_entry_table
     end
 
     require('telescope.builtin').lsp_document_symbols(options)
@@ -341,10 +341,10 @@ function M.pretty_workspace_symbols(local_opts)
 
     local options = local_opts or {}
 
-    local originalEntryMaker = telescope_make_entry.gen_from_lsp_symbols(options)
+    local og_entry_maker = telescope_make_entry.gen_from_lsp_symbols(options)
 
     options.entry_maker = function(line)
-        local originalEntryTable = originalEntryMaker(line)
+        local og_entry_table = og_entry_maker(line)
 
         local displayer = telescope_entry_display.create({
             separator = ' ',
@@ -357,10 +357,10 @@ function M.pretty_workspace_symbols(local_opts)
             },
         })
 
-        originalEntryTable.display = function(entry)
+        og_entry_table.display = function(entry)
             local tail, _ = get_path_and_tail(entry.filename)
-            local tailForDisplay = tail .. ' '
-            local pathToDisplay = telescope_utils.transform_path({
+            local tail_for_display = tail .. ' '
+            local path_to_display = telescope_utils.transform_path({
                 path_display = { shorten = { num = 2, exclude = { -2, -1 } }, 'truncate' },
 
             }, entry.value.filename)
@@ -369,12 +369,12 @@ function M.pretty_workspace_symbols(local_opts)
                 string.format("%s", kind_icons[(entry.symbol_type:lower():gsub("^%l", string.upper))]),
                 { entry.symbol_type:lower(), 'TelescopeResultsVariable' },
                 { entry.symbol_name,         'TelescopeResultsConstant' },
-                tailForDisplay,
-                { pathToDisplay, 'TelescopeResultsComment' },
+                tail_for_display,
+                { path_to_display, 'TelescopeResultsComment' },
             }
         end
 
-        return originalEntryTable
+        return og_entry_table
     end
 
     require('telescope.builtin').lsp_dynamic_workspace_symbols(options)
@@ -388,10 +388,10 @@ function M.pretty_buffers_picker(local_opts)
 
     local options = local_opts or {}
 
-    local originalEntryMaker = telescope_make_entry.gen_from_buffer(options)
+    local og_entry_maker = telescope_make_entry.gen_from_buffer(options)
 
     options.entry_maker = function(line)
-        local originalEntryTable = originalEntryMaker(line)
+        local og_entry_table = og_entry_maker(line)
 
         local displayer = telescope_entry_display.create {
             separator = " ",
@@ -403,20 +403,20 @@ function M.pretty_buffers_picker(local_opts)
             },
         }
 
-        originalEntryTable.display = function(entry)
+        og_entry_table.display = function(entry)
             local tail, path = get_path_and_tail(entry.filename)
-            local tailForDisplay = tail .. ' '
-            local icon, iconHighlight = telescope_utils.get_devicons(tail)
+            local tail_for_display = tail .. ' '
+            local icon, icon_highlight = telescope_utils.get_devicons(tail)
 
             return displayer {
-                { icon,                      iconHighlight },
-                tailForDisplay,
+                { icon,                      icon_highlight },
+                tail_for_display,
                 { '(' .. entry.bufnr .. ')', "TelescopeResultsNumber" },
                 { path,                      "TelescopeResultsComment" },
             }
         end
 
-        return originalEntryTable
+        return og_entry_table
     end
 
     require('telescope.builtin').buffers(options)
