@@ -9,7 +9,7 @@ return {
                         if mode_override ~= nil then
                             mode = mode_override
                         else
-                            mode = ''
+                            mode = 'n'
                         end
 
                         if desc ~= nil then

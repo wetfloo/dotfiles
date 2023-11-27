@@ -12,7 +12,7 @@ local function on_attach(_, bufnr)
         if mode_override ~= nil then
             mode = mode_override
         else
-            mode = ''
+            mode = 'n'
         end
         vim.keymap.set(mode, keys, func, { buffer = bufnr, desc = desc })
     end
@@ -43,8 +43,8 @@ local function on_attach(_, bufnr)
         'Go to symbol'
     )
 
-    lsp_map('K', vim.lsp.buf.hover, 'Hover Documentation', { 'n', 'x' })
-    lsp_map('<leader>K', vim.lsp.buf.signature_help, 'Signature Documentation', { 'n', 'x' })
+    lsp_map('K', vim.lsp.buf.hover, 'Hover Documentation')
+    lsp_map('<leader>K', vim.lsp.buf.signature_help, 'Signature Documentation')
 
     lsp_map('<leader>ee', vim.diagnostic.open_float, 'Hover error')
     lsp_map('<leader>ep', vim.diagnostic.goto_prev, 'Show previous diagnostic')
@@ -67,7 +67,7 @@ local function on_attach(_, bufnr)
         { desc = reformat_desc }
     )
     vim.keymap.set(
-        '',
+        'n',
         '<leader>sf',
         ':Format<CR>',
         {

@@ -30,8 +30,6 @@ vim.o.guicursor = 'n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20,a:blinkon500'
 
 vim.opt.langmap = ' йЙцЦуУкКеЕнНгГшШщЩзЗхХъЪфФыЫвВаАпПрРоОлЛдДжЖэЭяЯчЧсСмМиИтТьЬбБюЮ.\\,; qQwWeErRtTyYuUiIoOpP[{]}aAsSdDfFgGhHjJkKlL;:\'"zZxXcCvVbBnNmM\\,<.>/?'
 
-vim.keymap.set('n', '<leader>', '<nop>')
-
 -- Meme remap
 
 vim.keymap.set('', '<C-c>', '<Esc>')
@@ -39,21 +37,21 @@ vim.keymap.set('', '<C-c>', '<Esc>')
 -- Making it more comfortable to work with mutliple splits.
 -- The rest of keybinds are provided by the tmux plugin.
 
-vim.keymap.set('', '<leader>dv', '<C-w>v', { desc = 'Divide (split) vertically' })
-vim.keymap.set('', '<leader>dh', '<C-w>s', { desc = 'Divide (split) horizontally' })
-vim.keymap.set('', '<leader>du', function() vim.cmd('on') end, { desc = 'Close all other windows (unsplit)' })
+vim.keymap.set('n', '<leader>dv', '<C-w>v', { desc = 'Divide (split) vertically' })
+vim.keymap.set('n', '<leader>dh', '<C-w>s', { desc = 'Divide (split) horizontally' })
+vim.keymap.set('n', '<leader>du', function() vim.cmd('on') end, { desc = 'Close all other windows (unsplit)' })
 
 -- Move around buffers as if they're tabs
 
-vim.keymap.set('', '<A-,>', ':bprev<CR>', { desc = 'Go to the previous buffer', silent = true })
-vim.keymap.set('', '<A-.>', ':bnext<CR>', { desc = 'Go to the next buffer', silent = true })
-vim.keymap.set('', '<A-d>', ':Bdelete<CR>', { desc = 'Delete the current buffer', silent = true })
-vim.keymap.set('', '<A-D>', ':Bwipeout<CR>', { desc = 'Wipe out the current buffer', silent = true })
+vim.keymap.set('n', '<A-,>', ':bprev<CR>', { desc = 'Go to the previous buffer', silent = true })
+vim.keymap.set('n', '<A-.>', ':bnext<CR>', { desc = 'Go to the next buffer', silent = true })
+vim.keymap.set('n', '<A-d>', ':Bdelete<CR>', { desc = 'Delete the current buffer', silent = true })
+vim.keymap.set('n', '<A-D>', ':Bwipeout<CR>', { desc = 'Wipe out the current buffer', silent = true })
 
 -- Remap for dealing with word wrap + keep cursor centered
 
-vim.keymap.set({ 'n', 'x' }, 'k', "v:count == 0 ? 'gkzz' : 'k'", { expr = true, silent = true })
-vim.keymap.set({ 'n', 'x' }, 'j', "v:count == 0 ? 'gjzz' : 'j'", { expr = true, silent = true })
+vim.keymap.set('n', 'k', "v:count == 0 ? 'gkzz' : 'k'", { expr = true, silent = true })
+vim.keymap.set('n', 'j', "v:count == 0 ? 'gjzz' : 'j'", { expr = true, silent = true })
 
 -- Move selected stuff around
 

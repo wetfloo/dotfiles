@@ -58,6 +58,6 @@ return {
             }
         )
 
-        vim.keymap.set('', '<leader>tt', ':Neotree action=focus<CR>', { desc = 'Neotree focus', silent = true })
+        vim.keymap.set('n', '<leader>tt', ':Neotree action=focus<CR>', { desc = 'Neotree focus', silent = true })
     end
 }

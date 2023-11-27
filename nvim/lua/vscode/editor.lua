@@ -37,21 +37,21 @@ vscode_map('x', '<leader>sf', 'editor.action.formatSelection')
 
 -- Making it more comfortable to work with mutliple splits
 
-vscode_map('', '<leader>dv', 'workbench.action.splitEditorRight', { desc = 'Divide (split) vertically' })
-vscode_map('', '<leader>dh', 'workbench.action.splitEditorDown', { desc = 'Divide (split) horizontally' })
-vscode_map({ 'n', 'x' }, '<C-k>', 'workbench.action.focusAboveGroup', { desc = 'To split above' })
-vscode_map({ 'n', 'x' }, '<C-j>', 'workbench.action.focusBelowGroup', { desc = 'To split below' })
-vscode_map({ 'n', 'x' }, '<C-h>', 'workbench.action.focusLeftGroup', { desc = 'To split on the left' })
-vscode_map({ 'n', 'x' }, '<C-l>', 'workbench.action.focusRightGroup', { desc = 'To split on the right' })
+vscode_map('n', '<leader>dv', 'workbench.action.splitEditorRight', { desc = 'Divide (split) vertically' })
+vscode_map('n', '<leader>dh', 'workbench.action.splitEditorDown', { desc = 'Divide (split) horizontally' })
+vscode_map('n', '<C-k>', 'workbench.action.focusAboveGroup', { desc = 'To split above' })
+vscode_map('n', '<C-j>', 'workbench.action.focusBelowGroup', { desc = 'To split below' })
+vscode_map('n', '<C-h>', 'workbench.action.focusLeftGroup', { desc = 'To split on the left' })
+vscode_map('n', '<C-l>', 'workbench.action.focusRightGroup', { desc = 'To split on the right' })
 
 -- Move between tabs more easily
 
-vscode_map('', '<A-.>', 'workbench.action.nextEditor')
-vscode_map('', '<A-,>', 'workbench.action.previousEditor')
-vscode_map('', '<A-d>', 'workbench.action.closeActiveEditor')
-vscode_map('', '<leader>\'', 'notifications.clearAll')
+vscode_map('n', '<A-.>', 'workbench.action.nextEditor')
+vscode_map('n', '<A-,>', 'workbench.action.previousEditor')
+vscode_map('n', '<A-d>', 'workbench.action.closeActiveEditor')
+vscode_map('n', '<leader>\'', 'notifications.clearAll')
 vscode_map(
-    '',
+    'n',
     '<leader>\\',
     {
         'workbench.action.closePanel',
@@ -61,36 +61,36 @@ vscode_map(
 
 -- Find stuff
 
-vscode_map('', '<leader>ff', 'workbench.action.quickOpen', { desc = 'Find Files' })
-vscode_map('', '<leader>fg', 'workbench.action.findInFiles', { desc = 'Find with Grep' })
-vscode_map('', '<leader>fs', 'workbench.action.showAllSymbols', { desc = 'Find Symbol' })
+vscode_map('n', '<leader>ff', 'workbench.action.quickOpen', { desc = 'Find Files' })
+vscode_map('n', '<leader>fg', 'workbench.action.findInFiles', { desc = 'Find with Grep' })
+vscode_map('n', '<leader>fs', 'workbench.action.showAllSymbols', { desc = 'Find Symbol' })
 
 -- Debugging
 
-vscode_map('', '<leader>oo', 'editor.debug.action.toggleBreakpoint')
-vscode_map('', '<leader>oD', 'workbench.debug.viewlet.action.removeAllBreakpoints')
-vscode_map('', '<leader>om', 'workbench.debug.viewlet.action.toggleBreakpointsActivatedAction')
+vscode_map('n', '<leader>oo', 'editor.debug.action.toggleBreakpoint')
+vscode_map('n', '<leader>oD', 'workbench.debug.viewlet.action.removeAllBreakpoints')
+vscode_map('n', '<leader>om', 'workbench.debug.viewlet.action.toggleBreakpointsActivatedAction')
 
 -- LSP related
 
-vscode_map('', '<leader>c', 'editor.action.rename')
-vscode_map('', '<leader>gg', 'editor.action.revealDefinition')
-vscode_map('', '<leader>gu', 'editor.action.goToReferences')
-vscode_map('', '<leader>gi', 'editor.action.goToImplementation')
-vscode_map('', '<leader>gt', 'editor.action.goToTypeDefinition')
+vscode_map('n', '<leader>c', 'editor.action.rename')
+vscode_map('n', '<leader>gg', 'editor.action.revealDefinition')
+vscode_map('n', '<leader>gu', 'editor.action.goToReferences')
+vscode_map('n', '<leader>gi', 'editor.action.goToImplementation')
+vscode_map('n', '<leader>gt', 'editor.action.goToTypeDefinition')
 
 -- Version control
 
-vscode_map('', '<leader>ks', 'git.stageAll')
-vscode_map('', '<leader>ku', 'git.unstageAll')
-vscode_map('', '<leader>kk', 'git.commit')
-vscode_map('', '<leader>kc', 'git.openChange')
-vscode_map('', '<leader>kp', 'git.push')
-vscode_map('', '<leader>kf', 'git.fetch')
-vscode_map('', '<leader>kF', 'git.fetchPrune')
-vscode_map('', '<leader>ky', { 'git.fetch', 'git.pull' })
-vscode_map('', '<leader>kA', 'git.commitAllAmend')
-vscode_map('', '<leader>ka', 'git.commitAmend')
-vscode_map('', '<leader>kD', 'git.cleanAll')
-vscode_map('', '<leader>kss', 'git.stash')
-vscode_map('', '<leader>ksp', 'git.stashPop')
+vscode_map('n', '<leader>ks', 'git.stageAll')
+vscode_map('n', '<leader>ku', 'git.unstageAll')
+vscode_map('n', '<leader>kk', 'git.commit')
+vscode_map('n', '<leader>kc', 'git.openChange')
+vscode_map('n', '<leader>kp', 'git.push')
+vscode_map('n', '<leader>kf', 'git.fetch')
+vscode_map('n', '<leader>kF', 'git.fetchPrune')
+vscode_map('n', '<leader>ky', { 'git.fetch', 'git.pull' })
+vscode_map('n', '<leader>kA', 'git.commitAllAmend')
+vscode_map('n', '<leader>ka', 'git.commitAmend')
+vscode_map('n', '<leader>kD', 'git.cleanAll')
+vscode_map('n', '<leader>kss', 'git.stash')
+vscode_map('n', '<leader>ksp', 'git.stashPop')
