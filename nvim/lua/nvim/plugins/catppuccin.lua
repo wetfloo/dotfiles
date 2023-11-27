@@ -10,23 +10,23 @@ return {
                 show_end_of_buffer = false,
                 color_overrides = {
                     mocha = {
-                        rosewater = '#f5e0dc', -- #f5e0dc
-                        flamingo = '#f2cdcd', -- #f2cdcd
-                        pink = '#f5c2e7',     -- #f5c2e7
-                        mauve = '#cba6f7',    -- #cba6f7
-                        red = '#f38ba8',      -- #f38ba8
-                        maroon = '#eba0ac',   -- #eba0ac
-                        peach = '#fab387',    -- #fab387
-                        yellow = '#f9e2af',   -- #f9e2af
-                        green = '#a6e3a1',    -- #a6e3a1
-                        teal = '#94e2d5',     -- #94e2d5
-                        sky = '#89dceb',      -- #89dceb
-                        sapphire = '#74c7ec', -- #74c7ec
-                        blue = '#89b4fa',     -- #89b4fa
-                        lavender = '#b4befe', -- #b4befe
-                        text = '#cdd6f4',     -- #cdd6f4
-                        subtext1 = '#bac2de', -- #bac2de
-                        subtext0 = '#a6adc8', -- #a6adc8
+                        -- rosewater = '#fcdbd5', -- #f5e0dc
+                        -- flamingo = '#fdc4c4', -- #f2cdcd
+                        -- pink = '#feb9eb',     -- #f5c2e7
+                        -- mauve = '#b070ff',    -- #cba6f7
+                        -- red = '#fd638f',      -- #f38ba8
+                        -- maroon = '#f87288',   -- #eba0ac
+                        -- peach = '#fea771',    -- #fab387
+                        -- yellow = '#ffdd94',   -- #f9e2af
+                        -- green = '#87fe7c',    -- #a6e3a1
+                        -- teal = '#51fbde',     -- #94e2d5
+                        -- sky = '#52e4fe',      -- #89dceb
+                        -- sapphire = '#46c2fb', -- #74c7ec
+                        -- blue = '#5c9aff',     -- #89b4fa
+                        -- lavender = '#8a99ff', -- #b4befe
+                        -- text = '#f5f7ff',     -- #cdd6f4
+                        -- subtext1 = '#d2d9f4', -- #bac2de
+                        -- subtext0 = '#aeb9e5', -- #a6adc8
                         base = '#14141f',     -- #1e1e2e
                         mantle = '#101019',   -- #181825
                         crust = '#0c0c13',    -- #11111b
@@ -60,6 +60,6 @@ return {
         )
 
         -- Set the theme after setting it up.
-        vim.cmd.colorscheme 'catppuccin'
+        vim.cmd.colorscheme('catppuccin')
     end
 }
