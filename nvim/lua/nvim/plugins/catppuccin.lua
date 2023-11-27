@@ -3,16 +3,30 @@ return {
     name = 'catppuccin',
     lazy = false,
     priority = 1000, -- Needs to be loaded before anything else happens.
-    term_colors = true,
     config = function()
         require('catppuccin').setup(
             {
-                -- transparent_background = not vim.g.started_by_firenvim,
-                transparent_background = false,
                 flavour = require('nvim.prefs').catppuccin_flavor,
                 show_end_of_buffer = false,
                 color_overrides = {
                     mocha = {
+                        rosewater = '#f5e0dc', -- #f5e0dc
+                        flamingo = '#f2cdcd', -- #f2cdcd
+                        pink = '#f5c2e7',     -- #f5c2e7
+                        mauve = '#cba6f7',    -- #cba6f7
+                        red = '#f38ba8',      -- #f38ba8
+                        maroon = '#eba0ac',   -- #eba0ac
+                        peach = '#fab387',    -- #fab387
+                        yellow = '#f9e2af',   -- #f9e2af
+                        green = '#a6e3a1',    -- #a6e3a1
+                        teal = '#94e2d5',     -- #94e2d5
+                        sky = '#89dceb',      -- #89dceb
+                        sapphire = '#74c7ec', -- #74c7ec
+                        blue = '#89b4fa',     -- #89b4fa
+                        lavender = '#b4befe', -- #b4befe
+                        text = '#cdd6f4',     -- #cdd6f4
+                        subtext1 = '#bac2de', -- #bac2de
+                        subtext0 = '#a6adc8', -- #a6adc8
                         base = '#14141f',     -- #1e1e2e
                         mantle = '#101019',   -- #181825
                         crust = '#0c0c13',    -- #11111b
@@ -25,23 +39,9 @@ return {
                     },
                 },
                 integrations = {
-                    cmp = true,
-                    telescope = true,
-                    neotree = true,
-                    treesitter = true,
-                    harpoon = true,
-                    mason = true,
-                    leap = true,
-                    indent_blankline = true,
-                    gitsigns = true,
-                    ufo = true,
-                    which_key = true,
                     dap = {
-                        enabled = true,
-                        enabled_ui = true,
                     },
                     native_lsp = {
-                        enabled = true,
                         virtual_text = {
                             errors = { "italic" },
                             hints = { "italic" },
