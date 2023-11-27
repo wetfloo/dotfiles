@@ -33,7 +33,7 @@ return {
         local function map_under_cursor(keys, fn, desc)
             local uppered = (keys:gsub("(.)$", string.upper))
             vim.keymap.set(
-                { 'n', 'x' },
+                'n',
                 '<leader>' .. keys,
                 fn,
                 { desc = desc }
@@ -81,7 +81,7 @@ return {
         )
 
         vim.keymap.set(
-            { 'n', 'x' },
+            'n',
             '<leader>fl',
             function()
                 builtin.resume()

@@ -63,23 +63,23 @@ return {
         local mark = require('harpoon.mark')
         local ui = require('harpoon.ui')
 
-        vim.keymap.set('', '<leader>hh', function() mark.add_file() end, { desc = 'Add a bookmark' })
-        vim.keymap.set('', '<leader>hd', function() mark.rm_file() end, { desc = 'Remove current file\'s bookmark' })
-        vim.keymap.set('', '<leader>hD', mark.clear_all, { desc = 'Delete ALL bookmarks' })
-        vim.keymap.set('', '<leader>hm', ui.toggle_quick_menu, { desc = 'Show bookmarks menu' })
-        vim.keymap.set('', '<leader>hn', ui.nav_next, { desc = 'Next bookmark' })
-        vim.keymap.set('', '<leader>hp', ui.nav_prev, { desc = 'Previous bookmark' })
+        vim.keymap.set('n', '<leader>hh', function() mark.add_file() end, { desc = 'Add a bookmark' })
+        vim.keymap.set('n', '<leader>hd', function() mark.rm_file() end, { desc = 'Remove current file\'s bookmark' })
+        vim.keymap.set('n', '<leader>hD', mark.clear_all, { desc = 'Delete ALL bookmarks' })
+        vim.keymap.set('n', '<leader>hm', ui.toggle_quick_menu, { desc = 'Show bookmarks menu' })
+        vim.keymap.set('n', '<leader>hn', ui.nav_next, { desc = 'Next bookmark' })
+        vim.keymap.set('n', '<leader>hp', ui.nav_prev, { desc = 'Previous bookmark' })
 
         for i = 1, 9 do
             vim.keymap.set(
-                '',
+                'n',
                 '<leader>h' .. i,
                 function() mark.set_current_at(i) end,
                 { desc = 'Replace bookmark at ' .. i .. ' with the current file' }
             )
 
             vim.keymap.set(
-                '',
+                'n',
                 '<A-' .. i .. '>',
                 function()
                     ui.nav_file(i)

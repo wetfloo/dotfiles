@@ -18,18 +18,18 @@ local file_type_icon_width = require('plenary.strings')
 -- Gets the File Path and its Tail (the file name) as a Tuple
 local function get_path_and_tail(filename)
     -- Get the Tail
-    local bufferNameTail = telescope_utils.path_tail(filename)
+    local buffer_name_trail = telescope_utils.path_tail(filename)
 
     -- Now remove the tail from the Full Path
-    local pathWithoutTail = require('plenary.strings').truncate(filename, #filename - #bufferNameTail, '')
+    local path_without_trail = require('plenary.strings').truncate(filename, #filename - #buffer_name_trail, '')
 
     -- Apply truncation and other pertaining modifications to the path according to Telescope path rules
-    local pathToDisplay = telescope_utils.transform_path({
+    local path_to_display = telescope_utils.transform_path({
         path_display = { 'truncate' },
-    }, pathWithoutTail)
+    }, path_without_trail)
 
     -- Return as Tuple
-    return bufferNameTail, pathToDisplay
+    return buffer_name_trail, path_to_display
 end
 
 ---- Picker functions ----
