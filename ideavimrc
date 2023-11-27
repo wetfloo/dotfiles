@@ -95,15 +95,17 @@ nnoremap Y y$
 vnoremap < <gv
 vnoremap > >gv
 
-" Meme remaps
 noremap <C-c> <Esc>
-noremap <Esc> <C-c>
 
 " Keep the cursor centered
-noremap <C-d> <C-d>zz
-noremap <C-u> <C-u>zz
-noremap <C-f> <C-f>zz
-noremap <C-b> <C-b>zz
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+nnoremap <C-f> <C-f>zz
+nnoremap <C-b> <C-b>zz
+xnoremap <C-d> <C-d>zz
+xnoremap <C-u> <C-u>zz
+xnoremap <C-f> <C-f>zz
+xnoremap <C-b> <C-b>zz
 nnoremap <expr> j v:count == 0 ? 'gjzz' : 'j'
 nnoremap <expr> k v:count == 0 ? 'gkzz' : 'k'
 xnoremap <expr> j v:count == 0 ? 'gjzz' : 'j'
@@ -134,6 +136,7 @@ xnoremap p "_dP
 " Useful for newlining list of arguments
 nnoremap <leader>n f,a<CR><Esc>
 nnoremap <leader>b f.i<CR><Esc>f.
+
 map <Leader>c <action>(RenameElement)
 
 " Move around tabs
@@ -185,10 +188,10 @@ sethandler <c-h> a:vim
 sethandler <c-l> a:vim
 sethandler <c-j> a:vim
 sethandler <c-k> a:vim
-noremap <c-h> <c-w>h
-noremap <c-l> <c-w>l
-noremap <c-j> <c-w>j
-noremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
 
 " Make things run
 map <leader>rd <action>(Debug)
