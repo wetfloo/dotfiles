@@ -30,40 +30,58 @@ return {
         local custom_pickers = require('nvim.plugins.utils.telescope_pickers')
         local builtin = require('telescope.builtin')
 
-        vim.keymap.set(
-            '',
-            '<leader>ff',
+        local function map_under_cursor(keys, fn, desc)
+            local uppered = (keys:gsub("(.)$", string.upper))
+            vim.keymap.set(
+                { 'n', 'x' },
+                '<leader>' .. keys,
+                fn,
+                { desc = desc }
+            )
+
+            vim.keymap.set(
+                'n',
+                '<leader>' .. uppered,
+                '\'<leader>' .. keys .. '\' . "" . expand(\'<cword>\')',
+                {
+                    desc = desc,
+                    remap = true,
+                    expr = true,
+                }
+            )
+        end
+
+        map_under_cursor(
+            'ff',
             function()
                 custom_pickers.pretty_files_picker({ picker = 'find_files' })
             end,
-            { desc = 'Find files' }
+            'Find files'
         )
-        vim.keymap.set(
-            '',
-            '<leader>fk',
+        map_under_cursor(
+            'fk',
             function()
                 custom_pickers.pretty_files_picker({ picker = 'git_files' })
             end,
-            { desc = 'Find git files' }
+            'Find git files'
         )
-        vim.keymap.set(
-            '',
-            '<leader>fg',
+        map_under_cursor(
+            'fg',
             function()
                 custom_pickers.pretty_grep_picker({ picker = 'live_grep' })
             end,
-            { desc = 'Find with grep' }
+            'Find with grep'
         )
-        vim.keymap.set(
-            '',
-            '<leader>fb',
+        map_under_cursor(
+            'fb',
             function()
                 custom_pickers.pretty_buffers_picker()
             end,
-            { desc = 'Find buffer' }
+            'Find buffer'
         )
+
         vim.keymap.set(
-            '',
+            { 'n', 'x' },
             '<leader>fl',
             function()
                 builtin.resume()
