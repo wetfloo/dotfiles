@@ -244,6 +244,7 @@ map <leader>h4 <action>(SetHarpoon4)
 map <leader>h5 <action>(SetHarpoon5)
 
 map <leader>kc <action>(Compare.SameVersion)
+map <leader>kb <action>(Annotate)
 
 nnoremap <leader>; m`lb~``
 
