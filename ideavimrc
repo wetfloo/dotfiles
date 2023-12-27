@@ -110,6 +110,10 @@ nnoremap <expr> j v:count == 0 ? 'gjzz' : 'j'
 nnoremap <expr> k v:count == 0 ? 'gkzz' : 'k'
 xnoremap <expr> j v:count == 0 ? 'gjzz' : 'j'
 xnoremap <expr> k v:count == 0 ? 'gkzz' : 'k'
+nnoremap <expr> <Up> v:count == 0 ? 'gkzz' : 'k'
+nnoremap <expr> <Down> v:count == 0 ? 'gjzz' : 'j'
+xnoremap <expr> <Up> v:count == 0 ? 'gkzz' : 'k'
+xnoremap <expr> <Down> v:count == 0 ? 'gjzz' : 'j'
 
 " yank till start, move to last character of yanked region, and then one more
 nnoremap <leader>Y y^`]l
