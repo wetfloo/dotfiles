@@ -4,6 +4,8 @@ local function my_cfg()
         return vim.fn.empty(vim.fn.expand('%:t')) ~= 1
     end
 
+    local symbols = require('nvim.prefs').diagnostic_signs
+
     require('lualine').setup(
         {
             options = {
@@ -13,6 +15,7 @@ local function my_cfg()
                 section_separators = ' ',
             },
             sections = {
+                -- Left side.
                 lualine_a = {
                     'mode',
                 },
@@ -22,9 +25,19 @@ local function my_cfg()
                         'filename',
                         cond = buffer_not_empty,
                     },
-                    'diagnostics',
+                    {
+                        'diagnostics',
+                        symbols = {
+                            error = symbols.Error,
+                            warn = symbols.Warn,
+                            info = symbols.Info,
+                            ok = symbols.Ok,
+                            hint = symbols.Hint,
+                        },
+                    },
                 },
 
+                -- Right side.
                 lualine_x = {
                     'diff',
                     'filetype',
@@ -52,7 +65,6 @@ return {
     },
     config = function()
         -- Since we have a status line already, don't duplicate current mode display
-
         vim.o.showmode = false
 
         my_cfg()
