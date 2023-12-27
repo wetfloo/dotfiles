@@ -41,6 +41,10 @@ vim.keymap.set('n', '<A-D>', ':Bwipeout<CR>', { desc = 'Wipe out the current buf
 -- Remap for dealing with word wrap + keep cursor centered
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gkzz' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gjzz' : 'j'", { expr = true, silent = true })
+vim.keymap.set({ 'n', 'x' }, 'k', "v:count == 0 ? 'gkzz' : 'k'", { expr = true, silent = true })
+vim.keymap.set({ 'n', 'x' }, 'j', "v:count == 0 ? 'gjzz' : 'j'", { expr = true, silent = true })
+vim.keymap.set({ 'n', 'x' }, '<Up>', "v:count == 0 ? 'gkzz' : 'k'", { expr = true, silent = true })
+vim.keymap.set({ 'n', 'x' }, '<Down>', "v:count == 0 ? 'gjzz' : 'j'", { expr = true, silent = true })
 
 -- Move selected stuff around
 vim.keymap.set('n', '<A-p>', ":mo -2<CR>", { desc = "Move current line one line up", silent = true })
