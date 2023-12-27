@@ -4,6 +4,10 @@ local function my_cfg()
         return vim.fn.empty(vim.fn.expand('%:t')) ~= 1
     end
 
+    local function diagnostic_symbol(sym)
+        return sym .. ' '
+    end
+
     local symbols = require('nvim.prefs').diagnostic_signs
 
     require('lualine').setup(
@@ -28,11 +32,11 @@ local function my_cfg()
                     {
                         'diagnostics',
                         symbols = {
-                            error = symbols.Error,
-                            warn = symbols.Warn,
-                            info = symbols.Info,
-                            ok = symbols.Ok,
-                            hint = symbols.Hint,
+                            error = diagnostic_symbol(symbols.Error),
+                            warn = diagnostic_symbol(symbols.Warn),
+                            info = diagnostic_symbol(symbols.Info),
+                            ok = diagnostic_symbol(symbols.Ok),
+                            hint = diagnostic_symbol(symbols.Hint),
                         },
                     },
                 },
