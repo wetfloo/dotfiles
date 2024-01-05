@@ -162,35 +162,39 @@ set $menu dmenu_path | wmenu | xargs swaymsg exec --
     # You can send windows there and get them back later.
 
     # Move the currently focused window to the scratchpad
-    bindsym $mod+Shift+minus move scratchpad
+    bindsym $mod+Shift+z move scratchpad
 
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+minus scratchpad show
+    bindsym $mod+z scratchpad show
 #
 # Resizing containers:
 #
+set $resizemode $mod+r
 mode "resize" {
+    set $hamount 20px
+    set $vamount 20px
     # left will shrink the containers width
     # right will grow the containers width
     # up will shrink the containers height
     # down will grow the containers height
-    bindsym $left resize shrink width 10px
-    bindsym $down resize grow height 10px
-    bindsym $up resize shrink height 10px
-    bindsym $right resize grow width 10px
+    bindsym $left resize shrink width $hamount
+    bindsym $down resize grow height $vamount
+    bindsym $up resize shrink height $vamount
+    bindsym $right resize grow width $hamount
 
     # Ditto, with arrow keys
-    bindsym Left resize shrink width 10px
-    bindsym Down resize grow height 10px
-    bindsym Up resize shrink height 10px
-    bindsym Right resize grow width 10px
+    bindsym Left resize shrink width $hamount
+    bindsym Down resize grow height $vamount
+    bindsym Up resize shrink height $vamount
+    bindsym Right resize grow width $hamount
 
     # Return to default mode
     bindsym Return mode "default"
     bindsym Escape mode "default"
+    bindsym $resizemode mode "default"
 }
-bindsym $mod+r mode "resize"
+bindsym $resizemode mode "resize"
 
 #
 # Status Bar:
