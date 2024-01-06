@@ -55,7 +55,7 @@ set $menu wofi --show drun -i | xargs swaymsg exec --
 
 ### Key bindings
 bindsym $mod+t exec $term bash -c 'tmux attach || tmux new-session'
-bindsym $mod+Shift+t exec kitty tmux new-session 'cd ~/dotfiles && nvim .'
+bindsym $mod+Shift+t exec $term bash -c 'tmux attach -t dotfiles || tmux new-session -s dotfiles "cd ~/dotfiles && nvim ."'
 
 # Doesn't actually kill the window, just closes it normally
 bindsym $mod+q kill
