@@ -13,7 +13,7 @@ set $term kitty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu wofi -n
+set $menu wofi --show drun -i | xargs swaymsg exec --
 
 ### Output configuration
 #
@@ -54,7 +54,9 @@ set $menu wofi -n
 # Read `man 5 sway-input` for more information about this section.
 
 ### Key bindings
-bindsym $mod+t exec $term
+bindsym $mod+t exec $term tmux attach || tmux new-session &
+bindsym $mod+Shift+t exec kitty tmux new-session 'cd ~/dotfiles && nvim .' &
+
 # Doesn't actually kill the window, just closes it normally
 bindsym $mod+q kill
 bindsym $mod+space exec $menu
