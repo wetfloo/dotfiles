@@ -54,8 +54,8 @@ set $menu wofi --show drun -i | xargs swaymsg exec --
 # Read `man 5 sway-input` for more information about this section.
 
 ### Key bindings
-bindsym $mod+t exec $term tmux attach || tmux new-session &
-bindsym $mod+Shift+t exec kitty tmux new-session 'cd ~/dotfiles && nvim .' &
+bindsym $mod+t exec $term bash -c 'tmux attach || tmux new-session'
+bindsym $mod+Shift+t exec kitty tmux new-session 'cd ~/dotfiles && nvim .'
 
 # Doesn't actually kill the window, just closes it normally
 bindsym $mod+q kill
