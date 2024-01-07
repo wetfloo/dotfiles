@@ -71,7 +71,7 @@ floating_modifier $mod normal
 bindsym $mod+Shift+c reload
 
 # Show logout window
-bindsym $mod+Shift+q exec wlogout --protocol layer-shell
+bindsym $mod+Shift+q exec nwg-bar
 
 #
 # Moving around:
