@@ -211,5 +211,8 @@ for_window [class="^.*"] border pixel 1
 # border, background, text, indicator, child_border
 for_window [class="^.*"] client.focused #94d1f2 #000000 #ffffff #ffffff #7f6887
 
+exec 'blueman-applet'
+exec 'nm-applet --indicator'
+
 include @sysconfdir@/sway/config.d/*
 
