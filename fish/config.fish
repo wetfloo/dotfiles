@@ -8,6 +8,10 @@ set -x COLORTERM truecolor
 set -x EDITOR nvim
 set -x RUSTC_WRAPPER sccache
 set -x TERMINAL alacritty
+set -x EDITOR nvim
+set -x GTK_THEME Adwaita:dark
+set -x QT_QPA_PLATFORMTHEME qt5ct
+
 
 # Source modular config files
 for file in ~/.config/fish/conf.d/*.fish
