@@ -1,5 +1,6 @@
 return {
     'lukas-reineke/indent-blankline.nvim',
+    enabled = false,
     event = {
         'BufReadPost',
         'BufNewFile',
@@ -8,7 +9,7 @@ return {
     opts = {
         indent = {
             highlight = { "LineNr" },
-            char = '',
+            -- char = '',
         },
         scope = { enabled = false },
         exclude = {

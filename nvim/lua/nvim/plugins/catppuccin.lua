@@ -2,6 +2,7 @@ return {
     'catppuccin/nvim',
     name = 'catppuccin',
     lazy = false,
+    enabled = false,
     priority = 1000, -- Needs to be loaded before anything else happens.
     config = function()
         require('catppuccin').setup(
