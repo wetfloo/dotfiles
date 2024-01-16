@@ -9,7 +9,7 @@ return {
         colors = {
             primary = '#b361f2',
             secondary = '#a7d2fa',
-            background = '#080808',
+            background = '#000000',
         }
     },
 }
