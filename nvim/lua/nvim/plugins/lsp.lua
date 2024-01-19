@@ -1,3 +1,16 @@
+--- Attemps to load a module,
+--- passing it to |fn| when successful,
+--- and doing nothing when failing
+--- @param mod string Module name
+--- @param fn function Must accept a module
+local function maybe_load(mod, fn)
+    local status, lib = pcall(require, mod)
+
+    if (status) then
+        fn(lib)
+    end
+end
+
 local function on_attach(_, bufnr)
     local function lsp_desc(desc)
         return desc .. ' (LSP)'
@@ -90,14 +103,12 @@ return {
         "LspUninstall",
     },
     dependencies = {
+        'folke/neodev.nvim',
         {
             'williamboman/mason.nvim',
-            config = true, -- Uses the defeault implementation
+            config = true, -- Uses the default implementation
+            dependencies = 'williamboman/mason-lspconfig.nvim',
         },
-        'williamboman/mason-lspconfig.nvim',
-
-        'folke/neodev.nvim',
-
         {
             'hrsh7th/nvim-cmp',
             dependencies = {
@@ -111,15 +122,10 @@ return {
     config = function()
         local lspconfig = require('lspconfig')
 
-        local servers = {
-            lua_ls = {
-                Lua = {
-                    workspace = { checkThirdParty = false },
-                    telemetry = { enable = false },
-                },
-            },
+        -- LSPs that need to be installed manually.
+        local servers_manual = {
             rust_analyzer = {
-                ["rust_analyzer"] = {
+                ["rust-analyzer"] = {
                     checkOnSave = {
                         command = 'clippy',
                     },
@@ -127,28 +133,61 @@ return {
             },
         }
 
+        -- LSPs that will be auto-installed by Mason.
+        local servers_auto = {
+            lua_ls = {
+                Lua = {
+                    workspace = { checkThirdParty = false },
+                    telemetry = { enable = false },
+                },
+            },
+
+            deno = {
+                root_dir = lspconfig.util.root_pattern(
+                    'deno.json',
+                    'deno.jsonc',
+                    'lock.json'
+                )
+            },
+        }
+
         local capabilities = vim.lsp.protocol.make_client_capabilities()
         capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
-        require('neodev').setup({})
+        local function setup_opts(lsp)
+            return {
+                capabilities = capabilities,
+                settings = lsp,
+                filetypes = (lsp or {}).filetypes,
+                on_attach = on_attach,
+            }
+        end
+
+        maybe_load(
+            'neodev',
+            function(lib)
+                lib.setup({})
+            end
+        )
 
         require('mason-lspconfig').setup(
             {
-                ensure_installed = vim.tbl_keys(servers),
+                ensure_installed = vim.tbl_keys(servers_auto),
             }
         )
         require('mason-lspconfig').setup_handlers(
             {
                 function(server_name)
-                    lspconfig[server_name].setup {
-                        capabilities = capabilities,
-                        settings = servers[server_name],
-                        filetypes = (servers[server_name] or {}).filetypes,
-                        on_attach = on_attach,
-                    }
-                end
+                    lspconfig[server_name].setup(
+                        setup_opts(servers_auto[server_name])
+                    )
+                end,
             }
         )
+
+        for name, lsp in pairs(servers_manual) do
+            lspconfig[name].setup(setup_opts(lsp))
+        end
 
         local cmp = require('cmp')
         local luasnip = require('luasnip')
@@ -204,17 +243,6 @@ return {
                     { name = 'nvim_lsp' },
                     { name = 'luasnip' },
                 },
-            }
-        )
-
-        lspconfig.denols.setup(
-            {
-                on_attach = on_attach,
-                root_dir = lspconfig.util.root_pattern(
-                    'deno.json',
-                    'deno.jsonc',
-                    'lock.json'
-                )
             }
         )
     end,
