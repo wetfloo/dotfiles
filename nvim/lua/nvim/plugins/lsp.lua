@@ -133,16 +133,9 @@ return {
             },
         }
 
-        -- LSPs that will be auto-installed by Mason.
-        local servers_auto = {
-            lua_ls = {
-                Lua = {
-                    workspace = { checkThirdParty = false },
-                    telemetry = { enable = false },
-                },
-            },
-
-            deno = {
+        -- LSPs won't be auto-installed, but will be installed and configured by Mason.
+        local servers_mason_manual = {
+            denols = {
                 root_dir = lspconfig.util.root_pattern(
                     'deno.json',
                     'deno.jsonc',
@@ -150,6 +143,18 @@ return {
                 )
             },
         }
+
+        -- LSPs that will be auto-installed by Mason.
+        local servers_mason_auto = {
+            lua_ls = {
+                Lua = {
+                    workspace = { checkThirdParty = false },
+                    telemetry = { enable = false },
+                },
+            },
+        }
+
+        local servers_auto = vim.tbl_deep_extend("keep", servers_mason_manual, servers_mason_auto)
 
         local capabilities = vim.lsp.protocol.make_client_capabilities()
         capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
@@ -172,7 +177,7 @@ return {
 
         require('mason-lspconfig').setup(
             {
-                ensure_installed = vim.tbl_keys(servers_auto),
+                ensure_installed = vim.tbl_keys(servers_mason_auto),
             }
         )
         require('mason-lspconfig').setup_handlers(
@@ -185,8 +190,8 @@ return {
             }
         )
 
-        for name, lsp in pairs(servers_manual) do
-            lspconfig[name].setup(setup_opts(lsp))
+        for name, opts in pairs(servers_manual) do
+            lspconfig[name].setup(setup_opts(opts))
         end
 
         local cmp = require('cmp')
