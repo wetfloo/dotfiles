@@ -64,6 +64,12 @@ input type:mouse {
 
 input type:touchpad {
     natural_scroll enabled
+    scroll_method two_finger
+    click_method clickfinger
+    click_method button_areas
+    middle_emulation enabled
+    events disabled_on_external_mouse
+    tap disabled
 }
 
 ### Key bindings
