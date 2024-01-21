@@ -53,6 +53,13 @@ set $menu wofi --show drun -i | xargs swaymsg exec --
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 
+input * {
+    natural_scroll disabled
+
+    xkb_layout "us,ru"
+    xkb_options "grp:caps_toggle"
+}
+
 ### Key bindings
 bindsym $mod+t exec $term dotfiles_tmux_avoid
 bindsym $mod+Shift+t exec $term bash -c 'tmux attach -t dotfiles || tmux new-session -s dotfiles "cd ~/dotfiles && nvim ."'
@@ -189,20 +196,24 @@ bindsym $resizemode mode "resize"
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
+# bar {
+#     position top
+#
+#     # When the status_command prints a new line to stdout, swaybar updates.
+#     # The default just shows the current date and time.
+#     status_command while date +'%Y-%m-%d %X'; do sleep 1; done
+#
+#     colors {
+#         statusline #ffffff
+#         background #323232
+#         inactive_workspace #32323200 #32323200 #5c5c5c
+#     }
+#
+#     # swaybar_command waybar
+# }
+
 bar {
-    position top
-
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
-
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
-
-    # swaybar_command waybar
+    swaybar_command waybar
 }
 
 font pango:Iosevka 10
