@@ -60,6 +60,10 @@ input * {
     xkb_options "grp:caps_toggle"
 }
 
+input "1267:12737:ASUE120C:00_04F3:31C1_Touchpad" {
+    natural_scroll enabled
+}
+
 ### Key bindings
 bindsym $mod+t exec $term dotfiles_tmux_avoid
 bindsym $mod+Shift+t exec $term bash -c 'tmux attach -t dotfiles || tmux new-session -s dotfiles "cd ~/dotfiles && nvim ."'
