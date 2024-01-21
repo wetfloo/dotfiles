@@ -52,13 +52,15 @@ set $menu wofi --show drun -i | xargs swaymsg exec --
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
-
-input * {
-    natural_scroll disabled
-
+input type:keyboard {
     xkb_layout "us,ru"
     xkb_options "grp:caps_toggle"
 }
+
+input type:mouse {
+    natural_scroll disabled
+}
+
 
 input type:touchpad {
     natural_scroll enabled
