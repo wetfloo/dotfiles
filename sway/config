@@ -65,9 +65,13 @@ input type:mouse {
 input type:touchpad {
     natural_scroll enabled
     scroll_method two_finger
-    click_method clickfinger
+
+    # click_method should be ordered like this,
+    # otherwise it breaks!
     click_method button_areas
+    click_method clickfinger
     middle_emulation enabled
+
     events disabled_on_external_mouse
     tap disabled
 }
