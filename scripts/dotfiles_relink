@@ -1,5 +1,29 @@
 #!/bin/bash
 
-cd ..
-fd -t d -t f -d 1 -x bash -c 'rm -rf ~/.config/{} && ln -s "$(pwd)/"{} ~/.config/{}'
+SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
+EXEC_DIR="$SCRIPT_DIR/.."
+cd $EXEC_DIR
+
+relink () {
+    local src=$1
+    local dst=${2:-$1}
+
+    rm -rf ~/.config/$dst && ln -s "$(pwd)/"$src ~/.config/$dst
+}
+# function won't run in child shell without this
+export -f relink
+
+
+fd -t d -t f -d 1 -x bash -c 'relink {/}'
+
+for APP in electron brave chromium chrome discord signal
+do
+    relink "electron-flags.conf" "$APP-flags.conf"
+done
+
+# Relink electron flags, because they're version-specific for some reason.
+for ((i=1;i<=99;i++)) do
+    relink "electron-flags.conf" "electron$i-flags.conf"
+done
+
 cd -

@@ -9,9 +9,14 @@ set -x EDITOR nvim
 set -x RUSTC_WRAPPER sccache
 set -x TERMINAL alacritty
 set -x EDITOR nvim
+
+# Linux-specific
+# TODO: figure out a way to move this
 set -x GTK_THEME Adwaita:dark
 set -x QT_QPA_PLATFORMTHEME qt5ct
-
+set -x QT_QPA_PLATFORM wayland
+set -x GDK_BACKEND wayland
+set -x MOZ_ENABLE_WAYLAND 1
 
 # Source modular config files
 for file in ~/.config/fish/conf.d/*.fish
