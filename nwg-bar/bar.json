@@ -11,22 +11,22 @@
   },
   {
     "label": "Sleep",
-    "exec": "sudo systemctl suspend",
+    "exec": "systemctl suspend",
     "icon": "/usr/share/nwg-bar/images/system-suspend.svg"
   },
   {
     "label": "Hibernate",
-    "exec": "sudo systemctl hibernate",
+    "exec": "systemctl hibernate",
     "icon": "/usr/share/nwg-bar/images/system-hibernate.svg"
   },
   {
     "label": "Reboot",
-    "exec": "sudo systemctl reboot",
+    "exec": "systemctl reboot",
     "icon": "/usr/share/nwg-bar/images/system-reboot.svg"
   },
   {
     "label": "Shutdown",
-    "exec": "sudo systemctl -i poweroff",
+    "exec": "systemctl -i poweroff",
     "icon": "/usr/share/nwg-bar/images/system-shutdown.svg"
   }
 ]
