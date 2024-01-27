@@ -256,6 +256,8 @@ for_window [class="^.*"] border pixel 0
 exec 'blueman-applet'
 exec 'nm-applet --indicator'
 exec 'inhibit-bridge'
+# TODO: make this hide itself to not quit it every time
+exec 'nekoray'
 
 include @sysconfdir@/sway/config.d/*
 
