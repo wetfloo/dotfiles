@@ -26,6 +26,9 @@ set $menu wofi --show drun -i | xargs swaymsg exec --
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
+# Remember to (hard)link your wallpaper there!
+output * bg ~/.wallpaper fill
+
 ### Idle configuration
 #
 # Example configuration:
