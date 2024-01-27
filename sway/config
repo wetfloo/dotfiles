@@ -100,6 +100,7 @@ bindsym $mod+Shift+c reload
 
 # Show logout window
 bindsym $mod+Shift+q exec nwg-bar
+bindsym $mod+p exec swaylock -f -c 000000
 
 #
 # Moving around:
