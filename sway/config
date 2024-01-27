@@ -249,6 +249,7 @@ for_window [class="^.*"] border pixel 0
 
 exec 'blueman-applet'
 exec 'nm-applet --indicator'
+exec 'inhibit-bridge'
 
 include @sysconfdir@/sway/config.d/*
 
