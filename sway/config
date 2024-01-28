@@ -42,9 +42,9 @@ output * bg ~/.wallpaper fill
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 exec swayidle -w \
-         timeout 300 'swaylock' \
+         timeout 300 'swaylock -c 000000' \
          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-         before-sleep 'swaylock'
+         before-sleep 'swaylock -c 000000'
 
 
 ### Input configuration
@@ -103,7 +103,7 @@ bindsym $mod+Shift+c reload
 
 # Show logout window
 bindsym $mod+Shift+q exec nwg-bar
-bindsym $mod+p exec swaylock
+bindsym $mod+p exec swaylock -c 000000
 
 #
 # Moving around:
@@ -259,6 +259,8 @@ for_window [class="^.*"] border pixel 0
 exec 'blueman-applet'
 exec 'nm-applet --indicator'
 exec 'inhibit-bridge'
+# According to mako's docs, this shouldn't be necessary, but notifications don't appear without this for some reason
+exec 'mako'
 # TODO: make this hide itself to not quit it every time
 exec 'nekoray'
 
