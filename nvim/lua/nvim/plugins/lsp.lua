@@ -124,6 +124,7 @@ return {
 
         -- LSPs that need to be installed manually.
         local servers_manual = {
+            gopls = {},
             rust_analyzer = {
                 ["rust-analyzer"] = {
                     checkOnSave = {
