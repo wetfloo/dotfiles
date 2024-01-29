@@ -5,7 +5,7 @@
     // "width": 1280, // Waybar width
     "spacing": 0, // Gaps between modules (px)
     // Choose the order of the modules
-    "modules-left": ["sway/workspaces", "sway/scratchpad#separator", "sway/scratchpad", "sway/mode#custom-separator", "sway/mode"],
+    "modules-left": ["sway/workspaces","sway/scratchpad", "sway/mode"],
     "modules-center": ["clock"],
     "modules-right": ["sway/language", "sway/language#separator", "backlight", "backlight#separator", "battery", "battery#separator", "pulseaudio", "pulseaudio#separator", "tray"],
     // Modules configuration
@@ -53,12 +53,6 @@
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
         "format-icons": ["󱉞", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
-    },
-    "sway/scratchpad#separator": {
-        "format": "::"
-    },
-    "sway/mode#separator": {
-        "format": "::"
     },
     "sway/language#separator": {
         "format": "::"

@@ -68,8 +68,10 @@ tooltip {
     padding-right: 0px;
 }
 
-#scratchpad.separator,
-#mode.separator,
+#mode {
+    color: #b361f2;
+}
+
 #language.separator,
 #backlight.separator,
 #battery.separator,
