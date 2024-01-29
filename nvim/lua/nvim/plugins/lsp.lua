@@ -159,11 +159,11 @@ return {
         local capabilities = vim.lsp.protocol.make_client_capabilities()
         capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
-        local function setup_opts(lsp)
+        local function setup_opts(opts)
             return {
                 capabilities = capabilities,
-                settings = lsp,
-                filetypes = (lsp or {}).filetypes,
+                settings = opts,
+                filetypes = (opts or {}).filetypes,
                 on_attach = on_attach,
             }
         end
