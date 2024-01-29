@@ -29,7 +29,7 @@ set $menu wofi --show drun -i | xargs swaymsg exec --
 # Remember to (hard)link your wallpaper there!
 output * {
     bg ~/.wallpaper fill
-    adaptive_sync on
+    adaptive_sync off
 }
 
 output "Samsung Display Corp. 0x4180 Unknown" {
@@ -75,6 +75,8 @@ input type:keyboard {
 
 input type:mouse {
     natural_scroll disabled
+    accel_profile flat
+    pointer_accel 0
 }
 
 
