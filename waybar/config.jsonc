@@ -5,9 +5,9 @@
     // "width": 1280, // Waybar width
     "spacing": 0, // Gaps between modules (px)
     // Choose the order of the modules
-    "modules-left": ["sway/workspaces", "sway/scratchpad", "sway/mode"],
+    "modules-left": ["sway/workspaces", "sway/scratchpad#separator", "sway/scratchpad", "sway/mode#custom-separator", "sway/mode"],
     "modules-center": ["clock"],
-    "modules-right": ["sway/language", "custom/separator", "backlight", "custom/separator", "battery", "custom/separator", "pulseaudio", "custom/separator", "tray"],
+    "modules-right": ["sway/language", "sway/language#separator", "backlight", "backlight#separator", "battery", "battery#separator", "pulseaudio", "pulseaudio#separator", "tray"],
     // Modules configuration
     "sway/workspaces": {
         "disable-scroll": true,
@@ -18,15 +18,6 @@
             "urgent": " ",
             "focused": " ",
             "default": ""
-        }
-    },
-    "keyboard-state": {
-        "numlock": true,
-        "capslock": true,
-        "format": "{name} {icon} ",
-        "format-icons": {
-            "locked": "",
-            "unlocked": ""
         }
     },
     "sway/scratchpad": {
@@ -42,7 +33,7 @@
     },
     "clock": {
         "format": "{:%H:%M}",
-        "tooltip-format": "<tt>{calendar}</tt>",
+        "tooltip-format": "<tt>{calendar}</tt>"
     },
     "backlight": {
         // "device": "acpi_video1",
@@ -63,6 +54,24 @@
         // "format-full": "",
         "format-icons": ["󱉞", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
     },
+    "sway/scratchpad#separator": {
+        "format": "::"
+    },
+    "sway/mode#separator": {
+        "format": "::"
+    },
+    "sway/language#separator": {
+        "format": "::"
+    },
+    "backlight#separator": {
+        "format": "::"
+    },
+    "battery#separator": {
+        "format": "::"
+    },
+    "pulseaudio#separator": {
+        "format": "::"
+    },
     "pulseaudio": {
         "scroll-step": 0.5, // %, can be a float
         "format": "{volume}% {icon}  {format_source}",
@@ -70,7 +79,7 @@
         "format-bluetooth-muted": "󰝟  {icon} 󰂯  {format_source}",
         "format-muted": "󰝟  {format_source}",
         "format-source": "{volume}% 󰍬 ",
-        "format-source-muted": "󰍭",
+        "format-source-muted": "󰍭 ",
         "format-icons": {
             "headphone": "󰋋",
             "hands-free": "󰟅",
@@ -83,6 +92,6 @@
         "on-click": "pavucontrol"
     },
     "custom/separator": {
-        "format" : "::",
+        "format": "::"
     },
 }

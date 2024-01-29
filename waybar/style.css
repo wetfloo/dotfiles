@@ -32,7 +32,7 @@ tooltip {
 #backlight,
 #language {
     background: #000000;
-    padding: 1px 10px;
+    padding: 1px 8px;
 }
 
 #workspaces button {
@@ -68,6 +68,13 @@ tooltip {
     padding-right: 0px;
 }
 
+#scratchpad.separator,
+#mode.separator,
+#language.separator,
+#backlight.separator,
+#battery.separator,
+#pulseaudio.separator,
 #custom-separator {
-    color: rgba(255, 255, 255, 0.2);
+    padding: 0;
+    color: rgba(255, 255, 255, 0.35);
 }
