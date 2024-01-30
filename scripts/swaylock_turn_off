@@ -1,5 +1,5 @@
 #!/bin/bash
 
-if [ $(pgrep -x swaylock) ]; then
+if [[ $(pgrep -x swaylock) ]]; then
     swaymsg "output * dpms off";
 fi
