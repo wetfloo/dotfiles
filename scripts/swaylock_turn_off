@@ -1,5 +1,5 @@
 #!/bin/bash
 
 if [ $(pgrep -x swaylock) ]; then
-    swaymsg "output * power off";
+    swaymsg "output * dpms off";
 fi
