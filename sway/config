@@ -14,6 +14,7 @@ set $term kitty
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 set $menu wofi --show drun -i | xargs swaymsg exec --
+set $lock swaylock -c 000000
 
 ### Output configuration
 #
@@ -51,9 +52,12 @@ output "Samsung Display Corp. 0x4180 Unknown" {
 # resumed. It will also lock your screen before your computer goes to sleep.
 
 exec swayidle -w \
-         timeout 300 'swaylock -c 000000' \
-         timeout 330 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-         before-sleep 'swaylock -c 000000'
+         timeout 300 $lock \
+         timeout 10 'swaylock_turn_off' \
+             resume 'swaymsg "output * power on"' \
+         timeout 320 'swaymsg "output * power off"' \
+             resume 'swaymsg "output * power on"' \
+         before-sleep $lock
 
 
 ### Input configuration
