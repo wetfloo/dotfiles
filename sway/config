@@ -98,7 +98,7 @@ input type:touchpad {
 }
 
 ### Key bindings
-bindsym $mod+t exec $term dotfiles_tmux_avoid
+bindsym $mod+t exec $term bash -c 'tmux attach -t random || tmux new-session -s random'
 bindsym $mod+Shift+t exec $term bash -c 'tmux attach -t tmux_sessionizer || tmux new-session -s tmux_sessionizer "tmux_sessionizer"'
 
 # Doesn't actually kill the window, just closes it normally
