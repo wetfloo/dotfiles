@@ -100,7 +100,8 @@ input type:touchpad {
 ### Key bindings
 # Forward slash is not allowed on Unix-like OS, so this will never be used by a directory in sessionizer
 bindsym $mod+t exec $term bash -c 'tmux attach -t / || tmux new-session -s /'
-bindsym $mod+Shift+t exec $term tmux_avoid_session
+# Will close other terminals attached to sessionizer
+bindsym $mod+Shift+t exec $term bash -c 'tmux attach -x -t tmux_sessionizer || tmux new-session -s tmux_sessionizer "tmux_sessionizer"'
 
 # Doesn't actually kill the window, just closes it normally
 bindsym $mod+q kill
