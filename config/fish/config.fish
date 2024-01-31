@@ -8,12 +8,6 @@ set -x COLORTERM truecolor
 set -x RUSTC_WRAPPER sccache
 set -x TERMINAL kitty
 set -x EDITOR nvim
-set -x GTK_THEME Adwaita:dark
-set -x GDK_BACKEND wayland
-set -x XDG_CURRENT_DESKTOP sway
-set -x MOZ_ENABLE_WAYLAND 1
-set -x QT_QPA_PLATFORM wayland
-set -x QT_QPA_PLATFORMTHEME qt5ct
 
 # Source modular config files
 for file in ~/.config/fish/conf.d/*.fish
