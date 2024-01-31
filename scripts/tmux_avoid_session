@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+SESSION_INDEX=$(tmux ls -F "#{session_name}" | rg -os '^tmux_sessionizer(\d+)$' -r '$1' | sort --numeric-sort --reverse | head -n 1)
+
+echo $SESSION_INDEX
+
+if [[ -n "$SESSION_INDEX" ]]; then
+    TARGET_INDEX=$(($SESSION_INDEX+1))
+else
+    TARGET_INDEX=0
+fi
+
+tmux new-session -s "tmux_sessionizer$TARGET_INDEX" "tmux_sessionizer"
