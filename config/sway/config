@@ -117,7 +117,7 @@ floating_modifier $mod normal
 bindsym $mod+Shift+c reload
 
 # Show logout window
-bindsym $mod+Shift+q exec nwg-bar
+bindsym $mod+Shift+p exec nwg-bar
 bindsym $mod+p exec swaylock -c 000000
 
 # Capture all screens to clipboard
