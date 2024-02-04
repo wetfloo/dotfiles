@@ -11,7 +11,7 @@ local function maybe_load(mod, fn)
     end
 end
 
-local function on_attach(_, bufnr, allow_without_lsp)
+local function on_attach(_, bufnr)
     local function lsp_desc(desc)
         return desc .. ' (LSP)'
     end
@@ -27,31 +27,7 @@ local function on_attach(_, bufnr, allow_without_lsp)
         else
             mode = 'n'
         end
-        vim.keymap.set(
-            mode,
-            keys,
-            -- Before allowing the bind,
-            -- we need to check to see if the LSP is actually
-            -- available in the current buffer
-            function()
-                local function any_client_attached()
-                    local c = 0
-                    for _ in pairs(vim.lsp.get_active_clients({ bufnr = bufnr })) do
-                        c = c + 1
-                    end
-
-                    return c > 0
-                end
-
-                if allow_without_lsp == nil or allow_without_lsp or any_client_attached() then
-                    func()
-                end
-            end,
-            {
-                buffer = bufnr,
-                desc = desc,
-            }
-        )
+        vim.keymap.set(mode, keys, func, { buffer = bufnr, desc = desc })
     end
 
     local custom_pickers = require('nvim.plugins.utils.telescope_pickers')
@@ -80,24 +56,19 @@ local function on_attach(_, bufnr, allow_without_lsp)
         'Go to symbol'
     )
 
-    lsp_map('K', vim.lsp.buf.hover, 'Hover Documentation', true)
-    lsp_map('<leader>K', vim.lsp.buf.signature_help, 'Signature Documentation', true)
+    lsp_map('K', vim.lsp.buf.hover, 'Hover Documentation')
+    lsp_map('<leader>K', vim.lsp.buf.signature_help, 'Signature Documentation')
 
     lsp_map('<leader>ee', vim.diagnostic.open_float, 'Hover error')
     lsp_map('<leader>ep', vim.diagnostic.goto_prev, 'Show previous diagnostic')
     lsp_map('<leader>en', vim.diagnostic.goto_next, 'Show next diagnostic')
 
     lsp_map('<leader>gG', vim.lsp.buf.declaration, 'Go to declaration')
-    lsp_map('<leader>wa', vim.lsp.buf.add_workspace_folder, 'Add workspace directory', true)
-    lsp_map('<leader>wd', vim.lsp.buf.remove_workspace_folder, 'Remove workspace directory', true)
-    lsp_map(
-        '<leader>wl',
-        function()
-            print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-        end,
-        'Workspace directories list',
-        true
-    )
+    lsp_map('<leader>wa', vim.lsp.buf.add_workspace_folder, 'Add workspace directory')
+    lsp_map('<leader>wd', vim.lsp.buf.remove_workspace_folder, 'Remove workspace directory')
+    lsp_map('<leader>wl', function()
+        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    end, 'Workspace directories list')
 
     local reformat_desc = lsp_desc('Format current buffer')
     vim.api.nvim_buf_create_user_command(
