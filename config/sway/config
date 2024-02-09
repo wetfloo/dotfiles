@@ -285,6 +285,8 @@ exec 'inhibit-bridge'
 exec 'mako'
 # TODO: make this hide itself to not quit it every time
 exec 'nekoray'
+exec 'qbittorrent'
+exec 'nicotine'
 
 include @sysconfdir@/sway/config.d/*
 include /etc/sway/config.d/*
