@@ -7,7 +7,7 @@ return {
     priority = 1000,
     opts = {
         colors = {
-            primary = '#b361f2',
+            primary = '#d197fc',
             secondary = '#a7d2fa',
             background = '#000000',
         }
