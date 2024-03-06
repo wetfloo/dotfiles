@@ -280,14 +280,12 @@ bar {
 
 font pango:Iosevka 10
 
-for_window [class="^.*"] border pixel 1
-
 # border, background, text, indicator, child_border
-for_window [class="^.*"] client.focused #3d3d3d #000000 #ffffff #3d3d3d #575757
-
+for_window [class="^.*"] border pixel 1
 for_window [class="^.*"] border none
 for_window [class="^.*"] border pixel 1 criteria=(floating) border none
 for_window [class="^.*"] border pixel 1 no_focus border none
+for_window [class="^.*"] client.focused #3d3d3d #000000 #ffffff #3d3d3d #575757
 
 # Applicatons config
 for_window [title="^Spotify( Free)?$"] move to workspace 3
