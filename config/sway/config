@@ -158,14 +158,14 @@ bindsym $mod+Shift+Right move right
 #
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
-bindsym $mod+3 workspace number 3
+bindsym $mod+3 workspace number 3; layout tabbed
 bindsym $mod+4 workspace number 4
 bindsym $mod+5 workspace number 5
 bindsym $mod+6 workspace number 6
 bindsym $mod+7 workspace number 7
 bindsym $mod+8 workspace number 8
 bindsym $mod+9 workspace number 9
-bindsym $mod+0 workspace number 10
+bindsym $mod+0 workspace number 10; layout tabbed
 bindsym $mod+Shift+1 move container to workspace number 1
 bindsym $mod+Shift+2 move container to workspace number 2
 bindsym $mod+Shift+3 move container to workspace number 3
@@ -288,10 +288,14 @@ for_window [class="^.*"] border pixel 1 no_focus border none
 for_window [class="^.*"] client.focused #3d3d3d #000000 #ffffff #3d3d3d #575757
 
 # Applicatons config
-for_window [title="^Spotify( Free)?$"] move to workspace 3
-for_window [title="^(.+ - )?Discord$"] move to workspace 10
-for_window [app_id="org.telegram.desktop"] move to workspace 10
-for_window [app_id="signal"] move to workspace 10
+for_window [title="^Spotify( Free)?$"] mark music
+for_window [title="^(.+ - )?Discord$"] mark messaging
+# Telegram doesn't display its title for some reason :^)
+for_window [app_id="org.telegram.desktop"] mark messaging; title_format "Telegram"
+for_window [app_id="signal"] mark messaging
+# Set up layouts, move all the marked windows
+for_window [con_mark="music"] move to workspace 3
+for_window [con_mark="messaging"] move to workspace 10
 
 exec 'blueman-applet'
 exec 'nm-applet --indicator'
