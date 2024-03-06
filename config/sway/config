@@ -289,6 +289,10 @@ for_window [class="^.*"] border none
 for_window [class="^.*"] border pixel 1 criteria=(floating) border none
 for_window [class="^.*"] border pixel 1 no_focus border none
 
+# Applicatons config
+for_window [title="^Spotify( Free)?$"] move to workspace 3
+for_window [title="^(.+ - )?Discord$"] move to workspace 10
+
 exec 'blueman-applet'
 exec 'nm-applet --indicator'
 exec 'inhibit-bridge'
