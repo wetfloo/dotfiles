@@ -15,7 +15,7 @@ fi
 # I don't care how bad this is, I just want it to work.
 tmux_running=$(pgrep tmux)
 if ! [[ -z $tmux_running ]]; then
-    tmux new-session -s tmux_sessionizer "tmux_sessionizer $selected" > /dev/null
+    tmux new-session -s tmux_sessionizer "tmux_sessionizer $selected" 2> /dev/null
 elif ! [[ -z $TMUX ]]; then
     tmux attach -x -t tmux_sessionizer 2> /dev/null
 fi
