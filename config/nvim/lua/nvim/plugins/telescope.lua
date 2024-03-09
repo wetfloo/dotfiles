@@ -25,7 +25,6 @@ return {
 
         pcall(require('telescope').load_extension, 'fzf')
 
-        local custom_pickers = require('nvim.plugins.utils.telescope_pickers')
         local builtin = require('telescope.builtin')
 
         local function map_under_cursor(keys, fn, desc)
@@ -51,39 +50,29 @@ return {
 
         map_under_cursor(
             'ff',
-            function()
-                custom_pickers.pretty_files_picker({ picker = 'find_files' })
-            end,
+                builtin.find_files,
             'Find files'
         )
         map_under_cursor(
             'fk',
-            function()
-                custom_pickers.pretty_files_picker({ picker = 'git_files' })
-            end,
+                builtin.git_files,
             'Find git files'
         )
         map_under_cursor(
             'fg',
-            function()
-                custom_pickers.pretty_grep_picker({ picker = 'live_grep' })
-            end,
+                builtin.live_grep,
             'Find with grep'
         )
         map_under_cursor(
             'fb',
-            function()
-                custom_pickers.pretty_buffers_picker()
-            end,
+                builtin.buffers,
             'Find buffer'
         )
 
         vim.keymap.set(
             'n',
             '<leader>fl',
-            function()
-                builtin.resume()
-            end,
+            builtin.resume,
             { desc = 'Last picker' }
         )
     end,
