@@ -30,8 +30,6 @@ local function on_attach(_, bufnr)
         vim.keymap.set(mode, keys, func, { buffer = bufnr, desc = desc })
     end
 
-    local custom_pickers = require('nvim.plugins.utils.telescope_pickers')
-
     lsp_map('<leader>c', vim.lsp.buf.rename, 'Rename')
     lsp_map('<A-CR>', vim.lsp.buf.code_action, 'Code action')
 
@@ -41,20 +39,10 @@ local function on_attach(_, bufnr)
         'Go to implementation')
     lsp_map('<leader>gd', vim.lsp.buf.type_definition, 'Go to definition')
 
-    lsp_map(
-        '<leader>fS',
-        function()
-            custom_pickers.pretty_document_symbols()
-        end,
-        'Find symbol in the current document'
-    )
-    lsp_map(
-        '<leader>fs',
-        function()
-            custom_pickers.pretty_workspace_symbols()
-        end,
-        'Go to symbol'
-    )
+    -- TODO: move this config somewhere else, so it's merged with telescope.lua
+    local telescope_builtin = require('telescope.builtin')
+    lsp_map('<leader>fS', telescope_builtin.lsp_document_symbols, 'Find symbol in the current document')
+    lsp_map('<leader>fs', telescope_builtin.lsp_workspace_symbols, 'Go to symbol')
 
     lsp_map('K', vim.lsp.buf.hover, 'Hover Documentation')
     lsp_map('<leader>K', vim.lsp.buf.signature_help, 'Signature Documentation')
