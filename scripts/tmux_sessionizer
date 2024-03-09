@@ -10,8 +10,17 @@ if [[ -z $selected ]]; then
     exit 0
 fi
 
-selected_name=$(basename "$selected" | tr . _)
+# Handle running from bare terminal without tmux.
+# Yes, this whole block is a dirty recursive hack.
+# I don't care how bad this is, I just want it to work.
 tmux_running=$(pgrep tmux)
+if ! [[ -z $tmux_running ]]; then
+    tmux new-session -s tmux_sessionizer "tmux_sessionizer $selected" > /dev/null
+elif ! [[ -z $TMUX ]]; then
+    tmux attach -x -t tmux_sessionizer 2> /dev/null
+fi
+
+selected_name=$(basename "$selected" | tr . _)
 
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
     tmux new-session -s $selected_name -c $selected
@@ -23,3 +32,6 @@ if ! tmux has-session -t=$selected_name 2> /dev/null; then
 fi
 
 tmux switch-client -t $selected_name
+# else
+#     tmux attach-session -c $selected -t $selected_name
+# fi
