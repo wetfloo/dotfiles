@@ -287,12 +287,16 @@ for_window [class="^.*"] border pixel 1 criteria=(floating) border none
 for_window [class="^.*"] border pixel 1 no_focus border none
 for_window [class="^.*"] client.focused #3d3d3d #000000 #ffffff #3d3d3d #575757
 
-# Applicatons config
+# Music
 for_window [title="^Spotify( Free)?$"] mark music
+
+# Messaging
 for_window [title="^(.+ - )?Discord$"] mark messaging
+for_window [app_id="vesktop"] mark messaging
 # Telegram doesn't display its title for some reason :^)
 for_window [app_id="org.telegram.desktop"] mark messaging; title_format "Telegram"
 for_window [app_id="signal"] mark messaging
+
 # Set up layouts, move all the marked windows
 for_window [con_mark="music"] move to workspace 3
 for_window [con_mark="messaging"] move to workspace 10
