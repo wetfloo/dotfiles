@@ -9,3 +9,5 @@
 	gpgsign = true
 [gpg]
 	format = ssh
+[rerere]
+    enabled = true
