@@ -1,0 +1,11 @@
+[pull]
+	rebase = true
+[maintenance]
+	auto = false
+	strategy = incremental
+[init]
+	defaultBranch = main
+[commit]
+	gpgsign = true
+[gpg]
+	format = ssh

@@ -8,7 +8,8 @@ relink () {
     local src=$1
     local dst=${2:-$1}
 
-    rm -rf ~/.config/$dst && ln -s "$(pwd)/"$src ~/.config/$dst
+    rm -rf ~/.config/$dst 2> /dev/null
+    ln -s "$(pwd)/"$src ~/.config/$dst
 }
 # function won't run in child shell without this
 export -f relink
@@ -30,5 +31,8 @@ done
 for ((i=$(( MIN_ELECTRON_VERSION + 1 ));i<=MAX_ELECTRON_VERSION;i++)) do
     relink "electron-flags.conf" "electron$i-flags.conf"
 done
+
+rm ~/.ideavimrc 2> /dev/null; ln -s "$(pwd)/.ideavimrc" ~/.ideavimrc
+rm ~/.gitconfig_global 2> /dev/null; ln -s "$(pwd)/gitconfig_global" ~/.gitconfig_global
 
 cd - > /dev/null
