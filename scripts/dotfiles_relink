@@ -32,7 +32,7 @@ for ((i=$(( MIN_ELECTRON_VERSION + 1 ));i<=MAX_ELECTRON_VERSION;i++)) do
     relink "electron-flags.conf" "electron$i-flags.conf"
 done
 
-rm ~/.ideavimrc 2> /dev/null; ln -s "$(pwd)/.ideavimrc" ~/.ideavimrc
+rm ~/.ideavimrc 2> /dev/null; ln -s "$(pwd)/ideavimrc" ~/.ideavimrc
 rm ~/.gitconfig_global 2> /dev/null; ln -s "$(pwd)/gitconfig_global" ~/.gitconfig_global
 
 cd - > /dev/null
