@@ -11,3 +11,5 @@
 	format = ssh
 [rerere]
     enabled = true
+[diff]
+    colorMoved = zebra
