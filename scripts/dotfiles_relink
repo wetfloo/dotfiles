@@ -1,47 +1,45 @@
 #!/bin/bash
 
 SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
-EXEC_DIR="$SCRIPT_DIR/../config"
-cd $EXEC_DIR
+DOTFILES_DIR=$(realpath $SCRIPT_DIR/..)
+CONFIG_DIR=$(realpath $DOTFILES_DIR/config)
+CONFIG_CUSTOM_DIR=$(realpath $DOTFILES_DIR/config_custom)
 
 relink () {
     local src=$1
-    local dst=${2:-$1}
+    local dst=$2
 
-    rm -rf ~/.config/$dst 2> /dev/null
-    ln -s "$(pwd)/"$src ~/.config/$dst
+    rm -rf $dst 2> /dev/null
+    ln -s $(realpath $src) $dst
 }
 
 relink_custom () {
-    local src=$1
-    local dst=${2:-$1}
+    local src_rel=$1
+    local dst=$2
 
-    rm -rf $dst 2> /dev/null
-    ln -s "$(pwd)/"$src $dst
+    relink $CONFIG_CUSTOM_DIR/$src_rel $dst
 }
 
-# function won't run in child shell without this
+# Function won't run in child shell without this
 export -f relink
+export -f relink_custom
 
+fd --hidden --type directory --type file --exact-depth 1 --search-path $CONFIG_DIR --exec bash -c 'relink $(realpath {}) ~/.config/{/}'
 
-fd -t d -t f -d 1 -x bash -c 'relink {/}'
+relink_custom ideavimrc ~/.ideavimrc
+relink_custom gitconfig_global ~/.gitconfig_global
 
 for APP in electron brave chromium chrome discord signal
 do
-    relink "electron-flags.conf" "$APP-flags.conf"
+    relink_custom electron-flags.conf ~/.config/$APP-flags.conf
 done
 
 MIN_ELECTRON_VERSION=24
 MAX_ELECTRON_VERSION=99
 # Relink electron flags, because they're version-specific for some reason.
 for ((i=1;i<=MIN_ELECTRON_VERSION;i++)) do
-    relink "electron-flags-legacy.conf" "electron$i-flags.conf"
+    relink_custom electron-flags-legacy.conf ~/.config/electron$i-flags.conf
 done
 for ((i=$(( MIN_ELECTRON_VERSION + 1 ));i<=MAX_ELECTRON_VERSION;i++)) do
-    relink "electron-flags.conf" "electron$i-flags.conf"
+    relink_custom electron-flags.conf ~/.config/electron$i-flags.conf
 done
-
-relink_custom ~/.ideavimrc ideavimrc
-relink_custom ~/.gitconfig_global gitconfig_global
-
-cd - > /dev/null
