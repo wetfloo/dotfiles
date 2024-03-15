@@ -11,8 +11,17 @@ relink () {
     local src=$1
     local dst=$2
 
-    rm -rf $dst 2> /dev/null
-    ln -s $(realpath $src) $dst
+    if [[ -e $dst ]]; then
+        if [[ -L $dst ]]; then
+            rm $dst
+        else
+            echoerr "File or directory $(realpath $dst) exists"
+            exit 1
+        fi
+    fi
+
+    # --force to overwrite dead symlinks
+    ln --force --symbolic $(realpath $src) $dst
 }
 
 relink_custom () {
