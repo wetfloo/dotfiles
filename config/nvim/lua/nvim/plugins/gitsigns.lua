@@ -34,7 +34,7 @@ return {
                     map('kS', gs.stage_buffer, 'Stage buffer')
                     map('ku', gs.undo_stage_hunk, 'Undo staging hunk')
                     map('kXb', gs.reset_buffer, 'Reset buffer')
-                    map('kp', gs.preview_hunk, 'Preview hunk')
+                    map('kr', gs.preview_hunk, 'Preview hunk')
                     map('kv', function() gs.blame_line({ full = true }) end, 'Blame line')
                     map('kB', gs.toggle_current_line_blame, 'Toggle current line blame')
                     map('kc', gs.diffthis, 'Diff this')
