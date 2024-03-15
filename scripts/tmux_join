@@ -1,17 +1,21 @@
 #!/usr/bin/env bash
 
-# We're inverting the return code,
+selected_name=$(basename "$1" | tr . _)
+
+# We're inverting the return text,
 # not the actual value of has-session here.
-if [[ ! $(tmux has-session -t=$1 2> /dev/null) ]]; then
-    if [[ "$1" = "/" ]]; then
-        tmux new-session -ds $1 -c ~ 2> /dev/null
+if [[ ! $(tmux has-session -t=$selected_name 2> /dev/null) ]]; then
+    # Forward slash is not allowed on Unix-like OS,
+    # so this will never be used by a directory in sessionizer
+    if [[ "$selected_name" = "/" ]]; then
+        tmux new-session -ds $selected_name -c ~ 2> /dev/null
     else
-        tmux new-session -ds $1 -c $1 2> /dev/null
+        tmux new-session -ds $selected_name -c $1 2> /dev/null
     fi
 fi
 
 if [[ -n $TMUX ]]; then
-    tmux switch-client -t $1 > /dev/null
+    tmux switch-client -t $selected_name > /dev/null
 else
-    tmux attach-session -t $1 > /dev/null
+    tmux attach-session -t $selected_name > /dev/null
 fi

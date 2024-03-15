@@ -10,6 +10,4 @@ if [[ -z $selected ]]; then
     exit 0
 fi
 
-tmux_running=$(pgrep tmux)
-selected_name=$(basename "$selected" | tr . _)
-tmux_join $selected_name
+tmux_join $selected
