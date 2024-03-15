@@ -30,6 +30,7 @@ tooltip {
 #mode,
 #tray,
 #backlight,
+#mpris,
 #language {
     background: #000000;
     padding: 1px 8px;
@@ -76,6 +77,7 @@ tooltip {
 #backlight.separator,
 #battery.separator,
 #pulseaudio.separator,
+#mpris.separator,
 #custom-separator {
     padding: 0;
     color: rgba(255, 255, 255, 0.35);

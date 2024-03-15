@@ -7,7 +7,7 @@
     // Choose the order of the modules
     "modules-left": ["sway/workspaces","sway/scratchpad", "sway/mode"],
     "modules-center": ["clock"],
-    "modules-right": ["sway/language", "sway/language#separator", "backlight", "backlight#separator", "battery", "battery#separator", "pulseaudio", "pulseaudio#separator", "tray"],
+    "modules-right": ["mpris", "mpris#separator", "sway/language", "sway/language#separator", "backlight", "backlight#separator", "battery", "battery#separator", "pulseaudio", "pulseaudio#separator", "tray"],
     // Modules configuration
     "sway/workspaces": {
         "disable-scroll": true,
@@ -84,6 +84,17 @@
             "default": ["󰕿", "󰖀", "󰕾"]
         },
         "on-click": "pavucontrol"
+    },
+    "mpris": {
+        "format": "{player} {status_icon}",
+        "status-icons": {
+            "playing": "󰐊",
+            "paused": "󰏤",
+            "stopped": "󰓛",
+        },
+    },
+    "mpris#separator": {
+        "format": "::"
     },
     "custom/separator": {
         "format": "::"
