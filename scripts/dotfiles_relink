@@ -31,6 +31,23 @@ relink_custom () {
     relink $CONFIG_CUSTOM_DIR/$src_rel $dst
 }
 
+linux_setup () {
+    if [[ -z $HOME ]]; then
+        echoerr '$HOME is not set'
+        exit 1
+    fi
+
+    local dir="$HOME/.config/systemd"
+
+    if [[ -e $dir && ! -d $dir ]]; then
+        echoerr "$dir exists, but it's not a directory"
+    else
+        mkdir -p $dir 2> /dev/null
+    fi
+
+    relink "$DOTFILES_DIR/system/systemd_user" "$dir/user"
+}
+
 # Function won't run in child shell without this
 export -f relink
 export -f relink_custom
@@ -54,3 +71,7 @@ done
 for ((i=$(( MIN_ELECTRON_VERSION + 1 ));i<=MAX_ELECTRON_VERSION;i++)) do
     relink_custom electron-flags.conf ~/.config/electron$i-flags.conf
 done
+
+if [[ "$(uname)" = "Linux" ]]; then
+    linux_setup
+fi
