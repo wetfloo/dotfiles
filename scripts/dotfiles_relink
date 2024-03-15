@@ -5,6 +5,8 @@ DOTFILES_DIR=$(realpath $SCRIPT_DIR/..)
 CONFIG_DIR=$(realpath $DOTFILES_DIR/config)
 CONFIG_CUSTOM_DIR=$(realpath $DOTFILES_DIR/config_custom)
 
+echoerr () { echo "$@" 1>&2; }
+
 relink () {
     local src=$1
     local dst=$2
