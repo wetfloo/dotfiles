@@ -38,6 +38,9 @@ abbr -a gfb 'git checkout $(git branch --list --all --format="%(refname:short)" 
 alias fuz='cd ~ && cd $(fd . -t d | fzf)'
 alias fuza='cd ~ && cd $(fd -H . -t d | fzf)'
 
-for mode in $(bind --list-modes); bind \e\cS --mode $mode 'tmux_sessionizer'; end
+for mode in $(bind --list-modes);
+    bind \es --mode $mode 'tmux_sessionizer';
+    bind \eS --mode $mode 'tmux_join /'
+end
 
 starship init fish | source

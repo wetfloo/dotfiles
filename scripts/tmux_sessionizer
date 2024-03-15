@@ -12,14 +12,4 @@ fi
 
 tmux_running=$(pgrep tmux)
 selected_name=$(basename "$selected" | tr . _)
-# We're inverting the return code,
-# not the actual value of has-session here.
-if ! tmux has-session -t=$selected_name 2> /dev/null; then
-    tmux new-session -ds $selected_name -c $selected 2> /dev/null
-fi
-
-if [[ -n $TMUX ]]; then
-    tmux switch-client -t $selected_name > /dev/null
-else
-    tmux attach-session -t $selected_name > /dev/null
-fi
+tmux_join $selected_name
