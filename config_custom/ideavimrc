@@ -82,8 +82,8 @@ let g:qs_secondary_color = '#add149'
 " Make the yanked region apparent!
 Plug 'machakann/vim-highlightedyank'
 " A negative number would make the highlight persistent.
-let g:highlightedyank_highlight_duration='2000'
-let g:highlightedyank_highlight_color='rgba(20, 180, 255, 25)'
+let g:highlightedyank_highlight_duration='400'
+let g:highlightedyank_highlight_color='rgba(20, 180, 255, 90)'
 
 " Vim bindings support in file explorer
 set NERDTree
