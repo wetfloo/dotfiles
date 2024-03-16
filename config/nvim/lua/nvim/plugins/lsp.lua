@@ -95,7 +95,28 @@ return {
         {
             'williamboman/mason.nvim',
             config = true, -- Uses the default implementation
-            dependencies = 'williamboman/mason-lspconfig.nvim',
+            dependencies = {
+                'williamboman/mason-lspconfig.nvim',
+                {
+                    "jay-babu/mason-null-ls.nvim",
+                    event = { "BufReadPre", "BufNewFile" },
+                    dependencies = {
+                        'nvimtools/none-ls.nvim',
+                        dependencies = 'nvim-lua/plenary.nvim',
+                        config = function()
+                            local null_ls = require('null-ls')
+
+                            null_ls.setup(
+                                {
+                                    sources = {
+                                        null_ls.builtins.formatting.black,
+                                    },
+                                }
+                            )
+                        end,
+                    },
+                }
+            },
         },
         {
             'hrsh7th/nvim-cmp',
