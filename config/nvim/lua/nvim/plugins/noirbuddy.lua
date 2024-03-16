@@ -1,7 +1,7 @@
 return {
     'jesseleite/nvim-noirbuddy',
     dependencies = {
-        { 'tjdevries/colorbuddy.nvim', branch = 'dev' }
+        { 'tjdevries/colorbuddy.nvim', branch = 'master' }
     },
     lazy = false,
     priority = 1000,
