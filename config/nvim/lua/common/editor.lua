@@ -50,14 +50,22 @@ vim.keymap.set({ 'n', 'x' }, '<leader>p', '"+p', { desc = 'Paste from + register
 
 vim.keymap.set('x', 'p', '"_dP')
 
--- [[ Highlight on yank ]]
--- See `:help vim.highlight.on_yank()`
+vim.api.nvim_create_autocmd(
+    'TextYankPost',
+    {
+        callback = function()
+            vim.highlight.on_yank({ timeout = 400 })
+        end,
+        group = nil,
+        pattern = '*',
+    }
+)
 
-local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
-vim.api.nvim_create_autocmd('TextYankPost', {
-    callback = function()
-        vim.highlight.on_yank({ timeout = 1000 })
-    end,
-    group = highlight_group,
-    pattern = '*',
-})
+vim.api.nvim_create_autocmd(
+    'BufWritePre',
+    {
+        command = [[%s/\s\+$//e]],
+        group = nil,
+        pattern = '*',
+    }
+)
