@@ -42,7 +42,8 @@ local function on_attach(_, bufnr)
     -- TODO: move this config somewhere else, so it's merged with telescope.lua
     local telescope_builtin = require('telescope.builtin')
     lsp_map('<leader>fS', telescope_builtin.lsp_document_symbols, 'Find symbol in the current document')
-    lsp_map('<leader>fs', telescope_builtin.lsp_workspace_symbols, 'Go to symbol')
+    -- just using workspace symbols doesn't work with some lsps (pyright, gopls)
+    lsp_map('<leader>fs', telescope_builtin.lsp_dynamic_workspace_symbols, 'Go to symbol')
 
     lsp_map('K', vim.lsp.buf.hover, 'Hover Documentation')
     lsp_map('<leader>K', vim.lsp.buf.signature_help, 'Signature Documentation')
