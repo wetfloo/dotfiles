@@ -70,22 +70,22 @@ return {
 
         map_under_cursor(
             'ff',
-                builtin.find_files,
+            builtin.find_files,
             'Find files'
         )
         map_under_cursor(
             'fk',
-                builtin.git_files,
+            builtin.git_files,
             'Find git files'
         )
         map_under_cursor(
             'fg',
-                builtin.live_grep,
+            builtin.live_grep,
             'Find with grep'
         )
         map_under_cursor(
             'fb',
-                builtin.buffers,
+            builtin.buffers,
             'Find buffer'
         )
 
