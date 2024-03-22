@@ -88,6 +88,21 @@ return {
             builtin.buffers,
             'Find buffer'
         )
+        map_under_cursor(
+            'fh',
+            builtin.help_tags,
+            'Find help'
+        )
+        map_under_cursor(
+            'fr',
+            builtin.oldfiles,
+            'Find recent'
+        )
+        map_under_cursor(
+            'fe',
+            builtin.diagnostics,
+            'Find diagnostics'
+        )
 
         vim.keymap.set(
             'n',
