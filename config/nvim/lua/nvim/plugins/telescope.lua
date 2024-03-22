@@ -46,6 +46,26 @@ return {
                     expr = true,
                 }
             )
+
+           vim.keymap.set(
+                'x',
+                '<leader>' .. uppered,
+                fn,
+                { desc = desc }
+            )
+            -- TODO: Temp with yanks hack until getregion is in stable.
+            -- See: https://github.com/neovim/neovim/pull/27578
+            vim.keymap.set(
+                'x',
+                '<leader>' .. keys,
+                -- This is a hack too, since I couldn't find a way
+                -- to feed keys in a blocking fashion consistently.
+                '"zygv<leader>' .. keys .. 'z',
+                {
+                    desc = desc,
+                    remap = true,
+                }
+            )
         end
 
         map_under_cursor(
