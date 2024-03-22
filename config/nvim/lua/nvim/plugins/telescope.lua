@@ -19,6 +19,11 @@ return {
                     },
                 },
             },
+            pickers = {
+                oldfiles = {
+                    cwd_only = true,
+                },
+            },
         })
 
         -- Enable telescope fzf native, if installed
