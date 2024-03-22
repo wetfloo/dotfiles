@@ -127,7 +127,7 @@ bindsym $mod+Shift+p exec nwg-bar
 bindsym $mod+p exec swaylock -c 000000
 
 # Capture all screens to clipboard
-bindsym Print exec grim -t png - | tee ~/Pictures/"$(date '+%Y-%m-%dT%T.%3N').png" | wl-copy -t image/png
+bindsym Print exec grim -t png - | tee ~/Pictures/Screenshots/"$(date '+%Y-%m-%dT%T.%3N').png" | wl-copy -t image/png
 # Capture the specified screen area to clipboard
 bindsym Shift+Print exec grim -t png -g "$(slurp)" - | tee ~/Pictures/Screenshots/"$(date '+%Y-%m-%dT%T.%3N').png" | wl-copy -t image/png
 # Capture the focused monitor to clipboard
