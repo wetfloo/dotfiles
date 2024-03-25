@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
 DOTFILES_DIR=$(realpath $SCRIPT_DIR/..)
@@ -49,6 +49,7 @@ linux_setup () {
 }
 
 # Function won't run in child shell without this
+export -f echoerr
 export -f relink
 export -f relink_custom
 
