@@ -38,6 +38,7 @@ abbr -a gfb 'git checkout $(git branch --list --all --format="%(refname:short)" 
 alias fuz='cd ~ && cd $(fd . -t d | fzf)'
 alias fuza='cd ~ && cd $(fd -H . -t d | fzf)'
 
+# fallback for when we're not in tmux
 for mode in $(bind --list-modes);
     bind \eS --mode $mode 'tmux_sessionizer';
     bind \es --mode $mode 'tmux_join /'
