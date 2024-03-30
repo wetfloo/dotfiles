@@ -1,13 +1,9 @@
 #!/usr/bin/env bash
 
 # allow tmux to error out, it's fine here
-set -uo pipefail
+set -o pipefail
 
 selected_name=$(basename "$1" | tr . _)
-
-if [[ -z $selected_name ]]; then
-    exit 0
-fi
 
 # We're inverting the return text,
 # not the actual value of has-session here.
