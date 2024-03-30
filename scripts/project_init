@@ -1,0 +1,70 @@
+#!/usr/bin/env bash
+
+SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
+
+set -euo pipefail
+
+echoerr () { echo "$@" 1>&2; }
+lowercase () { return $($1 | tr '[:upper:]' '[:lower:]'); }
+
+export -f echoerr
+export -f lowercase
+
+if [[ $# -gt 0 ]]; then
+    project_name=$1
+else
+    while [[ -z ${project_name+x} ]] || [[ -z $project_name ]]; do
+        read -p "Project name: " project_name
+        project_name=$($project_name | tr -d '[:space:]')
+    done
+fi
+
+
+if [[ -d ~/projects/$project_name ]]; then
+    echoerr "Project with the name $project_name exists"
+    exit 1
+fi
+
+if [[ $# -gt 1 ]]; then
+    language=$2
+else
+    language=$(fd . --type file --exact-depth 1 "$SCRIPT_DIR/.project_init_languages" | xargs -I{} basename {} | fzf --height=~100%)
+fi
+
+if [[ -z $language ]]; then
+    exit 0
+fi
+
+while true
+do
+    read -p "Initialize with git? Yes by default (Y/n): " git_init_response
+
+    if [[ -z $git_init_response ]] || [[ $(lowercase $git_init_response) = "y" ]]; then
+        while true
+        do
+            read -p "Do you want to commit the starting repo? (y/N): " git_commit_start_response
+
+            if [[ -z $git_commit_start_response ]] || [[ $(lowercase $git_commit_start_response) = "n" ]]; then
+                git_commit_start=false
+                break
+            elif [[ $(lowercase $git_commit_start_response) = "y" ]]; then
+                git_commit_start=true
+                break
+            else
+                echo "Invalid response"
+            fi
+        done
+
+        git_init=true
+        break
+    elif [[ $(lowercase $git_init_response) = "n" ]]; then
+        git_init=true
+        break
+    else
+        echo "Invalid response"
+    fi
+done
+
+$SCRIPT_DIR/.project_init_languages/$language $project_name $git_init $git_commit_start
+
+tmux_join "$HOME/projects/$project_name"
