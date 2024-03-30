@@ -6,6 +6,8 @@ if vim.g.vscode then
     require('vscode.editor')
 else
     require('nvim.editor')
+
+    require('nvim.keymap').noopify()
 end
 
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'

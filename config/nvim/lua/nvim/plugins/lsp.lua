@@ -16,48 +16,32 @@ local function on_attach(_, bufnr)
         return desc .. ' (LSP)'
     end
 
-    local function lsp_map(keys, func, desc, mode_override)
-        if desc then
-            desc = lsp_desc(desc)
-        end
-
-        local mode
-        if mode_override ~= nil then
-            mode = mode_override
-        else
-            mode = 'n'
-        end
-        vim.keymap.set(mode, keys, func, { buffer = bufnr, desc = desc })
+    local function lsp_map(keymap, action)
+        keymap:map(action, { buffer = bufnr, desc = lsp_desc(keymap.desc) })
     end
 
-    lsp_map('<leader>c', vim.lsp.buf.rename, 'Rename')
-    lsp_map('<A-CR>', vim.lsp.buf.code_action, 'Code action')
-
-    lsp_map('<leader>gg', vim.lsp.buf.definition, 'Go to definition')
-    lsp_map('<leader>gu', require('telescope.builtin').lsp_references, 'Go to usages')
-    lsp_map('<leader>gi', require('telescope.builtin').lsp_implementations,
-        'Go to implementation')
-    lsp_map('<leader>gd', vim.lsp.buf.type_definition, 'Go to definition')
-
-    -- TODO: move this config somewhere else, so it's merged with telescope.lua
+    local keymaps = require('nvim.keymap').lsp
     local telescope_builtin = require('telescope.builtin')
-    lsp_map('<leader>fS', telescope_builtin.lsp_document_symbols, 'Find symbol in the current document')
-    -- just using workspace symbols doesn't work with some lsps (pyright, gopls)
-    lsp_map('<leader>fs', telescope_builtin.lsp_dynamic_workspace_symbols, 'Go to symbol')
 
-    lsp_map('K', vim.lsp.buf.hover, 'Hover Documentation')
-    lsp_map('<leader>K', vim.lsp.buf.signature_help, 'Signature Documentation')
+    lsp_map(keymaps.rename, vim.lsp.buf.rename)
+    lsp_map(keymaps.code_action, vim.lsp.buf.code_action)
+    lsp_map(keymaps.goto_definition, vim.lsp.buf.definition)
+    lsp_map(keymaps.goto_declaration, vim.lsp.buf.declaration)
+    lsp_map(keymaps.goto_usages, telescope_builtin.lsp_references)
+    lsp_map(keymaps.goto_implementation, telescope_builtin.lsp_implementations)
+    lsp_map(keymaps.find_symbol_current_buf, telescope_builtin.lsp_document_symbols)
+    lsp_map(keymaps.find_symbol, telescope_builtin.lsp_dynamic_workspace_symbols)
 
-    lsp_map('<leader>ee', vim.diagnostic.open_float, 'Hover error')
-    lsp_map('<leader>ep', vim.diagnostic.goto_prev, 'Show previous diagnostic')
-    lsp_map('<leader>en', vim.diagnostic.goto_next, 'Show next diagnostic')
+    lsp_map(keymaps.hover_documentation, vim.lsp.buf.hover)
+    lsp_map(keymaps.signature_documentation, vim.lsp.buf.signature_help)
 
-    lsp_map('<leader>gG', vim.lsp.buf.declaration, 'Go to declaration')
-    lsp_map('<leader>wa', vim.lsp.buf.add_workspace_folder, 'Add workspace directory')
-    lsp_map('<leader>wd', vim.lsp.buf.remove_workspace_folder, 'Remove workspace directory')
-    lsp_map('<leader>wl', function()
-        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    end, 'Workspace directories list')
+    lsp_map(keymaps.diagnostic_hover, vim.diagnostic.open_float)
+    lsp_map(keymaps.diagnostic_prev, vim.diagnostic.goto_prev)
+    lsp_map(keymaps.diagnostic_next, vim.diagnostic.goto_next)
+
+    lsp_map(keymaps.workspace_dir_add, vim.lsp.buf.add_workspace_folder)
+    lsp_map(keymaps.workspace_dir_remove, vim.lsp.buf.remove_workspace_folder)
+    lsp_map(keymaps.workspace_dir_list, function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end)
 
     local reformat_desc = lsp_desc('Format current buffer')
     vim.api.nvim_buf_create_user_command(
@@ -68,16 +52,7 @@ local function on_attach(_, bufnr)
         end,
         { desc = reformat_desc }
     )
-    vim.keymap.set(
-        'n',
-        '<leader>sf',
-        ':Format<CR>',
-        {
-            silent = true,
-            desc = reformat_desc,
-            buffer = bufnr,
-        }
-    )
+    keymaps.format:map(':Format<CR>', { silent = true, buffer = bufnr, desc = reformat_desc })
 end
 
 return {
@@ -111,6 +86,7 @@ return {
                                 {
                                     sources = {
                                         null_ls.builtins.formatting.black,
+                                        -- null_ls.builtins.formatting.beautysh,
                                     },
                                 }
                             )
