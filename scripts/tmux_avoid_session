@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -eou pipefail
+set -euo pipefail
 
 SESSION_INDEX=$(tmux ls -F "#{session_name}" | rg -os '^tmux_sessionizer(\d+)$' -r '$1' | sort --numeric-sort --reverse | head -n 1)
 

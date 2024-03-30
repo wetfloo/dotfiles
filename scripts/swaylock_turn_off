@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -ou pipefail
+set -uo pipefail
 
 if [[ $(pgrep -x swaylock) ]]; then
     swaymsg "output * dpms off";

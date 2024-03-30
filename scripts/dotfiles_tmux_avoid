@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -eou pipefail
+set -euo pipefail
 
 SESSION=$(tmux ls -F "#{session_name}" | rg -vs '^(dotfiles|tmux_sessionizer)$' | head -n 1)
 
