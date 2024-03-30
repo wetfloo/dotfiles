@@ -108,6 +108,7 @@ input "1267:12737:ASUE120C:00_04F3:31C1_Touchpad" {
 bindsym $mod+t exec $term bash -c 'tmux_join /'
 # Will close other terminals attached to sessionizer
 bindsym $mod+Shift+t exec $term bash -c 'tmux_sessionizer'
+bindsym $mod+s exec thunar
 
 # Doesn't actually kill the window, just closes it normally
 bindsym $mod+q kill
@@ -189,7 +190,6 @@ bindsym $mod+b splith
 bindsym $mod+v splitv
 
 # Switch the current container between different layout styles
-bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
