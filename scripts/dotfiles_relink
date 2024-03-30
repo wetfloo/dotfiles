@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -ou pipefail
+
 SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
 DOTFILES_DIR=$(realpath $SCRIPT_DIR/..)
 CONFIG_DIR=$(realpath $DOTFILES_DIR/config)

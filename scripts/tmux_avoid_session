@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-SESSION_INDEX=$(tmux ls -F "#{session_name}" | rg -os '^tmux_sessionizer(\d+)$' -r '$1' | sort --numeric-sort --reverse | head -n 1)
+set -eou pipefail
 
-echo $SESSION_INDEX
+SESSION_INDEX=$(tmux ls -F "#{session_name}" | rg -os '^tmux_sessionizer(\d+)$' -r '$1' | sort --numeric-sort --reverse | head -n 1)
 
 if [[ -n "$SESSION_INDEX" ]]; then
     TARGET_INDEX=$(($SESSION_INDEX+1))

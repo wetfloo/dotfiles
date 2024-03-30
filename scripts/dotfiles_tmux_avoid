@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -eou pipefail
+
 SESSION=$(tmux ls -F "#{session_name}" | rg -vs '^(dotfiles|tmux_sessionizer)$' | head -n 1)
 
 if [[ -n "$SESSION" ]]; then
