@@ -39,15 +39,15 @@ while true
 do
     read -p "Initialize with git? (Y/n): " git_init_response
 
-    if [[ -z $git_init_response ]] || [[ $(lowercase $git_init_response) = "y" ]]; then
+    if [[ -z $git_init_response ]] || [[ "$(lowercase $git_init_response)" = "y" ]]; then
         while true
         do
             read -p "Do you want to commit the starting repo? (y/N): " git_commit_start_response
 
-            if [[ -z $git_commit_start_response ]] || [[ $(lowercase $git_commit_start_response) = "n" ]]; then
+            if [[ -z $git_commit_start_response ]] || [[ "$(lowercase $git_commit_start_response)" = "n" ]]; then
                 git_commit_start=false
                 break
-            elif [[ $(lowercase $git_commit_start_response) = "y" ]]; then
+            elif [[ "$(lowercase $git_commit_start_response)" = "y" ]]; then
                 git_commit_start=true
                 break
             else
@@ -57,7 +57,7 @@ do
 
         git_init=true
         break
-    elif [[ $(lowercase $git_init_response) = "n" ]]; then
+    elif [[ "$(lowercase $git_init_response)" = "n" ]]; then
         git_init=true
         break
     else
