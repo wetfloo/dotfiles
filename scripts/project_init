@@ -28,7 +28,7 @@ fi
 if [[ $# -gt 1 ]]; then
     language=$2
 else
-    language=$(fd . --type file --exact-depth 1 "$SCRIPT_DIR/.project_init_languages" | xargs -I{} basename {} | fzf --height=~100%)
+    language=$(fd . --type directory --exact-depth 1 "$SCRIPT_DIR/.project_init_languages" | xargs -I{} basename {} | fzf --height=~100% || :)
 fi
 
 if [[ -z $language ]]; then
