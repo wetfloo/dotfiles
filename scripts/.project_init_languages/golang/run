@@ -14,4 +14,4 @@ go mod init $project_name
 go mod tidy
 
 cd $SCRIPT_DIR/..
-./prepare_git $project_dir $git_init $git_commit_start
+./prepare_git $project_dir "golang" $git_init $git_commit_start

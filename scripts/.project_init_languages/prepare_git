@@ -9,8 +9,9 @@ language=$2
 git_init=${3:-true}
 git_commit_start=${4:-false}
 
+cd $project_dir
 if [[ "$git_init" = true ]]; then
-    cp --force "$SCRIPT_DIR/$language/assets/git/gitignore" $project_dir/.gitignore
+    cp --force "$SCRIPT_DIR/$language/assets/ignore/gitignore" ./.gitignore
     git init .
 fi
 if [[ "$git_commit_start" = true ]]; then

@@ -8,4 +8,4 @@ language=$1
 project_dir=$2
 
 mkdir -p $project_dir
-fd . -HI --type file --type directory --exact-depth 1 "$SCRIPT_DIR/$language/assets" | rg -v 'git' | xargs -I{} cp -r {} $project_dir
+fd . -HI --type file --type directory --exact-depth 1 "$SCRIPT_DIR/$language/assets" | rg -v 'ignore' ||: | xargs -I{} cp -r {} $project_dir

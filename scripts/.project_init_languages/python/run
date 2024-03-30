@@ -14,4 +14,4 @@ cd $project_dir
 python -m venv .venv
 
 cd $SCRIPT_DIR/..
-./prepare_git $project_dir $git_init $git_commit_start
+./prepare_git $project_dir "python" $git_init $git_commit_start

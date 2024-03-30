@@ -18,5 +18,5 @@ fi
 cd $project_dir
 cargo init --vcs $vcs --name $project_name
 
-cd $SCRIPT_DIR/..
-./prepare_git $project_dir false $git_commit_start
+cd "$SCRIPT_DIR/.."
+./prepare_git $project_dir "rust" false $git_commit_start
