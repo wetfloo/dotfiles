@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
-
 set -euo pipefail
+
+SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
 
 echoerr () { echo "$@" 1>&2; }
 lowercase () { return $($1 | tr '[:upper:]' '[:lower:]'); }
