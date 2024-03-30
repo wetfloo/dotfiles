@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 SESSION=$(tmux ls -F "#{session_name}" | rg -vs '^(dotfiles|tmux_sessionizer)$' | head -n 1)
 
