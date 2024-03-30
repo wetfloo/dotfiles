@@ -79,6 +79,13 @@ return {
             'Find files'
         )
         map_under_cursor(
+            'fh',
+            function()
+                builtin.find_files({ hidden = true })
+            end,
+            'Find help'
+        )
+        map_under_cursor(
             'fk',
             builtin.git_files,
             'Find git files'
@@ -94,7 +101,7 @@ return {
             'Find buffer'
         )
         map_under_cursor(
-            'fh',
+            'fq',
             builtin.help_tags,
             'Find help'
         )
