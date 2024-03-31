@@ -70,12 +70,3 @@ vim.api.nvim_create_autocmd(
         pattern = '*',
     }
 )
-
-vim.api.nvim_create_autocmd(
-    'BufWritePost',
-    {
-        pattern = { "*.tex" },
-        command = [[call jobstart('xelatex main.tex && biber main.tex && xelatex main.tex')]],
-        group = augroup,
-    }
-)
