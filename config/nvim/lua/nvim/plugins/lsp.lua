@@ -139,6 +139,9 @@ return {
                     telemetry = { enable = false },
                 },
             },
+            ltex = {
+                language = "ru-RU",
+            },
         }
 
         local servers_auto = vim.tbl_deep_extend("keep", servers_mason_manual, servers_mason_auto)
