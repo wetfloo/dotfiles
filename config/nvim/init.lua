@@ -2,7 +2,9 @@
 
 require('common.editor')
 
-if vim.g.vscode then
+local vscode = vim.g.vscode
+
+if vscode then
     require('vscode.editor')
 else
     require('nvim.editor')
@@ -24,3 +26,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup('plugins')
+
+if not vscode then
+    require('langmapper').automapping({ global = true, buffer = true })
+end

@@ -1,5 +1,6 @@
 return {
     'Wansmer/langmapper.nvim',
+    enabled = true,
     lazy = false,
     priority = 1,
     config = function()
@@ -40,7 +41,8 @@ return {
             ','
         )
 
-        require('langmapper').setup(
+        local langmapper = require('langmapper')
+        langmapper.setup(
             {
                 hack_keymap = true,
                 disable_hack_modes = { 'i' },
@@ -80,6 +82,6 @@ return {
                 },
             }
         )
-        require('langmapper').automapping({ global = true, buffer = true })
+        require('langmapper').hack_get_keymap()
     end,
 }
