@@ -24,7 +24,7 @@ vim.o.cursorline = true
 vim.o.guicursor = 'n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20,a:blinkon500'
 
 vim.o.spell = true
-vim.o.spelllang = 'en_us,ru_ru'
+vim.o.spelllang = 'ru_ru,en_us'
 
 vim.keymap.set('', '<C-c>', '<Esc>')
 vim.keymap.set('', '<F1>', '<Nop>')
