@@ -20,8 +20,8 @@ return {
             ["Linux"] = {
                 en = [[]],
                 ru = [[]],
-                en_shift = [[@#$]],
-                ru_shift = [["№;]],
+                en_shift = [[]],
+                ru_shift = [[]],
             },
             ["Darwin"] = {
                 en = [[]],
