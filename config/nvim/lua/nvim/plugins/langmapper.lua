@@ -10,33 +10,32 @@ return {
             return vim.fn.escape(str, escape_chars)
         end
 
+        --- @param cmds string | table
+        --- @return number
+        local function executable(cmds)
+            local result = 1
+            if type(cmds) == 'table' then
+                for _, cmd in ipairs(cmds) do
+                    result = result and vim.fn.executable(cmd)
+                end
+                return result
+            elseif type(cmds) == 'string' then
+                return vim.fn.executable(cmds)
+            else
+                return 0
+            end
+        end
+
         -- Recommended to use lua template string
         local en = [[`qwertyuiop[]asdfghjkl;'zxcvbnm]]
         local ru = [[ёйцукенгшщзхъфывапролджэячсмить]]
         local en_shift = [[~QWERTYUIOP{}ASDFGHJKL:"ZXCVBNM<>]]
         local ru_shift = [[ËЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ]]
 
-        local os_keys = {
-            ["Linux"] = {
-                en = [[]],
-                ru = [[]],
-                en_shift = [[]],
-                ru_shift = [[]],
-            },
-            ["Darwin"] = {
-                en = [[]],
-                ru = [[]],
-                en_shift = [[]],
-                ru_shift = [[]],
-            }
-        }
-
-        local os = vim.loop.os_uname().sysname
-        local current_os_keys = os_keys[os]
         vim.opt.langmap = vim.fn.join(
             {
-                escape(ru .. current_os_keys.ru) .. ';' .. escape(en .. current_os_keys.en),
-                escape(ru_shift .. current_os_keys.ru_shift) .. ';' .. escape(en_shift .. current_os_keys.en_shift),
+                escape(ru) .. ';' .. escape(en),
+                escape(ru_shift) .. ';' .. escape(en_shift),
             },
             ','
         )
@@ -47,6 +46,13 @@ return {
                 hack_keymap = true,
                 disable_hack_modes = { 'i' },
                 automapping_modes = { 'n', 'v', 'x', 's' },
+                layouts = {
+                    ru_linux_sway = {
+                        id = 'Russian',
+                        layout = [[йцукенгшщзхъ\фывапролджэячсмитьбю.ЙЦУКЕНГШЩЗХЪ/ФЫВАПРОЛДЖЭЯЧСМИТЬБЮ,"№?]],
+                        default_layout = [[qwertyuiop[]\asdfghjkl;'zxcvbnm,./QWERTYUIOP{}|ASDFGHJKL:"ZXCVBNM<>?@#&]],
+                    },
+                },
                 os = {
                     -- The result of `vim.loop.os_uname().sysname`.
                     Linux = {
@@ -54,29 +60,31 @@ return {
                         ---Should return string with id of layout
                         ---@return string | nil
                         get_current_layout_id = function()
-                            local cmds = { 'setxkbmap', 'awk' }
-                            local executable = 1
-                            for _, cmd in ipairs(cmds) do
-                                executable = executable and vim.fn.executable(cmd)
-                            end
-                            if executable then
-                                local output = vim.split(
-                                    vim.trim(
-                                        vim.fn.system([[setxkbmap -query 2>/dev/null | awk '$1 ~ /layout/ {print $2}']])
-                                    ), '\n')
-                                return output[#output]
+                            local cmds = { 'swaymsg', 'jq' }
+                            if executable(cmds) then
+                                local output = vim.trim(
+                                    vim.fn.system(
+                                    [[swaymsg -t get_inputs | jq -r 'map(select(.type=="keyboard"))[0].xkb_active_layout_name']])
+                                )
+                                return output
                             end
                         end,
                     },
                     Darwin = {
+                        default_layout = [[ABCDEFGHIJKLMNOPQRSTUVWXYZ<>:"{}~abcdefghijklmnopqrstuvwxyz,.;'[]`]],
+                        layouts = {
+                            ru = {
+                                id = "com.apple.keylayout.RussianWin",
+                                layout = [[ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯБЮЖЭХЪËфисвуапршолдьтщзйкыегмцчнябюжэхъё]],
+                                default_layout = nil,
+                            },
+                        },
                         get_current_layout_id = function()
                             local cmd = 'im-select'
-                            if not vim.fn.executable(cmd) then
-                                return nil
+                            if executable(cmd) then
+                                local output = vim.split(vim.trim(vim.fn.system(cmd)), '\n')
+                                return output[#output]
                             end
-
-                            local output = vim.split(vim.trim(vim.fn.system(cmd)), '\n')
-                            return output[#output]
                         end,
                     },
                 },
