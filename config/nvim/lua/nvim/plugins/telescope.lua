@@ -52,7 +52,7 @@ return {
                 }
             )
 
-           vim.keymap.set(
+            vim.keymap.set(
                 'x',
                 '<leader>' .. uppered,
                 fn,
@@ -74,16 +74,29 @@ return {
         end
 
         map_under_cursor(
+            'fbb',
+            builtin.buffers,
+            'Find buffer'
+        )
+        map_under_cursor(
+            'fbg',
+            function()
+                builtin.live_grep({ grep_open_files = true })
+            end,
+            'Find with grep in open buffers'
+        )
+        map_under_cursor(
+            'fhf',
+            function()
+                builtin.find_files({ hidden = true, no_ignore = true })
+            end,
+            'Find hidden files'
+        )
+
+        map_under_cursor(
             'ff',
             builtin.find_files,
             'Find files'
-        )
-        map_under_cursor(
-            'fh',
-            function()
-                builtin.find_files({ hidden = true })
-            end,
-            'Find help'
         )
         map_under_cursor(
             'fk',
@@ -94,11 +107,6 @@ return {
             'fg',
             builtin.live_grep,
             'Find with grep'
-        )
-        map_under_cursor(
-            'fb',
-            builtin.buffers,
-            'Find buffer'
         )
         map_under_cursor(
             'fq',
