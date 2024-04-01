@@ -28,6 +28,7 @@ vim.o.spelllang = 'ru_ru,en_us'
 
 vim.keymap.set('', '<C-c>', '<Esc>')
 vim.keymap.set('', '<F1>', '<Nop>')
+vim.keymap.set('!', '<F1>', '<Nop>')
 
 -- Making it more comfortable to work with mutliple splits.
 -- The rest of keybinds are provided by the tmux plugin.
