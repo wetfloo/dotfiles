@@ -90,6 +90,6 @@ return {
                 },
             }
         )
-        require('langmapper').hack_get_keymap()
+        langmapper.hack_get_keymap()
     end,
 }
