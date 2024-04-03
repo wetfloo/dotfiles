@@ -28,5 +28,8 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup('plugins')
 
 if not vscode then
-    require('langmapper').automapping({ global = true, buffer = true })
+    local status, langmapper = pcall(require, 'langmapper')
+    if status then
+        langmapper.automapping({ global = true, buffer = true })
+    end
 end

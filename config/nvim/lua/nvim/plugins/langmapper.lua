@@ -2,7 +2,7 @@ return {
     'Wansmer/langmapper.nvim',
     enabled = true,
     lazy = false,
-    priority = 1,
+    priority = 999,
     config = function()
         local function escape(str)
             -- You need to escape these characters to work correctly
@@ -57,6 +57,7 @@ return {
                     -- The result of `vim.loop.os_uname().sysname`.
                     Linux = {
                         ---Function for getting current keyboard layout on your OS
+                        ---Seems to be called only when the key is not in the current langmap
                         ---Should return string with id of layout
                         ---@return string | nil
                         get_current_layout_id = function()
@@ -70,6 +71,7 @@ return {
                             end
                         end,
                     },
+
                     Darwin = {
                         default_layout = [[ABCDEFGHIJKLMNOPQRSTUVWXYZ<>:"{}~abcdefghijklmnopqrstuvwxyz,.;'[]`]],
                         layouts = {

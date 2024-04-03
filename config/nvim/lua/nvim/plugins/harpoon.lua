@@ -18,7 +18,7 @@ return {
                 -- sets the marks upon calling `toggle` on the ui, instead of require `:w`.
                 save_on_toggle = false,
 
-                -- saves the harpoon file upon every change. disabling is unrecommended.
+                -- saves the harpoon file upon every change. disabling is not recommended.
                 save_on_change = true,
 
                 -- sets harpoon to run the command immediately as it's passed to the terminal when calling `sendCommand`.
@@ -41,8 +41,10 @@ return {
                 },
             }
         )
-
-        local resize_group = vim.api.nvim_create_augroup('HarpoonResize', { clear = true })
+        local vim_window_resize_harpoon_adapt = vim.api.nvim_create_augroup(
+            'vim_window_resize_harpoon_adapt',
+            { clear = true }
+        )
         vim.api.nvim_create_autocmd(
             'VimResized',
             {
@@ -55,7 +57,7 @@ return {
                         }
                     )
                 end,
-                group = resize_group,
+                group = vim_window_resize_harpoon_adapt,
             }
         )
 

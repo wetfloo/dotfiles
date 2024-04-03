@@ -50,23 +50,24 @@ vim.keymap.set({ 'n', 'x' }, '<leader>p', '"+p', { desc = 'Paste from + register
 
 vim.keymap.set('x', 'p', '"_dP')
 
-local augroup = require('common.prefs').augroup
+local yank_highlight = vim.api.nvim_create_augroup('yank_highlight', { clear = true })
 vim.api.nvim_create_autocmd(
     'TextYankPost',
     {
         callback = function()
             vim.highlight.on_yank({ timeout = 400 })
         end,
-        group = augroup,
+        group = yank_highlight,
         pattern = '*',
     }
 )
 
+local clear_trailing_space = vim.api.nvim_create_augroup('clear_trailing_space', { clear = true })
 vim.api.nvim_create_autocmd(
     'BufWritePre',
     {
         command = [[%s/\s\+$//e]],
-        group = augroup,
+        group = clear_trailing_space,
         pattern = '*',
     }
 )
