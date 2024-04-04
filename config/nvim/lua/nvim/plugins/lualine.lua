@@ -18,11 +18,19 @@ return {
 
         local symbols = require('nvim.prefs').diagnostic_signs
 
+        local status, noirbuddy = pcall(require, 'noirbuddy.plugins.lualine')
+        local theme
+        if status then
+            theme = noirbuddy.theme
+        else
+            theme = 'auto'
+        end
+
         require('lualine').setup(
             {
                 options = {
                     icons_enabled = true,
-                    theme = 'auto',
+                    theme = theme,
                     component_separators = separator,
                     section_separators = ' ',
                 },
