@@ -18,8 +18,4 @@ M.git_signs = {
 
 M.centering = true
 
-M.keymaps = {
-    validate = '<leader>sv',
-}
-
 return M

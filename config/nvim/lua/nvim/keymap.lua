@@ -28,6 +28,10 @@ M.lsp = {
     workspace_dir_list = { mode = 'n', keys = '<leader>wl', desc = 'Workspace directories list' },
 }
 
+M.ftplugin = {
+    validate = { mode = { 'n', 'x' }, '<leader>sv', desc = 'Validate buffer/selection' },
+}
+
 
 for _, group in pairs(M) do
     for _, tbl in pairs(group) do

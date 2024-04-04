@@ -1,8 +1,3 @@
-local prefs = require('nvim.prefs')
+local ftplugin_keymap = require('nvim.keymap').ftplugin
 
-vim.keymap.set(
-    { 'n', 'x' },
-    prefs.keymaps.validate,
-    ':w !jq . > /dev/null<CR>',
-    { silent = false }
-)
+ftplugin_keymap.validate:map(':w !jq . > /dev/null<CR>', { silent = true })

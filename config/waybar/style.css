@@ -47,12 +47,12 @@ tooltip {
 
 #workspaces button.focused {
     background: #222222;
-    color: #dfb6fc;
+    color: #f3bdff;
 }
 
 #workspaces button.urgent {
     color: #000000;
-    background: #dfb6fc;
+    background: #f3bdff;
 }
 
 #workspaces button:hover {
@@ -70,7 +70,7 @@ tooltip {
 }
 
 #mode {
-    color: #dfb6fc;
+    color: #f3bdff;
 }
 
 #language.separator,
