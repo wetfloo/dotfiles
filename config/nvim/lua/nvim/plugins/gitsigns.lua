@@ -27,10 +27,10 @@ return {
 
                     -- Actions
                     map('ks', gs.stage_hunk, 'Stage hunk', 'n')
-                    map('kXr', gs.reset_hunk, 'Reset hunk', 'n')
+                    map('kXh', gs.reset_hunk, 'Reset hunk', 'n')
                     -- It's important to keep these here to override all-mode stage and reset mappings above.
                     map('ks', function() gs.stage_hunk { vim.fn.line('.'), vim.fn.line('v') } end, 'Stage hunk', 'x')
-                    map('kXr', function() gs.reset_hunk { vim.fn.line('.'), vim.fn.line('v') } end, 'Reset hunk', 'x')
+                    map('kXh', function() gs.reset_hunk { vim.fn.line('.'), vim.fn.line('v') } end, 'Reset hunk', 'x')
                     map('kS', gs.stage_buffer, 'Stage buffer')
                     map('ku', gs.undo_stage_hunk, 'Undo staging hunk')
                     map('kXb', gs.reset_buffer, 'Reset buffer')
