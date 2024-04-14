@@ -29,7 +29,7 @@ M.lsp = {
 }
 
 M.ftplugin = {
-    validate = { mode = { 'n', 'x' }, '<leader>sv', desc = 'Validate buffer/selection' },
+    validate = { mode = { 'n', 'x' }, keys = '<leader>sv', desc = 'Validate buffer/selection' },
 }
 
 
