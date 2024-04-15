@@ -33,6 +33,39 @@ vim.keymap.set('', '<C-c>', '<Esc>')
 vim.keymap.set('', '<F1>', '<Nop>')
 vim.keymap.set('!', '<F1>', '<Nop>')
 
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+
+vim.keymap.set(
+    'n',
+    '<leader>qq',
+    function()
+        -- Currently open windows
+        local wins = vim.api.nvim_list_wins()
+        -- Their respective buffers
+        local bufs = {}
+        for _, win in ipairs(wins) do
+            bufs[win] = vim.api.nvim_win_get_buf(win)
+        end
+        -- Find quickfix buffer handle
+        local qf_win = nil
+        for win, buf in pairs(bufs) do
+            local filetype = vim.api.nvim_buf_get_option(buf, 'filetype')
+            if filetype == 'qf' then
+                qf_win = win
+            end
+        end
+
+        if qf_win ~= nil then
+            vim.api.nvim_win_close(qf_win, false)
+        else
+            vim.cmd('copen')
+        end
+    end,
+    { desc = 'Toggle quickfix window' })
+vim.keymap.set('n', '<leader>qp', function() vim.cmd('cprev') end, { desc = 'Previous quickfix entry' })
+vim.keymap.set('n', '<leader>qn', function() vim.cmd('cnext') end, { desc = 'Next quickfix entry' })
+
 -- Making it more comfortable to work with mutliple splits.
 -- The rest of keybinds are provided by the tmux plugin.
 vim.keymap.set('n', '<leader>dv', '<C-w>v', { desc = 'Divide (split) vertically' })
