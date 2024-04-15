@@ -63,8 +63,24 @@ vim.keymap.set(
         end
     end,
     { desc = 'Toggle quickfix window' })
-vim.keymap.set('n', '<leader>qp', function() vim.cmd('cprev') end, { desc = 'Previous quickfix entry' })
-vim.keymap.set('n', '<leader>qn', function() vim.cmd('cnext') end, { desc = 'Next quickfix entry' })
+
+local function qfmove(mode, lhs, fn, opts)
+    vim.keymap.set(
+        mode,
+        lhs,
+        function()
+            ---@diagnostic disable-next-line: param-type-mismatch
+            local ok, _ = pcall(fn)
+            if not ok then
+                print('No more quickfix entries')
+            end
+        end,
+        opts
+    )
+end
+
+qfmove('n', '<leader>qp', function() vim.cmd('cprev') end, { desc = 'Previous quickfix entry' })
+qfmove('n', '<leader>qn', function() vim.cmd('cnext') end, { desc = 'Next quickfix entry' })
 
 -- Making it more comfortable to work with mutliple splits.
 -- The rest of keybinds are provided by the tmux plugin.
