@@ -23,6 +23,9 @@ vim.g.loaded_netrwPlugin = 1
 vim.o.cursorline = true
 vim.o.guicursor = 'n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20,a:blinkon500'
 
+vim.opt.updatetime = 500
+vim.opt.inccommand = 'nosplit'
+
 vim.o.spell = true
 vim.o.spelllang = 'ru_ru,en_us'
 
