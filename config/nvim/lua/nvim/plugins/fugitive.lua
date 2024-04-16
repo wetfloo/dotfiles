@@ -1,3 +1,5 @@
+local utils = require('utils')
+
 return {
     'tpope/vim-fugitive',
     event = {
@@ -8,9 +10,9 @@ return {
             'n',
             '<leader>kb',
             function()
-                vim.cmd('G blame')
+                utils.close_win_with_ft_or('fugitiveblame', false, function() vim.cmd('G blame') end)
             end,
-            { desc = 'Show git blame side window (git)' }
+            { desc = 'Toggle git blame side window (git)' }
         )
     end,
 }
