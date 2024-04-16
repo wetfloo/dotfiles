@@ -129,10 +129,6 @@ return {
                     'lock.json'
                 )
             },
-        }
-
-        -- LSPs that will be auto-installed by Mason.
-        local servers_mason_auto = {
             lua_ls = {
                 Lua = {
                     workspace = { checkThirdParty = false },
@@ -142,6 +138,10 @@ return {
             ltex = {
                 language = "ru-RU",
             },
+        }
+
+        -- LSPs that will be auto-installed by Mason.
+        local servers_mason_auto = {
         }
 
         local servers_auto = vim.tbl_deep_extend("keep", servers_mason_manual, servers_mason_auto)
