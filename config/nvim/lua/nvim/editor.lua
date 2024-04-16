@@ -1,3 +1,5 @@
+local utils = require('utils')
+
 -- Avoid weird 8 space tabs
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
@@ -41,26 +43,7 @@ vim.keymap.set(
     '<leader>qq',
     function()
         -- Currently open windows
-        local wins = vim.api.nvim_list_wins()
-        -- Their respective buffers
-        local bufs = {}
-        for _, win in ipairs(wins) do
-            bufs[win] = vim.api.nvim_win_get_buf(win)
-        end
-        -- Find quickfix buffer handle
-        local qf_win = nil
-        for win, buf in pairs(bufs) do
-            local filetype = vim.api.nvim_buf_get_option(buf, 'filetype')
-            if filetype == 'qf' then
-                qf_win = win
-            end
-        end
-
-        if qf_win ~= nil then
-            vim.api.nvim_win_close(qf_win, false)
-        else
-            vim.cmd('copen')
-        end
+        utils.close_win_with_ft_or('qf', false, function() vim.cmd('copen') end)
     end,
     { desc = 'Toggle quickfix window' })
 
