@@ -66,5 +66,28 @@ function M.close_win_with_ft_or(ft, force, fn)
     end
 end
 
+--- @param path string
+--- @return string
+function M.module_name(path)
+    local result, _ = path:gsub('%w+%.', '')
+    return result
+end
+
+function M.env(path)
+    local result, _ = path:gsub('%.%w+', '')
+    return result
+end
+
+--- @param path string
+--- @param prev table
+--- @return table
+function M.plugin_config(path, prev)
+    local module_name = M.module_name(path)
+    local env = M.env(path)
+    local config = require(env .. '.plugins.config.' .. module_name)
+
+    return vim.tbl_deep_extend("keep", prev, config)
+end
+
 readonlify_table(M)
 return M
