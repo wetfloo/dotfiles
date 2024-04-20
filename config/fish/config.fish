@@ -46,4 +46,12 @@ if not set -q $TMUX
     end
 end
 
+# find short options for commands
+function manfind
+    set -l cmd $argv[1]
+    set -l arg $argv[2]
+
+    man --pager="less -p \"    $arg\"" $cmd
+end
+
 starship init fish | source
