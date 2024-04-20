@@ -51,7 +51,7 @@ function manfind
     set -l cmd $argv[1]
     set -l arg $argv[2]
 
-    man --pager="less -p \"    $arg\"" $cmd
+    man --pager="less -p \"\s\s+$arg\"" $cmd
 end
 
 starship init fish | source
