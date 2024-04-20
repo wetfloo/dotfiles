@@ -104,6 +104,10 @@ input "1267:12737:ASUE120C:00_04F3:31C1_Touchpad" {
     pointer_accel 0.25
 }
 
+input "9639:64124:Compx_X2_Wireless" {
+    pointer_accel -0.65
+}
+
 ### Key bindings
 bindsym $mod+t exec $term bash -c 'tmux_join /'
 # Will close other terminals attached to sessionizer
