@@ -30,7 +30,8 @@ local function on_attach(_, bufnr)
     lsp_map(keymaps.goto_usages, telescope_builtin.lsp_references)
     lsp_map(keymaps.goto_implementation, telescope_builtin.lsp_implementations)
     lsp_map(keymaps.find_symbol_current_buf, telescope_builtin.lsp_document_symbols)
-    lsp_map(keymaps.find_symbol, telescope_builtin.lsp_dynamic_workspace_symbols)
+    lsp_map(keymaps.find_dynamic_symbol, telescope_builtin.lsp_dynamic_workspace_symbols)
+    lsp_map(keymaps.find_symbol, telescope_builtin.lsp_workspace_symbols)
 
     lsp_map(keymaps.hover_documentation, vim.lsp.buf.hover)
     lsp_map(keymaps.signature_documentation, vim.lsp.buf.signature_help)
@@ -68,6 +69,7 @@ return {
     },
     dependencies = {
         'folke/neodev.nvim',
+        'nvim-lua/plenary.nvim',
         {
             'williamboman/mason.nvim',
             config = true, -- Uses the default implementation
@@ -131,7 +133,11 @@ return {
             },
             lua_ls = {
                 Lua = {
-                    workspace = { checkThirdParty = false },
+                    workspace = {
+                        checkThirdParty = false,
+                        -- Fixes plenary not showing up in custom nvim plugins
+                        library = vim.api.nvim_get_runtime_file('lua', true)
+                    },
                     telemetry = { enable = false },
                 },
             },
@@ -158,12 +164,7 @@ return {
             }
         end
 
-        maybe_load(
-            'neodev',
-            function(lib)
-                lib.setup({})
-            end
-        )
+        require('neodev').setup({})
 
         require('mason-lspconfig').setup(
             {
