@@ -161,8 +161,8 @@ bindsym $mod+Shift+Right move right
 #
 # Workspaces:
 #
-bindsym $mod+1 workspace number 1
-bindsym $mod+2 workspace number 2
+bindsym $mod+1 workspace number 1; layout tabbed
+bindsym $mod+2 workspace number 2; layout tabbed
 bindsym $mod+3 workspace number 3
 bindsym $mod+4 workspace number 4
 bindsym $mod+5 workspace number 5
@@ -306,13 +306,26 @@ for_window [app_id="signal"] mark messaging
 for_window [con_mark="music"] move to workspace 8
 for_window [con_mark="messaging"] move to workspace 10
 
+for_window [app_id="firefox"] move to workspace 1
+for_window [app_id="kitty"] move to workspace 2
+
+ # Firefox Specific Rules
+for_window [app_id="firefox" title="Firefox — Sharing Indicator"] floating enable
+for_window [app_id="firefox" title="Picture-in-Picture"] floating enable
+for_window [app_id="firefox" title="Pushbullet – Mozilla Firefox"] floating enable
+for_window [app_id="firefox" title="About Mozilla Firefox"] floating enable
+
+# Dialogs
+for_window [title="(?i)(?:copying|deleting|moving|question)"] floating enable
+
 exec 'blueman-applet'
 exec 'nm-applet --indicator'
 exec 'inhibit-bridge'
 # According to mako's docs, this shouldn't be necessary, but notifications don't appear without this for some reason
 exec 'mako'
 # TODO: make this hide itself to not quit it every time
-exec 'nekoray'
+exec 'firefox'
+exec $term bash -c 'tmux_join /'
 
 include @sysconfdir@/sway/config.d/*
 include /etc/sway/config.d/*
