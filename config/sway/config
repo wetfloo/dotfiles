@@ -317,6 +317,7 @@ for_window [app_id="firefox" title="About Mozilla Firefox"] floating enable
 
 # Dialogs
 for_window [title="(?i)(?:copying|deleting|moving|question)"] floating enable
+for_window [title="^File Operation Progress$"] floating enable
 
 exec 'blueman-applet'
 exec 'nm-applet --indicator'
