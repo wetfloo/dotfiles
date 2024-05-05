@@ -15,7 +15,7 @@ M.lsp = {
     goto_usages = { mode = 'n', keys = '<leader>gu', desc = 'Go to usages' },
     goto_implementation = { mode = 'n', keys = '<leader>gi', desc = 'Go to implementation' },
     goto_declaration = { mode = 'n', keys = '<leader>gd', desc = 'Go to declaration' },
-    find_symbol_current_buf = { mode = 'n', keys = '<leader>fS', desc = 'Find symbol in the current document' },
+    find_symbol_current_buf = { mode = 'n', keys = '<leader>fd', desc = 'Find symbol in the current document' },
     -- just using workspace symbols doesn't work with some lsps (pyright, gopls)
     find_dynamic_symbol = { mode = 'n', keys = '<leader>fa', desc = 'Find dynamic symbol' },
     find_symbol = { mode = 'n', keys = '<leader>fs', desc = 'Find symbol' },
