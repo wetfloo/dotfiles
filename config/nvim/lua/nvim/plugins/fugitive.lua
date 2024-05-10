@@ -14,5 +14,13 @@ return {
             end,
             { desc = 'Toggle git blame side window (git)' }
         )
+        vim.keymap.set(
+            'n',
+            '<leader>kg',
+            function()
+                utils.close_win_with_ft_or('fugitive', false, function() vim.cmd('G') end)
+            end,
+            { desc = 'Toggle git window (git)' }
+        )
     end,
 }
