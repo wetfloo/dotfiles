@@ -3,7 +3,6 @@ return {
     dependencies = {
         { 'tjdevries/colorbuddy.nvim', branch = 'master' }
     },
-    enabled = false,
     lazy = false,
     priority = 1000,
     opts = {
