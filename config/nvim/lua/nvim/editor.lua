@@ -34,7 +34,7 @@ vim.opt.updatetime = 500
 vim.opt.inccommand = 'nosplit'
 
 vim.o.spell = true
-vim.o.spelllang = 'ru_ru,en_us'
+vim.o.spelllang = 'en_us,ru_ru'
 
 vim.keymap.set('', '<C-c>', '<Esc>')
 vim.keymap.set('', '<F1>', '<Nop>')
