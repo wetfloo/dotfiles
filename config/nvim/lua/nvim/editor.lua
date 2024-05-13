@@ -19,6 +19,11 @@ vim.wo.relativenumber = true
 vim.wo.signcolumn = 'yes'
 
 -- Disable netrw, since I'm using neotree
+--
+-- NOTICE: this prevents spell auto-downloads from working.
+-- In order to fix this, comment the lines below, and disable
+-- your current filepicker. (Oil, neotree, etc.).
+-- You can re-enable downloading dictionaries.
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
