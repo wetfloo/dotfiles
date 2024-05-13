@@ -13,3 +13,6 @@
     enabled = true
 [diff]
     colorMoved = zebra
+[alias]
+    lfs-fix = !sh -c 'git lfs uninstall && git reset --hard && git lfs install && git lfs pull'
+    fb = !sh -c 'git checkout $(git branch --list --all --format="%\\(refname:short\\)" | fzf --height=~100%)'

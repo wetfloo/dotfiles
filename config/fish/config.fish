@@ -33,8 +33,6 @@ alias zl='eza -l --color=auto --group-directories-first --icons' # long format
 alias zt='eza -aT --color=auto --group-directories-first --icons' # tree listing
 alias zd="eza -a | rg '^\.'" # show only dotfiles
 
-abbr -a gfb 'git checkout $(git branch --list --all --format="%(refname:short)" | fzf --height=~100%)'
-
 alias fuz='cd ~ && cd $(fd . -t d | fzf)'
 alias fuza='cd ~ && cd $(fd -H . -t d | fzf)'
 
