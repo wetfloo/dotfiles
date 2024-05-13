@@ -18,9 +18,12 @@ return {
 
         local symbols = require('nvim.prefs').diagnostic_signs
 
-        local status, noirbuddy = pcall(require, 'noirbuddy.plugins.lualine')
+        local ayu_status, _ = pcall(require, 'ayu')
+        local noirbuddy_status, noirbuddy = pcall(require, 'noirbuddy.plugins.lualine')
         local theme
-        if status then
+        if ayu_status then
+            theme = 'ayu'
+        elseif noirbuddy_status then
             theme = noirbuddy.theme
         else
             theme = 'auto'
