@@ -28,17 +28,17 @@ return {
             }
         )
 
-        vim.keymap.set('n', '<leader>tf',
-            function()
-                vim.cmd('Oil')
-            end,
-            { desc = 'File explorer (fullscreen)', silent = true }
-        )
         vim.keymap.set('n', '<leader>tt',
             function()
                 oil.toggle_float(nil)
             end,
             { desc = 'File explorer (floating)' }
+        )
+        vim.keymap.set('n', '<leader>tT',
+            function()
+                vim.cmd('Oil')
+            end,
+            { desc = 'File explorer (fullscreen)', silent = true }
         )
     end,
 }
