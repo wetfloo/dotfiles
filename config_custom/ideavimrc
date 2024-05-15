@@ -92,8 +92,8 @@ set NERDTree
 nnoremap Y y$
 
 " Change indentation from visual mode without going back to normal every time
-vnoremap < <gv
-vnoremap > >gv
+xnoremap < <gv
+xnoremap > >gv
 
 xnoremap <C-a> <C-a>gv
 xnoremap <C-x> <C-x>gv
