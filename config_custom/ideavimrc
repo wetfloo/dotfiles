@@ -95,6 +95,9 @@ nnoremap Y y$
 vnoremap < <gv
 vnoremap > >gv
 
+xnoremap <C-a> <C-a>gv
+xnoremap <C-x> <C-x>gv
+
 noremap <C-c> <Esc>
 
 " Keep the cursor centered
