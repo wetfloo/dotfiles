@@ -4,7 +4,8 @@ return {
         'nvim-tree/nvim-web-devicons',
     },
     config = function()
-        require('oil').setup(
+        local oil = require('oil')
+        oil.setup(
             {
                 use_default_keymaps = false,
                 keymaps = {
@@ -27,6 +28,17 @@ return {
             }
         )
 
-        vim.keymap.set('n', '<leader>tt', ':Oil<CR>', { desc = 'Open file explorer', silent = true })
+        vim.keymap.set('n', '<leader>tf',
+            function()
+                vim.cmd('Oil')
+            end,
+            { desc = 'File explorer (fullscreen)', silent = true }
+        )
+        vim.keymap.set('n', '<leader>tt',
+            function()
+                oil.toggle_float(nil)
+            end,
+            { desc = 'File explorer (floating)' }
+        )
     end,
 }
