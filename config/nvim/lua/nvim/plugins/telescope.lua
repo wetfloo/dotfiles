@@ -99,9 +99,14 @@ return {
             'Find files'
         )
         map_under_cursor(
-            'fk',
+            'fkf',
             builtin.git_files,
             'Find git files'
+        )
+        map_under_cursor(
+            'fkb',
+            builtin.git_branches,
+            'Find git branch'
         )
         map_under_cursor(
             'fg',
