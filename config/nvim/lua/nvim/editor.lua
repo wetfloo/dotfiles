@@ -99,9 +99,25 @@ vim.keymap.set('x', '<A-n>', ":'<,'> mo '>+<CR>gv=gv", { desc = "Move selection 
 vim.keymap.set('x', '<C-a>', "<C-a>gv")
 vim.keymap.set('x', '<C-x>', "<C-x>gv")
 
---- Centers the view after moving using 'zz'
+--- Centers the view after moving
 local function move_and_center(mode, action, opts)
-    vim.keymap.set(mode, action, action .. 'zz', opts)
+    local esc_action = vim.api.nvim_replace_termcodes(action, true, true, true)
+    vim.keymap.set(mode, action, function()
+            -- Setup
+            local option = 'scrolloff'
+            local scrolloff = vim.api.nvim_get_option_value(option, {})
+            vim.api.nvim_set_option_value(option, 99999, {})
+            -- Without this cursor will stay at the same place
+            vim.cmd('norm! M')
+
+            -- Action
+            vim.api.nvim_feedkeys(esc_action, 'n', false)
+
+            -- Teardown
+            vim.api.nvim_set_option_value(option, scrolloff, {})
+        end,
+        opts
+    )
 end
 
 move_and_center({ 'n', 'x' }, '<C-d>')
