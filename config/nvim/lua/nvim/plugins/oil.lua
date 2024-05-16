@@ -24,6 +24,8 @@ return {
                     ["<leader>ts"] = "actions.change_sort",
                     ["<leader>tx"] = "actions.open_external",
                     ["<leader>t."] = "actions.toggle_hidden",
+                    ["<leader>tq"] = "actions.send_to_qflist",
+                    ["<leader>tQ"] = "actions.add_to_qflist",
                 },
             }
         )
