@@ -92,6 +92,13 @@ return {
             end,
             'Find hidden files'
         )
+        map_under_cursor(
+            'fhg',
+            function()
+                builtin.live_grep({ hidden = true, no_ignore = true })
+            end,
+            'Find with grep'
+        )
 
         map_under_cursor(
             'ff',
