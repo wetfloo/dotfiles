@@ -303,9 +303,6 @@ for_window [app_id="signal"] mark messaging
 for_window [con_mark="music"] move to workspace 8
 for_window [con_mark="messaging"] move to workspace 10
 
-for_window [app_id="firefox"] move to workspace 1
-for_window [app_id="kitty"] move to workspace 2
-
  # Firefox Specific Rules
 for_window [app_id="firefox" title="Firefox — Sharing Indicator"] floating enable
 for_window [app_id="firefox" title="Picture-in-Picture"] floating enable
