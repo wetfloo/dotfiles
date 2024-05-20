@@ -19,13 +19,6 @@ for file in ~/.config/fish/os_local/*.fish
     source
 end
 
-# Apply .profile: use this to put fish compatible .profile stuff in
-for file in .profile, .zprofil, .zprofile
-    if test -f ~/$file
-        source ~/$file
-    end
-end
-
 # TODO: make this a bunch of functions with key args
 alias zall='eza -al --color=auto --group-directories-first --icons' # all files and dirs, long format
 alias zal='eza -a --color=auto --group-directories-first --icons' # all files and dirs
