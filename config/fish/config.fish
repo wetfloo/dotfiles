@@ -32,8 +32,8 @@ alias fuza='cd ~ && cd $(fd -H . -t d | fzf)'
 # fallback for when we're not in tmux
 if not set -q $TMUX
     for mode in $(bind --list-modes);
-        bind \ef --mode $mode 'tmux_sessionizer';
-        bind \es --mode $mode 'tmux_join /'
+        bind \ef --mode $mode 'set -x SHELL $(which fish); tmux_sessionizer';
+        bind \es --mode $mode 'set -x SHELL $(which fish); tmux_join /'
     end
 end
 
