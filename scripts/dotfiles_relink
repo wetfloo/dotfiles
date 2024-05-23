@@ -65,16 +65,18 @@ do
     relink_custom electron-flags.conf ~/.config/$APP-flags.conf
 done
 
-MIN_ELECTRON_VERSION=24
-MAX_ELECTRON_VERSION=99
+MIN_ELECTRON_VERSION="${MIN_ELECTRON_VERSION:-24}"
+MAX_ELECTRON_VERSION="${MAX_ELECTRON_VERSION:-99}"
 # Relink electron flags, because they're version-specific for some reason.
-for ((i=1;i<=MIN_ELECTRON_VERSION;i++)) do
-    relink_custom electron-flags-legacy.conf ~/.config/electron$i-flags.conf
-done
-for ((i=$(( MIN_ELECTRON_VERSION + 1 ));i<=MAX_ELECTRON_VERSION;i++)) do
-    relink_custom electron-flags.conf ~/.config/electron$i-flags.conf
-done
+if [ "${LINK_ELECTRON_FLAGS:-false}" = true ]; then
+    for ((i=1;i<=MIN_ELECTRON_VERSION;i++)) do
+        relink_custom electron-flags-legacy.conf ~/.config/electron$i-flags.conf
+    done
+    for ((i=$(( MIN_ELECTRON_VERSION + 1 ));i<=MAX_ELECTRON_VERSION;i++)) do
+        relink_custom electron-flags.conf ~/.config/electron$i-flags.conf
+    done
+fi
 
-if [[ "$(uname)" = "Linux" ]]; then
+if [ "$(uname)" = "Linux" ] && [ "${LINK_LINUX_FILES:-false}" = true ]; then
     linux_setup
 fi
