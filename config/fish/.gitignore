@@ -3,7 +3,8 @@ fish_variables
 conf.d/*
 completions/*
 functions/*
-!functions/yazi_yy.fish
+!conf.d/brew.fish
 !conf.d/lf_icons.fish
 !conf.d/lf_lfcd.fish
 !completions/lf.fish
+!functions/yazi_yy.fish
