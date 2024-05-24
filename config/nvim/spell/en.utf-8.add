@@ -28,3 +28,6 @@ conf
 undercurl
 config
 yazi
+TOML
+linter
+github
