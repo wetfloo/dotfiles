@@ -1,2 +1,8 @@
 fish_variables
-conf.d/rustup.fish
+
+conf.d/*
+completions/*
+functions/*
+!conf.d/lf_icons.fish
+!conf.d/lf_lfcd.fish
+!completions/lf.fish
