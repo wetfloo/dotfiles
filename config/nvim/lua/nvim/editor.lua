@@ -121,14 +121,20 @@ local function move_and_center(mode, action, opts)
     )
 end
 
+local function move_and_center_old(mode, keys, opts)
+    vim.keymap.set(mode, keys, keys .. 'zz', opts)
+end
+
 move_and_center({ 'n', 'x' }, '<C-d>')
 move_and_center({ 'n', 'x' }, '<C-u>')
 move_and_center({ 'n', 'x' }, '<C-b>')
 move_and_center({ 'n', 'x' }, '<C-f>')
-move_and_center({ 'n', 'x' }, 'n')
-move_and_center({ 'n', 'x' }, 'N')
 move_and_center({ 'n', 'x' }, 'gg')
 move_and_center({ 'n', 'x' }, 'G')
+
+-- This didn't work with the new one
+move_and_center_old({ 'n', 'x' }, 'n')
+move_and_center_old({ 'n', 'x' }, 'N')
 
 -- :help diagnostic-highlights
 vim.diagnostic.config(
