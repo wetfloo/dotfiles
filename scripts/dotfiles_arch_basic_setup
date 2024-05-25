@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+cleanup () {
+    rm -rf "$DIR"
+}
+
+install_yay () { 
+    if [ -z "$(pacman -Q yay-bin) || true" ]; then
+        DIR=$(mktemp -d)
+        git clone https://aur.archlinux.org/yay-bin.git "$DIR"
+        cd "$DIR"
+        makepkg --syncdeps --rmdeps --clean
+        makepkg --install
+    fi
+
+    if [ -z "$(pacman -Q yay-bin-debug) || true" ]; then
+        sudo pacman -Rs yay-bin-debug
+    fi
+}
+
+sudo pacman -Syu --noconfirm
+sudo pacman -S --needed base-devel git
+
+install_yay
+
+yay -S --needed ansible tmux neovim ripgrep fd fzf fish
+
+trap cleanup EXIT
+
