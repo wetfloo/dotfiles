@@ -15,7 +15,9 @@
     colorMoved = zebra
 [alias]
     lfs-fix = !sh -c 'git lfs uninstall && git reset --hard && git lfs install && git lfs pull'
-    fb = !sh -c 'git checkout $(git branch --list --all --format="%\\(refname:short\\)" | fzf --height=~100%)'
+    fb = !sh -c 'git branch --list --all --format="%\\(refname:short\\)" | fzf --height=~100%'
+    cb = !sh -c 'git checkout $(git branch --list --all --format="%\\(refname:short\\)" | fzf --height=~100%)'
+    cbt = !sh -c 'git checkout -t $(git branch --list --all --format="%\\(refname:short\\)" | fzf --height=~100%)'
     s = status -s
 [push]
     autoSetupRemote = true
