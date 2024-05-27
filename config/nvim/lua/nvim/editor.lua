@@ -82,6 +82,7 @@ vim.keymap.set('n', '<A-.>', ':bnext<CR>', { desc = 'Go to the next buffer', sil
 vim.keymap.set('n', '<A-d>', ':Bdelete<CR>', { desc = 'Delete the current buffer', silent = true })
 vim.keymap.set('n', '<A-D>', ':Bwipeout<CR>', { desc = 'Wipe out the current buffer', silent = true })
 vim.keymap.set('n', '<A-q>', '<C-w>q', { desc = 'Close current window' })
+vim.keymap.set('n', '<C-S>', function() vim.cmd('update') end, { desc = 'Save buffer changes' })
 
 -- Remap for dealing with word wrap
 vim.keymap.set({ 'n', 'x' }, 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
