@@ -12,6 +12,7 @@ project_dir=$4
 cd $project_dir
 go mod init $project_name
 go mod tidy
+cp "$SCRIPT_DIR/assets/main.go" $project_dir
 
 cd $SCRIPT_DIR/..
 ./prepare_git $project_dir "golang" $git_init $git_commit_start
