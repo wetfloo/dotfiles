@@ -187,6 +187,10 @@ return {
             lspconfig[name].setup(setup_opts(opts))
         end
 
+        vim.diagnostic.config({
+            severity_sort = true,
+        })
+
         local cmp = require('cmp')
         local luasnip = require('luasnip')
         require('luasnip.loaders.from_vscode').lazy_load()
