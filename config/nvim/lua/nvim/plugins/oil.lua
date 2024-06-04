@@ -1,46 +1,38 @@
 return {
-    'stevearc/oil.nvim',
+    "stevearc/oil.nvim",
     dependencies = {
-        'nvim-tree/nvim-web-devicons',
+        "nvim-tree/nvim-web-devicons",
     },
     config = function()
-        local oil = require('oil')
-        oil.setup(
-            {
-                use_default_keymaps = false,
-                keymaps = {
-                    ["<leader>t?"] = "actions.show_help",
-                    ["<CR>"] = "actions.select",
-                    ["<leader>tv"] = "actions.select_vsplit",
-                    ["<leader>th"] = "actions.select_split",
-                    ["<leader>tn"] = "actions.select_tab",
-                    ["<leader>tp"] = "actions.preview",
-                    ["<leader>tt"] = "actions.close",
-                    ["<leader>tr"] = "actions.refresh",
-                    ["-"] = "actions.parent",
-                    ["_"] = "actions.open_cwd",
-                    ["`"] = "actions.cd",
-                    ["~"] = "actions.tcd",
-                    ["<leader>ts"] = "actions.change_sort",
-                    ["<leader>tx"] = "actions.open_external",
-                    ["<leader>t."] = "actions.toggle_hidden",
-                    ["<leader>tq"] = "actions.send_to_qflist",
-                    ["<leader>tQ"] = "actions.add_to_qflist",
-                },
-            }
-        )
+        local oil = require("oil")
+        oil.setup({
+            use_default_keymaps = false,
+            keymaps = {
+                ["<leader>t?"] = "actions.show_help",
+                ["<CR>"] = "actions.select",
+                ["<leader>tv"] = "actions.select_vsplit",
+                ["<leader>th"] = "actions.select_split",
+                ["<leader>tn"] = "actions.select_tab",
+                ["<leader>tp"] = "actions.preview",
+                ["<leader>tt"] = "actions.close",
+                ["<leader>tr"] = "actions.refresh",
+                ["-"] = "actions.parent",
+                ["_"] = "actions.open_cwd",
+                ["`"] = "actions.cd",
+                ["~"] = "actions.tcd",
+                ["<leader>ts"] = "actions.change_sort",
+                ["<leader>tx"] = "actions.open_external",
+                ["<leader>t."] = "actions.toggle_hidden",
+                ["<leader>tq"] = "actions.send_to_qflist",
+                ["<leader>tQ"] = "actions.add_to_qflist",
+            },
+        })
 
-        vim.keymap.set('n', '<leader>tt',
-            function()
-                oil.toggle_float(nil)
-            end,
-            { desc = 'File explorer (floating)' }
-        )
-        vim.keymap.set('n', '<leader>tT',
-            function()
-                vim.cmd('Oil')
-            end,
-            { desc = 'File explorer (fullscreen)', silent = true }
-        )
+        vim.keymap.set("n", "<leader>tt", function()
+            oil.toggle_float(nil)
+        end, { desc = "File explorer (floating)" })
+        vim.keymap.set("n", "<leader>tT", function()
+            vim.cmd("Oil")
+        end, { desc = "File explorer (fullscreen)", silent = true })
     end,
 }

@@ -1,3 +1,3 @@
 return {
-    'micarmst/vim-spellsync',
+    "micarmst/vim-spellsync",
 }

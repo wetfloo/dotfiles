@@ -1,22 +1,21 @@
 return {
-    'folke/which-key.nvim',
-    event = 'VeryLazy',
-    dependencies = { 'Wansmer/langmapper.nvim' },
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    dependencies = { "Wansmer/langmapper.nvim" },
     config = function()
         vim.o.timeout = true
         vim.o.timeoutlen = 1000
 
-
-        local status, lmu = pcall(require, 'langmapper.utils')
+        local status, lmu = pcall(require, "langmapper.utils")
         if status then
-            local view = require('which-key.view')
+            local view = require("which-key.view")
             local execute = view.execute
 
             -- wrap `execute()` and translate sequence back
             ---@diagnostic disable-next-line: duplicate-set-field
             view.execute = function(prefix_i, mode, buf)
                 -- Translate back to English characters
-                prefix_i = lmu.translate_keycode(prefix_i, 'default', 'ru')
+                prefix_i = lmu.translate_keycode(prefix_i, "default", "ru")
                 execute(prefix_i, mode, buf)
             end
 
@@ -30,5 +29,5 @@ return {
         end
 
         require("which-key").setup()
-    end
+    end,
 }

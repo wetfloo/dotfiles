@@ -1,19 +1,19 @@
 local M = {}
 
-M.catppuccin_flavor = 'mocha'
+M.catppuccin_flavor = "mocha"
 
 M.diagnostic_signs = {
-    Error = '󱇎',
-    Hint = '󰌵',
-    Warn = '󰀦',
-    Info = '󰋼',
-    Ok = '󰸞',
+    Error = "󱇎",
+    Hint = "󰌵",
+    Warn = "󰀦",
+    Info = "󰋼",
+    Ok = "󰸞",
 }
 
 M.git_signs = {
-    added = '󰐕',
-    modified = '󰦒',
-    removed = '󰍴',
+    added = "󰐕",
+    modified = "󰦒",
+    removed = "󰍴",
 }
 
 M.centering = true

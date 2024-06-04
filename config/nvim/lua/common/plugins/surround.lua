@@ -1,8 +1,8 @@
 return {
-    'kylechui/nvim-surround',
-    version = '*',
+    "kylechui/nvim-surround",
+    version = "*",
     event = {
-        'VeryLazy',
+        "VeryLazy",
     },
 
     -- This empty table is necessary, otherwise it doesn't run.

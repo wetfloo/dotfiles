@@ -1,10 +1,10 @@
 return {
-    'lukas-reineke/indent-blankline.nvim',
+    "lukas-reineke/indent-blankline.nvim",
     enabled = false,
     event = {
-        'VeryLazy',
+        "VeryLazy",
     },
-    main = 'ibl',
+    main = "ibl",
     opts = {
         indent = {
             highlight = { "LineNr" },

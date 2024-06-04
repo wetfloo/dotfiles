@@ -1,11 +1,8 @@
 local function readonlify_table(table)
-    setmetatable(
-        table,
-        {
-            __index = table,
-            __newindex = function() end,
-        }
-    )
+    setmetatable(table, {
+        __index = table,
+        __newindex = function() end,
+    })
 end
 
 local M = {}
@@ -39,7 +36,7 @@ function M.find_open_wins_with_ft(ft)
 
     local result = {}
     for win, buf in pairs(bufs) do
-        local filetype = vim.api.nvim_buf_get_option(buf, 'filetype')
+        local filetype = vim.api.nvim_buf_get_option(buf, "filetype")
         if filetype == ft then
             table.insert(result, win)
         end
@@ -69,12 +66,12 @@ end
 --- @param path string
 --- @return string
 function M.module_name(path)
-    local result, _ = path:gsub('%w+%.', '')
+    local result, _ = path:gsub("%w+%.", "")
     return result
 end
 
 function M.env(path)
-    local result, _ = path:gsub('%.%w+', '')
+    local result, _ = path:gsub("%.%w+", "")
     return result
 end
 
@@ -84,7 +81,7 @@ end
 function M.plugin_config(path, prev)
     local module_name = M.module_name(path)
     local env = M.env(path)
-    local config = require(env .. '.plugins.config.' .. module_name)
+    local config = require(env .. ".plugins.config." .. module_name)
 
     return vim.tbl_deep_extend("keep", prev, config)
 end
