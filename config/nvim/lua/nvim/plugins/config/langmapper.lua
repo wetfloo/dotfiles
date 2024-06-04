@@ -1,5 +1,5 @@
 return {
-    enabled = false,
+    enabled = require("utils").dir_contains(vim.fn.getcwd(), ".+%.tex"),
     lazy = false,
     priority = 999,
     config = function()

@@ -101,7 +101,7 @@ function M.dir_contains(dir, name)
     local contents = M.dir_content(dir)
 
     for _, item in pairs(contents) do
-        if item == full_name then
+        if string.find(item, full_name) then
             return true
         end
     end
