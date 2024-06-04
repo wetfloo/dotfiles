@@ -89,5 +89,28 @@ function M.plugin_config(path, prev)
     return vim.tbl_deep_extend("keep", prev, config)
 end
 
+function M.dir_content(dir)
+    -- Note 1: if dir contains a trailing "/" because the CWD was acquired
+    -- by means other than getcwd() (e.g. Lua string matching/substitution),
+    -- then remove the "/" preceding the "*" in the above line to avoid "//" issues
+    --
+    -- Note 2: use {trimempty=true} to ensure that vim.split() drops
+    -- empty space preceding a separator instead of treating it as en entity to keep.
+    return vim.split(vim.fn.glob(dir .. "/*"), "\n", { trimempty = true })
+end
+
+function M.dir_contains(dir, name)
+    local full_name = dir .. "/" .. name
+    local contents = M.dir_content(dir)
+
+    for _, item in pairs(contents) do
+        if item == full_name then
+            return true
+        end
+    end
+
+    return false
+end
+
 readonlify_table(M)
 return M
