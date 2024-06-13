@@ -23,7 +23,12 @@ relink () {
     fi
 
     # --force to overwrite dead symlinks
-    ln --force --symbolic $(realpath $src) $dst
+    # macOS, for example, doesn't have full-length flags
+    if [ "$(uname)" = "Linux" ]; then
+        ln --force --symbolic $(realpath $src) $dst
+    else
+        ln -s -F $(realpath $src) $dst
+    fi
 }
 
 relink_custom () {
