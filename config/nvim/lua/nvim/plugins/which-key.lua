@@ -2,7 +2,6 @@ return {
     "folke/which-key.nvim",
     event = "VeryLazy",
     enabled = false, -- TODO: re-enable when it stops breaking LSP-related actions
-    dependencies = { "Wansmer/langmapper.nvim" },
     config = function()
         local status, lmu = pcall(require, "langmapper.utils")
         if status then
