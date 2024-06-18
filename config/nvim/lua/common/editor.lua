@@ -22,6 +22,9 @@ vim.o.undofile = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
+vim.o.timeout = true
+vim.o.timeoutlen = 1000
+
 -- Make visual line indentation less painful
 
 vim.keymap.set("x", "<", "<gv", { desc = "Indent right" })

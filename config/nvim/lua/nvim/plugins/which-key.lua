@@ -1,12 +1,9 @@
 return {
     "folke/which-key.nvim",
     event = "VeryLazy",
-    enabled = false,
+    enabled = false, -- TODO: re-enable when it stops breaking LSP-related actions
     dependencies = { "Wansmer/langmapper.nvim" },
     config = function()
-        vim.o.timeout = true
-        vim.o.timeoutlen = 1000
-
         local status, lmu = pcall(require, "langmapper.utils")
         if status then
             local view = require("which-key.view")
