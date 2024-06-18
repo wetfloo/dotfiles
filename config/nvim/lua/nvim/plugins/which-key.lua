@@ -1,6 +1,7 @@
 return {
     "folke/which-key.nvim",
     event = "VeryLazy",
+    enabled = false,
     dependencies = { "Wansmer/langmapper.nvim" },
     config = function()
         vim.o.timeout = true
