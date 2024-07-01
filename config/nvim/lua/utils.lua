@@ -36,7 +36,7 @@ function M.find_open_wins_with_ft(ft)
 
     local result = {}
     for win, buf in pairs(bufs) do
-        local filetype = vim.api.nvim_buf_get_option(buf, "filetype")
+        local filetype = vim.api.nvim_get_option_value("filetype", { buf = buf })
         if filetype == ft then
             table.insert(result, win)
         end
