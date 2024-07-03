@@ -7,8 +7,8 @@ return {
     priority = 1000,
     opts = {
         colors = {
-            primary = "#d6bfff",
-            secondary = "#adf5ff",
+            primary = "#f5a9b8",
+            secondary = "#5bcefa",
             background = "#000000",
 
             diagnostic_error = "#ff474a",
