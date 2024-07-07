@@ -29,6 +29,8 @@ alias zd="eza -a | rg '^\.'" # show only dotfiles
 alias fuz='cd ~ && cd $(fd . -t d | fzf)'
 alias fuza='cd ~ && cd $(fd -H . -t d | fzf)'
 
+alias rm='rm -i'
+
 # fallback for when we're not in tmux
 if not set -q $TMUX
     for mode in $(bind --list-modes);
