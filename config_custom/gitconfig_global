@@ -15,8 +15,20 @@
     colorMoved = zebra
 [alias]
     lfs-fix = !sh -c 'git lfs uninstall && git reset --hard && git lfs install && git lfs pull'
+
     fb = !sh -c 'git branch --list --all --format="%\\(refname:short\\)" | fzf --height=~100%'
     cb = !sh -c 'git checkout $(git fb)'
-    s = status -s
+
+    s = !sh -c 'git -c color.ui=always status -s | bat --plain'
+    ss = !sh -c 'git -c color.ui=always status | bat --plain'
+
+    d = !sh -c 'git -c color.ui=always diff | bat --plain'
+    ds = !sh -c 'git -c color.ui=always diff --staged | bat --plain'
+
+    c = "!f() { git commit -m \"$1\"; }; f"
+    ca = commit --amend --no-edit
+    p = add .
+    pc = "!f() { git add . && git commit -m \"$1\"; }; f"
+    pca = !sh -c 'git add . && git commit --amend --no-edit'
 [push]
     autoSetupRemote = true
