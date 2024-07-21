@@ -28,6 +28,10 @@ return {
         local Group = colorbuddy.Group
         local colors = colorbuddy.colors
 
+        Group.new("@string", colors.secondary)
+        Group.new("@variable", colors.primary)
         Group.new("@variable.member", colors.noir_2)
+        Group.new("ErrorMsg", colors.secondary)
+        Group.new("WarningMsg", colors.secondary)
     end,
 }
