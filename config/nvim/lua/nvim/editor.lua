@@ -149,6 +149,3 @@ for type, icon in pairs(signs) do
     local highlight = "DiagnosticSign" .. type
     vim.fn.sign_define(highlight, { text = icon, texthl = highlight, numhl = "" })
 end
-
--- Useful for filtering my qflist
-vim.cmd("packadd Cfilter")
