@@ -11,7 +11,7 @@ vim.o.termguicolors = true
 
 -- Visual editor stuff: line wraps, scrolloff, relative line numbers
 vim.o.wrap = true
-vim.o.scrolloff = 0
+vim.o.scrolloff = 5
 vim.wo.number = true
 vim.wo.relativenumber = true
 
