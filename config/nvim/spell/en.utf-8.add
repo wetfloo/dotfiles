@@ -40,3 +40,13 @@ cli
 wildcard
 foreach
 targetfile
+precendence
+RBRACE
+LBRACE
+RPAREN
+LPAREN
+EQ
+IDENT
+EOF
+ident
+fn
