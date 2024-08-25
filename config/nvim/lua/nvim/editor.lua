@@ -24,8 +24,8 @@ vim.wo.signcolumn = "yes"
 -- In order to fix this, comment the lines below, and disable
 -- your current filepicker. (Oil, neotree, etc.).
 -- You can re-enable downloading dictionaries.
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+vim.g.loaded_netrw = 0
+vim.g.loaded_netrwPlugin = 0
 
 vim.o.cursorline = true
 vim.o.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20,a:blinkon500"
@@ -35,6 +35,7 @@ vim.opt.inccommand = "nosplit"
 
 vim.o.spell = true
 vim.o.spelllang = "en_us,ru_ru"
+vim.fn.mkdir(vim.fn.stdpath("data") .. "site/spell", "p")
 
 vim.keymap.set("", "<C-c>", "<Esc>")
 vim.keymap.set("", "<F1>", "<Nop>")

@@ -1,5 +1,8 @@
 return {
     "stevearc/oil.nvim",
+    -- uncomment this line when needing to download dictionaries,
+    -- then comment it back again
+    -- cmd = 'Oil',
     dependencies = {
         "nvim-tree/nvim-web-devicons",
     },
