@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# vim:ft=bash
+
+set -euo pipefail
+
+geoip_url="https://github.com/SagerNet/sing-geoip/releases/latest/geoip.db"
+geosite_url="https://github.com/SagerNet/sing-geoip/releases/latest/geosite.db"
+pkgdir="${HOME}/.sing_geoip"
+
+rm -rf $pkgdir
+mkdir -p $pkgdir
+curl -O $geoip_url && mv geoip.db "${pkgdir}/geoip.db"
+curl -O $geosite_url && mv geosite.db "${pkgdir}/geosite.db"
