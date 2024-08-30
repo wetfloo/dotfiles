@@ -39,6 +39,10 @@ if not set -q $TMUX
     end
 end
 
+if type -q fzf
+    fzf --fish | source
+end
+
 # find short options for commands
 function manfind
     set -l cmd $argv[1]
@@ -47,4 +51,6 @@ function manfind
     man --pager="less -p \"\s\s+$arg\"" $cmd
 end
 
-starship init fish | source
+if type -q starship
+    starship init fish | source
+end

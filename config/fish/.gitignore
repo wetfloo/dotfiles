@@ -5,7 +5,6 @@ completions/*
 functions/*
 !completions/lf.fish
 !conf.d/brew.fish
-!conf.d/fzf.fish
 !conf.d/lf_icons.fish
 !conf.d/lf_lfcd.fish
 !functions/yazi_yy.fish
