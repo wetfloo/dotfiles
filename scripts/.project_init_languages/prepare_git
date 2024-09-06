@@ -11,7 +11,11 @@ git_commit_start=${4:-false}
 
 cd $project_dir
 if [[ "$git_init" = true ]]; then
-    cp --force "$SCRIPT_DIR/$language/assets/ignore/gitignore" ./.gitignore
+    if [[ "$(uname)" = "Linux" ]]; then
+        cp --force "$SCRIPT_DIR/$language/assets/ignore/gitignore" ./.gitignore
+    else
+        cp -f "$SCRIPT_DIR/$language/assets/ignore/gitignore" ./.gitignore
+    fi
     git init .
 fi
 if [[ "$git_commit_start" = true ]]; then
