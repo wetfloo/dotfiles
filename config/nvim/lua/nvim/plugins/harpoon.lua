@@ -1,82 +1,115 @@
 return {
     "ThePrimeagen/harpoon",
+    branch = "harpoon2",
     dependencies = {
         "nvim-lua/plenary.nvim",
     },
 
     config = function()
         local harpoon = require("harpoon")
-        local function harpoon_width()
-            local window_width = vim.api.nvim_win_get_width(0)
-            local h_padding_horizontal = 4
-            local h_width = window_width - h_padding_horizontal
-            local h_width_max = 120
-            return math.min(h_width, h_width_max)
-        end
-        harpoon.setup({
-            -- sets the marks upon calling `toggle` on the ui, instead of require `:w`.
-            save_on_toggle = false,
 
-            -- saves the harpoon file upon every change. disabling is not recommended.
-            save_on_change = true,
+        local telescope_conf = require("telescope.config").values
 
-            -- sets harpoon to run the command immediately as it's passed to the terminal when calling `sendCommand`.
-            enter_on_sendcmd = false,
+        local function toggle_telescope(harpoon_files)
+            local ok, _ = pcall(require, "telescope")
+            if not ok then
+                return
+            end
 
-            -- closes any tmux windows harpoon that harpoon creates when you close Neovim.
-            tmux_autoclose_windows = false,
+            local file_paths = {}
+            for _, item in ipairs(harpoon_files.items) do
+                table.insert(file_paths, item.value)
+            end
 
-            -- filetypes that you want to prevent from adding to the harpoon list menu.
-            excluded_filetypes = { "harpoon" },
-
-            -- set marks specific to each git branch inside git repository
-            mark_branch = false,
-
-            -- enable tabline with harpoon marks (status line on the top)
-            tabline = false,
-
-            menu = {
-                width = harpoon_width(),
-            },
-        })
-        local vim_window_resize_harpoon_adapt =
-            vim.api.nvim_create_augroup("vim_window_resize_harpoon_adapt", { clear = true })
-        vim.api.nvim_create_autocmd("VimResized", {
-            callback = function()
-                harpoon.setup({
-                    menu = {
-                        width = harpoon_width(),
-                    },
+            require("telescope.pickers")
+                .new({}, {
+                    prompt_title = "Harpoon",
+                    finder = require("telescope.finders").new_table({
+                        results = file_paths,
+                    }),
+                    previewer = telescope_conf.file_previewer({}),
+                    sorter = telescope_conf.generic_sorter({}),
                 })
-            end,
-            group = vim_window_resize_harpoon_adapt,
-        })
+                :find()
+        end
 
-        local mark = require("harpoon.mark")
-        local ui = require("harpoon.ui")
+        local function normalize_path(buf_name, root)
+            local path = require("plenary.path")
+            return path:new(buf_name):make_relative(root)
+        end
+
+        local current_buf
+
+        local function get_buf_path(buf)
+            if current_buf == nil then
+                return nil
+            end
+
+            local root = harpoon.config.default.get_root_dir()
+            local current_buf_name = vim.api.nvim_buf_get_name(current_buf)
+            return normalize_path(current_buf_name, root)
+        end
+
+        harpoon:setup({
+            --     default = {
+            -- TODO: wtf, it seems that display fn affects how buffers are selected?
+            -- Absolute nonsense.
+            --         display = function(list_item)
+            --             local list_value = list_item.value
+            --             local result = list_value
+            --
+            --             if not vim.api.nvim_buf_is_loaded(current_buf) then
+            --                 result = "󰚌  " .. result
+            --             end
+            --
+            --             local current_buf_path = get_buf_path(current_buf)
+            --             if current_buf_path ~= nil and list_value == current_buf_path then
+            --                 result = "> " .. result
+            --             end
+            --
+            --             return result
+            --         end,
+            --     },
+        })
 
         vim.keymap.set("n", "<leader>hh", function()
-            mark.add_file()
+            harpoon:list():add()
         end, { desc = "Add a bookmark" })
+
         vim.keymap.set("n", "<leader>hd", function()
-            mark.rm_file()
+            harpoon:list():remove()
         end, { desc = "Remove current file's bookmark" })
-        vim.keymap.set("n", "<leader>hD", mark.clear_all, { desc = "Delete ALL bookmarks" })
-        vim.keymap.set("n", "<leader>hm", ui.toggle_quick_menu, { desc = "Show bookmarks menu" })
-        vim.keymap.set("n", "<leader>hn", ui.nav_next, { desc = "Next bookmark" })
-        vim.keymap.set("n", "<leader>hp", ui.nav_prev, { desc = "Previous bookmark" })
+
+        vim.keymap.set("n", "<leader>hD", function()
+            harpoon:list():clear()
+        end, { desc = "Delete ALL bookmarks" })
+
+        vim.keymap.set("n", "<leader>hm", function()
+            -- TODO: use autocmd for this
+            current_buf = vim.api.nvim_get_current_buf()
+            harpoon.ui:toggle_quick_menu(harpoon:list())
+        end, { desc = "Show bookmarks menu" })
+
+        vim.keymap.set("n", "<leader>hn", function()
+            harpoon:list():next()
+        end, { desc = "Next bookmark" })
+
+        vim.keymap.set("n", "<leader>hp", function()
+            harpoon:list():prev()
+        end, { desc = "Previous bookmark" })
+
+        vim.keymap.set("n", "<leader>fm", function()
+            toggle_telescope(harpoon:list())
+        end, { desc = "Telescope: Harpoon" })
 
         for i = 1, 9 do
             vim.keymap.set("n", "<leader>h" .. i, function()
-                mark.set_current_at(i)
+                harpoon:list():replace_at(i)
             end, { desc = "Replace bookmark at " .. i .. " with the current file" })
 
             vim.keymap.set("n", "<A-" .. i .. ">", function()
-                ui.nav_file(i)
+                harpoon:list():select(i)
             end, { desc = "Go to bookmark" .. "i" })
         end
-
-        -- Doesn't work properly, for some reason
-        -- require('telescope').load_extension('harpoon')
     end,
 }
