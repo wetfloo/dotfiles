@@ -31,29 +31,27 @@ return {
 
         local diagnostics_color = {}
 
-        if lackluster ~= nil then
+        local function add_custom_hl(key, og_hl_name)
             local color_special = require("lackluster.color-special")
-            local names = {
-                hint = "DiagnosticSignHint",
-                info = "DiagnosticSignInfo",
-                warn = "DiagnosticSignWarn",
-                error = "DiagnosticSignError",
-            }
-
-            for key, value in pairs(names) do
-                local name = value .. "Custom"
-                local hlgroup = vim.api.nvim_get_hl(0, {
-                    name = value,
-                    create = false,
+            local new_hl_name = og_hl_name .. "Custom"
+            local hlgroup = vim.api.nvim_get_hl(0, {
+                name = og_hl_name,
+                create = false,
+            })
+            if hlgroup ~= nil then
+                local new_hlgroup = vim.tbl_deep_extend("error", hlgroup, {
+                    bg = color_special.statusline,
                 })
-                if hlgroup ~= nil then
-                    local new_hlgroup = vim.tbl_deep_extend("error", hlgroup, {
-                        bg = color_special.statusline,
-                    })
-                    vim.api.nvim_set_hl(0, name, new_hlgroup)
-                    diagnostics_color[key] = name
-                end
+                vim.api.nvim_set_hl(0, new_hl_name, new_hlgroup)
+                diagnostics_color[key] = new_hl_name
             end
+        end
+
+        if lackluster ~= nil then
+            add_custom_hl("hint", "DiagnosticSignHint")
+            add_custom_hl("info", "DiagnosticSignInfo")
+            add_custom_hl("warn", "DiagnosticSignWarn")
+            add_custom_hl("error", "DiagnosticSignError")
         end
 
         require("lualine").setup({
