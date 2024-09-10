@@ -1,5 +1,6 @@
 return {
     "jesseleite/nvim-noirbuddy",
+    enabled = false,
     dependencies = {
         { "tjdevries/colorbuddy.nvim", branch = "master" },
     },

@@ -18,12 +18,42 @@ return {
 
         local symbols = require("nvim.prefs").diagnostic_signs
 
-        local status, noirbuddy = pcall(require, "noirbuddy.plugins.lualine")
+        local _, noirbuddy = pcall(require, "noirbuddy.plugins.lualine")
+        local _, lackluster = pcall(require, "lackluster")
         local theme
-        if status then
+        if noirbuddy ~= nil then
             theme = noirbuddy.theme
+        elseif lackluster ~= nil then
+            theme = "lackluster"
         else
             theme = "auto"
+        end
+
+        local diagnostics_color = {}
+
+        if lackluster ~= nil then
+            local color_special = require("lackluster.color-special")
+            local names = {
+                hint = "DiagnosticSignHint",
+                info = "DiagnosticSignInfo",
+                warn = "DiagnosticSignWarn",
+                error = "DiagnosticSignError",
+            }
+
+            for key, value in pairs(names) do
+                local name = value .. "Custom"
+                local hlgroup = vim.api.nvim_get_hl(0, {
+                    name = value,
+                    create = false,
+                })
+                if hlgroup ~= nil then
+                    local new_hlgroup = vim.tbl_deep_extend("error", hlgroup, {
+                        bg = color_special.statusline,
+                    })
+                    vim.api.nvim_set_hl(0, name, new_hlgroup)
+                    diagnostics_color[key] = name
+                end
+            end
         end
 
         require("lualine").setup({
@@ -46,6 +76,7 @@ return {
                     },
                     {
                         "diagnostics",
+                        diagnostics_color = diagnostics_color,
                         symbols = {
                             error = diagnostic_symbol(symbols.Error),
                             warn = diagnostic_symbol(symbols.Warn),

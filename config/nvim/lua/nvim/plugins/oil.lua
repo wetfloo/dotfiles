@@ -9,6 +9,13 @@ return {
     config = function()
         local oil = require("oil")
         oil.setup({
+            columns = {
+                "mtime",
+                "icon",
+            },
+            view_options = {
+                show_hidden = true,
+            },
             use_default_keymaps = false,
             keymaps = {
                 ["<leader>t?"] = "actions.show_help",
