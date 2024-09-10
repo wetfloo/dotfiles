@@ -7,6 +7,16 @@ return {
         local color = lackluster.color -- blue, green, red, orange, black, lack, luster, gray1-9
         lackluster.setup({
             tweak_highlight = {
+                ["TelescopeMatching"] = {
+                    fg = color.black,
+                    bg = color.gray7,
+                },
+                ["OilDir"] = {
+                    fg = color.gray8,
+                },
+                ["OilDirIcon"] = {
+                    fg = color.gray8,
+                },
                 ["DiagnosticUnderlineInfo"] = {
                     overwrite = true,
                     underline = false,
