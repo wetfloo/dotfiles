@@ -28,7 +28,7 @@ vim.g.loaded_netrw = 0
 vim.g.loaded_netrwPlugin = 0
 
 vim.o.cursorline = true
-vim.o.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20,a:blinkon500"
+-- vim.o.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20,a:blinkon500"
 
 vim.opt.updatetime = 500
 vim.opt.inccommand = "nosplit"
