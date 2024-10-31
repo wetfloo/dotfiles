@@ -95,8 +95,8 @@ vim.keymap.set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, si
 -- vim.keymap.set({ 'n', 'x' }, '<Down>', "v:count == 0 ? 'gjzz' : 'j'", { expr = true, silent = true })
 
 -- Move selected stuff around
-vim.keymap.set("n", "<A-p>", ":mo -2<CR>", { desc = "Move current line one line up", silent = true })
-vim.keymap.set("n", "<A-n>", ":mo +1<CR>", { desc = "Move current line one line down", silent = true })
+vim.keymap.set("n", "<A-p>", ":mo -2<CR>==", { desc = "Move current line one line up", silent = true })
+vim.keymap.set("n", "<A-n>", ":mo +1<CR>==", { desc = "Move current line one line down", silent = true })
 vim.keymap.set("x", "<A-p>", ":'<,'> mo -2<CR>gv=gv", { desc = "Move selection one line up", silent = true })
 vim.keymap.set("x", "<A-n>", ":'<,'> mo '>+<CR>gv=gv", { desc = "Move selection one line down", silent = true })
 
