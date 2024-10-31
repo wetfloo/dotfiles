@@ -55,6 +55,7 @@ end
 
 return {
     "neovim/nvim-lspconfig",
+    enabled = false,
     event = {
         "BufReadPost",
         "BufNewFile",
