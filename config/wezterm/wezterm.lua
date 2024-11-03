@@ -53,8 +53,10 @@ local function tab_bar_colors()
     return result
 end
 
-config.use_fancy_tab_bar = false
+config.hide_tab_bar_if_only_one_tab = true
+config.show_new_tab_button_in_tab_bar = false
 config.tab_bar_at_bottom = true
+config.use_fancy_tab_bar = false
 
 -- Bell
 local function bell_color()
@@ -84,6 +86,7 @@ config.colors = {
 
 -- Keymap
 local keymap = require("keymap")
+local action = wezterm.action
 
 config.disable_default_key_bindings = true
 config.use_dead_keys = false
@@ -91,5 +94,19 @@ config.use_dead_keys = false
 config.leader = keymap.leader
 config.keys = keymap.keys
 config.key_tables = keymap.key_tables
+
+-- Mux
+local mux = wezterm.mux
+config.unix_domains = {
+    {
+        name = "unix",
+    },
+}
+
+-- This causes `wezterm` to act as though it was started as
+-- `wezterm connect unix` by default, connecting to the unix
+-- domain on startup.
+-- If you prefer to connect manually, leave out this line.
+config.default_gui_startup_args = { "connect", "unix" }
 
 return config
