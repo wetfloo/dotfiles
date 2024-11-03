@@ -82,4 +82,14 @@ config.colors = {
     visual_bell = bell_color(),
 }
 
+-- Keymap
+local keymap = require("keymap")
+
+config.disable_default_key_bindings = true
+config.use_dead_keys = false
+
+config.leader = keymap.leader
+config.keys = keymap.keys
+config.key_tables = keymap.key_tables
+
 return config
