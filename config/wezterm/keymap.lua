@@ -7,6 +7,10 @@ return {
     keys = {
         -- Send "CTRL-s" to the terminal when pressing CTRL-s, CTRL-s
         { key = "s", mods = "LEADER|CTRL", action = act.SendKey({ key = "s", mods = "CTRL" }) },
+        -- { key = "h", mods = "LEADER|CTRL", action = act.SendKey({ key = "h", mods = "CTRL" }) },
+        -- { key = "j", mods = "LEADER|CTRL", action = act.SendKey({ key = "j", mods = "CTRL" }) },
+        -- { key = "k", mods = "LEADER|CTRL", action = act.SendKey({ key = "k", mods = "CTRL" }) },
+        -- { key = "l", mods = "LEADER|CTRL", action = act.SendKey({ key = "l", mods = "CTRL" }) },
 
         -- Command palette, just in case
         { key = "F1", action = act.ActivateCommandPalette },
@@ -26,10 +30,6 @@ return {
         { key = ">", mods = "CTRL|ALT|SHIFT", action = act.MoveTabRelative(1) },
 
         -- Moving around the panes
-        { key = "K", mods = "CTRL", action = act.ClearScrollback("ScrollbackOnly") },
-        { key = "K", mods = "CTRL|SHIFT", action = act.ClearScrollback("ScrollbackOnly") },
-        { key = "L", mods = "CTRL", action = act.ShowDebugOverlay },
-        { key = "L", mods = "CTRL|SHIFT", action = act.ShowDebugOverlay },
         { key = "h", mods = "CTRL", action = act.ActivatePaneDirection("Left") },
         { key = "j", mods = "CTRL", action = act.ActivatePaneDirection("Down") },
         { key = "k", mods = "CTRL", action = act.ActivatePaneDirection("Up") },
@@ -38,6 +38,10 @@ return {
         -- Misc actions that were deleted
         { key = "l", mods = "LEADER", action = act.ClearScrollback("ScrollbackOnly") },
         { key = "q", mods = "LEADER", action = act.ShowDebugOverlay },
+
+        { key = "F", mods = "CTRL", action = act.Search("CurrentSelectionOrEmptyString") },
+        { key = "F", mods = "SHIFT|CTRL", action = act.Search("CurrentSelectionOrEmptyString") },
+        { key = "/", mods = "LEADER", action = act.ShowLauncher },
 
         { key = "Tab", mods = "CTRL", action = act.ActivateTabRelative(1) },
         { key = "Tab", mods = "SHIFT|CTRL", action = act.ActivateTabRelative(-1) },
@@ -107,14 +111,8 @@ return {
         { key = "C", mods = "SHIFT|CTRL", action = act.CopyTo("Clipboard") },
         { key = "F", mods = "CTRL", action = act.Search("CurrentSelectionOrEmptyString") },
         { key = "F", mods = "SHIFT|CTRL", action = act.Search("CurrentSelectionOrEmptyString") },
-        { key = "K", mods = "CTRL", action = act.ClearScrollback("ScrollbackOnly") },
-        { key = "K", mods = "SHIFT|CTRL", action = act.ClearScrollback("ScrollbackOnly") },
-        { key = "L", mods = "CTRL", action = act.ShowDebugOverlay },
-        { key = "L", mods = "SHIFT|CTRL", action = act.ShowDebugOverlay },
         { key = "N", mods = "CTRL", action = act.SpawnWindow },
         { key = "N", mods = "SHIFT|CTRL", action = act.SpawnWindow },
-        { key = "P", mods = "CTRL", action = act.ActivateCommandPalette },
-        { key = "P", mods = "SHIFT|CTRL", action = act.ActivateCommandPalette },
         { key = "R", mods = "CTRL", action = act.ReloadConfiguration },
         { key = "R", mods = "SHIFT|CTRL", action = act.ReloadConfiguration },
         { key = "T", mods = "CTRL", action = act.SpawnTab("CurrentPaneDomain") },
@@ -145,14 +143,10 @@ return {
         { key = "c", mods = "SUPER", action = act.CopyTo("Clipboard") },
         { key = "f", mods = "SHIFT|CTRL", action = act.Search("CurrentSelectionOrEmptyString") },
         { key = "f", mods = "SUPER", action = act.Search("CurrentSelectionOrEmptyString") },
-        { key = "k", mods = "SHIFT|CTRL", action = act.ClearScrollback("ScrollbackOnly") },
-        { key = "k", mods = "SUPER", action = act.ClearScrollback("ScrollbackOnly") },
-        { key = "l", mods = "SHIFT|CTRL", action = act.ShowDebugOverlay },
         { key = "m", mods = "SHIFT|CTRL", action = act.Hide },
         { key = "m", mods = "SUPER", action = act.Hide },
         { key = "n", mods = "SHIFT|CTRL", action = act.SpawnWindow },
         { key = "n", mods = "SUPER", action = act.SpawnWindow },
-        { key = "p", mods = "SHIFT|CTRL", action = act.ActivateCommandPalette },
         { key = "r", mods = "SHIFT|CTRL", action = act.ReloadConfiguration },
         { key = "r", mods = "SUPER", action = act.ReloadConfiguration },
         { key = "s", mods = "CTRL|LEADER", action = act.SendKey({ key = "s", mods = "CTRL" }) },
