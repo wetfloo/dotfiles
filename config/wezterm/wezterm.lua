@@ -55,8 +55,31 @@ end
 
 config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = true
+
+-- Bell
+local function bell_color()
+    local str_color
+    if util.is_dark() then
+        str_color = color.dark.ansi[3]
+    else
+        str_color = color.light.ansi[3]
+    end
+
+    return wezterm.color.parse(str_color)
+end
+
+config.audible_bell = "Disabled"
+config.visual_bell = {
+    fade_in_function = "Constant",
+    fade_in_duration_ms = 1,
+    fade_out_function = "Constant",
+    fade_out_duration_ms = 250,
+    target = "CursorColor",
+}
+
 config.colors = {
     tab_bar = tab_bar_colors(),
+    visual_bell = bell_color(),
 }
 
 return config
