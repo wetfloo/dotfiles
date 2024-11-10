@@ -68,3 +68,6 @@ len
 wezterm
 unix
 CTRL
+debounce
+init
+sha1
