@@ -72,3 +72,5 @@ debounce
 init
 sha1
 dir
+paddings
+struct
