@@ -215,7 +215,7 @@ end
 
 function fish_prompt
     set -l last_pipestatus $pipestatus
-    set -l cwd (pwd | string replace "$HOME" '~')
+    set -l cwd $(prompt_pwd)
 
     if test -z "$lucid_skip_newline"
         echo ''
