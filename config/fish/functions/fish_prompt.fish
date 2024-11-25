@@ -32,6 +32,15 @@ if ! set -q lucid_git_color
     set -g lucid_git_color blue
 end
 
+if ! set -q lucid_git_dirty_color
+    set -g lucid_git_dirty_color red
+end
+
+if ! set -q lucid_git_separator_color
+    set -g lucid_git_separator_color white
+end
+
+
 # State used for memoization and async calls.
 set -g __lucid_cmd_id 0
 set -g __lucid_git_state_cmd_id -1
@@ -168,7 +177,9 @@ function __lucid_git_status
     echo -n $__lucid_git_static ''
 
     if ! test -z $__lucid_dirty
+        set_color --dim $lucid_git_dirty_color
         echo -n $__lucid_dirty
+        set_color normal
     else if ! test -z $prev_dirty
         set_color --dim $lucid_git_color
         echo -n $prev_dirty
@@ -185,13 +196,13 @@ function __lucid_vi_indicator
                 set_color green
                 echo -n "[I] "
             case "default"
-                set_color red
+                set_color purple
                 echo -n "[N] "
             case "visual"
                 set_color yellow
-                echo -n "[S] "
+                echo -n "[V] "
             case "replace"
-                set_color blue
+                set_color red
                 echo -n "[R] "
         end
         set_color normal
@@ -217,7 +228,10 @@ function fish_prompt
     if test $cwd != '~'; or test -n "$lucid_git_status_in_home_directory"
         set -l git_state (__lucid_git_status)
         if test $status -eq 0
-            echo -sn " on $git_state"
+            set_color --dim $lucid_git_separator_color
+            echo -sn " :: "
+            set_color normal
+            echo -sn "$git_state"
         end
     end
 
