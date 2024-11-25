@@ -68,6 +68,7 @@ end
 #    set -x PATH "$lr_path $PATH"
 #end
 
-if type -q starship
-    starship init fish | source
-end
+set -g lucid_dirty_indicator '*'
+set -g lucid_cwd_color $fish_color_normal
+set -g lucid_prompt_symbol_color green
+set -g lucid_prompt_symbol_error_color red

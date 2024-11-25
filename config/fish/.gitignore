@@ -7,4 +7,5 @@ functions/*
 !conf.d/brew.fish
 !conf.d/lf_icons.fish
 !conf.d/lf_lfcd.fish
+!functions/fish_prompt.fish
 !functions/yazi_yy.fish
