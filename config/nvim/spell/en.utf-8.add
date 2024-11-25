@@ -78,3 +78,7 @@ Memoize
 recomputation
 memoization
 async
+metadata
+endian
+ascii
+utf
