@@ -225,13 +225,31 @@ function fish_prompt
     echo -sn $cwd
     set_color normal
 
+    set -l bad_pipestatus '0'
+    for status_code in $last_pipestatus
+        if test "$status_code" -ne 0
+            set bad_pipestatus $status_code
+            break
+        end
+    end
+
     if test $cwd != '~'; or test -n "$lucid_git_status_in_home_directory"
         set -l git_state (__lucid_git_status)
         if test $status -eq 0
-            set_color --dim $lucid_git_separator_color
-            echo -sn " :: "
+            if test "$bad_pipestatus" -ne 0
+                set_color --dim red
+            else
+                set_color --dim $lucid_git_separator_color
+            end
+            echo -sn ' :: '
             set_color normal
+
             echo -sn "$git_state"
+
+            if test "$bad_pipestatus" -ne 0
+                set_color --dim red
+                echo -sn " ($bad_pipestatus) "
+            end
         end
     end
 
@@ -241,12 +259,9 @@ function fish_prompt
     set -l prompt_symbol "$lucid_prompt_symbol"
     set -l prompt_symbol_color "$lucid_prompt_symbol_color"
 
-    for status_code in $last_pipestatus
-        if test "$status_code" -ne 0
-            set prompt_symbol "$lucid_prompt_symbol_error"
-            set prompt_symbol_color "$lucid_prompt_symbol_error_color"
-            break
-        end
+    if test "$bad_pipestatus" -ne 0
+        set prompt_symbol "$lucid_prompt_symbol_error"
+        set prompt_symbol_color "$lucid_prompt_symbol_error_color"
     end
 
     set_color "$prompt_symbol_color"
