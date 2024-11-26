@@ -248,7 +248,7 @@ function fish_prompt
 
             if test "$bad_pipestatus" -ne 0
                 set_color --dim red
-                echo -sn " ($bad_pipestatus) "
+                echo -sn " ($bad_pipestatus)"
             end
         end
     end
