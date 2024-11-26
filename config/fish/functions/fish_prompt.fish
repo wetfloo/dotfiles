@@ -237,15 +237,15 @@ function fish_prompt
             else
                 set_color --dim $lucid_git_separator_color
             end
-            echo -sn ' :: '
-            set_color normal
-
-            echo -sn "$git_state"
-
             if test "$bad_pipestatus" -ne 0
                 set_color --dim red
-                echo -sn " ($bad_pipestatus)"
+            else
+                set_color --dim green
             end
+
+            echo -sn ' :: '
+            set_color normal
+            echo -sn "$git_state"
         end
     end
 
