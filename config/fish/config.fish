@@ -68,9 +68,6 @@ end
 #    set -x PATH "$lr_path $PATH"
 #end
 
-set -g lucid_dirty_indicator ' '
- # has to take same amount of space due to fish bug
-set -g lucid_clean_indicator '  '
 set -g lucid_cwd_color $fish_color_normal
 set -g lucid_prompt_symbol_color green
 set -g lucid_prompt_symbol_error_color red
