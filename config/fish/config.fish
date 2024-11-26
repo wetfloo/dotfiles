@@ -9,6 +9,9 @@ set -x RUSTC_WRAPPER sccache
 set -x TERMINAL kitty
 set -x EDITOR nvim
 
+set -g fish_prompt_pwd_full_dirs 2
+set -g fish_prompt_pwd_dir_length 3
+
 # Source modular config files
 for file in ~/.config/fish/conf.d/*.fish
     source
