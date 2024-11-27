@@ -29,9 +29,6 @@ alias zl='eza -l --color=auto --group-directories-first --icons' # long format
 alias zt='eza -aT --color=auto --group-directories-first --icons' # tree listing
 alias zd="eza -a | rg '^\.'" # show only dotfiles
 
-alias fuz='cd ~ && cd $(fd . -t d | fzf)'
-alias fuza='cd ~ && cd $(fd -H . -t d | fzf)'
-
 alias rm='rm -i'
 
 # fallback for when we're not in tmux
