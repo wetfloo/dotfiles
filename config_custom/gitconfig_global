@@ -31,11 +31,13 @@
     pc = "!f() { git add . && git commit -m \"$1\"; }; f"
     pca = !sh -c 'git add . && git commit --amend --no-edit'
 
-    lg = lg
+    lg = lg1
     lgs = lgs1
+
     lgs1 = lg1 --simplify-by-decoration
     lgs2 = lg2 --simplify-by-decoration
     lgs3 = lg3 --simplify-by-decoration
+
     lg1 = lg1-specific --all
     lg2 = lg2-specific --all
     lg3 = lg3-specific --all
