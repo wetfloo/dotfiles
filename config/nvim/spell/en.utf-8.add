@@ -112,3 +112,5 @@ uint32
 uint24
 uint16
 uint8
+codec
+vorbis
