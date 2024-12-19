@@ -44,7 +44,8 @@ vim.keymap.set({ "n", "x" }, "<leader>p", '"+p', { desc = "Paste from + register
 
 -- Paste over the text without losing current unnamed register
 
-vim.keymap.set("x", "p", '"_dP')
+vim.keymap.set("x", "p", '"_dp')
+vim.keymap.set("x", "P", '"_dP')
 
 local yank_highlight = vim.api.nvim_create_augroup("yank_highlight", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {

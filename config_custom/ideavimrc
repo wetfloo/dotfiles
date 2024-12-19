@@ -142,6 +142,7 @@ nnoremap do 0v%l%d
 nnoremap co 0v%l%c
 
 " Pasting over something in visual mode doesn't overwrite the current buffer
+xnoremap p "_dp
 xnoremap p "_dP
 
 " Hacky way to move stuff to a new line after commas, but will do for now
