@@ -164,9 +164,9 @@ map <A-u> <action>(ReopenClosedTab)
 " Blow away all tool windows
 map <leader>\ <action>(HideAllWindows)
 
-map <leader>ee <action>(ShowErrorDescription)
-map <leader>ep <action>(GotoPreviousError)
-map <leader>en <action>(GotoNextError)
+nmap <C-c> <action>(ShowErrorDescription)
+nmap <C-[> <action>(GotoPreviousError)
+nmap <C-]> <action>(GotoNextError)
 
 " Finds
 map <leader>fc <action>(GotoClass)
