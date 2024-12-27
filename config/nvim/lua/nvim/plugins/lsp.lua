@@ -111,19 +111,19 @@ return {
         local servers_manual = {
             clangd = {},
             gopls = {},
-            -- rust_analyzer = {
-            --     ["rust-analyzer"] = {
-            --         checkOnSave = {
-            --             command = "clippy",
-            --         },
-            --         cargo = {
-            --             -- This should, in theory, fix analyzer complaining
-            --             -- about code with #[cfg(not(test))] attribute.
-            --             -- For some reason it really doesn't...
-            --             features = { "all" },
-            --         },
-            --     },
-            -- },
+            rust_analyzer = {
+                ["rust-analyzer"] = {
+                    checkOnSave = {
+                        command = "clippy",
+                    },
+                    cargo = {
+                        -- This should, in theory, fix analyzer complaining
+                        -- about code with #[cfg(not(test))] attribute.
+                        -- For some reason it really doesn't...
+                        features = { "all" },
+                    },
+                },
+            },
         }
 
         -- LSPs won't be auto-installed, but will be installed and configured by Mason.
