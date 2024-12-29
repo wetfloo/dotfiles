@@ -1,0 +1,24 @@
+{
+  "$schema" : "https:\/\/schema.linearmouse.app\/0.10.0",
+  "schemes" : [
+    {
+      "if" : {
+        "device" : {
+          "productName" : "Razer Basilisk V3",
+          "productID" : "0x99",
+          "category" : "mouse",
+          "vendorID" : "0x1532"
+        }
+      },
+      "scrolling" : {
+        "reverse" : {
+          "vertical" : true
+        }
+      },
+      "pointer" : {
+        "disableAcceleration" : true,
+        "acceleration" : 0.4684
+      }
+    }
+  ]
+}
