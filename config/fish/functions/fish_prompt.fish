@@ -4,11 +4,11 @@ if ! set -q lucid_dirty_indicator
 end
 
 if ! set -q lucid_prompt_symbol
-    set -g lucid_prompt_symbol "❯"
+    set -g lucid_prompt_symbol ">"
 end
 
 if ! set -q lucid_prompt_symbol_error
-    set -g lucid_prompt_symbol_error "❯"
+    set -g lucid_prompt_symbol_error ">"
 end
 
 if ! set -q lucid_prompt_symbol_color
