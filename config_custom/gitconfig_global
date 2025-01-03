@@ -19,11 +19,11 @@
     fb = !sh -c 'git branch --list --all --format="%\\(refname:short\\)" | fzf --height=~100%'
     cb = !sh -c 'git checkout $(git fb)'
 
-    s = !sh -c 'git -c color.ui=always status -s | bat --plain'
-    ss = !sh -c 'git -c color.ui=always status | bat --plain'
+    s = !sh -c 'git -c color.ui=always status -s'
+    ss = !sh -c 'git -c color.ui=always status'
 
-    d = !sh -c 'git -c color.ui=always diff | bat --plain'
-    ds = !sh -c 'git -c color.ui=always diff --staged | bat --plain'
+    d = !sh -c 'git -c color.ui=always diff -M -C '
+    ds = !sh -c 'git -c color.ui=always diff -M -C --staged'
 
     c = "!f() { git commit -m \"$1\"; }; f"
     ca = commit --amend --no-edit

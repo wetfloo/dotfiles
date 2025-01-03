@@ -32,7 +32,11 @@ return {
         local diagnostics_color = {}
 
         local function add_custom_hl(key, og_hl_name)
-            local color_special = require("lackluster.color-special")
+            local _, color_special = pcall(require, "lackluster.color-special")
+            if color_special == nil then
+                return
+            end
+
             local new_hl_name = og_hl_name .. "Custom"
             local hlgroup = vim.api.nvim_get_hl(0, {
                 name = og_hl_name,
