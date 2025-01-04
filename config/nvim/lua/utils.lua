@@ -220,9 +220,7 @@ end
 setmetatable(is_dark_mode, {
     __call = function(self)
         self:init_system()
-        print("hello")
         self:init_query_command()
-        print("there")
         local stdout = vim.system(self.query_command, { text = true }):wait()
         return self.parse_query_response(stdout)
     end,
