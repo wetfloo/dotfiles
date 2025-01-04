@@ -1,8 +1,8 @@
 return {
-    "hocman2/lackluster.nvim",
-    commit = "8df66098779557c72b046359c5ae9a626aed056a",
+    "slugbyte/lackluster.nvim",
     lazy = false,
     priority = 1000,
+    enabled = require("utils").is_dark_mode(),
     init = function()
         local lackluster = require("lackluster")
         local color = lackluster.color -- blue, green, red, orange, black, lack, luster, gray1-9
