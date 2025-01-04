@@ -6,6 +6,7 @@ return {
     dependencies = {
         "nvim-tree/nvim-web-devicons",
     },
+    version = "2.13",
     config = function()
         local oil = require("oil")
         oil.setup({
