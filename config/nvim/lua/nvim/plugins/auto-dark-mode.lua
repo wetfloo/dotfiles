@@ -11,31 +11,31 @@ local function setup_devicons(color_icons, default_icon)
 end
 
 return {
-    enabled = true,
+    enabled = false,
     "f-person/auto-dark-mode.nvim",
+    lazy = false,
+    priority = 1000,
     opts = {
         update_interval = 10000,
         set_dark_mode = function()
             vim.api.nvim_set_option_value("background", "dark", {})
-
             local lackluster = require("lackluster")
-            local color = lackluster.color -- blue, green, red, orange, black, lack, luster, gray1-9
-            setup_devicons(false, {
-                color = lackluster.color.gray4,
-                name = "Default",
+            lackluster.setup({
+                tweak_background = {
+                    normal = color.black,
+                },
             })
-
-            vim.cmd.colorscheme("lackluster")
+            vim.opt.colorscheme("lackluster")
         end,
         set_light_mode = function()
             vim.api.nvim_set_option_value("background", "light", {})
-
-            local palette = require("github-theme.palette").load("github_light")
-            setup_devicons(true, {
-                color = palette.fg1,
-                name = "Default",
+            local lackluster = require("lackluster")
+            lackluster.setup({
+                tweak_background = {
+                    normal = color.white,
+                },
             })
-            vim.cmd.colorscheme("github_light")
+            vim.opt.colorscheme("lackluster")
         end,
     },
 }

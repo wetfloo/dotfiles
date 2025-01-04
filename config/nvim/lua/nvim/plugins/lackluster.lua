@@ -1,5 +1,6 @@
 return {
-    "slugbyte/lackluster.nvim",
+    "hocman2/lackluster.nvim",
+    commit = "8df66098779557c72b046359c5ae9a626aed056a",
     lazy = false,
     priority = 1000,
     init = function()
