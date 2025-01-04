@@ -117,22 +117,14 @@ end
 local is_dark_mode = {}
 
 function is_dark_mode:init_system()
-    if self.system ~= nil then
-        return
-    end
-
-    if string.match(vim.loop.os_uname().release, "WSL") then
+    if string.match(vim.uv.os_uname().release, "WSL") then
         self.system = "WSL"
     else
-        self.system = vim.loop.os_uname().sysname
+        self.system = vim.uv.os_uname().sysname
     end
 end
 
 function is_dark_mode:init_query_command()
-    if self.system ~= nil and self.query_command ~= nil then
-        return
-    end
-
     if self.system == "Darwin" then
         self.query_command = { "defaults", "read", "-g", "AppleInterfaceStyle" }
     elseif self.system == "Linux" then
@@ -193,6 +185,7 @@ function is_dark_mode:init_query_command()
     end
 end
 
+-- TODO: fix for other systems
 function is_dark_mode:parse_query_response(res)
     if self.system == "Linux" then
         -- https://github.com/flatpak/xdg-desktop-portal/blob/c0f0eb103effdcf3701a1bf53f12fe953fbf0b75/data/org.freedesktop.impl.portal.Settings.xml#L32-L46
@@ -203,26 +196,29 @@ function is_dark_mode:parse_query_response(res)
             return true
         elseif string.match(res[1], "uint32 2") ~= nil then
             return false
-        else
-            -- fallback on dark
-            return true
         end
     elseif self.system == "Darwin" then
-        return res[1] == "Dark"
+        return res == "Dark"
     elseif self.system == "Windows_NT" or self.system == "WSL" then
         -- AppsUseLightTheme REG_DWORD 0x0 : dark
         -- AppsUseLightTheme REG_DWORD 0x1 : light
         return string.match(res[3], "0x1") == nil
     end
-    return false
+
+    return true
 end
 
 setmetatable(is_dark_mode, {
     __call = function(self)
-        self:init_system()
-        self:init_query_command()
-        local stdout = vim.system(self.query_command, { text = true }):wait()
-        return self.parse_query_response(stdout)
+        if self.system == nil then
+            self:init_system()
+        end
+        if self.query_command == nil then
+            self:init_query_command()
+        end
+
+        local query_result = vim.system(self.query_command, { text = true }):wait()
+        return self:parse_query_response(vim.trim(query_result.stdout or ""))
     end,
 })
 
