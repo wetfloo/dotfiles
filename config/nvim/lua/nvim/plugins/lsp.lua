@@ -119,7 +119,7 @@ return {
                         -- This should, in theory, fix analyzer complaining
                         -- about code with #[cfg(not(test))] attribute.
                         -- For some reason it really doesn't...
-                        features = { "all" },
+                        -- features = { "all" },
                     },
                 },
             },
