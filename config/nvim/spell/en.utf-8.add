@@ -126,3 +126,4 @@ filesystem
 sql
 nvim
 colorscheme
+fallthrough
