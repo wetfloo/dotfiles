@@ -3,9 +3,16 @@ fish_variables
 conf.d/*
 completions/*
 functions/*
+
 !completions/lf.fish
+
 !conf.d/brew.fish
+!conf.d/rustup.fish
 !conf.d/lf_icons.fish
 !conf.d/lf_lfcd.fish
+!conf.d/lf_lfcd.fish
+!conf.d/fish-ssh-agent.fish
+
 !functions/fish_prompt.fish
 !functions/yazi_yy.fish
+!functions/__ssh_agent*.fish
