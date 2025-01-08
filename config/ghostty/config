@@ -1,6 +1,5 @@
-command = /opt/homebrew/bin/fish
-font-family = "Iosevka Term"
-font-size = 22
+config-file = ?os_local/config
+
 adjust-cell-height = 20%
 # this breaks a lot of themes, allowing white text on light background https://github.com/ghostty-org/ghostty/discussions/3869
 # minimum-contrast = 1.1
