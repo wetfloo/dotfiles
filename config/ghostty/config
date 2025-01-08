@@ -1,3 +1,20 @@
-command = fish
-click-repeat-interval = 500
-auto-update-channel = stable
+command = /opt/homebrew/bin/fish
+font-family = "Iosevka Term"
+font-size = 22
+adjust-cell-height = 20%
+# this breaks a lot of themes, allowing white text on light background https://github.com/ghostty-org/ghostty/discussions/3869
+# minimum-contrast = 1.1
+font-thicken = true
+theme = light:"Builtin Light",dark:"PaulMillr"
+cursor-style-blink = false
+cursor-invert-fg-bg = true
+mouse-hide-while-typing = true
+# this doesn't play with nvim themes with backgrounds background-opacity = 0.85
+# background-blur-radius = 20
+title = " "
+macos-option-as-alt = true
+macos-titlebar-style = transparent
+macos-titlebar-proxy-icon = hidden
+macos-auto-secure-input = true
+macos-secure-input-indication = true
+auto-update = off
