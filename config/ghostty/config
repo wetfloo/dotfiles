@@ -1,6 +1,6 @@
 config-file = ?os_local/config
 
-adjust-cell-height = 20%
+adjust-cell-height = 10%
 # this breaks a lot of themes, allowing white text on light background https://github.com/ghostty-org/ghostty/discussions/3869
 # minimum-contrast = 1.1
 font-thicken = true
