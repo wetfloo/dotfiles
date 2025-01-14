@@ -12,7 +12,7 @@ after-login-command = []
 after-startup-command = []
 
 # Start AeroSpace at login
-start-at-login = false
+start-at-login = true
 
 # Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
 enable-normalization-flatten-containers = true
@@ -21,7 +21,7 @@ enable-normalization-opposite-orientation-for-nested-containers = true
 # See: https://nikitabobko.github.io/AeroSpace/guide#layouts
 # The "accordion-padding" specifies the size of accordion padding
 # You can set 0 to disable the padding feature
-accordion-padding = 30
+accordion-padding = 20
 
 # Possible values: tiles|accordion
 default-root-container-layout = "tiles"
@@ -56,16 +56,16 @@ preset = "qwerty"
 #                 Monitor pattern is the same as for "workspace-to-monitor-force-assignment".
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
-inner.horizontal = 4
-inner.vertical =   4
+inner.horizontal = 0
+inner.vertical =   0
 outer.left =       0
 outer.bottom =     0
 outer.top =        0
 outer.right =      0
 
 [mode.main.binding]
-alt-slash = "layout tiles horizontal vertical"
-alt-comma = "layout accordion horizontal vertical"
+cmd-alt-t = [ "fullscreen off", "layout tiles horizontal vertical" ]
+cmd-alt-c = [ "fullscreen off", "layout accordion horizontal vertical" ]
 
 cmd-alt-h = "focus left"
 cmd-alt-j = "focus down"
@@ -98,23 +98,23 @@ alt-tab = "focus-back-and-forth"
 [mode.move.binding]
 esc = "mode main"
 
-cmd-alt-h = [ "fullscreen off", "move left" ]
-cmd-alt-j = [ "fullscreen off", "move down" ]
-cmd-alt-k = [ "fullscreen off", "move up" ]
-cmd-alt-l = [ "fullscreen off", "move right" ]
+h = [ "fullscreen off", "move left" ]
+j = [ "fullscreen off", "move down" ]
+k = [ "fullscreen off", "move up" ]
+l = [ "fullscreen off", "move right" ]
 
-cmd-alt-shift-h = ["join-with left", "mode main"]
-cmd-alt-shift-j = ["join-with down", "mode main"]
-cmd-alt-shift-k = ["join-with up", "mode main"]
-cmd-alt-shift-l = ["join-with right", "mode main"]
+shift-h = [ "join-with left"]
+shift-j = [ "join-with down" ]
+shift-k = [ "join-with up" ]
+shift-l = [ "join-with right" ]
 
-cmd-alt-1 = "move-node-to-workspace 1"
-cmd-alt-2 = "move-node-to-workspace 2"
-cmd-alt-3 = "move-node-to-workspace 3"
-cmd-alt-4 = "move-node-to-workspace 4"
-cmd-alt-5 = "move-node-to-workspace 5"
-cmd-alt-6 = "move-node-to-workspace 6"
-cmd-alt-7 = "move-node-to-workspace 7"
-cmd-alt-8 = "move-node-to-workspace 8"
-cmd-alt-9 = "move-node-to-workspace 9"
+1 = [ "move-node-to-workspace 1", "mode main" ]
+2 = [ "move-node-to-workspace 2", "mode main" ]
+3 = [ "move-node-to-workspace 3", "mode main" ]
+4 = [ "move-node-to-workspace 4", "mode main" ]
+5 = [ "move-node-to-workspace 5", "mode main" ]
+6 = [ "move-node-to-workspace 6", "mode main" ]
+7 = [ "move-node-to-workspace 7", "mode main" ]
+8 = [ "move-node-to-workspace 8", "mode main" ]
+9 = [ "move-node-to-workspace 9", "mode main" ]
 
