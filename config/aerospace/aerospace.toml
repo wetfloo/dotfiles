@@ -67,9 +67,9 @@ shift-j = [ "join-with down" ]
 shift-k = [ "join-with up" ]
 shift-l = [ "join-with right" ]
 
-b = [ "move-node-to-workspace B", "mode main" ] # background
-c = [ "move-node-to-workspace C", "mode main" ] # chat
-m = [ "move-node-to-workspace M", "mode main" ] # background stuff like torrents and nicotine
+b = [ "move-node-to-workspace bg_sound", "mode main" ]
+c = [ "move-node-to-workspace chat", "mode main" ] # chat
+m = [ "move-node-to-workspace misc", "mode main" ] # background stuff like torrents and nicotine
 
 1 = [ "move-node-to-workspace 1", "mode main" ]
 2 = [ "move-node-to-workspace 2", "mode main" ]
@@ -84,9 +84,9 @@ m = [ "move-node-to-workspace M", "mode main" ] # background stuff like torrents
 [mode.workspaces.binding]
 esc = "mode main"
 space = [ "workspace 1", "mode main" ] # important, the default
-b = [ "workspace B", "mode main" ] # background
-c = [ "workspace C", "mode main" ] # chat
-m = [ "workspace M", "mode main" ] # background stuff like torrents and nicotine
+b = [ "workspace bg_sound", "mode main" ] # background
+c = [ "workspace chat", "mode main" ] # chat
+m = [ "workspace misc", "mode main" ] # background stuff like torrents and nicotine
 
 1 = [ "workspace 1", "mode main" ]
 2 = [ "workspace 2", "mode main" ]
@@ -100,19 +100,19 @@ m = [ "workspace M", "mode main" ] # background stuff like torrents and nicotine
 
 [[on-window-detected]]
     if.app-id = "com.foobar2000.mac"
-    run = "move-node-to-workspace B"
+    run = [ "layout tiling",  "move-node-to-workspace bg_sound" ]
 
 [[on-window-detected]]
     if.app-id = "dev.vencord.vesktop"
-    run = "move-node-to-workspace C"
+    run = "move-node-to-workspace chat"
 [[on-window-detected]]
     if.app-id = "ru.keepcoder.Telegram"
-    run = "move-node-to-workspace C"
+    run = "move-node-to-workspace chat"
 
 [[on-window-detected]]
     if.app-id = "org.nicotine_plus.Nicotine"
-    run = "move-node-to-workspace M"
+    run = "move-node-to-workspace misc"
 [[on-window-detected]]
     if.app-id = "org.qbittorrent.qBittorrent"
-    run = "move-node-to-workspace M"
+    run = "move-node-to-workspace misc"
 
