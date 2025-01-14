@@ -12,7 +12,7 @@ enable-normalization-opposite-orientation-for-nested-containers = true
 
 accordion-padding = 20
 
-default-root-container-layout = "tiles"
+default-root-container-layout = "accordion"
 
 default-root-container-orientation = "auto"
 
@@ -34,32 +34,21 @@ outer.right =      0
 cmd-alt-t = [ "fullscreen off", "layout tiles horizontal vertical" ]
 cmd-alt-c = [ "fullscreen off", "layout accordion horizontal vertical" ]
 
-cmd-alt-h = [ "focus left", "move-mouse window-lazy-center" ]
-cmd-alt-j = [ "focus down", "move-mouse window-lazy-center" ]
-cmd-alt-k = [ "focus up", "move-mouse window-lazy-center" ]
-cmd-alt-l = [ "focus right", "move-mouse window-lazy-center" ]
+cmd-alt-h = [ "focus left --boundaries-action wrap-around-the-workspace", "move-mouse window-lazy-center" ]
+cmd-alt-j = [ "focus down --boundaries-action wrap-around-the-workspace", "move-mouse window-lazy-center" ]
+cmd-alt-k = [ "focus up --boundaries-action wrap-around-the-workspace", "move-mouse window-lazy-center" ]
+cmd-alt-l = [ "focus right --boundaries-action wrap-around-the-workspace", "move-mouse window-lazy-center" ]
 
 cmd-alt-f = "fullscreen --no-outer-gaps"
 cmd-alt-shift-f = "macos-native-fullscreen"
 cmd-alt-m = "mode move"
-cmd-alt-w = "mode workspaces"
-cmd-alt-minus = "resize smart -50"
-cmd-alt-equal = "resize smart +50"
-
+cmd-alt-p = "mode workspaces"
 cmd-alt-shift-r = "flatten-workspace-tree" # reset layout
 cmd-alt-shift-t = "layout floating tiling" # toggle between tiling and floating
-
-cmd-alt-1 = "workspace 1"
-cmd-alt-2 = "workspace 2"
-cmd-alt-3 = "workspace 3"
-cmd-alt-4 = "workspace 4"
-cmd-alt-5 = "workspace 5"
-cmd-alt-6 = "workspace 6"
-cmd-alt-7 = "workspace 7"
-cmd-alt-8 = "workspace 8"
-cmd-alt-9 = "workspace 9"
-
-alt-tab = "focus-back-and-forth"
+cmd-alt-minus = "resize smart -50"
+cmd-alt-equal = "resize smart +50"
+cmd-alt-comma = "focus-back-and-forth"
+cmd-alt-period = "workspace-back-and-forth"
 
 # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
 #s = ["layout sticky tiling", "mode main"]
@@ -89,12 +78,12 @@ shift-l = [ "join-with right" ]
 
 [mode.workspaces.binding]
 esc = "mode main"
-1 = [ "workspace 1", "mode main" ] # important, the default
-p = [ "workspace P", "mode main" ] # programming
+space = [ "workspace 1", "mode main" ] # important, the default
 b = [ "workspace B", "mode main" ] # background
 c = [ "workspace C", "mode main" ] # chat
-m = [ "workspace M", "mode main" ] # misc
+m = [ "workspace M", "mode main" ] # background stuff like torrents and nicotine
 
+1 = [ "workspace 1", "mode main" ]
 2 = [ "workspace 2", "mode main" ]
 3 = [ "workspace 3", "mode main" ]
 4 = [ "workspace 4", "mode main" ]
@@ -103,3 +92,22 @@ m = [ "workspace M", "mode main" ] # misc
 7 = [ "workspace 7", "mode main" ]
 8 = [ "workspace 8", "mode main" ]
 9 = [ "workspace 9", "mode main" ]
+
+[[on-window-detected]]
+    if.app-id = "com.foobar2000.mac"
+    run = "move-node-to-workspace B"
+
+[[on-window-detected]]
+    if.app-id = "dev.vencord.vesktop"
+    run = "move-node-to-workspace C"
+[[on-window-detected]]
+    if.app-id = "ru.keepcoder.Telegram"
+    run = "move-node-to-workspace C"
+
+[[on-window-detected]]
+    if.app-id = "org.nicotine_plus.Nicotine"
+    run = "move-node-to-workspace M"
+[[on-window-detected]]
+    if.app-id = "org.qbittorrent.qBittorrent"
+    run = "move-node-to-workspace M"
+
