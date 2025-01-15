@@ -88,7 +88,7 @@ shift-l = [ "join-with right" ]
 
 [[on-window-detected]]
     if.app-id = "com.foobar2000.mac"
-    run = [ "layout tiling",  "move-node-to-workspace 8::music" ]
+    run = [ "layout tiles",  "move-node-to-workspace 8::music" ]
 
 [[on-window-detected]]
     if.app-id = "dev.vencord.vesktop"
@@ -103,4 +103,3 @@ shift-l = [ "join-with right" ]
 [[on-window-detected]]
     if.app-id = "org.qbittorrent.qBittorrent"
     run = "move-node-to-workspace 9::other"
-
