@@ -5,7 +5,7 @@ set -euo pipefail
 if [[ $# -gt 0 ]]; then
     selected=$1
 else
-    selected=$(fd . --exact-depth 1 --type directory ~ ~/projects | fzf --scheme path || :)
+    selected=$(fd . --exact-depth 1 --type directory ~ ~/projects ~/Documents/projects 2>/dev/null | fzf --scheme path || :)
 fi
 
 if [[ -z $selected ]]; then
