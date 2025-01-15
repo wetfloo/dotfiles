@@ -47,7 +47,7 @@ cmd-alt-shift-t = "layout floating tiling" # toggle between tiling and floating
 cmd-alt-minus = [ "fullscreen off", "resize smart -50" ]
 cmd-alt-equal = [ "fullscreen off", "resize smart +50" ]
 cmd-alt-0 = [ "fullscreen off", "balance-sizes" ]
-cmd-alt-comma = "focus-back-and-forth"
+cmd-alt-comma = "exec-and-forget aerospace focus-back-and-forth || aerospace workspace-back-and-forth"
 cmd-alt-period = "workspace-back-and-forth"
 
 cmd-alt-1 = "workspace 1::main"
