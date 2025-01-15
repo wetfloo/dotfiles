@@ -55,7 +55,7 @@ cmd-alt-2 = "workspace 2"
 cmd-alt-3 = "workspace 3"
 cmd-alt-4 = "workspace 4"
 cmd-alt-5 = "workspace 5"
-cmd-alt-6 = "workspace 6"
+cmd-alt-6 = "workspace 6::email"
 cmd-alt-7 = "workspace 7::chat"
 cmd-alt-8 = "workspace 8::music"
 cmd-alt-9 = "workspace 9::other"  # various bg stuff like torrents and nicotine
@@ -81,7 +81,7 @@ shift-l = [ "join-with right" ]
 3 = [ "move-node-to-workspace 3", "mode main" ]
 4 = [ "move-node-to-workspace 4", "mode main" ]
 5 = [ "move-node-to-workspace 5", "mode main" ]
-6 = [ "move-node-to-workspace 6", "mode main" ]
+6 = [ "move-node-to-workspace 6::email", "mode main" ]
 7 = [ "move-node-to-workspace 7::chat", "mode main" ]
 8 = [ "move-node-to-workspace 8::music", "mode main" ]
 9 = [ "move-node-to-workspace 9::other", "mode main" ] # various bg stuff like torrents and nicotine
@@ -104,3 +104,6 @@ shift-l = [ "join-with right" ]
     if.app-id = "org.qbittorrent.qBittorrent"
     run = "move-node-to-workspace 9::other"
 
+[[on-window-detected]]
+    if.app-id = "com.apple.mail"
+    run = "move-node-to-workspace 6::email"
