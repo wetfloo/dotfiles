@@ -42,6 +42,7 @@ cmd-alt-l = [ "focus right --boundaries-action wrap-around-the-workspace", "move
 cmd-alt-f = "fullscreen --no-outer-gaps"
 cmd-alt-shift-f = "macos-native-fullscreen"
 cmd-alt-m = "mode move"
+cmd-alt-r = "mode raw" # raw input when needed
 cmd-alt-shift-r = "flatten-workspace-tree" # reset layout
 cmd-alt-shift-t = "layout floating tiling" # toggle between tiling and floating
 cmd-alt-minus = [ "fullscreen off", "resize smart -50" ]
@@ -59,6 +60,9 @@ cmd-alt-6 = "workspace 6"
 cmd-alt-7 = "workspace 7::chat"
 cmd-alt-8 = "workspace 8::music"
 cmd-alt-9 = "workspace 9::other"  # various bg stuff like torrents and nicotine
+
+[mode.raw.binding]
+esc = "mode main"
 
 # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
 #s = ["layout sticky tiling", "mode main"]
