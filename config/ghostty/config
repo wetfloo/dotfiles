@@ -10,7 +10,7 @@ cursor-style-blink = false
 cursor-invert-fg-bg = true
 mouse-hide-while-typing = true
 # this doesn't play with nvim themes with backgrounds
-background-opacity = 0.875
+background-opacity = 0.925
 background-blur-radius = 20
 title = " "
 macos-option-as-alt = true
