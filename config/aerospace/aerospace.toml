@@ -44,7 +44,7 @@ cmd-alt-shift-f = "macos-native-fullscreen"
 cmd-alt-m = "mode move"
 cmd-alt-w = "mode raw" # raw input when needed
 cmd-alt-r = "flatten-workspace-tree" # reset layout
-cmd-alt-shift-t = "layout floating tiling" # toggle between tiling and floating
+cmd-alt-i = "layout floating tiling" # toggle between tiling and floating
 cmd-alt-minus = [ "fullscreen off", "resize smart -50" ]
 cmd-alt-equal = [ "fullscreen off", "resize smart +50" ]
 cmd-alt-0 = [ "fullscreen off", "balance-sizes" ]
@@ -70,15 +70,15 @@ esc = "mode main"
 [mode.move.binding]
 esc = "mode main"
 
-h = [ "fullscreen off", "move left" ]
-j = [ "fullscreen off", "move down" ]
-k = [ "fullscreen off", "move up" ]
-l = [ "fullscreen off", "move right" ]
+h = [ "fullscreen off", "move left", "mode main" ]
+j = [ "fullscreen off", "move down", "mode main" ]
+k = [ "fullscreen off", "move up", "mode main" ]
+l = [ "fullscreen off", "move right", "mode main" ]
 
-shift-h = [ "join-with left"]
-shift-j = [ "join-with down" ]
-shift-k = [ "join-with up" ]
-shift-l = [ "join-with right" ]
+shift-h = [ "join-with left", "mode main" ]
+shift-j = [ "join-with down", "mode main" ]
+shift-k = [ "join-with up", "mode main" ]
+shift-l = [ "join-with right", "mode main" ]
 
 1 = [ "move-node-to-workspace 1::main", "mode main" ]
 2 = [ "move-node-to-workspace 2", "mode main" ]
