@@ -90,6 +90,25 @@ shift-l = [ "join-with right", "mode main" ]
 8 = [ "move-node-to-workspace 8::music", "mode main" ]
 9 = [ "move-node-to-workspace 9::other", "mode main" ] # various bg stuff like torrents and nicotine
 
+# ================
+# Make windows float
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.finder'
+    run = 'layout floating'
+[[on-window-detected]]
+    if.app-id = 'com.apple.iBooksX'
+    run = 'layout floating'
+[[on-window-detected]]
+    if.app-id = 'com.apple.Preview'
+    run = 'layout floating'
+[[on-window-detected]]
+    if.app-id = 'com.valvesoftware.steam'
+    run = 'layout floating'
+
+# ================
+# Move windows
+
 [[on-window-detected]]
     if.app-id = "com.foobar2000.mac"
     run = "move-node-to-workspace 8::music"
