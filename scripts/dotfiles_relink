@@ -55,6 +55,11 @@ linux_setup () {
     relink "$DOTFILES_DIR/system/systemd_user" "$dir/user"
 }
 
+macos_setup () {
+    defaults write com.apple.dock autohide-delay -float 0.015
+    killall Dock
+}
+
 # Function won't run in child shell without this
 export -f echoerr
 export -f relink
@@ -84,4 +89,8 @@ fi
 
 if [ "$(uname)" = "Linux" ] && [ "${LINK_LINUX_FILES:-false}" = true ]; then
     linux_setup
+fi
+
+if [ "$(uname)" = "Darwin" ] && [ "${LINK_MACOS_FILES:-true}" = true ]; then
+    macos_setup
 fi
