@@ -57,6 +57,7 @@ linux_setup () {
 
 macos_setup () {
     defaults write com.apple.dock autohide-delay -float 0.015
+    defaults write com.apple.dock autohide-time-modifier -float 0.2
     killall Dock
 }
 
