@@ -16,3 +16,5 @@ functions/*
 !functions/fish_prompt.fish
 !functions/yazi_yy.fish
 !functions/__ssh_agent*.fish
+!functions/addpaths.fish
+!functions/removepath.fish
