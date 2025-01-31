@@ -7,7 +7,7 @@ adjust-cursor-height = 20%
 font-thicken = true
 theme = light:"Builtin Light",dark:"PaulMillr"
 cursor-style-blink = false
-cursor-invert-fg-bg = true
+cursor-invert-fg-bg = false
 mouse-hide-while-typing = true
 cursor-style = block
 # this doesn't play with nvim themes with backgrounds
