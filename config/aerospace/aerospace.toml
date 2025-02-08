@@ -48,8 +48,8 @@ cmd-alt-i = "layout floating tiling" # toggle between tiling and floating
 cmd-alt-minus = [ "fullscreen off", "resize smart -50" ]
 cmd-alt-equal = [ "fullscreen off", "resize smart +50" ]
 cmd-alt-0 = [ "fullscreen off", "balance-sizes" ]
-cmd-alt-enter = "exec-and-forget aerospace focus-back-and-forth || aerospace workspace-back-and-forth"
-cmd-alt-backslash = "workspace-back-and-forth"
+cmd-alt-semicolon = "exec-and-forget aerospace focus-back-and-forth || aerospace workspace-back-and-forth"
+cmd-alt-quote = "workspace-back-and-forth"
 
 cmd-alt-1 = "workspace 1::main"
 cmd-alt-2 = "workspace 2"
