@@ -60,6 +60,8 @@ cmd-alt-6 = "workspace 6"
 cmd-alt-7 = "workspace 7::chat"
 cmd-alt-8 = "workspace 8::music"
 cmd-alt-9 = "workspace 9::other"  # various bg stuff like torrents and nicotine
+cmd-alt-right = "workspace next"
+cmd-alt-left = "workspace prev"
 
 [mode.raw.binding]
 esc = "mode main"
