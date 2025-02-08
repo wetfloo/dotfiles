@@ -48,8 +48,8 @@ cmd-alt-i = "layout floating tiling" # toggle between tiling and floating
 cmd-alt-minus = [ "fullscreen off", "resize smart -50" ]
 cmd-alt-equal = [ "fullscreen off", "resize smart +50" ]
 cmd-alt-0 = [ "fullscreen off", "balance-sizes" ]
-cmd-alt-comma = "exec-and-forget aerospace focus-back-and-forth || aerospace workspace-back-and-forth"
-cmd-alt-period = "workspace-back-and-forth"
+cmd-alt-enter = "exec-and-forget aerospace focus-back-and-forth || aerospace workspace-back-and-forth"
+cmd-alt-backslash = "workspace-back-and-forth"
 
 cmd-alt-1 = "workspace 1::main"
 cmd-alt-2 = "workspace 2"
@@ -60,8 +60,8 @@ cmd-alt-6 = "workspace 6"
 cmd-alt-7 = "workspace 7::chat"
 cmd-alt-8 = "workspace 8::music"
 cmd-alt-9 = "workspace 9::other"  # various bg stuff like torrents and nicotine
-cmd-alt-right = "workspace next"
-cmd-alt-left = "workspace prev"
+cmd-alt-period = "workspace next --wrap-around"
+cmd-alt-comma = "workspace prev --wrap-around"
 
 [mode.raw.binding]
 esc = "mode main"
