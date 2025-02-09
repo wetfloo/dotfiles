@@ -14,7 +14,23 @@ return {
 
                 -- Add languages to be installed here that you want installed for treesitter
 
-                ensure_installed = { "c", "cpp", "go", "lua", "python", "rust", "tsx", "typescript", "vimdoc", "vim" },
+                ensure_installed = {
+                    "bash",
+                    "c",
+                    "cpp",
+                    "fish",
+                    "gitcommit",
+                    "gitignore",
+                    "go",
+                    "kotlin",
+                    "lua",
+                    "make",
+                    "markdown",
+                    "python",
+                    "rust",
+                    "vim",
+                    "vimdoc",
+                },
                 auto_install = true,
                 highlight = {
                     enable = not vim.g.vscode,
