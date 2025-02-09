@@ -34,8 +34,7 @@ return {
                 auto_install = true,
                 highlight = {
                     enable = not vim.g.vscode,
-                    -- https://github.com/catppuccin/nvim#wrong-treesitter-highlights
-                    additional_vim_regex_highlighting = false,
+                    additional_vim_regex_highlighting = true,
                 },
                 indent = { enable = not vim.g.vscode, disable = { "python" } },
                 incremental_selection = {
