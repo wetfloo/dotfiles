@@ -112,7 +112,7 @@ cleanup = true
 # For the BrewCask step
 # If `Repo Cask Upgrade` exists, then use the `-a` option.
 # Otherwise, use the `--greedy` option.
-# greedy_cask = true
+greedy_cask = true
 
 # For the BrewCask step
 # If `Repo Cask Upgrade` does not exist, then use the `--greedy_latest` option.
@@ -122,7 +122,7 @@ cleanup = true
 
 # For the BrewFormula step
 # Execute `brew autoremove` after the step.
-# autoremove = true
+autoremove = true
 
 # For the BrewFormula step
 # Upgrade formulae built from the HEAD branch; `brew upgrade --fetch-HEAD`
