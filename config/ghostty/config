@@ -19,4 +19,4 @@ macos-titlebar-style = hidden
 macos-titlebar-proxy-icon = hidden
 macos-auto-secure-input = true
 macos-secure-input-indication = true
-auto-update = check
+auto-update = off
