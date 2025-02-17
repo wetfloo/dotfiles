@@ -103,6 +103,31 @@ vim.keymap.set("x", "<A-n>", ":'<,'> mo '>+<CR>gv=gv", { desc = "Move selection 
 vim.keymap.set("x", "<C-a>", "<C-a>gv")
 vim.keymap.set("x", "<C-x>", "<C-x>gv")
 
+local function yank_file_local(keys, expand_str, obj_desc)
+    vim.keymap.set("n", "<leader>n" .. keys, function()
+        local path = vim.fn.expand(expand_str)
+        vim.fn.setreg('"', path)
+        vim.fn.setreg("0", path)
+    end, { desc = "Yank " .. obj_desc })
+end
+
+local function yank_file_plus(keys, expand_str, obj_desc)
+    vim.keymap.set("n", "<leader>n" .. keys, function()
+        local path = vim.fn.expand(expand_str)
+        vim.fn.setreg("*", path)
+        vim.fn.setreg("+", path)
+    end, { desc = "Yank " .. obj_desc .. "to system clipboard" })
+end
+
+local function yank_file(keys, expand_str, obj_desc)
+    yank_file_local(string.lower(keys), expand_str, obj_desc)
+    yank_file_plus(string.upper(keys), expand_str, obj_desc)
+end
+
+yank_file("p", "%:p:.", "file path")
+yank_file("d", "%:h", "directory path")
+yank_file("n", "%:t:r", "file name")
+
 --- Centers the view after moving
 local function move_and_center(mode, action, opts)
     local esc_action = vim.api.nvim_replace_termcodes(action, true, true, true)
