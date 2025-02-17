@@ -6,7 +6,6 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
--- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 
 -- Visual editor stuff: line wraps, scrolloff, relative line numbers
@@ -15,7 +14,6 @@ vim.o.scrolloff = 5
 vim.wo.number = true
 vim.wo.relativenumber = true
 
--- Keep signcolumn on by default
 vim.wo.signcolumn = "yes"
 
 -- Disable netrw, since I'm using neotree
