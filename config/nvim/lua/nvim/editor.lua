@@ -106,6 +106,9 @@ vim.keymap.set("x", "<C-x>", "<C-x>gv")
 local function yank_file_local(keys, expand_str, obj_desc)
     vim.keymap.set("n", "<leader>n" .. keys, function()
         local path = vim.fn.expand(expand_str)
+        -- TODO: this is a temp solution until I find a way to
+        -- perform yanking of arbitrary text into registers
+        -- instead of settings those registers manually
         vim.fn.setreg('"', path)
         vim.fn.setreg("0", path)
     end, { desc = "Yank " .. obj_desc })
@@ -114,6 +117,9 @@ end
 local function yank_file_plus(keys, expand_str, obj_desc)
     vim.keymap.set("n", "<leader>n" .. keys, function()
         local path = vim.fn.expand(expand_str)
+        -- TODO: this is a temp solution until I find a way to
+        -- perform yanking of arbitrary text into registers
+        -- instead of settings those registers manually
         vim.fn.setreg("*", path)
         vim.fn.setreg("+", path)
     end, { desc = "Yank " .. obj_desc .. "to system clipboard" })
