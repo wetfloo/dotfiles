@@ -31,7 +31,6 @@ vscode_map("n", "<leader>sf", "editor.action.formatDocument")
 vscode_map("x", "<leader>sf", "editor.action.formatSelection")
 
 -- Making it more comfortable to work with mutliple splits
-
 vscode_map("n", "<leader>dv", "workbench.action.splitEditorRight", { desc = "Divide (split) vertically" })
 vscode_map("n", "<leader>dh", "workbench.action.splitEditorDown", { desc = "Divide (split) horizontally" })
 vscode_map("n", "<C-k>", "workbench.action.focusAboveGroup", { desc = "To split above" })
@@ -40,7 +39,6 @@ vscode_map("n", "<C-h>", "workbench.action.focusLeftGroup", { desc = "To split o
 vscode_map("n", "<C-l>", "workbench.action.focusRightGroup", { desc = "To split on the right" })
 
 -- Move between tabs more easily
-
 vscode_map("n", "<A-.>", "workbench.action.nextEditor")
 vscode_map("n", "<A-,>", "workbench.action.previousEditor")
 vscode_map("n", "<A-d>", "workbench.action.closeActiveEditor")
@@ -51,19 +49,16 @@ vscode_map("n", "<leader>\\", {
 })
 
 -- Find stuff
-
 vscode_map("n", "<leader>ff", "workbench.action.quickOpen", { desc = "Find Files" })
 vscode_map("n", "<leader>fg", "workbench.action.findInFiles", { desc = "Find with Grep" })
 vscode_map("n", "<leader>fs", "workbench.action.showAllSymbols", { desc = "Find Symbol" })
 
 -- Debugging
-
 vscode_map("n", "<leader>oo", "editor.debug.action.toggleBreakpoint")
 vscode_map("n", "<leader>oD", "workbench.debug.viewlet.action.removeAllBreakpoints")
 vscode_map("n", "<leader>om", "workbench.debug.viewlet.action.toggleBreakpointsActivatedAction")
 
 -- LSP related
-
 vscode_map("n", "<leader>c", "editor.action.rename")
 vscode_map("n", "<leader>gg", "editor.action.revealDefinition")
 vscode_map("n", "<leader>gu", "editor.action.goToReferences")
@@ -71,7 +66,6 @@ vscode_map("n", "<leader>gi", "editor.action.goToImplementation")
 vscode_map("n", "<leader>gt", "editor.action.goToTypeDefinition")
 
 -- Version control
-
 vscode_map("n", "<leader>ks", "git.stageAll")
 vscode_map("n", "<leader>ku", "git.unstageAll")
 vscode_map("n", "<leader>kk", "git.commit")
