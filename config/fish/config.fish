@@ -29,6 +29,13 @@ alias zl='eza -l --color=auto --group-directories-first --icons' # long format
 alias zt='eza -aT --color=auto --group-directories-first --icons' # tree listing
 alias zd="eza -a | rg '^\.'" # show only dotfiles
 
+if type -q cargo
+    alias cargor=$(which cargo)
+    if type -q cargo-mommy
+        alias cargo=cargo-mommy
+    end
+end
+
 alias shizukustart='adb shell sh /sdcard/Android/data/moe.shizuku.privileged.api/start.sh'
 
 alias rm='rm -i'
