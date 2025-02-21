@@ -147,3 +147,5 @@ asm
 cpp
 proto
 gitcommit
+makefile
+gcc
