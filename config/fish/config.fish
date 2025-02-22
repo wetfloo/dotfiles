@@ -57,7 +57,7 @@ function manfind
     set -l cmd $argv[1]
     set -l arg $argv[2]
 
-    man --pager="less -p \"\s\s+$arg\"" $cmd
+    man $cmd | less -p "^ +$arg"
 end
 
 # https://github.com/3rd/image.nvim/tree/4007cddc4cfc1b5ddd49744a38362e7b0432b3a0?tab=readme-ov-file#installing-imagemagick
