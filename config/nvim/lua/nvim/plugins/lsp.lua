@@ -1,16 +1,3 @@
---- Attemps to load a module,
---- passing it to |fn| when successful,
---- and doing nothing when failing
---- @param mod string Module name
---- @param fn function Must accept a module
-local function maybe_load(mod, fn)
-    local status, lib = pcall(require, mod)
-
-    if status then
-        fn(lib)
-    end
-end
-
 -- TODO: this only allows lsp to be disabled for this instance on startup with no other way
 -- to toggle it in runtime
 local function get_lsp_status()
