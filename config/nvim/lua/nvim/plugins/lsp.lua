@@ -11,6 +11,25 @@ local function maybe_load(mod, fn)
     end
 end
 
+-- TODO: this only allows lsp to be disabled for this instance on startup with no other way
+-- to toggle it in runtime
+local function get_lsp_status()
+    local status = vim.g.lsp_status
+    if status == false or status == 0 then
+        return false
+    end
+    return true
+end
+
+-- local function toggle_lsp_status()
+--     vim.g.lsp_status = not get_lsp_status()
+-- end
+
+-- vim.keymap.set("n", "<leader>l", toggle_lsp_status, {
+--     noremap = true,
+--     silent = true,
+-- })
+
 local function on_attach(_, bufnr)
     local function lsp_desc(desc)
         return desc .. " (LSP)"
@@ -55,7 +74,9 @@ end
 
 return {
     "neovim/nvim-lspconfig",
-    enabled = true,
+    -- TODO: this only allows lsp to be disabled for this instance on startup with no other way
+    -- to toggle it in runtime
+    enabled = get_lsp_status(),
     event = {
         "BufReadPost",
         "BufNewFile",
@@ -105,22 +126,6 @@ return {
         },
     },
     config = function()
-        local function get_lsp_status()
-            if vim.g.lsp_status == false then
-                return false
-            end
-            return true
-        end
-
-        local function toggle_lsp_status()
-            vim.g.lsp_status = not get_lsp_status()
-        end
-
-        vim.keymap.set("n", "<leader>l", toggle_lsp_status, {
-            noremap = true,
-            silent = true,
-        })
-
         local lspconfig = require("lspconfig")
 
         -- LSPs that need to be installed manually.
@@ -171,7 +176,6 @@ return {
 
         local function setup_opts(opts)
             return {
-                autostart = true, -- TODO
                 capabilities = capabilities,
                 settings = opts,
                 filetypes = (opts or {}).filetypes,
