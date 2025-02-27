@@ -121,6 +121,9 @@ shift-l = [ "join-with right", "mode main" ]
 [[on-window-detected]]
     if.app-id = "ru.keepcoder.Telegram"
     run = "move-node-to-workspace 7::chat"
+[[on-window-detected]]
+    if.app-id = "org.whispersystems.signal-desktop"
+    run = "move-node-to-workspace 7::chat"
 
 [[on-window-detected]]
     if.app-id = "org.nicotine_plus.Nicotine"
