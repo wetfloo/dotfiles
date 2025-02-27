@@ -105,6 +105,22 @@ return {
         },
     },
     config = function()
+        local function get_lsp_status()
+            if vim.g.lsp_status == false then
+                return false
+            end
+            return true
+        end
+
+        local function toggle_lsp_status()
+            vim.g.lsp_status = not get_lsp_status()
+        end
+
+        vim.keymap.set("n", "<leader>l", toggle_lsp_status, {
+            noremap = true,
+            silent = true,
+        })
+
         local lspconfig = require("lspconfig")
 
         -- LSPs that need to be installed manually.
@@ -155,6 +171,7 @@ return {
 
         local function setup_opts(opts)
             return {
+                autostart = true, -- TODO
                 capabilities = capabilities,
                 settings = opts,
                 filetypes = (opts or {}).filetypes,
@@ -187,7 +204,7 @@ return {
         luasnip.config.setup({})
 
         cmp.setup(
-            ---@diagnostic disable-next-line: missing-fields
+        ---@diagnostic disable-next-line: missing-fields
             {
                 snippet = {
                     expand = function(args)
