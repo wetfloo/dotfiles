@@ -33,7 +33,6 @@ if test -d /opt/homebrew/opt/llvm
     set -x CPPFLAGS "-L/opt/homebrew/opt/llvm/include"
 end
 
-# TODO: make this a bunch of functions with key args
 alias zall='eza -al --color=auto --group-directories-first --icons' # all files and dirs, long format
 alias zal='eza -a --color=auto --group-directories-first --icons' # all files and dirs
 alias zl='eza -l --color=auto --group-directories-first --icons' # long format
