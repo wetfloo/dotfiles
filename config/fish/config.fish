@@ -5,8 +5,6 @@ fish_vi_key_bindings
 
 # Set some environment variables (-x stands for environment)
 set -x COLORTERM truecolor
-set -x RUSTC_WRAPPER sccache
-set -x TERMINAL kitty
 set -x EDITOR nvim
 
 set -g fish_prompt_pwd_full_dirs 2
@@ -14,12 +12,25 @@ set -g fish_prompt_pwd_dir_length 3
 
 # Source modular config files
 for file in ~/.config/fish/conf.d/*.fish
-    source
+    source $file
 end
 
 # Load os-specific stuff
 for file in ~/.config/fish/os_local/*.fish
-    source
+    source $file
+end
+
+if type -q sccache
+    set -x RUSTC_WRAPPER sccache
+end
+
+if type -q brew
+    eval $(brew shellenv fish)
+end
+
+if test -d /opt/homebrew/opt/llvm
+    set -x LDFLAGS "-L/opt/homebrew/opt/llvm/lib"
+    set -x CPPFLAGS "-L/opt/homebrew/opt/llvm/include"
 end
 
 # TODO: make this a bunch of functions with key args
