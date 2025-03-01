@@ -29,8 +29,8 @@ if type -q brew
 end
 
 if test -d /opt/homebrew/opt/llvm
-    set -x LDFLAGS "-L/opt/homebrew/opt/llvm/lib"
-    set -x CPPFLAGS "-L/opt/homebrew/opt/llvm/include"
+    set -x LDFLAGS "-L/opt/homebrew/opt/llvm/lib $LDFLAGS"
+    set -x CPPFLAGS "-L/opt/homebrew/opt/llvm/include $CPPFLAGS"
 end
 
 alias zall='eza -al --color=auto --group-directories-first --icons' # all files and dirs, long format
