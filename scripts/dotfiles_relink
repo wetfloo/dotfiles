@@ -71,6 +71,12 @@ fd --hidden --type directory --type file --exact-depth 1 --search-path $CONFIG_D
 
 relink_custom ideavimrc ~/.ideavimrc
 relink_custom gitconfig_global ~/.gitconfig_global
+if ! [ -f ~/.gitconfig ]; then
+    git config --global user.name 'wetfloo'
+    git config --global user.email 'yahahaha.1234567890@gmail.com'
+    git config --global user.signingKey '~/.ssh/github_personal'
+    git config --global include.path '~/.gitconfig_global'
+fi
 
 for APP in electron brave chromium chrome discord signal
 do
