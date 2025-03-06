@@ -59,7 +59,12 @@ macos_setup () {
     defaults write com.apple.dock autohide-delay -float 0.015
     defaults write com.apple.dock autohide-time-modifier -float 0.2
     killall Dock
-    sudo nvram BootPreference=%00
+
+    local boot_pref="$(nvram -p | grep BootPreference | awk '{ print $2 }')"
+    if ! [ "${boot_pref}" = '%00' ]; then
+        printf "Found undesired boot pref, asking for password...\n"
+        sudo nvram BootPreference=%00
+    fi
 }
 
 # Function won't run in child shell without this
