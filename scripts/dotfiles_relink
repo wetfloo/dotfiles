@@ -59,6 +59,7 @@ macos_setup () {
     defaults write com.apple.dock autohide-delay -float 0.015
     defaults write com.apple.dock autohide-time-modifier -float 0.2
     killall Dock
+    sudo nvram BootPreference=%00
 }
 
 # Function won't run in child shell without this
