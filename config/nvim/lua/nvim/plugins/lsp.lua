@@ -197,7 +197,7 @@ return {
         luasnip.config.setup({})
 
         cmp.setup(
-        ---@diagnostic disable-next-line: missing-fields
+            ---@diagnostic disable-next-line: missing-fields
             {
                 snippet = {
                     expand = function(args)
