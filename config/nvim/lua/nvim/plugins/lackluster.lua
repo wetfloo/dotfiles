@@ -52,7 +52,9 @@ return {
                 },
             },
             tweak_background = {
-                normal = color.black,
+                normal = "none",
+                telescope = "none",
+                popup = color.black,
             },
         })
         local _, devicons = pcall(require, "nvim-web-devicons")
