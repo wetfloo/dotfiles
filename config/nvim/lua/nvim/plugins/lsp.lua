@@ -43,8 +43,18 @@ local function on_attach(_, bufnr)
     lsp_map(keymaps.signature_documentation, vim.lsp.buf.signature_help)
 
     lsp_map(keymaps.diagnostic_hover, vim.diagnostic.open_float)
-    lsp_map(keymaps.diagnostic_prev, vim.diagnostic.goto_prev)
-    lsp_map(keymaps.diagnostic_next, vim.diagnostic.goto_next)
+    lsp_map(keymaps.diagnostic_prev, function()
+        vim.diagnostic.jump({
+            count = -1,
+            float = true,
+        })
+    end)
+    lsp_map(keymaps.diagnostic_next, function()
+        vim.diagnostic.jump({
+            count = 1,
+            float = true,
+        })
+    end)
 
     lsp_map(keymaps.workspace_dir_add, vim.lsp.buf.add_workspace_folder)
     lsp_map(keymaps.workspace_dir_remove, vim.lsp.buf.remove_workspace_folder)
