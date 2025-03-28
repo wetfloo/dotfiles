@@ -202,14 +202,28 @@ move_and_center_old({ "n", "x" }, "N")
 
 -- :help diagnostic-highlights
 vim.diagnostic.config({
+    signs = {
+        text = {
+            [vim.diagnostic.severity.ERROR] = "󱇎",
+            [vim.diagnostic.severity.WARN] = "󰀦",
+            [vim.diagnostic.severity.INFO] = "󰋼",
+            [vim.diagnostic.severity.HINT] = "󰌵",
+        },
+        linehl = {
+            [vim.diagnostic.severity.ERROR] = "",
+            [vim.diagnostic.severity.WARN] = "",
+            [vim.diagnostic.severity.INFO] = "",
+            [vim.diagnostic.severity.HINT] = "",
+        },
+        numhl = {
+            [vim.diagnostic.severity.ERROR] = "",
+            [vim.diagnostic.severity.WARN] = "",
+            [vim.diagnostic.severity.INFO] = "",
+            [vim.diagnostic.severity.HINT] = "",
+        },
+    },
+    severity_sort = true,
     virtual_text = {
         severity = vim.diagnostic.severity.ERROR,
     },
 })
-
--- Define signs on the left for diagnostics.
-local signs = require("nvim.prefs").diagnostic_signs
-for type, icon in pairs(signs) do
-    local highlight = "DiagnosticSign" .. type
-    vim.fn.sign_define(highlight, { text = icon, texthl = highlight, numhl = "" })
-end

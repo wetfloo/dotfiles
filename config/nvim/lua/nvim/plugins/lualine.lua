@@ -16,7 +16,13 @@ return {
             return sym .. " "
         end
 
-        local symbols = require("nvim.prefs").diagnostic_signs
+        local symbols = {
+            Error = "󱇎",
+            Warn = "󰀦",
+            Info = "󰋼",
+            Hint = "󰌵",
+            Ok = "󰸞",
+        }
 
         local _, noirbuddy = pcall(require, "noirbuddy.plugins.lualine")
         local _, lackluster = pcall(require, "lackluster")
