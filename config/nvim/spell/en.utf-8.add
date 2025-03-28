@@ -159,3 +159,7 @@ resize
 whitespace
 param
 ok
+url
+destructor
+allocator
+allocators
