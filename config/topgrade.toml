@@ -18,7 +18,10 @@ sudo_command = "sudo"
 # disable = ["system", "emacs"]
 
 # Ignore failures for these steps
-ignore_failures = ["containers"]
+ignore_failures = [
+    "containers",
+    "git_repos",
+]
 
 # List of remote machines with Topgrade installed on them
 # remote_topgrades = ["toothless", "pi", "parnas"]
@@ -179,10 +182,10 @@ autoremove = true
 max_concurrency = 3
 
 # Additional git repositories to pull
-# repos = [
-#     "~/src/*/",
-#     "~/.config/something"
-# ]
+repos = [
+    "~/Documents/projects/*",
+    "~/Documents/dotfiles/dotfiles",
+]
 
 # Don't pull the predefined git repos
 # pull_predefined = false
