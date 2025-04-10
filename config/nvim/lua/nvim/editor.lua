@@ -85,14 +85,24 @@ vim.keymap.set("n", "<C-S>", function()
 end, { desc = "Save buffer changes" })
 
 -- Remap for dealing with word wrap
-local function word_wrap_remap(key, replacement)
+local function word_wrap_remap(key, params)
+    if params == nil then
+        params = {}
+    end
+
+    local replacement = params.replacement
     if replacement == nil then
         replacement = key
     end
 
+    local modes = params.modes
+    if modes == nil then
+        modes = { "n", "x", "o" }
+    end
+
     local function helper()
         vim.keymap.set(
-            { "n", "x", "o" },
+            modes,
             key,
             "v:count == 0 ? 'g" .. replacement .. "' : '" .. key .. "'",
             { expr = true, silent = true, noremap = true }
@@ -101,7 +111,7 @@ local function word_wrap_remap(key, replacement)
 
     local function rev()
         vim.keymap.set(
-            { "n", "x", "o" },
+            modes,
             "g" .. key,
             "v:count == 0 ? '" .. replacement .. "' : 'g" .. key .. "'",
             { expr = true, silent = true, noremap = true }
@@ -112,12 +122,12 @@ local function word_wrap_remap(key, replacement)
     rev()
 end
 
-word_wrap_remap("k")
-word_wrap_remap("j")
+word_wrap_remap("k", { modes = { "n", "x" } })
+word_wrap_remap("j", { modes = { "n", "x" } })
 word_wrap_remap("$")
 word_wrap_remap("0")
 word_wrap_remap("^")
-word_wrap_remap("_", "^")
+word_wrap_remap("_", { replacement = "^" })
 
 -- vim.keymap.set({ 'n', 'x' }, 'k', "v:count == 0 ? 'gkzz' : 'k'", { expr = true, silent = true })
 -- vim.keymap.set({ 'n', 'x' }, 'j', "v:count == 0 ? 'gjzz' : 'j'", { expr = true, silent = true })
