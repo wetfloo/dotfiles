@@ -116,6 +116,10 @@ shift-l = [ "join-with right", "mode main" ]
     run = "move-node-to-workspace 8::music"
 
 [[on-window-detected]]
+    if.app-id = "org.cogx.cog"
+    run = "move-node-to-workspace 8::music"
+
+[[on-window-detected]]
     if.app-id = "dev.vencord.vesktop"
     run = "move-node-to-workspace 7::chat"
 [[on-window-detected]]
