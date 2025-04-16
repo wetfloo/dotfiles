@@ -165,8 +165,8 @@ map <A-u> <action>(ReopenClosedTab)
 map <leader>\ <action>(HideAllWindows)
 
 nmap <C-c> <action>(ShowErrorDescription)
-nmap <C-[> <action>(GotoPreviousError)
-nmap <C-]> <action>(GotoNextError)
+nmap <A-[> <action>(GotoPreviousError)
+nmap <A-]> <action>(GotoNextError)
 
 " Finds
 map <leader>fc <action>(GotoClass)
