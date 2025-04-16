@@ -195,6 +195,10 @@ return {
         },
     },
     config = function()
+        -- Fix for blink highlights the source is selected.
+        -- See https://www.reddit.com/r/neovim/comments/1hmuwaz/help_debugging_a_highlight_that_doesnt_go_away_in/
+        vim.keymap.set({ "i", "s" }, "<Esc>", "<Esc>:lua vim.snippet.stop()<CR>", { remap = true, silent = true })
+
         local lspconfig = require("lspconfig")
 
         -- LSPs that need to be installed manually.
