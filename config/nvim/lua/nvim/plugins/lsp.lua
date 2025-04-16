@@ -160,6 +160,12 @@ return {
                 cmdline = {
                     completion = {
                         menu = { auto_show = true },
+                        list = {
+                            selection = {
+                                auto_insert = false,
+                                preselect = true,
+                            },
+                        },
                         ghost_text = { enabled = true },
                     },
                 },
