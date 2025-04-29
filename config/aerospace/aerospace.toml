@@ -96,76 +96,103 @@ shift-l = [ "join-with right", "mode main" ]
 # Make windows float
 
 [[on-window-detected]]
-    if.app-id = "com.apple.finder"
-    run = "layout floating"
+if.app-id = "com.apple.finder"
+run = "layout floating"
+
 [[on-window-detected]]
-    if.app-id = "com.apple.iBooksX"
-    run = "layout floating"
+if.app-id = "com.apple.iBooksX"
+run = "layout floating"
+
 [[on-window-detected]]
-    if.app-id = "com.apple.Preview"
-    run = "layout floating"
+if.app-id = "com.apple.Preview"
+run = "layout floating"
+
 [[on-window-detected]]
-    if.app-id = "com.valvesoftware.steam"
-    run = "layout floating"
+if.app-id = "com.valvesoftware.steam"
+run = "layout floating"
+
 [[on-window-detected]]
-    if.app-id = "org.keepassxc.keepassxc"
-    run = "layout floating"
+if.app-id = "org.keepassxc.keepassxc"
+run = "layout floating"
 
 # ================
 # Move windows
 
 [[on-window-detected]]
-    if.app-id = "org.mozilla.firefox"
-    run = "move-node-to-workspace 1"
-[[on-window-detected]]
-    if.app-id = "org.chromium.Chromium"
-    run = "move-node-to-workspace 1"
-[[on-window-detected]]
-    if.app-id = "org.torproject.torbrowser"
-    run = "move-node-to-workspace 1"
+if.app-id = "org.mozilla.firefox"
+run = "move-node-to-workspace 1"
 
 [[on-window-detected]]
-    if.app-id = "com.mitchellh.ghostty"
-    run = "move-node-to-workspace 2"
-[[on-window-detected]]
-    if.app-id = "com.google.android.studio"
-    run = "move-node-to-workspace 2"
+if.app-id = "org.chromium.Chromium"
+run = "move-node-to-workspace 1"
 
 [[on-window-detected]]
-    if.app-id = "md.obsidian"
-    run = "move-node-to-workspace 3"
+if.app-id = "org.torproject.torbrowser"
+run = "move-node-to-workspace 1"
+
+# ================
 
 [[on-window-detected]]
-    if.app-id = "com.apple.mail"
-    run = "move-node-to-workspace 4"
+if.app-id = "com.mitchellh.ghostty"
+
+run = "move-node-to-workspace 2"
+[[on-window-detected]]
+
+if.app-id = "com.google.android.studio"
+run = "move-node-to-workspace 2"
+
+# ================
 
 [[on-window-detected]]
-    if.app-id = "com.obsproject.obs-studio"
-    run = "move-node-to-workspace 6"
+if.app-id = "md.obsidian"
+run = "move-node-to-workspace 3"
+
+# ================
 
 [[on-window-detected]]
-    if.app-id = "dev.vencord.vesktop"
-    run = "move-node-to-workspace 7"
-[[on-window-detected]]
-    if.app-id = "ru.keepcoder.Telegram"
-    run = "move-node-to-workspace 7"
-[[on-window-detected]]
-    if.app-id = "org.whispersystems.signal-desktop"
-    run = "move-node-to-workspace 7"
+if.app-id = "com.apple.mail"
+run = "move-node-to-workspace 4"
+
+# ================
 
 [[on-window-detected]]
-    if.app-id = "com.foobar2000.mac"
-    run = "move-node-to-workspace 8"
-[[on-window-detected]]
-    if.app-id = "org.cogx.cog"
-    run = "move-node-to-workspace 8"
+if.app-id = "com.obsproject.obs-studio"
+run = "move-node-to-workspace 6"
+
+# ================
 
 [[on-window-detected]]
-    if.app-id = "org.nicotine_plus.Nicotine"
-    run = "move-node-to-workspace 9"
+if.app-id = "dev.vencord.vesktop"
+run = "move-node-to-workspace 7"
+
 [[on-window-detected]]
-    if.app-id = "org.qbittorrent.qBittorrent"
-    run = "move-node-to-workspace 9"
+if.app-id = "ru.keepcoder.Telegram"
+run = "move-node-to-workspace 7"
+
 [[on-window-detected]]
-    if.app-id = "app.hiddify.com"
-    run = "move-node-to-workspace 9"
+if.app-id = "org.whispersystems.signal-desktop"
+run = "move-node-to-workspace 7"
+
+# ================
+
+[[on-window-detected]]
+if.app-id = "com.foobar2000.mac"
+run = "move-node-to-workspace 8"
+
+[[on-window-detected]]
+if.app-id = "org.cogx.cog"
+run = "move-node-to-workspace 8"
+
+# ================
+
+[[on-window-detected]]
+if.app-id = "org.nicotine_plus.Nicotine"
+run = "move-node-to-workspace 9"
+
+[[on-window-detected]]
+if.app-id = "org.qbittorrent.qBittorrent"
+run = "move-node-to-workspace 9"
+
+[[on-window-detected]]
+if.app-id = "app.hiddify.com"
+run = "move-node-to-workspace 9"
