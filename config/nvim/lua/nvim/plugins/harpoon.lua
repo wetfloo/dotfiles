@@ -102,14 +102,15 @@ return {
             toggle_telescope(harpoon:list())
         end, { desc = "Telescope: Harpoon" })
 
-        for i = 1, 9 do
-            vim.keymap.set("n", "<leader>h" .. i, function()
+        local keys = { "q", "w", "e", "r", "t", "y", "u", "i", "o" }
+        for i, v in ipairs(keys) do
+            vim.keymap.set("n", "<leader>h" .. v, function()
                 harpoon:list():replace_at(i)
-            end, { desc = "Replace bookmark at " .. i .. " with the current file" })
+            end, { desc = "Replace bookmark at " .. i .. " with current file" })
 
-            vim.keymap.set("n", "<A-" .. i .. ">", function()
+            vim.keymap.set("n", "<A-" .. v .. ">", function()
                 harpoon:list():select(i)
-            end, { desc = "Go to bookmark" .. "i" })
+            end, { desc = "Go to bookmark" .. i })
         end
     end,
 }
