@@ -79,7 +79,7 @@ vim.keymap.set("n", "<A-,>", ":bprev<CR>", { desc = "Go to the previous buffer",
 vim.keymap.set("n", "<A-.>", ":bnext<CR>", { desc = "Go to the next buffer", silent = true })
 vim.keymap.set("n", "<A-d>", ":Bdelete<CR>", { desc = "Delete the current buffer", silent = true })
 vim.keymap.set("n", "<A-D>", ":Bdelete!<CR>", { desc = "Force delete the current buffer", silent = true })
-vim.keymap.set("n", "<A-q>", "<C-w>q", { desc = "Close current window" })
+vim.keymap.set("n", "<A-BS>", "<C-w>q", { desc = "Close current window", silent = true })
 vim.keymap.set("n", "<C-S>", function()
     vim.cmd("update")
 end, { desc = "Save buffer changes" })
