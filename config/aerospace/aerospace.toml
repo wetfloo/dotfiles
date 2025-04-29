@@ -96,20 +96,20 @@ shift-l = [ "join-with right", "mode main" ]
 # Make windows float
 
 [[on-window-detected]]
-    if.app-id = 'com.apple.finder'
-    run = 'layout floating'
+    if.app-id = "com.apple.finder"
+    run = "layout floating"
 [[on-window-detected]]
-    if.app-id = 'com.apple.iBooksX'
-    run = 'layout floating'
+    if.app-id = "com.apple.iBooksX"
+    run = "layout floating"
 [[on-window-detected]]
-    if.app-id = 'com.apple.Preview'
-    run = 'layout floating'
+    if.app-id = "com.apple.Preview"
+    run = "layout floating"
 [[on-window-detected]]
-    if.app-id = 'com.valvesoftware.steam'
-    run = 'layout floating'
+    if.app-id = "com.valvesoftware.steam"
+    run = "layout floating"
 [[on-window-detected]]
-    if.app-id = 'org.keepassxc.keepassxc'
-    run = 'layout floating'
+    if.app-id = "org.keepassxc.keepassxc"
+    run = "layout floating"
 
 # ================
 # Move windows
