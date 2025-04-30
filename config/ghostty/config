@@ -1,5 +1,7 @@
 config-file = ?os_local/config
 
+keybind = global:super+e=toggle_secure_input
+
 adjust-cell-height = 20%
 adjust-cursor-height = 20%
 # this breaks a lot of themes, allowing white text on light background https://github.com/ghostty-org/ghostty/discussions/3869
