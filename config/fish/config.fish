@@ -7,6 +7,8 @@ fish_vi_key_bindings
 set -x COLORTERM truecolor
 set -x EDITOR nvim
 
+set -x RIPGREP_CONFIG_PATH ~/.config/ripgrep/config
+
 set -g fish_prompt_pwd_full_dirs 2
 set -g fish_prompt_pwd_dir_length 3
 

@@ -1,0 +1,5 @@
+# vim:ft=sh
+
+--glob=.gitignore
+--glob=.editorconfig
+--glob=*.env
