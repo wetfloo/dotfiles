@@ -18,4 +18,5 @@ trim_trailing_whitespace = false
 end_of_line = crlf
 
 [*.{yml,yaml}]
+indent_style = space
 indent_size = 2
