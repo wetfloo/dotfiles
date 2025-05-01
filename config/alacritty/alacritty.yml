@@ -1,5 +1,4 @@
 import:
-  - ~/.config/alacritty/catppuccin/catppuccin-mocha-mod.yml
   - ~/.config/alacritty/os_local/local.yml
 
 window:
@@ -7,4 +6,3 @@ window:
 
 key_bindings:
   - { key: F11, action: ToggleFullscreen }
-
