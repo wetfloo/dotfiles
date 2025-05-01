@@ -19,8 +19,8 @@ sudo_command = "sudo"
 
 # Ignore failures for these steps
 ignore_failures = [
-    "containers",
-    "git_repos",
+	"containers",
+	"git_repos",
 ]
 
 # List of remote machines with Topgrade installed on them
@@ -183,8 +183,8 @@ max_concurrency = 3
 
 # Additional git repositories to pull
 repos = [
-    "~/Documents/projects/*",
-    "~/Documents/dotfiles/dotfiles",
+	"~/Documents/projects/*",
+	"~/Documents/dotfiles/dotfiles",
 ]
 
 # Don't pull the predefined git repos
@@ -200,7 +200,7 @@ arguments = "--rebase"
 
 # open_remotes_in_new_terminal = true
 
- wsl_update_pre_release = false
+wsl_update_pre_release = false
 
 # wsl_update_use_web_download = true
 
