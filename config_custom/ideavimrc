@@ -1,3 +1,5 @@
+" vim:ft=vimrc
+
 let mapleader = " "
 function! s:is_intellij()
     has('ide') && &ide=~? 'intellij'
