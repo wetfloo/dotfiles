@@ -12,25 +12,25 @@ set -g fish_prompt_pwd_dir_length 3
 
 # Source modular config files
 for file in ~/.config/fish/conf.d/*.fish
-    source $file
+	source $file
 end
 
 # Load os-specific stuff
 for file in ~/.config/fish/os_local/*.fish
-    source $file
+	source $file
 end
 
 if type -q sccache
-    set -x RUSTC_WRAPPER sccache
+	set -x RUSTC_WRAPPER sccache
 end
 
 if type -q brew
-    eval $(brew shellenv fish)
+	eval $(brew shellenv fish)
 end
 
 if test -d /opt/homebrew/opt/llvm
-    set -x LDFLAGS "-L/opt/homebrew/opt/llvm/lib $LDFLAGS"
-    set -x CPPFLAGS "-L/opt/homebrew/opt/llvm/include $CPPFLAGS"
+	set -x LDFLAGS "-L/opt/homebrew/opt/llvm/lib $LDFLAGS"
+	set -x CPPFLAGS "-L/opt/homebrew/opt/llvm/include $CPPFLAGS"
 end
 
 alias zall='eza -al --color=auto --group-directories-first --icons' # all files and dirs, long format
@@ -51,16 +51,16 @@ alias zd="eza -a | rg '^\.'" # show only dotfiles
 #end
 
 if test -e "$HOME/.cargo/env.fish"
-    source "$HOME/.cargo/env.fish"
+	source "$HOME/.cargo/env.fish"
 end
 
 function removepath
-    if set -l index (contains -i $argv[1] $PATH)
-        set --erase --universal fish_user_paths[$index]
-        echo "Updated PATH: $PATH"
-    else
-        echo "$argv[1] not found in PATH: $PATH"
-    end
+	if set -l index (contains -i $argv[1] $PATH)
+		set --erase --universal fish_user_paths[$index]
+		echo "Updated PATH: $PATH"
+	else
+		echo "$argv[1] not found in PATH: $PATH"
+	end
 end
 
 alias shizukustart='adb shell sh /sdcard/Android/data/moe.shizuku.privileged.api/start.sh'
@@ -69,26 +69,26 @@ alias rm='rm -i'
 
 # fallback for when we're not in tmux
 if not set -q $TMUX
-    for mode in $(bind --list-modes);
-        bind \ef --mode $mode 'set -x SHELL $(which fish); tmux_sessionizer';
-        bind \es --mode $mode 'set -x SHELL $(which fish); tmux_join /'
-    end
+	for mode in $(bind --list-modes);
+		bind \ef --mode $mode 'set -x SHELL $(which fish); tmux_sessionizer';
+		bind \es --mode $mode 'set -x SHELL $(which fish); tmux_join /'
+	end
 end
 
 if type -q fzf
-    fzf --fish | source
+	fzf --fish | source
 end
 
 # find short options for commands
 function manfind
-    set -l cmd $argv[1]
-    set -l arg $argv[2]
+	set -l cmd $argv[1]
+	set -l arg $argv[2]
 
-    man $cmd | less -p "^ +$arg"
+	man $cmd | less -p "^ +$arg"
 end
 
 function nvi
-    nvim --cmd 'let g:lsp_status = 0' $argv
+	nvim --cmd 'let g:lsp_status = 0' $argv
 end
 
 # https://github.com/3rd/image.nvim/tree/4007cddc4cfc1b5ddd49744a38362e7b0432b3a0?tab=readme-ov-file#installing-imagemagick
