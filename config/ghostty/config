@@ -1,6 +1,6 @@
 config-file = ?os_local/config
 
-keybind = global:super+e=toggle_secure_input
+keybind = super+e=toggle_secure_input
 
 adjust-cell-height = 20%
 adjust-cursor-height = 20%
