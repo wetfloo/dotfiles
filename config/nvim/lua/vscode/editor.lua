@@ -15,16 +15,16 @@ local vscode = require("vscode-neovim")
 ---                        - remap: (boolean) Make the mapping recursive. Inverses "noremap".
 ---                        Defaults to `false`.
 local function vscode_map(mode, lhs, rhs, opts)
-    -- Allow for multiple actions
-    vim.keymap.set(mode, lhs, function()
-        if type(rhs) == "table" then
-            for _, value in ipairs(rhs) do
-                vscode.notify(value)
-            end
-        else
-            vscode.notify(rhs)
-        end
-    end, opts)
+	-- Allow for multiple actions
+	vim.keymap.set(mode, lhs, function()
+		if type(rhs) == "table" then
+			for _, value in ipairs(rhs) do
+				vscode.notify(value)
+			end
+		else
+			vscode.notify(rhs)
+		end
+	end, opts)
 end
 
 vscode_map("n", "<leader>sf", "editor.action.formatDocument")
@@ -44,8 +44,8 @@ vscode_map("n", "<A-,>", "workbench.action.previousEditor")
 vscode_map("n", "<A-d>", "workbench.action.closeActiveEditor")
 vscode_map("n", "<leader>'", "notifications.clearAll")
 vscode_map("n", "<leader>\\", {
-    "workbench.action.closePanel",
-    "workbench.action.closeSidebar",
+	"workbench.action.closePanel",
+	"workbench.action.closeSidebar",
 })
 
 -- Find stuff

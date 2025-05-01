@@ -1,22 +1,22 @@
 local M = {
-    names = {
-        dark = "Firefly Traditional",
-        light = "Terminal Basic",
-    },
-    schemes = {},
+	names = {
+		dark = "Firefly Traditional",
+		light = "Terminal Basic",
+	},
+	schemes = {},
 }
 
 setmetatable(M, {
-    __index = function(table, key)
-        if rawget(table, key) then
-            return rawget(table, key)
-        end
+	__index = function(table, key)
+		if rawget(table, key) then
+			return rawget(table, key)
+		end
 
-        local name = table.names[key]
-        if name then
-            return table.schemes[name]
-        end
-    end,
+		local name = table.names[key]
+		if name then
+			return table.schemes[name]
+		end
+	end,
 })
 
 local wezterm = require("wezterm")

@@ -49,16 +49,16 @@ vim.keymap.set("x", "P", '"_dP')
 
 local yank_highlight = vim.api.nvim_create_augroup("yank_highlight", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
-    callback = function()
-        vim.highlight.on_yank({ timeout = 400 })
-    end,
-    group = yank_highlight,
-    pattern = "*",
+	callback = function()
+		vim.highlight.on_yank({ timeout = 400 })
+	end,
+	group = yank_highlight,
+	pattern = "*",
 })
 
 local clear_trailing_space = vim.api.nvim_create_augroup("clear_trailing_space", { clear = true })
 vim.api.nvim_create_autocmd("BufWritePre", {
-    command = [[%s/\s\+$//e]],
-    group = clear_trailing_space,
-    pattern = "*",
+	command = [[%s/\s\+$//e]],
+	group = clear_trailing_space,
+	pattern = "*",
 })

@@ -43,27 +43,27 @@ vim.opt.splitright = true
 vim.opt.splitbelow = true
 
 vim.keymap.set("n", "<leader>qq", function()
-    -- Currently open windows
-    utils.close_win_with_ft_or("qf", false, function()
-        vim.cmd("copen")
-    end)
+	-- Currently open windows
+	utils.close_win_with_ft_or("qf", false, function()
+		vim.cmd("copen")
+	end)
 end, { desc = "Toggle quickfix window" })
 
 local function qfmove(mode, lhs, fn, opts)
-    vim.keymap.set(mode, lhs, function()
-        ---@diagnostic disable-next-line: param-type-mismatch
-        local ok, _ = pcall(fn)
-        if not ok then
-            print("No more quickfix entries")
-        end
-    end, opts)
+	vim.keymap.set(mode, lhs, function()
+		---@diagnostic disable-next-line: param-type-mismatch
+		local ok, _ = pcall(fn)
+		if not ok then
+			print("No more quickfix entries")
+		end
+	end, opts)
 end
 
 qfmove("n", "<leader>qp", function()
-    vim.cmd("cprev")
+	vim.cmd("cprev")
 end, { desc = "Previous quickfix entry" })
 qfmove("n", "<leader>qn", function()
-    vim.cmd("cnext")
+	vim.cmd("cnext")
 end, { desc = "Next quickfix entry" })
 
 -- Making it more comfortable to work with mutliple splits.
@@ -71,7 +71,7 @@ end, { desc = "Next quickfix entry" })
 vim.keymap.set("n", "<leader>dv", "<C-w>v", { desc = "Divide (split) vertically" })
 vim.keymap.set("n", "<leader>dh", "<C-w>s", { desc = "Divide (split) horizontally" })
 vim.keymap.set("n", "<leader>du", function()
-    vim.cmd("on")
+	vim.cmd("on")
 end, { desc = "Close all other windows (unsplit)" })
 
 -- Move around buffers as if they're tabs
@@ -81,45 +81,45 @@ vim.keymap.set("n", "<A-d>", ":Bdelete<CR>", { desc = "Delete the current buffer
 vim.keymap.set("n", "<A-D>", ":Bdelete!<CR>", { desc = "Force delete the current buffer", silent = true })
 vim.keymap.set("n", "<A-BS>", "<C-w>q", { desc = "Close current window", silent = true })
 vim.keymap.set("n", "<C-S>", function()
-    vim.cmd("update")
+	vim.cmd("update")
 end, { desc = "Save buffer changes" })
 
 -- Remap for dealing with word wrap
 local function word_wrap_remap(key, params)
-    if params == nil then
-        params = {}
-    end
+	if params == nil then
+		params = {}
+	end
 
-    local replacement = params.replacement
-    if replacement == nil then
-        replacement = key
-    end
+	local replacement = params.replacement
+	if replacement == nil then
+		replacement = key
+	end
 
-    local modes = params.modes
-    if modes == nil then
-        modes = { "n", "x", "o" }
-    end
+	local modes = params.modes
+	if modes == nil then
+		modes = { "n", "x", "o" }
+	end
 
-    local function helper()
-        vim.keymap.set(
-            modes,
-            key,
-            "v:count == 0 ? 'g" .. replacement .. "' : '" .. key .. "'",
-            { expr = true, silent = true, noremap = true }
-        )
-    end
+	local function helper()
+		vim.keymap.set(
+			modes,
+			key,
+			"v:count == 0 ? 'g" .. replacement .. "' : '" .. key .. "'",
+			{ expr = true, silent = true, noremap = true }
+		)
+	end
 
-    local function rev()
-        vim.keymap.set(
-            modes,
-            "g" .. key,
-            "v:count == 0 ? '" .. replacement .. "' : 'g" .. key .. "'",
-            { expr = true, silent = true, noremap = true }
-        )
-    end
+	local function rev()
+		vim.keymap.set(
+			modes,
+			"g" .. key,
+			"v:count == 0 ? '" .. replacement .. "' : 'g" .. key .. "'",
+			{ expr = true, silent = true, noremap = true }
+		)
+	end
 
-    helper()
-    rev()
+	helper()
+	rev()
 end
 
 word_wrap_remap("k", { modes = { "n", "x" } })
@@ -144,32 +144,32 @@ vim.keymap.set("x", "<C-a>", "<C-a>gv")
 vim.keymap.set("x", "<C-x>", "<C-x>gv")
 
 local function yank_file_local(keys, expand_str, obj_desc)
-    vim.keymap.set("n", "<leader>n" .. keys, function()
-        -- :help filename-modifiers
-        local path = vim.fn.expand(expand_str)
-        -- TODO: this is a temp solution until I find a way to
-        -- perform yanking of arbitrary text into registers
-        -- instead of settings those registers manually
-        vim.fn.setreg('"', path)
-        vim.fn.setreg("0", path)
-    end, { desc = "Yank " .. obj_desc })
+	vim.keymap.set("n", "<leader>n" .. keys, function()
+		-- :help filename-modifiers
+		local path = vim.fn.expand(expand_str)
+		-- TODO: this is a temp solution until I find a way to
+		-- perform yanking of arbitrary text into registers
+		-- instead of settings those registers manually
+		vim.fn.setreg('"', path)
+		vim.fn.setreg("0", path)
+	end, { desc = "Yank " .. obj_desc })
 end
 
 local function yank_file_plus(keys, expand_str, obj_desc)
-    vim.keymap.set("n", "<leader>n" .. keys, function()
-        -- :help filename-modifiers
-        local path = vim.fn.expand(expand_str)
-        -- TODO: this is a temp solution until I find a way to
-        -- perform yanking of arbitrary text into registers
-        -- instead of settings those registers manually
-        vim.fn.setreg("*", path)
-        vim.fn.setreg("+", path)
-    end, { desc = "Yank " .. obj_desc .. "to system clipboard" })
+	vim.keymap.set("n", "<leader>n" .. keys, function()
+		-- :help filename-modifiers
+		local path = vim.fn.expand(expand_str)
+		-- TODO: this is a temp solution until I find a way to
+		-- perform yanking of arbitrary text into registers
+		-- instead of settings those registers manually
+		vim.fn.setreg("*", path)
+		vim.fn.setreg("+", path)
+	end, { desc = "Yank " .. obj_desc .. "to system clipboard" })
 end
 
 local function yank_file(keys, expand_str, obj_desc)
-    yank_file_local(string.lower(keys), expand_str, obj_desc)
-    yank_file_plus(string.upper(keys), expand_str, obj_desc)
+	yank_file_local(string.lower(keys), expand_str, obj_desc)
+	yank_file_plus(string.upper(keys), expand_str, obj_desc)
 end
 
 yank_file("p", "%:p:.", "file path")
@@ -178,25 +178,25 @@ yank_file("n", "%:t:r", "file name")
 
 --- Centers the view after moving
 local function move_and_center(mode, action, opts)
-    local esc_action = vim.api.nvim_replace_termcodes(action, true, true, true)
-    vim.keymap.set(mode, action, function()
-        -- Setup
-        local option = "scrolloff"
-        local scrolloff = vim.api.nvim_get_option_value(option, {})
-        vim.api.nvim_set_option_value(option, 99999, {})
-        -- Without this cursor will stay at the same place
-        vim.cmd("norm! M")
+	local esc_action = vim.api.nvim_replace_termcodes(action, true, true, true)
+	vim.keymap.set(mode, action, function()
+		-- Setup
+		local option = "scrolloff"
+		local scrolloff = vim.api.nvim_get_option_value(option, {})
+		vim.api.nvim_set_option_value(option, 99999, {})
+		-- Without this cursor will stay at the same place
+		vim.cmd("norm! M")
 
-        -- Action
-        vim.api.nvim_feedkeys(esc_action, "n", false)
+		-- Action
+		vim.api.nvim_feedkeys(esc_action, "n", false)
 
-        -- Teardown
-        vim.api.nvim_set_option_value(option, scrolloff, {})
-    end, opts)
+		-- Teardown
+		vim.api.nvim_set_option_value(option, scrolloff, {})
+	end, opts)
 end
 
 local function move_and_center_old(mode, keys, opts)
-    vim.keymap.set(mode, keys, keys .. "zz", opts)
+	vim.keymap.set(mode, keys, keys .. "zz", opts)
 end
 
 move_and_center({ "n", "x" }, "<C-d>")
@@ -212,28 +212,28 @@ move_and_center_old({ "n", "x" }, "N")
 
 -- :help diagnostic-highlights
 vim.diagnostic.config({
-    signs = {
-        text = {
-            [vim.diagnostic.severity.ERROR] = "󱇎",
-            [vim.diagnostic.severity.WARN] = "󰀦",
-            [vim.diagnostic.severity.INFO] = "󰋼",
-            [vim.diagnostic.severity.HINT] = "󰌵",
-        },
-        linehl = {
-            [vim.diagnostic.severity.ERROR] = "",
-            [vim.diagnostic.severity.WARN] = "",
-            [vim.diagnostic.severity.INFO] = "",
-            [vim.diagnostic.severity.HINT] = "",
-        },
-        numhl = {
-            [vim.diagnostic.severity.ERROR] = "",
-            [vim.diagnostic.severity.WARN] = "",
-            [vim.diagnostic.severity.INFO] = "",
-            [vim.diagnostic.severity.HINT] = "",
-        },
-    },
-    severity_sort = true,
-    virtual_text = {
-        severity = vim.diagnostic.severity.ERROR,
-    },
+	signs = {
+		text = {
+			[vim.diagnostic.severity.ERROR] = "󱇎",
+			[vim.diagnostic.severity.WARN] = "󰀦",
+			[vim.diagnostic.severity.INFO] = "󰋼",
+			[vim.diagnostic.severity.HINT] = "󰌵",
+		},
+		linehl = {
+			[vim.diagnostic.severity.ERROR] = "",
+			[vim.diagnostic.severity.WARN] = "",
+			[vim.diagnostic.severity.INFO] = "",
+			[vim.diagnostic.severity.HINT] = "",
+		},
+		numhl = {
+			[vim.diagnostic.severity.ERROR] = "",
+			[vim.diagnostic.severity.WARN] = "",
+			[vim.diagnostic.severity.INFO] = "",
+			[vim.diagnostic.severity.HINT] = "",
+		},
+	},
+	severity_sort = true,
+	virtual_text = {
+		severity = vim.diagnostic.severity.ERROR,
+	},
 })
