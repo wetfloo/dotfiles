@@ -166,3 +166,5 @@ demuxer
 TOCTOU
 expr
 flac
+multithread
+multithreaded
