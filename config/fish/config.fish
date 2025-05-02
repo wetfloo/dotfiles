@@ -43,17 +43,6 @@ alias zl='eza -l --color=auto --group-directories-first --icons' # long format
 alias zt='eza -aT --color=auto --group-directories-first --icons' # tree listing
 alias zd="eza -a | rg '^\.'" # show only dotfiles
 
-#if type -q cargo
-#    function cargo
-#        if test -z "$CARGO_MOMMY_SLEEPS" && type -q cargo-mommy
-#            cargo-mommy $argv
-#        else
-#            set -l og_cmd $(which cargo)
-#            "$og_cmd" $argv
-#        end
-#    end
-#end
-
 if test -e "$HOME/.cargo/env.fish"
 	source "$HOME/.cargo/env.fish"
 end
