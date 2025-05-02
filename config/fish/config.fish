@@ -33,6 +33,10 @@ if test -d /opt/homebrew/opt/llvm
 	set -x CPPFLAGS "-L/opt/homebrew/opt/llvm/include $CPPFLAGS"
 end
 
+if type -q nvim
+	set -x MANPAGER "nvim +Man! -c 'set number relativenumber numberwidth=4 signcolumn=yes'"
+end
+
 alias zall='eza -al --color=auto --group-directories-first --icons' # all files and dirs, long format
 alias zal='eza -a --color=auto --group-directories-first --icons' # all files and dirs
 alias zl='eza -l --color=auto --group-directories-first --icons' # long format
