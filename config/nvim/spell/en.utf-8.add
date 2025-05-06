@@ -168,3 +168,8 @@ expr
 flac
 multithread
 multithreaded
+transcode
+eval
+parallelize
+XDG
+Transcodes
