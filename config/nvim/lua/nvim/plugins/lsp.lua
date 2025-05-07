@@ -87,10 +87,16 @@ return {
 		"folke/neodev.nvim",
 		"nvim-lua/plenary.nvim",
 		{
-			"williamboman/mason.nvim",
+			"mason-org/mason.nvim",
+			-- New mason assumes the usage of vim.lsp.config,
+			-- but I ain't bothering with it right now
+			version = "1.*",
 			config = true, -- Uses the default implementation
 			dependencies = {
-				"williamboman/mason-lspconfig.nvim",
+				{
+					"mason-org/mason-lspconfig.nvim",
+					version = "1.*",
+				},
 				{
 					"jay-babu/mason-null-ls.nvim",
 					event = { "BufReadPre", "BufNewFile" },
