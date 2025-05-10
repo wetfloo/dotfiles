@@ -1,24 +1,61 @@
 {
-  "$schema" : "https:\/\/schema.linearmouse.app\/0.10.0",
   "schemes" : [
     {
-      "if" : {
-        "device" : {
-          "productName" : "Razer Basilisk V3",
-          "productID" : "0x99",
-          "category" : "mouse",
-          "vendorID" : "0x1532"
-        }
-      },
       "scrolling" : {
         "reverse" : {
           "vertical" : true
         }
       },
       "pointer" : {
-        "disableAcceleration" : true,
-        "acceleration" : 0.4684
+        "acceleration" : 0.4684,
+        "disableAcceleration" : true
+      },
+      "if" : {
+        "device" : {
+          "productName" : "Razer Basilisk V3",
+          "vendorID" : "0x1532",
+          "productID" : "0x99",
+          "category" : "mouse"
+        }
+      }
+    },
+    {
+      "scrolling" : {
+        "reverse" : {
+          "vertical" : true
+        }
+      },
+      "pointer" : {
+        "disableAcceleration" : true
+      },
+      "if" : {
+        "device" : {
+          "productName" : "Keychron 4K Link",
+          "category" : "mouse",
+          "productID" : "0xd038",
+          "vendorID" : "0x3434"
+        }
+      }
+    },
+    {
+      "scrolling" : {
+        "reverse" : {
+          "vertical" : true
+        }
+      },
+      "pointer" : {
+        "acceleration" : 0.175,
+        "disableAcceleration" : true
+      },
+      "if" : {
+        "device" : {
+          "productName" : "Keychron M3 mini 4K",
+          "productID" : "0xd041",
+          "vendorID" : "0x3434",
+          "category" : "mouse"
+        }
       }
     }
-  ]
+  ],
+  "$schema" : "https:\/\/schema.linearmouse.app\/0.10.0"
 }
