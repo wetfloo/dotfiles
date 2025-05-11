@@ -1,61 +1,75 @@
 {
+  "$schema" : "https:\/\/schema.linearmouse.app\/0.10.0",
   "schemes" : [
     {
-      "scrolling" : {
-        "reverse" : {
-          "vertical" : true
-        }
-      },
       "pointer" : {
         "acceleration" : 0.4684,
         "disableAcceleration" : true
       },
+      "scrolling" : {
+        "reverse" : {
+          "vertical" : true
+        }
+      },
       "if" : {
         "device" : {
-          "productName" : "Razer Basilisk V3",
           "vendorID" : "0x1532",
           "productID" : "0x99",
+          "category" : "mouse",
+          "productName" : "Razer Basilisk V3"
+        }
+      }
+    },
+    {
+      "pointer" : {
+        "disableAcceleration" : true
+      },
+      "scrolling" : {
+        "reverse" : {
+          "vertical" : true
+        }
+      },
+      "if" : {
+        "device" : {
+          "vendorID" : "0x3434",
+          "productID" : "0xd038",
+          "productName" : "Keychron 4K Link",
           "category" : "mouse"
         }
       }
     },
     {
+      "pointer" : {
+        "disableAcceleration" : true,
+        "acceleration" : 0.175
+      },
       "scrolling" : {
         "reverse" : {
           "vertical" : true
         }
-      },
-      "pointer" : {
-        "disableAcceleration" : true
-      },
-      "if" : {
-        "device" : {
-          "productName" : "Keychron 4K Link",
-          "category" : "mouse",
-          "productID" : "0xd038",
-          "vendorID" : "0x3434"
-        }
-      }
-    },
-    {
-      "scrolling" : {
-        "reverse" : {
-          "vertical" : true
-        }
-      },
-      "pointer" : {
-        "acceleration" : 0.175,
-        "disableAcceleration" : true
       },
       "if" : {
         "device" : {
           "productName" : "Keychron M3 mini 4K",
-          "productID" : "0xd041",
+          "category" : "mouse",
           "vendorID" : "0x3434",
-          "category" : "mouse"
+          "productID" : "0xd041"
+        }
+      }
+    },
+    {
+      "pointer" : {
+        "acceleration" : 0.01,
+        "disableAcceleration" : true
+      },
+      "if" : {
+        "device" : {
+          "vendorID" : "0x1919",
+          "category" : "mouse",
+          "productID" : "0x1919",
+          "productName" : "USB Receiver"
         }
       }
     }
-  ],
-  "$schema" : "https:\/\/schema.linearmouse.app\/0.10.0"
+  ]
 }
