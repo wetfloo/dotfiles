@@ -1,69 +1,77 @@
 {
-  "$schema" : "https:\/\/schema.linearmouse.app\/0.10.0",
   "schemes" : [
     {
       "pointer" : {
         "acceleration" : 0.4684,
         "disableAcceleration" : true
       },
-      "scrolling" : {
-        "reverse" : {
-          "vertical" : true
-        }
-      },
       "if" : {
         "device" : {
           "productID" : "0x99",
+          "category" : "mouse",
           "productName" : "Razer Basilisk V3",
-          "vendorID" : "0x1532",
-          "category" : "mouse"
+          "vendorID" : "0x1532"
         }
-      }
-    },
-    {
-      "pointer" : {
-        "acceleration" : 0.175,
-        "disableAcceleration" : true
       },
       "scrolling" : {
         "reverse" : {
           "vertical" : true
         }
-      },
-      "if" : {
-        "device" : {
-          "category" : "mouse",
-          "productName" : "Keychron 4K Link",
-          "vendorID" : "0x3434",
-          "productID" : "0xd038"
-        }
       }
     },
     {
       "pointer" : {
-        "acceleration" : 0.175,
-        "disableAcceleration" : true
+        "disableAcceleration" : true,
+        "acceleration" : 0.175
+      },
+      "if" : {
+        "device" : {
+          "productName" : "Keychron 4K Link",
+          "vendorID" : "0x3434",
+          "productID" : "0xd038",
+          "category" : "mouse"
+        }
       },
       "scrolling" : {
-        "acceleration" : {
-          "vertical" : 1
-        },
-        "distance" : {
-          "vertical" : 3
-        },
         "reverse" : {
           "vertical" : true
         },
         "speed" : {
           "vertical" : 0
+        },
+        "distance" : {
+          "vertical" : 3
+        },
+        "acceleration" : {
+          "vertical" : 1
         }
+      }
+    },
+    {
+      "pointer" : {
+        "disableAcceleration" : true,
+        "acceleration" : 0.175
       },
       "if" : {
         "device" : {
           "productID" : "0xd041",
-          "productName" : "Keychron M3 mini 4K",
           "vendorID" : "0x3434",
+          "productName" : "Keychron M3 mini 4K",
           "category" : "mouse"
+        }
+      },
+      "scrolling" : {
+        "speed" : {
+          "vertical" : 0
+        },
+        "reverse" : {
+          "vertical" : true
+        },
+        "acceleration" : {
+          "vertical" : 1
+        },
+        "distance" : {
+          "vertical" : 3
         }
       }
     },
@@ -74,12 +82,13 @@
       },
       "if" : {
         "device" : {
-          "vendorID" : "0x1919",
-          "productID" : "0x1919",
+          "productName" : "USB Receiver",
           "category" : "mouse",
-          "productName" : "USB Receiver"
+          "vendorID" : "0x1919",
+          "productID" : "0x1919"
         }
       }
     }
-  ]
+  ],
+  "$schema" : "https:\/\/schema.linearmouse.app\/0.10.0"
 }
