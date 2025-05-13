@@ -34,7 +34,7 @@ if test -d /opt/homebrew/opt/llvm
 end
 
 if type -q nvim
-	set -x MANPAGER "nvim +Man! -c 'set nospell number relativenumber numberwidth=4 signcolumn=yes'"
+	set -x MANPAGER "nvim +Man! -c 'set nospell'"
 end
 
 alias zall='eza -al --color=auto --group-directories-first --icons' # all files and dirs, long format
