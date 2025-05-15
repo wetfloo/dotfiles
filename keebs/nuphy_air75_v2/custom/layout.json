@@ -440,7 +440,7 @@
       "KC_NO",
       "KC_BRID",
       "KC_BRIU",
-      "KC_NO",
+      "0xc1",
       "G(KC_SPC)",
       "CUSTOM(6)",
       "CUSTOM(7)",
