@@ -7,8 +7,8 @@
       },
       "if" : {
         "device" : {
-          "productID" : "0x99",
           "category" : "mouse",
+          "productID" : "0x99",
           "productName" : "Razer Basilisk V3",
           "vendorID" : "0x1532"
         }
@@ -26,24 +26,24 @@
       },
       "if" : {
         "device" : {
-          "productName" : "Keychron 4K Link",
           "vendorID" : "0x3434",
           "productID" : "0xd038",
+          "productName" : "Keychron 4K Link",
           "category" : "mouse"
         }
       },
       "scrolling" : {
-        "reverse" : {
-          "vertical" : true
-        },
-        "speed" : {
-          "vertical" : 0
-        },
         "distance" : {
           "vertical" : 3
         },
         "acceleration" : {
           "vertical" : 1
+        },
+        "speed" : {
+          "vertical" : 0
+        },
+        "reverse" : {
+          "vertical" : true
         }
       }
     },
@@ -54,38 +54,67 @@
       },
       "if" : {
         "device" : {
+          "category" : "mouse",
           "productID" : "0xd041",
-          "vendorID" : "0x3434",
           "productName" : "Keychron M3 mini 4K",
-          "category" : "mouse"
+          "vendorID" : "0x3434"
         }
       },
       "scrolling" : {
         "speed" : {
           "vertical" : 0
         },
-        "reverse" : {
-          "vertical" : true
-        },
         "acceleration" : {
           "vertical" : 1
         },
         "distance" : {
           "vertical" : 3
+        },
+        "reverse" : {
+          "vertical" : true
         }
       }
     },
     {
+      "if" : {
+        "device" : {
+          "productID" : "0x1919",
+          "productName" : "USB Receiver",
+          "category" : "mouse",
+          "vendorID" : "0x1919"
+        }
+      },
       "pointer" : {
-        "acceleration" : 0.175,
-        "disableAcceleration" : true
+        "disableAcceleration" : true,
+        "acceleration" : 0.175
+      }
+    },
+    {
+      "pointer" : {
+        "disableAcceleration" : true,
+        "acceleration" : 0.4382
       },
       "if" : {
         "device" : {
-          "productName" : "USB Receiver",
+          "productID" : "0xb02a",
           "category" : "mouse",
-          "vendorID" : "0x1919",
-          "productID" : "0x1919"
+          "productName" : "Logi M650",
+          "serialNumber" : "93DED178",
+          "vendorID" : "0x46d"
+        }
+      },
+      "scrolling" : {
+        "distance" : {
+          "vertical" : 3
+        },
+        "reverse" : {
+          "vertical" : true
+        },
+        "speed" : {
+          "vertical" : 0
+        },
+        "acceleration" : {
+          "vertical" : 1
         }
       }
     }
