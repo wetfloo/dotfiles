@@ -24,6 +24,12 @@ if type -q sccache
 	set -x RUSTC_WRAPPER sccache
 end
 
+set -l os_name $(uname)
+# Lazygit needs this to read the config from the correct directory
+if [ $(uname) = 'Darwin' ]
+	set -x XDG_CONFIG_HOME "$HOME/.config"
+end
+
 if type -q brew
 	eval $(brew shellenv fish)
 end
