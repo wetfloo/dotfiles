@@ -1,5 +1,23 @@
 # vim:ft=gitconfig
-
+[core]
+	pager = delta
+[diff]
+	tool = delta
+[interactive]
+    diffFilter = delta --color-only
+[delta]
+    navigate = true  # use n and N to move between diff sections
+	line-numbers = true
+	tabs = 4
+	syntax-theme = "Nord"
+	file-style = "white"
+	file-decoration-style = "hidden"
+	hunk-header-decoration-style = "hidden"
+	hunk-header-file-style = "hidden"
+	hunk-header-style = "hidden"
+	hunk-header-line-number-style = "hidden"
+[merge]
+    conflictstyle = zdiff3
 [pull]
 	rebase = true
 [maintenance]

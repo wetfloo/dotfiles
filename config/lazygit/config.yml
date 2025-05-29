@@ -1,2 +1,5 @@
 git:
   overrideGpg: true
+  paging:
+    colorArg: always
+    pager: delta --paging=never --detect-dark-light=always
