@@ -122,6 +122,26 @@ run = "layout floating"
 # ================
 # Move windows
 
+# ================
+# Overrides here
+# ================
+# it's imperative that single quotes are used for regexes,
+# since single quotes mean literal strings
+
+# Google calendar
+[[on-window-detected]]
+if.app-id = "com.google.Chrome"
+if.window-title-regex-substring = '^.+ - Calendar - \w+ \d+ - .+$'
+run = "move-node-to-workspace 4"
+
+# Gmail
+[[on-window-detected]]
+if.app-id = "com.google.Chrome"
+if.window-title-regex-substring = '^Inbox(?: \(\d+\))? - .+ - .+ - .+$'
+run = "move-node-to-workspace 4"
+
+# ================
+
 [[on-window-detected]]
 if.app-id = "org.mozilla.firefox"
 run = "move-node-to-workspace 1"
