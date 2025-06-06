@@ -9,3 +9,4 @@ functions/*
 !functions/yazi_yy.fish
 !functions/__ssh_agent*.fish
 !functions/removepath.fish
+!functions/dotenv.fish
