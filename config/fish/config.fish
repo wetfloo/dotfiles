@@ -119,5 +119,5 @@ end
 #end
 
 set -g lucid_cwd_color $fish_color_normal
-set -g lucid_prompt_symbol_color green
 set -g lucid_prompt_symbol_error_color red
+set -g lucid_git_color $fish_color_normal

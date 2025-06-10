@@ -189,7 +189,7 @@ function __lucid_vi_indicator
 	if [ $fish_key_bindings = "fish_vi_key_bindings" ]
 		switch $fish_bind_mode
 		case "insert"
-			set_color green
+			set_color normal
 			echo -n "[I] "
 		case "default"
 			set_color purple
@@ -235,20 +235,7 @@ function fish_prompt
 	if test $cwd != '~'; or test -n "$lucid_git_status_in_home_directory"
 		set -l git_state (__lucid_git_status)
 		if test $status -eq 0
-			if test "$bad_pipestatus" -ne 0
-				set_color --dim red
-			else
-				set_color --dim $lucid_git_separator_color
-			end
-			if test "$bad_pipestatus" -ne 0
-				set_color --dim red
-			else
-				set_color --dim green
-			end
-
-			echo -sn ' :: '
-			set_color normal
-			echo -sn "$git_state"
+			echo -sn " @ $git_state"
 		end
 	end
 
