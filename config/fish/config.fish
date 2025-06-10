@@ -117,7 +117,3 @@ end
 #    set -l lr_path "$(luarocks path --lr-bin | sed 's/:/ /g')"
 #    set -x PATH "$lr_path $PATH"
 #end
-
-set -g lucid_cwd_color $fish_color_normal
-set -g lucid_prompt_symbol_error_color red
-set -g lucid_git_color $fish_color_normal

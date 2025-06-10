@@ -11,35 +11,17 @@ if ! set -q lucid_prompt_symbol_error
 	set -g lucid_prompt_symbol_error ">"
 end
 
-if ! set -q lucid_prompt_symbol_color
-	set -g lucid_prompt_symbol_color "$fish_color_normal"
-end
-
-if ! set -q lucid_prompt_symbol_error_color
-	set -g lucid_prompt_symbol_error_color "$fish_color_normal"
-end
-
 # This should be set to be at least as long as lucid_dirty_indicator, due to a fish bug
 if ! set -q lucid_clean_indicator
 	set -g lucid_clean_indicator (string replace -r -a '.' ' ' $lucid_dirty_indicator)
 end
 
-if ! set -q lucid_cwd_color
-	set -g lucid_cwd_color green
-end
-
-if ! set -q lucid_git_color
-	set -g lucid_git_color blue
-end
-
-if ! set -q lucid_git_dirty_color
-	set -g lucid_git_dirty_color red
-end
-
-if ! set -q lucid_git_separator_color
-	set -g lucid_git_separator_color white
-end
-
+set -g lucid_cwd_color "$fish_color_normal"
+set -g lucid_git_color "$fish_color_normal"
+set -g lucid_git_dirty_color brblue
+set -g lucid_git_separator_color "$fish_color_normal"
+set -g lucid_prompt_symbol_color "$fish_color_normal"
+set -g lucid_prompt_symbol_error_color red
 
 # State used for memoization and async calls.
 set -g __lucid_cmd_id 0
