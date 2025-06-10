@@ -66,6 +66,17 @@ alias shizukustart='adb shell sh /sdcard/Android/data/moe.shizuku.privileged.api
 
 alias rm='rm -i'
 
+alias decaf='killall -9 caffeinate'
+function caf
+	killall -q -9 caffeinate
+	if test (count $argv) -eq 0
+		caf -dism
+	else
+		nohup > /dev/null -- caffeinate $argv &
+	end
+	return 0
+end
+
 # fallback for when we're not in tmux
 if not set -q $TMUX
 	for mode in $(bind --list-modes);
