@@ -70,7 +70,7 @@ alias decaf='killall -9 caffeinate'
 function caf
 	killall -q -9 caffeinate
 	if test (count $argv) -eq 0
-		caf -dism
+		caf -ism
 	else
 		nohup > /dev/null -- caffeinate $argv &
 	end
