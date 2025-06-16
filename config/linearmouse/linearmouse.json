@@ -1,61 +1,57 @@
 {
   "schemes" : [
     {
+      "if" : {
+        "device" : {
+          "vendorID" : "0x1532",
+          "productID" : "0x99",
+          "category" : "mouse",
+          "productName" : "Razer Basilisk V3"
+        }
+      },
+      "scrolling" : {
+        "reverse" : {
+          "vertical" : true
+        }
+      },
       "pointer" : {
         "acceleration" : 0.4684,
         "disableAcceleration" : true
-      },
-      "if" : {
-        "device" : {
-          "productName" : "Razer Basilisk V3",
-          "category" : "mouse",
-          "productID" : "0x99",
-          "vendorID" : "0x1532"
-        }
-      },
-      "scrolling" : {
-        "reverse" : {
-          "vertical" : true
-        }
       }
     },
     {
-      "pointer" : {
-        "disableAcceleration" : true,
-        "acceleration" : 0.175
-      },
       "if" : {
         "device" : {
-          "productID" : "0xd038",
           "productName" : "Keychron 4K Link",
-          "vendorID" : "0x3434",
-          "category" : "mouse"
+          "productID" : "0xd038",
+          "category" : "mouse",
+          "vendorID" : "0x3434"
         }
       },
       "scrolling" : {
-        "distance" : {
-          "vertical" : 3
-        },
-        "acceleration" : {
-          "vertical" : 1
-        },
         "speed" : {
           "vertical" : 0
         },
+        "distance" : {
+          "vertical" : 3
+        },
         "reverse" : {
           "vertical" : true
+        },
+        "acceleration" : {
+          "vertical" : 1
         }
-      }
-    },
-    {
+      },
       "pointer" : {
         "disableAcceleration" : true,
         "acceleration" : 0.175
-      },
+      }
+    },
+    {
       "if" : {
         "device" : {
-          "category" : "mouse",
           "productID" : "0xd041",
+          "category" : "mouse",
           "productName" : "Keychron M3 mini 4K",
           "vendorID" : "0x3434"
         }
@@ -64,43 +60,43 @@
         "speed" : {
           "vertical" : 0
         },
-        "reverse" : {
-          "vertical" : true
+        "acceleration" : {
+          "vertical" : 1
         },
         "distance" : {
           "vertical" : 3
         },
-        "acceleration" : {
-          "vertical" : 1
+        "reverse" : {
+          "vertical" : true
         }
-      }
-    },
-    {
+      },
       "pointer" : {
         "disableAcceleration" : true,
         "acceleration" : 0.175
-      },
-      "if" : {
-        "device" : {
-          "category" : "mouse",
-          "vendorID" : "0x1919",
-          "productID" : "0x1919",
-          "productName" : "USB Receiver"
-        }
       }
     },
     {
-      "pointer" : {
-        "disableAcceleration" : true,
-        "acceleration" : 0.4382
-      },
       "if" : {
         "device" : {
-          "serialNumber" : "93DED178",
+          "vendorID" : "0x1919",
+          "productID" : "0x1919",
           "category" : "mouse",
+          "productName" : "USB Receiver"
+        }
+      },
+      "pointer" : {
+        "disableAcceleration" : true,
+        "acceleration" : 0.175
+      }
+    },
+    {
+      "if" : {
+        "device" : {
           "productID" : "0xb02a",
+          "serialNumber" : "93DED178",
           "vendorID" : "0x46d",
-          "productName" : "Logi M650"
+          "productName" : "Logi M650",
+          "category" : "mouse"
         }
       },
       "scrolling" : {
@@ -110,31 +106,44 @@
         "reverse" : {
           "vertical" : true
         },
-        "distance" : {
-          "vertical" : 3
-        },
         "acceleration" : {
           "vertical" : 1
+        },
+        "distance" : {
+          "vertical" : 3
         }
-      }
-    },
-    {
+      },
       "pointer" : {
         "disableAcceleration" : true,
         "acceleration" : 0.4382
-      },
+      }
+    },
+    {
       "if" : {
         "device" : {
-          "vendorID" : "0x46d",
-          "productName" : "USB Receiver",
           "category" : "mouse",
-          "productID" : "0xc548"
+          "vendorID" : "0x46d",
+          "productID" : "0xc548",
+          "productName" : "USB Receiver"
         }
       },
       "scrolling" : {
+        "distance" : {
+          "vertical" : 3
+        },
+        "reverse" : {
+          "vertical" : true
+        },
         "acceleration" : {
           "vertical" : 1
+        },
+        "speed" : {
+          "vertical" : 0
         }
+      },
+      "pointer" : {
+        "disableAcceleration" : true,
+        "acceleration" : 0.4382
       }
     }
   ],
