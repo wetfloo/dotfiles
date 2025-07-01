@@ -131,7 +131,7 @@ run = "layout floating"
 # Google calendar
 [[on-window-detected]]
 if.app-id = "com.google.Chrome"
-if.window-title-regex-substring = '^.+ - Calendar - \w+ \d+ - .+$'
+if.window-title-regex-substring = '^.+ - Calendar - (?:(?:\d+ year)|(?:\w+ \d+)|(?:Week of \w+ \d+, \d+)|(?:\w+, \w+ \d+, \d+, \w+)) - .+$'
 run = "move-node-to-workspace 4"
 
 # Gmail
