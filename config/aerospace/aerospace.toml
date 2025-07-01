@@ -240,3 +240,11 @@ run = "move-node-to-workspace 9"
 [[on-window-detected]]
 if.app-id = "app.hiddify.com"
 run = "move-node-to-workspace 9"
+
+[[on-window-detected]]
+if.app-id = "Powerflow"
+run = "move-node-to-workspace 9"
+
+[[on-window-detected]]
+if.app-id = "org.localsend.localsendApp"
+run = "move-node-to-workspace 9"
