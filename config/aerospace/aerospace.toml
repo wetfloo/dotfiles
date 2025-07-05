@@ -140,6 +140,24 @@ if.app-id = "com.google.Chrome"
 if.window-title-regex-substring = '^Inbox(?: \(\d+\))? - .+ - .+(?:- .+)?$'
 run = "move-node-to-workspace 4"
 
+# WhatsApp
+[[on-window-detected]]
+if.app-id = "org.mozilla.firefox"
+if.window-title-regex-substring = '^(?:\(\d+\) )?WhatsApp$'
+run = "move-node-to-workspace 7"
+
+# Instagram
+[[on-window-detected]]
+if.app-id = "org.mozilla.firefox"
+if.window-title-regex-substring = '^(?:\(\d+\) )?Inbox • Chats$'
+run = "move-node-to-workspace 7"
+
+# Reddit chat
+[[on-window-detected]]
+if.app-id = "org.mozilla.firefox"
+if.window-title-regex-substring = '^Reddit Chat$'
+run = "move-node-to-workspace 7"
+
 # ================
 
 [[on-window-detected]]
