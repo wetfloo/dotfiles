@@ -137,7 +137,7 @@ run = "move-node-to-workspace 4"
 # Gmail
 [[on-window-detected]]
 if.app-id = "com.google.Chrome"
-if.window-title-regex-substring = '^Inbox(?: \(\d+\))? - .+ - .+ - .+$'
+if.window-title-regex-substring = '^Inbox(?: \(\d+\))? - .+ - .+(?:- .+)?$'
 run = "move-node-to-workspace 4"
 
 # ================
