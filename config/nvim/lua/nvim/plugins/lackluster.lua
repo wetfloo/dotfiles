@@ -2,7 +2,7 @@ return {
 	"slugbyte/lackluster.nvim",
 	lazy = false,
 	priority = 1000,
-	enabled = true,
+	enabled = false,
 	init = function()
 		local lackluster = require("lackluster")
 		local color = lackluster.color -- blue, green, red, orange, black, lack, luster, gray1-9

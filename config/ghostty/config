@@ -14,7 +14,7 @@ mouse-hide-while-typing = true
 cursor-style = block
 # this doesn't play well with (some) nvim themes with backgrounds
 # see commit 077a3590f22e789bd27c9301002eba3a4a3e1fe5 as an example of how to fix it within a theme
-background-opacity = 1
+background-opacity = .8
 background-blur-radius = 20
 title = " "
 macos-option-as-alt = true
