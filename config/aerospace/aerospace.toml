@@ -119,6 +119,10 @@ run = "layout floating"
 if.app-id = "com.1password.1password"
 run = "layout floating"
 
+[[on-window-detected]]
+if.app-id = "com.colliderli.iina"
+run = "layout floating"
+
 # ================
 # Move windows
 
