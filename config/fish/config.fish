@@ -67,6 +67,7 @@ alias shizukustart='adb shell sh /sdcard/Android/data/moe.shizuku.privileged.api
 alias rm='rm -i'
 
 alias decaf='killall -9 caffeinate'
+alias deq='xattr -d com.apple.quarantine'
 function caf
 	killall -q -9 caffeinate
 	if test (count $argv) -eq 0
