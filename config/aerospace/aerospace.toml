@@ -186,8 +186,8 @@ run = "move-node-to-workspace 1"
 if.app-id = "com.mitchellh.ghostty"
 run = "move-node-to-workspace 2"
 
-if.app-id = "com.google.android.studio"
 [[on-window-detected]]
+if.app-id = "com.google.android.studio"
 run = "move-node-to-workspace 2"
 
 # ================
