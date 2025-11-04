@@ -5,20 +5,25 @@ set -o pipefail
 
 selected_name=$(basename "$1" | tr . _)
 
-# We're inverting the return text,
-# not the actual value of has-session here.
-if [[ ! $(tmux has-session -t=$selected_name 2> /dev/null) ]]; then
+if ! $(tmux has-session -t "$selected_name" 2> /dev/null); then
     # Forward slash is not allowed on Unix-like OS,
     # so this will never be used by a directory in sessionizer
     if [[ "$selected_name" = "/" ]]; then
         tmux new-session -ds $selected_name -c ~ 2> /dev/null
     else
-        tmux new-session -ds $selected_name -c $1 2> /dev/null
+		# Create a session with a preset
+        tmux new-session -ds $selected_name -c "$1" 2> /dev/null
+
+		tmux new-window -c "$1" -db -t "$selected_name:1"
+		tmux new-window -c "$1" -db -t "$selected_name:1"
+
+		tmux send-keys -t "$selected_name:1" "nvim ." Enter
+		tmux send-keys -t "$selected_name:2" "lazygit" Enter
     fi
 fi
 
 if [[ -n $TMUX ]]; then
-    tmux switch-client -t $selected_name > /dev/null
+	tmux switch-client -t $selected_name > /dev/null
 else
-    tmux attach-session -t $selected_name > /dev/null
+	tmux attach-session -t $selected_name > /dev/null
 fi
