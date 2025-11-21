@@ -24,7 +24,6 @@ if type -q sccache
 	set -x RUSTC_WRAPPER sccache
 end
 
-set -l os_name $(uname)
 # Lazygit needs this to read the config from the correct directory
 if [ $(uname) = 'Darwin' ]
 	set -x XDG_CONFIG_HOME "$HOME/.config"
@@ -94,14 +93,6 @@ if type -q fzf
 	fzf --fish | source
 end
 
-# find short options for commands
-function manfind
-	set -l cmd $argv[1]
-	set -l arg $argv[2]
-
-	man $cmd | less -p "^ +$arg"
-end
-
 function nvi
 	nvim --cmd 'let g:lsp_status = 0' $argv
 end
@@ -109,16 +100,4 @@ end
 # https://github.com/3rd/image.nvim/tree/4007cddc4cfc1b5ddd49744a38362e7b0432b3a0?tab=readme-ov-file#installing-imagemagick
 #if type -q magick and type -q brew and [ "$(which magick)" = "$(brew --prefix)/bin/magick)" ]
 #    set -x DYLD_LIBRARY_PATH "$(brew --prefix)/lib $DYLD_LIBRARY_PATH"
-#end
-
-#if type -q luarocks
-#    set -x LUA54_PATH "$(luarocks path --lr-path)"
-#    set -x LUA54_CPATH "$(luarocks path --lr-cpath)"
-#
-#    # for compatibility with neovim
-#    set -x LUA_PATH "$(luarocks path --lr-path --lua-version=5.1)"
-#    set -x LUA_CPATH "$(luarocks path --lr-cpath --lua-version=5.1)"
-#
-#    set -l lr_path "$(luarocks path --lr-bin | sed 's/:/ /g')"
-#    set -x PATH "$lr_path $PATH"
 #end
