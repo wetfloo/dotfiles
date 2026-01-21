@@ -61,7 +61,7 @@ function removepath
 	end
 end
 
-alias shizukustart='adb shell sh /sdcard/Android/data/moe.shizuku.privileged.api/start.sh'
+alias shizukustart='adb shell /data/app/~~zjlb9yl1jh2ZUm-gurEdOQ==/moe.shizuku.privileged.api-Orj9Hf7am-PiiO0PTswI6g==/lib/arm64/libshizuku.so'
 
 alias rm='rm -i'
 
