@@ -33,6 +33,8 @@
     enabled = true
 [diff]
     colorMoved = zebra
+[submodule]
+	recurse = true
 [alias]
     lfs-fix = !sh -c 'git lfs uninstall && git reset --hard && git lfs install && git lfs pull'
 
