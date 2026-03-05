@@ -1,0 +1,11 @@
+[core]
+	longpaths = true
+	sshCommand = C:\\\\WINDOWS\\\\System32\\\\OpenSSH\\\\ssh.exe
+[user]
+	signingkey = ~/.ssh/signing_key
+	name = username
+	email = your_email@example.com
+[include]
+	path = ~/.gitconfig_global
+[gpg "ssh"]
+	program = C:\\\\WINDOWS\\\\System32\\\\OpenSSH\\\\ssh-keygen.exe
