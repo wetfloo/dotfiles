@@ -1,0 +1,6 @@
+[user]
+	name = username
+	email = your_email@example.com
+	signingKey = ~/.ssh/signing_key
+[include]
+	path = ~/.gitconfig_global
