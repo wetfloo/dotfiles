@@ -242,6 +242,10 @@ run = "move-node-to-workspace 7"
 if.app-id = "com.teamspeak.5.client"
 run = "move-node-to-workspace 7"
 
+[[on-window-detected]]
+if.app-id = "im.riot.app"
+run = "move-node-to-workspace 7"
+
 # ================
 
 [[on-window-detected]]
