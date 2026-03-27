@@ -98,6 +98,11 @@ function nvi
 end
 
 function sshpf -d "Port forward using ssh" -w "ssh" -a localport remoteport host
+	if test (count $argv) -eq 0
+		echo "Usage: sshpf <localport> <remoteport> <host>"
+		return 1
+	end
+
 	ssh -fNL $localport:127.0.0.1:$remoteport $host
 end
 
