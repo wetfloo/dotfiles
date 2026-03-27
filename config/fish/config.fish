@@ -106,6 +106,41 @@ function sshpf -d "Port forward using ssh" -w "ssh" -a localport remoteport host
 	ssh -fNL $localport:127.0.0.1:$remoteport $host
 end
 
+function extract --description "Extract various archive formats"
+	if test (count $argv) -eq 0
+		echo "Usage: extract <archive_file>"
+		return 1
+	end
+
+	switch $argv[1]
+	case '*.tar.bz2'
+		tar xjf $argv[1]
+	case '*.tar.gz'
+		tar xzf $argv[1]
+	case '*.bz2'
+		bunzip2 $argv[1]
+	case '*.rar'
+		unrar x $argv[1]
+	case '*.gz'
+		gunzip $argv[1]
+	case '*.tar'
+		tar xf $argv[1]
+	case '*.tbz2'
+		tar xjf $argv[1]
+	case '*.tgz'
+		tar xzf $argv[1]
+	case '*.zip'
+		unzip $argv[1]
+	case '*.Z'
+		uncompress $argv[1]
+	case '*.7z'
+		7z x $argv[1]
+	case '*'
+		echo "Don't know how to extract '$argv[1]'"
+		return 1
+	end
+end
+
 # https://github.com/3rd/image.nvim/tree/4007cddc4cfc1b5ddd49744a38362e7b0432b3a0?tab=readme-ov-file#installing-imagemagick
 #if type -q magick and type -q brew and [ "$(which magick)" = "$(brew --prefix)/bin/magick)" ]
 #    set -x DYLD_LIBRARY_PATH "$(brew --prefix)/lib $DYLD_LIBRARY_PATH"
