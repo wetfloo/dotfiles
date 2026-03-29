@@ -5,6 +5,8 @@
 		<title>Subscriptions-OnMyMac.opml</title>
 	</head>
 <body>
+	<outline text="Bringus Studios" title="Bringus Studios" description="" type="rss" version="RSS" htmlUrl="https://www.youtube.com/channel/UCWFNUk2LHUQdRzQcJLYZmcg" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCWFNUk2LHUQdRzQcJLYZmcg"/>
 	<outline text="Counter-Strike Twitter" title="Counter-Strike Twitter" description="" type="rss" version="RSS" htmlUrl="https://nitter.net/CounterStrike" xmlUrl="https://nitter.net/CounterStrike/rss"/>
+	<outline text="T2mure" title="T2mure" description="" type="rss" version="RSS" htmlUrl="https://www.youtube.com/channel/UCd046f4n2rmMHQmlqkV8D8w" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCd046f4n2rmMHQmlqkV8D8w"/>
 	</body>
 </opml>
