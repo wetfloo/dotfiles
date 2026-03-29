@@ -180,6 +180,10 @@ run = "move-node-to-workspace 1"
 if.app-id = "org.torproject.torbrowser"
 run = "move-node-to-workspace 1"
 
+[[on-window-detected]]
+if.app-id = "com.ranchero.NetNewsWire-Evergreen"
+run = "move-node-to-workspace 1"
+
 # ================
 
 [[on-window-detected]]
