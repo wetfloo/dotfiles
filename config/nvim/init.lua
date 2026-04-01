@@ -33,7 +33,6 @@ require("lazy").setup({
 		-- import your plugins
 		{ import = "plugins" },
 	},
-	concurrency = 1,
 })
 
 if not vscode then
