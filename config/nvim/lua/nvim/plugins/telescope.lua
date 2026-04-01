@@ -48,9 +48,7 @@ return {
 				"<leader>" .. keys,
 				-- This is a hack too, since I couldn't find a way
 				-- to feed keys in a blocking fashion consistently.
-				'"zygv<leader>'
-					.. keys
-					.. "z",
+				'"zygv<leader>' .. keys .. "z",
 				{
 					desc = desc,
 					remap = true,
