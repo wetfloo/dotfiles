@@ -43,3 +43,8 @@ return {
 		})
 	end,
 }
+
+-- TODO: incremental selection,
+-- conditional highlights, etc.
+--
+-- See diffs for `7657f97093a33e1f5e320fec3ac7482e5964e6a9`
