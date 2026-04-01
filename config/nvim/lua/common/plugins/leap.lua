@@ -3,8 +3,10 @@ return {
 	dependencies = { "Wansmer/langmapper.nvim" },
 	config = function()
 		local leap = require("leap")
-		leap.add_default_mappings()
 		leap.setup({})
+
+		vim.keymap.set({ "n", "x", "o" }, "s", "<Plug>(leap)")
+		vim.keymap.set("n", "S", "<Plug>(leap-from-window)")
 
 		local status, lmu = pcall(require, "langmapper.utils")
 		if not status then
