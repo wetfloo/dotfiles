@@ -52,15 +52,6 @@ if test -e "$HOME/.cargo/env.fish"
 	source "$HOME/.cargo/env.fish"
 end
 
-function removepath
-	if set -l index (contains -i $argv[1] $PATH)
-		set --erase --universal fish_user_paths[$index]
-		echo "Updated PATH: $PATH"
-	else
-		echo "$argv[1] not found in PATH: $PATH"
-	end
-end
-
 alias shizukustart='adb shell /data/app/~~zjlb9yl1jh2ZUm-gurEdOQ==/moe.shizuku.privileged.api-Orj9Hf7am-PiiO0PTswI6g==/lib/arm64/libshizuku.so'
 
 alias rm='rm -i'
