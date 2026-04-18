@@ -24,7 +24,3 @@ $puts(output,$if3(
     )
 ))
 $trim($get(output))
-// Optional: removes a lot of symbols,
-// including Cyrillic. Be careful and only
-// use this when needed
-//$trim($ansi($get(output)))
