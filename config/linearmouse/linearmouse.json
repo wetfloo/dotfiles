@@ -44,7 +44,7 @@
       },
       "pointer" : {
         "disableAcceleration" : true,
-        "acceleration" : 0.175
+        "acceleration" : 0.35
       }
     },
     {
@@ -72,7 +72,7 @@
       },
       "pointer" : {
         "disableAcceleration" : true,
-        "acceleration" : 0.175
+        "acceleration" : 0.35
       }
     },
     {
@@ -86,7 +86,7 @@
       },
       "pointer" : {
         "disableAcceleration" : true,
-        "acceleration" : 0.175
+        "acceleration" : 0.35
       }
     },
     {
