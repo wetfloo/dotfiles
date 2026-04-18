@@ -1,5 +1,6 @@
 # vim:ft=gitconfig
 [core]
+	autocrlf = false
 	pager = delta
 [diff]
 	tool = delta
