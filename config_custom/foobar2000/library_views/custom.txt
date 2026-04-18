@@ -13,14 +13,14 @@ $puts(output,$if3(
     $if(
         "$meta(OST_SRC)" PRESENT,
         $if(
-            %totaldiscs% GREATER 1,
-            OST$get(path_separator)$meta(OST_SRC)$get(path_separator)$get(year) - %album%$get(path_separator)%disc%.%totaldiscs% / $get(tracknumber) - $get(title),
+            %discnumber% PRESENT,
+            OST$get(path_separator)$meta(OST_SRC)$get(path_separator)$get(year) - %album%$get(path_separator)%discnumber%.$get(tracknumber) - $get(title),
             OST$get(path_separator)$meta(OST_SRC)$get(path_separator)$get(year) - %album%$get(path_separator)$get(tracknumber) - $get(title)
         )
     ),
     $if(
-        %totaldiscs% GREATER 1,
-        Main$get(path_separator)$get(artist)$get(path_separator)$get(year) - %album%$get(path_separator)%disc%.%totaldiscs% / $get(tracknumber) - $get(title),
+        %discnumber% PRESENT,
+        Main$get(path_separator)$get(artist)$get(path_separator)$get(year) - %album%$get(path_separator)%discnumber%.$get(tracknumber) - $get(title),
         Main$get(path_separator)$get(artist)$get(path_separator)$get(year) - %album%$get(path_separator)$get(tracknumber) - $get(title)
     )
 ))
