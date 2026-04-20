@@ -11,7 +11,7 @@ Use the following parameters:
 - *Attached pictures*: **Move front cover to external file (discard if exists)**: `cover.jpg`
 - *Preserve ReplayGain / SoundCheck*: **No**
 - *Reduce date field to four-digit year*: **Yes**
-- *Drop disc number for single disc albums*: **Yes**
+- *Drop disc number for single disc albums*: **No**
 
 ## Conversions
 
