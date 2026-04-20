@@ -1,3 +1,9 @@
+## Usage
+
+Before using any templates in foobar2000, you should replace any
+characters that might break script parsing.
+To do this, you can do something like `:%s/(\s{4}|\t|\n)//g`
+
 ## Sanitizing tags
 
 Use the following parameters:
