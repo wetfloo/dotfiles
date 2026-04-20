@@ -1,1 +1,19 @@
-$puts(playback_status,)$if(%isplaying%,$puts(playback_status, '('$char(9654)')'))$if(%ispaused%,$puts(playback_status, '('$char(9208)')'))$puts(discnumber,$if(%discnumber% PRESENT,%discnumber%.))$puts(tracknumber,$if2([%tracknumber%],?))$get(discnumber)$get(tracknumber)$get(playback_status)
+$puts(playback_status,)
+$if(
+	%isplaying%,
+	$puts(playback_status, '('$char(9654)')')
+)
+$if(
+	%ispaused%,
+	$puts(playback_status, '('$char(9208)')')
+)
+$puts(
+	discnumber,
+	$if(%discnumber% PRESENT,%discnumber%.)
+)
+$puts(
+	tracknumber,
+	$if2([%tracknumber%],?)
+)
+
+$get(discnumber)$get(tracknumber)$get(playback_status)

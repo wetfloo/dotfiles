@@ -6,30 +6,30 @@ $puts(artist,$if2([%album artist%],%artist%))
 $puts(title,$if($stricmp(%artist%,%album artist%),%title%,%title% :: %artist%))
 
 $puts(output,$if3(
-    $if(
-        "$meta(YT_SRC)" PRESENT,
-        YouTube Rip$get(path_separator)$get(artist)$get(path_separator)$get(year) - %album%$get(path_separator)$get(title) '('$meta(YT_SRC)')'
-    ),
-    $if(
-        "$meta(OST_SRC)" PRESENT,
-        $if(
-            %discnumber% PRESENT,
-            OST$get(path_separator)$meta(OST_SRC)$get(path_separator)$get(year) - %album%$get(path_separator)%discnumber%.$get(tracknumber). $get(title),
-            OST$get(path_separator)$meta(OST_SRC)$get(path_separator)$get(year) - %album%$get(path_separator)$get(tracknumber). $get(title)
-        )
-    ),
-    $if(
-        "$meta(COMPILATION_SRC)" PRESENT,
-        $if(
-            %totaldiscs% GREATER 1,
-            Compilation$get(path_separator)$meta(COMPILATION_SRC)$get(path_separator)$get(year) - %album%$get(path_separator)%disc%.%totaldiscs%$get(path_separator)$get(tracknumber). %artist% - %title%,
-            Compilation$get(path_separator)$meta(COMPILATION_SRC)$get(path_separator)$get(year) - %album%$get(path_separator)$get(tracknumber). %artist% - %title%
-        )
-    ),
-    $if(
-        %discnumber% PRESENT,
-        Main$get(path_separator)$get(artist)$get(path_separator)$get(year) - %album%$get(path_separator)%discnumber%.$get(tracknumber). $get(title),
-        Main$get(path_separator)$get(artist)$get(path_separator)$get(year) - %album%$get(path_separator)$get(tracknumber). $get(title)
-    )
+	$if(
+		"$meta(YT_SRC)" PRESENT,
+		YouTube Rip$get(path_separator)$get(artist)$get(path_separator)$get(year) - %album%$get(path_separator)$get(title) '('$meta(YT_SRC)')'
+	),
+	$if(
+		"$meta(OST_SRC)" PRESENT,
+		$if(
+			%discnumber% PRESENT,
+			OST$get(path_separator)$meta(OST_SRC)$get(path_separator)$get(year) - %album%$get(path_separator)%discnumber%.$get(tracknumber). $get(title),
+			OST$get(path_separator)$meta(OST_SRC)$get(path_separator)$get(year) - %album%$get(path_separator)$get(tracknumber). $get(title)
+		)
+	),
+	$if(
+		"$meta(COMPILATION_SRC)" PRESENT,
+		$if(
+			%totaldiscs% GREATER 1,
+			Compilation$get(path_separator)$meta(COMPILATION_SRC)$get(path_separator)$get(year) - %album%$get(path_separator)%disc%.%totaldiscs%$get(path_separator)$get(tracknumber). %artist% - %title%,
+			Compilation$get(path_separator)$meta(COMPILATION_SRC)$get(path_separator)$get(year) - %album%$get(path_separator)$get(tracknumber). %artist% - %title%
+		)
+	),
+	$if(
+		%discnumber% PRESENT,
+		Main$get(path_separator)$get(artist)$get(path_separator)$get(year) - %album%$get(path_separator)%discnumber%.$get(tracknumber). $get(title),
+		Main$get(path_separator)$get(artist)$get(path_separator)$get(year) - %album%$get(path_separator)$get(tracknumber). $get(title)
+	)
 ))
 $trim($get(output)) :: '('%length%')'
