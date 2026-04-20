@@ -9,7 +9,7 @@ $if(
 )
 $puts(
 	discnumber,
-	$if(%discnumber% PRESENT,%discnumber%.)
+	$if($and(%discnumber% PRESENT,$greater(%totaldiscs%,1)),%discnumber%.)
 )
 $puts(
 	tracknumber,
