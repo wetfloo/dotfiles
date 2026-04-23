@@ -65,3 +65,21 @@ vim.api.nvim_create_autocmd("BufEnter", {
 	end,
 	desc = "Disable New Line Comment",
 })
+
+local insert_spell = vim.api.nvim_create_augroup("InsertSpell", { clear = true })
+
+vim.api.nvim_create_autocmd("InsertEnter", {
+  group = insert_spell,
+  pattern = "*",
+  callback = function()
+    vim.opt_local.spell = true
+  end,
+})
+
+vim.api.nvim_create_autocmd("InsertLeave", {
+  group = insert_spell,
+  pattern = "*",
+  callback = function()
+    vim.opt_local.spell = false
+  end,
+})

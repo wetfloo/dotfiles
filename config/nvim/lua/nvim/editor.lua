@@ -33,6 +33,7 @@ vim.opt.inccommand = "nosplit"
 
 vim.o.spell = true
 vim.o.spelllang = "en_us,ru_ru"
+vim.o.spelloptions = "camel"
 vim.fn.mkdir(vim.fn.stdpath("data") .. "site/spell", "p")
 
 vim.keymap.set("", "<C-c>", "<Esc>")
