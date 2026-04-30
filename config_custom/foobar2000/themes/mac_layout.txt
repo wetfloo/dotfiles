@@ -4,14 +4,13 @@ splitter horizontal style=thin font-name="Iosevka"
   splitter horizontal style=thin
    playlist-manager
    albumlist
-  splitter vertical style=thin
-   splitter horizontal style=thin
-    playlist
-    splitter vertical style=thick
-     vis-vumeter vertical NSSplitViewItem.holdingPriority=1000
-     splitter vertical style=thin
-      vis-spectrum bands=160
-      vis-oscilloscope window-ms=100
-   tabs position=tab
-    selection-properties tab-name="Properties"
-    console mode=lite tab-name="Console"
+  splitter horizontal style=thin
+   playlist
+   splitter vertical style=thick
+    vis-vumeter vertical NSSplitViewItem.holdingPriority=1000
+    splitter vertical style=thin
+     vis-spectrum bands=160
+     vis-oscilloscope window-ms=100
+  tabs position=tab
+   selection-properties tab-name="Properties"
+   console tab-name="Console"
