@@ -4,6 +4,7 @@ $puts(tracknumber,$if2([%tracknumber%],?))
 $puts(year,$if2([%year%],Unknown))
 $puts(artist,$if2([%album artist%],%artist%))
 $puts(title,$if($stricmp(%artist%,%album artist%),%title%,%title% :: %artist%))
+$puts(discnumber,$if($greater($meta(totaldiscs),1),%discnumber%.,))
 
 $puts(output,$if3(
 	$if(
@@ -12,24 +13,12 @@ $puts(output,$if3(
 	),
 	$if(
 		$meta_test(OST_SRC),
-		$if(
-			$greater($meta(totaldiscs),1),
-			OST$get(path_separator)$meta(OST_SRC)$get(path_separator)$get(year) - %album%$get(path_separator)%discnumber%.$get(tracknumber). $get(title),
-			OST$get(path_separator)$meta(OST_SRC)$get(path_separator)$get(year) - %album%$get(path_separator)$get(tracknumber). $get(title)
-		)
+		OST$get(path_separator)$meta(OST_SRC)$get(path_separator)$get(year) - %album%$get(path_separator)$get(discnumber)$get(tracknumber). $get(title)
 	),
 	$if(
 		$meta_test(COMPILATION_SRC),
-		$if(
-			$greater($meta(totaldiscs),1),
-			Compilation$get(path_separator)$meta(COMPILATION_SRC)$get(path_separator)$get(year) - %album%$get(path_separator)%disc%.%totaldiscs%$get(path_separator)$get(tracknumber). %artist% - %title%,
-			Compilation$get(path_separator)$meta(COMPILATION_SRC)$get(path_separator)$get(year) - %album%$get(path_separator)$get(tracknumber). %artist% - %title%
-		)
+		Compilation$get(path_separator)$meta(COMPILATION_SRC)$get(path_separator)$get(year) - %album%$get(path_separator)$get(discnumber)$get(tracknumber). %artist% - %title%
 	),
-	$if(
-		$greater($meta(totaldiscs),1),
-		Main$get(path_separator)$get(artist)$get(path_separator)$get(year) - %album%$get(path_separator)%discnumber%.$get(tracknumber). $get(title),
-		Main$get(path_separator)$get(artist)$get(path_separator)$get(year) - %album%$get(path_separator)$get(tracknumber). $get(title)
-	)
+	Main$get(path_separator)$get(artist)$get(path_separator)$get(year) - %album%$get(path_separator)$get(discnumber)$get(tracknumber). $get(title)
 ))
 $trim($get(output)) :: '('%length%')'
