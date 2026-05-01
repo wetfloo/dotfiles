@@ -1,0 +1,14 @@
+$puts(tracknumber,$if2([%tracknumber%. ],?))
+$puts(discnumber,$if($greater($meta(totaldiscs),1),%discnumber%.,))
+$puts(playback_status,)
+
+$if(
+	%isplaying%,
+	$puts(playback_status,'['Playing']' '/''/''/' )
+)
+$if(
+	%ispaused%,
+	$puts(playback_status,'['Paused']' '/''/''/' )
+)
+
+$get(playback_status)%album artist% :: $get(discnumber)$get(tracknumber)%title%[ '::' %track artist%]
