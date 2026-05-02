@@ -1,16 +1,16 @@
 splitter horizontal style=thin font-name="Iosevka"
  playback-controls
  splitter vertical style=thin
-  splitter horizontal style=thin
+  splitter horizontal style=thin NSSplitViewItem.canCollapse NSSplitViewItem.behavior=NSSplitViewItemBehaviorSidebar
    playlist-manager
    albumlist
-  splitter horizontal style=thin
+  splitter horizontal style=thin NSSplitViewItem.behavior=NSSplitViewItemBehaviorDefault
    playlist
    splitter vertical style=thick
     vis-vumeter vertical NSSplitViewItem.holdingPriority=1000
     splitter vertical style=thin
      vis-spectrum bands=160
      vis-oscilloscope window-ms=100
-  tabs position=tab
+  tabs position=tab NSSplitViewItem.canCollapse NSSplitViewItem.behavior=NSSplitViewItemBehaviorSidebar
    selection-properties tab-name="Properties"
    console tab-name="Console"
