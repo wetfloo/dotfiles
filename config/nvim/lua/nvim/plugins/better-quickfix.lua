@@ -1,6 +1,14 @@
 return {
 	"kevinhwang91/nvim-bqf",
-	event = {
-		"QuickFixCmdPre",
+	ft = "qf",
+	dependencies = {
+		{
+			"junegunn/fzf",
+			build = vim.fn["fzf#install"],
+		},
+		{
+			"nvim-treesitter/nvim-treesitter",
+			build = ":TSUpdate",
+		},
 	},
 }
