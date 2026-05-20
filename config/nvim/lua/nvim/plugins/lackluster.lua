@@ -10,7 +10,7 @@ M.priority = 1000
 
 M.dependencies = {
 	require("common.plugins.lib.plenary"),
-	require("common.plugins.lib.nvim-web-devicons"),
+	require("nvim.plugins.lib.nvim-web-devicons"),
 }
 
 function M.config(_, _)

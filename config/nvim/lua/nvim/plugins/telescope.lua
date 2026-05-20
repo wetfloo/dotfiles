@@ -8,10 +8,7 @@ M.version = "^0.2"
 
 M.dependencies = {
 	require("common.plugins.lib.plenary"),
-	{
-		"nvim-telescope/telescope-fzf-native.nvim",
-		build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
-	},
+	require("nvim.plugins.lib.telescope-fzf-native"),
 }
 
 M.opts = {

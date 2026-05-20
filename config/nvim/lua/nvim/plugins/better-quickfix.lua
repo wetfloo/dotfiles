@@ -7,7 +7,7 @@ local M = {
 M.ft = "qf"
 
 M.dependencies = {
-	require("common.plugins.lib.fzf"),
+	require("nvim.plugins.lib.fzf"),
 	require("common.plugins.treesitter"),
 }
 
