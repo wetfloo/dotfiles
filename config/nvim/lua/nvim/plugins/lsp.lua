@@ -175,14 +175,27 @@ return {
 		-- See https://www.reddit.com/r/neovim/comments/1hmuwaz/help_debugging_a_highlight_that_doesnt_go_away_in/
 		vim.keymap.set({ "i", "s" }, "<Esc>", "<Esc>:lua vim.snippet.stop()<CR>", { remap = true, silent = true })
 
-		local lspconfig = require("lspconfig")
+		local lspconfig = vim.lsp.config("*", {})
 
 		-- LSPs that need to be installed manually.
 		local servers_manual = {
 			gopls = {},
 			rust_analyzer = {
 				settings = {
+					-- See: https://rust-analyzer.github.io/book/configuration
 					["rust-analyzer"] = {
+						-- Meanwhile, `rust-analyzer` won't recognize `imports.granularity.group`
+						-- unless it's formatted *with* nested tables.
+						imports = {
+							granularity = {
+								-- Reformat imports
+								enforce = true,
+								-- Create a new `use` statement for each import when using the
+								-- auto-import functionality.
+								-- https://rust-analyzer.github.io/manual.html#auto-import
+								group = "item",
+							},
+						},
 						checkOnSave = {
 							command = "clippy",
 						},
@@ -190,7 +203,7 @@ return {
 							-- This should, in theory, fix analyzer complaining
 							-- about code with #[cfg(not(test))] attribute.
 							-- For some reason it really doesn't...
-							-- features = { "all" },
+							features = "all",
 						},
 					},
 				},
