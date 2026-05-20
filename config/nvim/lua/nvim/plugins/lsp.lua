@@ -297,25 +297,44 @@ function M.config()
 			["rust-analyzer"] = {
 				-- Meanwhile, `rust-analyzer` won't recognize `imports.granularity.group`
 				-- unless it's formatted *with* nested tables.
-				imports = {
-					granularity = {
-						-- Reformat imports.
-						enforce = true,
-						-- Create a new `use` statement for each import when using the
-						-- auto-import functionality.
-						-- See: https://rust-analyzer.github.io/book/configuration.html#imports.granularity.group
-						group = "item",
-					},
+				assist = {
+					-- Create a new `use` statement for each import when using the
+					-- auto-import functionality.
+					-- See: https://rust-analyzer.github.io/book/configuration.html#imports.granularity.group
+					importGranularity = "item",
+					importEnforceGranularity = true,
 				},
+
+				cargo = {
+					-- Passes `--all-features` to cargo metadata and cargo check
+					allFeatures = true,
+				},
+
+				-- Optional: If you use clippy on save, this ensures it also respects the features
+				checkOnSave = {
+					enable = true,
+					command = "clippy",
+					-- checkOnSave usually inherits the cargo.features setting,
+					-- but you can explicitly enforce it here if needed:
+					features = "all",
+				},
+
+				completion = {
+					autoimport = {
+						enable = false,
+					}
+				},
+
+				diagnostics = {
+					disabled = { "inactive-code" }
+				},
+
 				files = {
 					excludeDirs = {
 						-- Don't scan nixpkgs on startup -_-
 						-- https://github.com/rust-lang/rust-analyzer/issues/12613#issuecomment-1174418175
 						".direnv",
 					},
-				},
-				cargo = {
-					features = "all",
 				},
 			},
 		},
