@@ -9,7 +9,6 @@ local M = {
 	-- build = 'cargo build --release',
 	-- If you use nix, you can build from source using latest nightly rust with:
 	-- build = 'nix run .#build-plugin',
-	opts_extend = { "sources.default" },
 }
 
 ---@module 'blink.cmp'
