@@ -6,7 +6,7 @@ local M = {
 
 M.dependencies = {
 	-- Autoformat on save, if enabled.
-	require("nvim.plugins.autoformat"),
+	require("nvim.plugins.lsp_deps.conform"),
 
 	-- Needed to handle the `omnisharp` LSP's nonsense `$metadata` paths
 	-- correctly.
