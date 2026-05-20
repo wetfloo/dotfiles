@@ -1,6 +1,6 @@
 return {
 	"Wansmer/langmapper.nvim",
-	enabled = require("utils").dir_contains(vim.fn.getcwd(), ".+%.tex"),
+	enabled = require("utils").dir_contains(vim.fn.getcwd(), ".+%.tex") and false,
 	lazy = false,
 	priority = 999,
 	config = function()

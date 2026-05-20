@@ -238,3 +238,26 @@ vim.diagnostic.config({
 		severity = vim.diagnostic.severity.ERROR,
 	},
 })
+
+vim.opt.sessionoptions:append {
+  -- We use `vim.g.format_after_save` to toggle autoformatting, but Vim only
+  -- saves "global variables that start with an uppercase letter and contain at
+  -- least one lowercase letter" (???) so maybe we need to change the name...?
+  "globals",
+  "localoptions",
+  -- Includes key mappings.
+  "options",
+  -- Don't save the `runtimepath` or `packpath` options; these seem to confuse
+  -- `lazy.nvim` and cause strange errors:
+  --
+  --     Error executing vim.schedule lua callback: ...ovim-unwrapped-0.11.5/share/nvim/runtime/lua/vim/lsp.lua:258: module 'vim.
+  --     lsp.client' not found:
+  --             no field package.preload['vim.lsp.client']
+  --             cache_loader: module 'vim.lsp.client' not found
+  --             cache_loader_lib: module 'vim.lsp.client' not found
+  "skiprtp",
+}
+
+-- Fix for blink highlights the source is selected.
+-- See https://www.reddit.com/r/neovim/comments/1hmuwaz/help_debugging_a_highlight_that_doesnt_go_away_in/
+vim.keymap.set({ "i", "s" }, "<Esc>", "<Esc>:lua vim.snippet.stop()<CR>", { remap = true, silent = true })

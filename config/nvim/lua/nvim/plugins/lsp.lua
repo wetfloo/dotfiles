@@ -1,23 +1,140 @@
--- TODO: this only allows lsp to be disabled for this instance on startup with no other way
--- to toggle it in runtime
-local function get_lsp_status()
-	local status = vim.g.lsp_status
-	if status == false or status == 0 then
-		return false
+--- @require "lazy"
+--- @type LazyPluginSpec
+local M = {
+	"neovim/nvim-lspconfig",
+}
+
+M.dependencies = {
+	-- Autoformat on save, if enabled.
+	require("nvim.plugins.autoformat"),
+
+	-- Needed to handle the `omnisharp` LSP's nonsense `$metadata` paths
+	-- correctly.
+	{
+		"Hoffs/omnisharp-extended-lsp.nvim",
+		ft = "cs",
+	},
+
+	-- Neovim Lua setup.
+	{
+		"folke/lazydev.nvim",
+		ft = "lua",
+		config = function()
+			-- Monkeypatch in a PR to remove a call to the deprecated `client.notify`
+			-- function.
+			--
+			-- See: https://github.com/folke/lazydev.nvim/pull/106
+			local config = require("lazydev.config")
+			config.have_0_11 = vim.fn.has("nvim-0.11") == 1
+
+			local lsp = require("lazydev.lsp")
+			--- @diagnostic disable-next-line: duplicate-set-field
+			lsp.update = function(client)
+				lsp.assert(client)
+				if config.have_0_11 then
+					client:notify("workspace/didChangeConfiguration", {
+						settings = { Lua = {} },
+					})
+				else
+					--- @diagnostic disable-next-line: param-type-mismatch
+					client.notify("workspace/didChangeConfiguration", {
+						settings = { Lua = {} },
+					})
+				end
+			end
+
+			require("lazydev").setup({
+				library = {
+					-- See the configuration section for more details
+					-- Load luvit types when the `vim.uv` word is found
+					{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+				},
+			})
+		end,
+	},
+}
+
+--- @param ctx lsp.HandlerContext
+--- @param callback function(client: vim.lsp.Client, bufnr: number)
+local function for_all_attached_buffers(ctx, callback)
+	-- See: https://github.com/neovim/neovim/blob/49d6cd1da86cab49c7a5a8c79e59d48d016975fa/runtime/lua/vim/lsp/handlers.lua#L122-L131
+	local client = assert(vim.lsp.get_client_by_id(ctx.client_id))
+	for bufnr, _ in pairs(client.attached_buffers) do
+		callback(client, bufnr)
 	end
-	return true
 end
 
--- local function toggle_lsp_status()
---     vim.g.lsp_status = not get_lsp_status()
--- end
+-- Reset options back to what I want. This is needed because the Neovim
+-- LSP client will reset these options _after_ calling `lsp_attach`.
+--
+-- See: https://github.com/neovim/neovim/issues/31430
+local function reset_defaults(_client, bufnr)
+	-- *Don't* set `formatexpr` to `v:lua.vim.lsp.formatexpr()` because I like
+	-- Vim's default word-wrapping for comments and such. Anyways I have
+	-- `:Format` and format-on-save. See `conform.nvim`.
+	vim.api.nvim_set_option_value("formatexpr", "", { buf = bufnr })
+end
 
--- vim.keymap.set("n", "<leader>l", toggle_lsp_status, {
---     noremap = true,
---     silent = true,
--- })
+local function list_workspace_folders()
+	print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+end
 
-local function on_attach(_, bufnr)
+--- @arg opts vim.diagnostic.JumpOpts
+local function jump_most_severe(opts)
+	--- @arg severity vim.diagnostic.Severity
+	local function opts_for_severity(severity)
+		return vim.tbl_extend("keep", {
+			severity = severity,
+		}, opts)
+	end
+
+	local diagnostic = vim.diagnostic.jump(opts_for_severity(vim.diagnostic.severity.ERROR))
+	if diagnostic ~= nil then
+		return
+	end
+
+	diagnostic = vim.diagnostic.jump(opts_for_severity(vim.diagnostic.severity.WARN))
+	if diagnostic ~= nil then
+		return
+	end
+
+	vim.diagnostic.jump(opts)
+end
+
+-- Use an `LspAttach` function to only create LSP-related key bindings after
+-- the language server attaches to the buffer.
+--
+--- @param args vim.api.keyset.create_autocmd.callback_args
+local function lsp_attach(args)
+	--- @type vim.lsp.Client
+	local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
+
+	--- @type integer
+	local bufnr = args.buf
+
+	-- Enable completion triggered by <c-x><c-o>
+	vim.api.nvim_set_option_value("omnifunc", "v:lua.vim.lsp.omnifunc", { buf = bufnr })
+
+	local function get_line_diagnostics()
+		vim.diagnostic.get(bufnr, { lnum = vim.fn.line(".") })
+	end
+
+	reset_defaults(client, bufnr)
+
+	local definition = vim.lsp.buf.definition
+	local type_definition = vim.lsp.buf.type_definition
+	local references = vim.lsp.buf.references
+	local implementation = vim.lsp.buf.implementation
+
+	if vim.bo["filetype"] == "cs" then
+		local omnisharp = require("omnisharp_extended")
+		definition = omnisharp.lsp_definition
+		type_definition = omnisharp.lsp_type_definition
+		references = omnisharp.lsp_references
+		implementation = omnisharp.lsp_implementation
+	end
+
+	-- See `:help vim.lsp.*` for documentation on any of the below functions
 	local function lsp_desc(desc)
 		return desc .. " (LSP)"
 	end
@@ -62,206 +179,196 @@ local function on_attach(_, bufnr)
 		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 	end)
 
-	local reformat_desc = lsp_desc("Format current buffer")
-	vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
-		vim.lsp.buf.format()
-	end, { desc = reformat_desc })
-	keymaps.format:map(":Format<CR>", { silent = true, buffer = bufnr, desc = reformat_desc })
+	-- Setup progress/status info
+	-- require("lsp-status").on_attach(client)
+	-- vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
 end
 
-return {
-	"neovim/nvim-lspconfig",
-	-- TODO: this only allows lsp to be disabled for this instance on startup with no other way
-	-- to toggle it in runtime
-	enabled = get_lsp_status(),
-	event = {
-		"BufReadPost",
-		"BufNewFile",
-	},
-	cmd = {
-		"LspInfo",
-		"LspInstall",
-		"LspUninstall",
-	},
-	dependencies = {
-		"folke/neodev.nvim",
-		"nvim-lua/plenary.nvim",
-		{
-			"mason-org/mason.nvim",
-			-- New mason assumes the usage of vim.lsp.config,
-			-- but I ain't bothering with it right now
-			version = "1.*",
-			config = true, -- Uses the default implementation
-			dependencies = {
-				{
-					"mason-org/mason-lspconfig.nvim",
-					version = "1.*",
-				},
-				{
-					"jay-babu/mason-null-ls.nvim",
-					event = { "BufReadPre", "BufNewFile" },
-					dependencies = {
-						"nvimtools/none-ls.nvim",
-						dependencies = "nvim-lua/plenary.nvim",
-						config = function()
-							local null_ls = require("null-ls")
+function M.config()
+	-- Language server / autocomplete configuration
 
-							null_ls.setup({
-								sources = {
-									null_ls.builtins.formatting.black,
-									null_ls.builtins.formatting.stylua,
-									-- null_ls.builtins.formatting.beautysh,
-								},
-							})
-						end,
-					},
+	-- See: https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
+
+	-- https://github.com/neovim/neovim/issues/16807#issuecomment-1001618856
+	vim.lsp.log.set_format_func(vim.inspect)
+
+	-- When jumping to diagnostics, open floating windows by default.
+	vim.diagnostic.config({
+		jump = {
+			float = true,
+		},
+	})
+
+	-- See: `:h lsp-attach`
+	vim.api.nvim_create_autocmd("LspAttach", {
+		group = vim.api.nvim_create_augroup("nvim.rbt.lsp", {}),
+		callback = lsp_attach,
+	})
+
+	vim.lsp.config("*", {
+		handlers = {
+			-- See: https://github.com/neovim/neovim/issues/31430
+			["client/registerCapability"] = function(err, result, ctx, config)
+				local default_result = vim.lsp.handlers["client/registerCapability"](err, result, ctx, config)
+				for_all_attached_buffers(ctx, reset_defaults)
+				return default_result
+			end,
+		},
+		flags = {
+			debounce_text_changes = 150,
+		},
+	})
+
+	-- keep-sorted start block=yes newline_separated=yes
+	vim.lsp.config("buck2", {
+		filetypes = {
+			"bzl",
+			"bzl.build",
+		},
+	})
+
+	vim.lsp.config("hls", {
+		settings = {
+			haskell = {
+				formattingProvider = "fourmolu",
+			},
+		},
+	})
+
+	vim.lsp.config("jsonls", {
+		settings = {
+			json = {
+				validate = {
+					enable = true,
 				},
 			},
 		},
-		{
-			"saghen/blink.cmp",
+	})
 
-			-- use a release tag to download pre-built binaries
-			version = "1.*",
-			-- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
-			-- build = 'cargo build --release',
-			-- If you use nix, you can build from source using latest nightly rust with:
-			-- build = 'nix run .#build-plugin',
-
-			---@module 'blink.cmp'
-			---@type blink.cmp.Config
-			opts = {
-				-- See :h blink-cmp-config-keymap for defining your own keymap
-				keymap = {
-					["<C-k>"] = { "show_documentation", "hide_documentation", "fallback_to_mappings" },
-					["<C-e>"] = { "show", "hide", "fallback" },
-					["<CR>"] = { "accept", "fallback" },
-
-					["<Tab>"] = { "snippet_forward", "fallback" },
-					["<S-Tab>"] = { "snippet_backward", "fallback" },
-
-					["<Up>"] = { "select_prev", "fallback" },
-					["<Down>"] = { "select_next", "fallback" },
-					["<C-p>"] = { "select_prev", "fallback_to_mappings" },
-					["<C-n>"] = { "select_next", "fallback_to_mappings" },
-
-					["<C-b>"] = { "scroll_documentation_up", "fallback" },
-					["<C-f>"] = { "scroll_documentation_down", "fallback" },
-
-					["<C-j>"] = { "show_signature", "hide_signature", "fallback" },
+	vim.lsp.config("lua_ls", {
+		settings = {
+			Lua = {
+				runtime = {
+					-- For neovim
+					version = "LuaJIT",
 				},
-				signature = { enabled = true },
-
-				cmdline = {
-					completion = {
-						menu = { auto_show = true },
-						list = {
-							selection = {
-								auto_insert = false,
-								preselect = true,
-							},
-						},
-						ghost_text = { enabled = true },
-					},
+				diagnostics = {
+					globals = { "vim" },
+					unusedLocalExclude = { "_*" },
 				},
-
-				completion = { documentation = { auto_show = true } },
+				workspace = {
+					checkThirdParty = false,
+				},
+				format = {
+					enable = false,
+				},
 			},
-			opts_extend = { "sources.default" },
 		},
-	},
-	config = function()
-		-- Fix for blink highlights the source is selected.
-		-- See https://www.reddit.com/r/neovim/comments/1hmuwaz/help_debugging_a_highlight_that_doesnt_go_away_in/
-		vim.keymap.set({ "i", "s" }, "<Esc>", "<Esc>:lua vim.snippet.stop()<CR>", { remap = true, silent = true })
+	})
 
-		local lspconfig = vim.lsp.config("*", {})
+	vim.lsp.config("nil", {
+		settings = {
+			formatting = {
+				command = { "nixfmt" },
+			},
+			nix = {
+				autoArchive = true,
+				autoEvalInputs = true,
+			},
+		},
+	})
 
-		-- LSPs that need to be installed manually.
-		local servers_manual = {
-			gopls = {},
-			rust_analyzer = {
-				settings = {
-					-- See: https://rust-analyzer.github.io/book/configuration
-					["rust-analyzer"] = {
-						-- Meanwhile, `rust-analyzer` won't recognize `imports.granularity.group`
-						-- unless it's formatted *with* nested tables.
-						imports = {
-							granularity = {
-								-- Reformat imports
-								enforce = true,
-								-- Create a new `use` statement for each import when using the
-								-- auto-import functionality.
-								-- https://rust-analyzer.github.io/manual.html#auto-import
-								group = "item",
-							},
-						},
-						checkOnSave = {
-							command = "clippy",
-						},
-						cargo = {
-							-- This should, in theory, fix analyzer complaining
-							-- about code with #[cfg(not(test))] attribute.
-							-- For some reason it really doesn't...
-							features = "all",
-						},
+	vim.lsp.config("omnisharp", {
+		settings = {
+			cmd = {
+				"OmniSharp",
+				"--zero-based-indices",
+				"DotNet:enablePackageRestore=false",
+				"--encoding",
+				"utf-8",
+				"--languageserver",
+			},
+		},
+	})
+
+	vim.lsp.config("rust_analyzer", {
+		settings = {
+			-- See: https://rust-analyzer.github.io/book/configuration
+			["rust-analyzer"] = {
+				-- Meanwhile, `rust-analyzer` won't recognize `imports.granularity.group`
+				-- unless it's formatted *with* nested tables.
+				imports = {
+					granularity = {
+						-- Reformat imports.
+						enforce = true,
+						-- Create a new `use` statement for each import when using the
+						-- auto-import functionality.
+						-- See: https://rust-analyzer.github.io/book/configuration.html#imports.granularity.group
+						group = "item",
 					},
 				},
-			},
-		}
-
-		-- LSPs won't be auto-installed, but will be installed and configured by Mason.
-		local servers_mason_manual = {
-			denols = {
-				root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc", "lock.json"),
-			},
-			lua_ls = {
-				Lua = {
-					workspace = {
-						checkThirdParty = false,
-						-- Fixes plenary not showing up in custom nvim plugins
-						library = vim.api.nvim_get_runtime_file("lua", true),
+				files = {
+					excludeDirs = {
+						-- Don't scan nixpkgs on startup -_-
+						-- https://github.com/rust-lang/rust-analyzer/issues/12613#issuecomment-1174418175
+						".direnv",
 					},
-					telemetry = { enable = false },
+				},
+				cargo = {
+					features = "all",
 				},
 			},
-			ltex = {
-				language = "ru-RU",
-			},
-		}
+		},
+	})
 
-		-- LSPs that will be auto-installed by Mason.
-		local servers_mason_auto = {}
+	vim.lsp.config("yamlls", {
+		settings = {
+			-- The yaml-language-server actually crashes if I do this with nested
+			-- tables instead of writing the property name with dots. Incredible.
+			-- Anyways this gets me autocomplete for things like GitHub Actions files.
+			-- Essential.
+			-- https://github.com/redhat-developer/yaml-language-server
+			["yaml.schemaStore.enable"] = true,
+		},
+	})
+	-- keep-sorted end
 
-		local servers_auto = vim.tbl_deep_extend("keep", servers_mason_manual, servers_mason_auto)
+	if vim.fn.executable("static-ls") == 1 then
+		vim.lsp.config("hls", {
+			cmd = { "static-ls" },
 
-		local capabilities = vim.lsp.protocol.make_client_capabilities()
-		capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
-
-		local function setup_opts(opts)
-			return {
-				capabilities = capabilities,
-				settings = opts,
-				filetypes = (opts or {}).filetypes,
-				on_attach = on_attach,
-			}
-		end
-
-		---@diagnostic disable-next-line: missing-fields
-		require("neodev").setup({})
-
-		---@diagnostic disable-next-line: missing-fields
-		require("mason-lspconfig").setup({
-			ensure_installed = vim.tbl_keys(servers_mason_auto),
-		})
-		require("mason-lspconfig").setup_handlers({
-			function(server_name)
-				lspconfig[server_name].setup(setup_opts(servers_auto[server_name]))
+			on_init = function(client)
+				-- static-ls (via the `lsp` Haskell library) falsely advertises
+				-- semanticTokensProvider but registers no handler, producing a
+				-- "no handler for: textDocument/semanticTokens/full" message on
+				-- every cursor move. Strip it.
+				client.server_capabilities.semanticTokensProvider = nil
 			end,
 		})
+	end
 
-		for name, opts in pairs(servers_manual) do
-			lspconfig[name].setup(setup_opts(opts))
-		end
-	end,
-}
+	-- See: `:h lspconfig-all`
+	-- See: https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
+	-- keep-sorted start
+	vim.lsp.enable("buck2") -- https://buck2.build/docs/users/commands/lsp/
+	vim.lsp.enable("clangd") -- https://clangd.llvm.org/
+	vim.lsp.enable("cssls")
+	vim.lsp.enable("gopls") -- https://github.com/golang/tools/tree/master/gopls
+	vim.lsp.enable("hls")
+	vim.lsp.enable("html")
+	vim.lsp.enable("jsonls")
+	vim.lsp.enable("lua_ls") -- https://github.com/LuaLS/lua-language-server
+	vim.lsp.enable("nil_ls") -- Nix: https://github.com/oxalica/nil
+	vim.lsp.enable("omnisharp") -- C# https://github.com/dotnet/roslyn
+	vim.lsp.enable("pyright")
+	vim.lsp.enable("racket_langserver")
+	vim.lsp.enable("rust_analyzer")
+	vim.lsp.enable("taplo") -- TOML schemas: https://taplo.tamasfe.dev/
+	vim.lsp.enable("terraformls")
+	vim.lsp.enable("texlab") -- LaTeX
+	vim.lsp.enable("ts_ls")
+	vim.lsp.enable("yamlls")
+	-- keep-sorted end
+end
+
+return M
