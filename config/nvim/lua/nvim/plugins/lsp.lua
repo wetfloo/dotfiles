@@ -181,15 +181,17 @@ return {
 		local servers_manual = {
 			gopls = {},
 			rust_analyzer = {
-				["rust-analyzer"] = {
-					checkOnSave = {
-						command = "clippy",
-					},
-					cargo = {
-						-- This should, in theory, fix analyzer complaining
-						-- about code with #[cfg(not(test))] attribute.
-						-- For some reason it really doesn't...
-						-- features = { "all" },
+				settings = {
+					["rust-analyzer"] = {
+						checkOnSave = {
+							command = "clippy",
+						},
+						cargo = {
+							-- This should, in theory, fix analyzer complaining
+							-- about code with #[cfg(not(test))] attribute.
+							-- For some reason it really doesn't...
+							-- features = { "all" },
+						},
 					},
 				},
 			},
