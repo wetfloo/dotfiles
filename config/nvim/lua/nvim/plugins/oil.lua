@@ -8,7 +8,7 @@ local M = {
 }
 
 M.dependencies = {
-	require("nvim.plugins.nvim-web-devicons"),
+	require("common.plugins.lib.nvim-web-devicons"),
 }
 
 M.version = "2.13"

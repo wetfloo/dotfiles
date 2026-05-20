@@ -5,7 +5,7 @@ local M = {
 }
 
 M.dependencies = {
-	require("nvim.plugins.nvim-web-devicons"),
+	require("common.plugins.lib.nvim-web-devicons"),
 }
 
 function M.opts(_, _)

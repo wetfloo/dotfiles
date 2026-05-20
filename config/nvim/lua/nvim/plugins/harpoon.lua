@@ -7,7 +7,7 @@ local M = {
 M.branch = "harpoon2"
 
 M.dependencies = {
-	require("common.plugins.plenary"),
+	require("common.plugins.lib.plenary"),
 }
 
 M.opts = {

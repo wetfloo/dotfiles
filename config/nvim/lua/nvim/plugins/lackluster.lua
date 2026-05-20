@@ -9,8 +9,8 @@ M.lazy = false
 M.priority = 1000
 
 M.dependencies = {
-	require("common.plugins.plenary"),
-	require("nvim.plugins.nvim-web-devicons"),
+	require("common.plugins.lib.plenary"),
+	require("common.plugins.lib.nvim-web-devicons"),
 }
 
 function M.config(_, _)
