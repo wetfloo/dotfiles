@@ -51,6 +51,40 @@ M.dependencies = {
 	},
 }
 
+M.ft = {
+	"asm",
+	"awk",
+	"bash",
+	"c",
+	"cmake",
+	"cpp",
+	"dockerfile",
+	"fish",
+	"gitcommit",
+	"gitignore",
+	"go",
+	"gomod",
+	"gosum",
+	"gowork",
+	"groovy",
+	"java",
+	"json",
+	"kotlin",
+	"lua",
+	"make",
+	"markdown",
+	"objc",
+	"powershell",
+	"proto",
+	"python",
+	"rust",
+	"tmux",
+	"toml",
+	"vim",
+	"vimdoc",
+	"yaml",
+}
+
 --- @param ctx lsp.HandlerContext
 --- @param callback function(client: vim.lsp.Client, bufnr: number)
 local function for_all_attached_buffers(ctx, callback)
