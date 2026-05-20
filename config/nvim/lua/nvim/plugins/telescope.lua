@@ -34,7 +34,9 @@ M.opts = {
 function M:init()
 	local function map_under_cursor(keys, fn, desc)
 		local uppered = (keys:gsub("(.)$", string.upper))
-		vim.keymap.set("n", "<leader>" .. keys, function() fn() end, { desc = desc })
+		vim.keymap.set("n", "<leader>" .. keys, function()
+			fn()
+		end, { desc = desc })
 
 		vim.keymap.set("n", "<leader>" .. uppered, "'<leader>" .. keys .. "' . \"\" . expand('<cword>')", {
 			desc = desc,
@@ -42,7 +44,9 @@ function M:init()
 			expr = true,
 		})
 
-		vim.keymap.set("x", "<leader>" .. uppered, function() fn() end, { desc = desc })
+		vim.keymap.set("x", "<leader>" .. uppered, function()
+			fn()
+		end, { desc = desc })
 		-- TODO: Temp with yanks hack until getregion is in stable.
 		-- See: https://github.com/neovim/neovim/pull/27578
 		vim.keymap.set(
