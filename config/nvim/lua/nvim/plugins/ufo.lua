@@ -2,7 +2,7 @@ local M = {
 	"kevinhwang91/nvim-ufo",
 	dependencies = {
 		"kevinhwang91/promise-async",
-		require("common.plugins.treesitter")
+		require("common.plugins.treesitter"),
 	},
 	config = function()
 		vim.o.foldcolumn = "0"

@@ -3,7 +3,7 @@ local M = {
 	lazy = false,
 	priority = 1000,
 	dependencies = {
-		require("common.plugins.plenary")
+		require("common.plugins.plenary"),
 	},
 }
 

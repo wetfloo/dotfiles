@@ -1,11 +1,11 @@
 local M = {
 	-- Highlight, edit, and navigate code
 	"nvim-treesitter/nvim-treesitter",
-	build = ":TSUpdate",
-	branch = "main",
-	lazy = false,
 }
 
+M.build = ":TSUpdate"
+M.branch = "main"
+M.lazy = false
 function M.config()
 	require("nvim-treesitter").install({
 		"asm",
