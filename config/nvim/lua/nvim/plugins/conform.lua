@@ -54,11 +54,11 @@ function M.config()
 	vim.g.format_after_save = false
 
 	local function format()
-		require("conform").format({ bufnr = 0 })
+		require("conform").format({})
 	end
 	vim.api.nvim_buf_create_user_command(0, "Format", format, { desc = "Format current buffer" })
 	local keymaps = require("nvim.keymap").lsp
-	keymaps.format:map(format, { silent = true, buffer = 0, desc = "Format current buffer" })
+	keymaps.format:map(format, { silent = true, desc = "Format current buffer" })
 
 	require("conform").setup({
 		default_format_opts = {
@@ -90,7 +90,7 @@ function M.config()
 			toml = formatters({ "taplo" }),
 			["*"] = formatters({}),
 		},
-		notify_no_formatters = false,
+		notify_no_formatters = true,
 		format_after_save = function(bufnr)
 			if not vim.g.format_after_save then
 				return

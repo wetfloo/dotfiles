@@ -1,4 +1,4 @@
-return {
+local M = {
 	"nvim-telescope/telescope.nvim",
 	version = "^0.2",
 	dependencies = {
@@ -78,3 +78,5 @@ return {
 		vim.keymap.set("n", "<leader>fl", builtin.resume, { desc = "Last picker" })
 	end,
 }
+
+return M

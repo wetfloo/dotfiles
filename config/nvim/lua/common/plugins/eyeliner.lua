@@ -2,7 +2,7 @@ local function modes(key)
 	return { key, mode = { "n", "x", "o" } }
 end
 
-return {
+local M = {
 	"jinh0/eyeliner.nvim",
 	keys = {
 		modes("f"),
@@ -20,3 +20,5 @@ return {
 		vim.api.nvim_set_hl(0, "EyelinerSecondary", { fg = "#add149", bold = true, underline = false })
 	end,
 }
+
+return M

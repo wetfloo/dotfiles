@@ -1,6 +1,6 @@
 local utils = require("utils")
 
-return {
+local M = {
 	"tpope/vim-fugitive",
 	event = {
 		"VeryLazy",
@@ -18,3 +18,5 @@ return {
 		end, { desc = "Toggle git window (git)" })
 	end,
 }
+
+return M

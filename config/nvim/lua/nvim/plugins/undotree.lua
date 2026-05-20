@@ -1,4 +1,4 @@
-return {
+local M = {
 	"mbbill/undotree",
 	event = "VeryLazy",
 	config = function()
@@ -7,3 +7,5 @@ return {
 		end, { desc = "Undo tree" })
 	end,
 }
+
+return M

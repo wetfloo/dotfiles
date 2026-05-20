@@ -1,4 +1,4 @@
-return {
+local M = {
 	"aserowy/tmux.nvim",
 	opts = {
 		copy_sync = {
@@ -25,3 +25,5 @@ return {
 		},
 	},
 }
+
+return M

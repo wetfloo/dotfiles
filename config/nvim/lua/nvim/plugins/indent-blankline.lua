@@ -1,4 +1,4 @@
-return {
+local M = {
 	"lukas-reineke/indent-blankline.nvim",
 	enabled = false,
 	event = {
@@ -22,3 +22,5 @@ return {
 		},
 	},
 }
+
+return M

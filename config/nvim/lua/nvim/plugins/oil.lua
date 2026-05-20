@@ -1,4 +1,4 @@
-return {
+local M = {
 	"stevearc/oil.nvim",
 	-- uncomment this line when needing to download dictionaries,
 	-- then comment it back again
@@ -47,3 +47,5 @@ return {
 		end, { desc = "File explorer (fullscreen)", silent = true })
 	end,
 }
+
+return M

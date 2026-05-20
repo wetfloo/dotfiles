@@ -1,6 +1,6 @@
 local leader_prefix = require("utils").leader_prefix
 
-return {
+local M = {
 	"gbprod/substitute.nvim",
 	keys = {
 		{ "cx", mode = "n" },
@@ -16,3 +16,5 @@ return {
 		vim.keymap.set("x", "<leader>X", exchange.visual, { desc = "Substitute selection" })
 	end,
 }
+
+return M

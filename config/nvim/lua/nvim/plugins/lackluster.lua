@@ -1,4 +1,4 @@
-return {
+local M = {
 	"slugbyte/lackluster.nvim",
 	lazy = false,
 	priority = 1000,
@@ -74,3 +74,5 @@ return {
 		-- vim.cmd.colorscheme("lackluster-mint")
 	end,
 }
+
+return M

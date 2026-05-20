@@ -1,4 +1,4 @@
-return {
+local M = {
 	"ThePrimeagen/harpoon",
 	branch = "harpoon2",
 	dependencies = {
@@ -114,3 +114,5 @@ return {
 		end
 	end,
 }
+
+return M

@@ -1,4 +1,4 @@
-return {
+local M = {
 
 	-- Highlight, edit, and navigate code
 
@@ -48,3 +48,4 @@ return {
 -- conditional highlights, etc.
 --
 -- See diffs for `7657f97093a33e1f5e320fec3ac7482e5964e6a9`
+return M

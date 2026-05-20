@@ -1,4 +1,4 @@
-return {
+local M = {
 	"kylechui/nvim-surround",
 	version = "*",
 	event = {
@@ -9,3 +9,5 @@ return {
 
 	opts = {},
 }
+
+return M
