@@ -1,8 +1,11 @@
+--- @require "lazy"
+--- @type LazyPluginSpec
 local M = {
 	"kevinhwang91/nvim-bqf",
 }
 
-M.ft = { "qf", "qfreplace" }
+M.ft = "qf"
+
 M.dependencies = {
 	require("nvim.plugins.fzf"),
 	require("common.plugins.treesitter"),

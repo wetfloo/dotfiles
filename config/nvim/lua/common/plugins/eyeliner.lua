@@ -1,3 +1,5 @@
+--- @require "lazy"
+--- @type LazyPluginSpec
 local M = {
 	"jinh0/eyeliner.nvim",
 }
@@ -13,16 +15,14 @@ M.keys = {
 	modes("T"),
 }
 
+function M.init(_)
+	vim.api.nvim_set_hl(0, "EyelinerPrimary", { fg = "#fa579c", bold = true, underline = false })
+	vim.api.nvim_set_hl(0, "EyelinerSecondary", { fg = "#add149", bold = true, underline = false })
+end
+
 M.opts = {
 	highlight_on_key = true,
 	dim = true,
 }
-
-function M.config(_plug, opts)
-	require("eyeliner").setup(opts)
-
-	vim.api.nvim_set_hl(0, "EyelinerPrimary", { fg = "#fa579c", bold = true, underline = false })
-	vim.api.nvim_set_hl(0, "EyelinerSecondary", { fg = "#add149", bold = true, underline = false })
-end
 
 return M

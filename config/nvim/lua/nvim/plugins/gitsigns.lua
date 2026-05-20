@@ -1,3 +1,5 @@
+--- @require "lazy"
+--- @type LazyPluginSpec
 local M = {
 	"lewis6991/gitsigns.nvim",
 }

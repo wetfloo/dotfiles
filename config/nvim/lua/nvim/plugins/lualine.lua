@@ -1,11 +1,14 @@
+--- @require "lazy"
+--- @type LazyPluginSpec
 local M = {
 	"nvim-lualine/lualine.nvim",
-	dependencies = {
-		require("nvim.plugins.nvim-web-devicons"),
-	},
 }
 
-function M.config()
+M.dependencies = {
+	require("nvim.plugins.nvim-web-devicons"),
+}
+
+function M.opts(_, _)
 	-- Since we have a status line already, don't duplicate current mode display
 	vim.o.showmode = false
 
@@ -26,12 +29,9 @@ function M.config()
 		Ok = "󰸞",
 	}
 
-	local _, noirbuddy = pcall(require, "noirbuddy.plugins.lualine")
 	local _, lackluster = pcall(require, "lackluster")
 	local theme
-	if noirbuddy ~= nil then
-		theme = noirbuddy.theme
-	elseif lackluster ~= nil then
+	if lackluster ~= nil then
 		theme = "lackluster"
 	else
 		theme = "auto"
@@ -66,7 +66,7 @@ function M.config()
 		add_custom_hl("error", "DiagnosticSignError")
 	end
 
-	require("lualine").setup({
+	return {
 		options = {
 			icons_enabled = true,
 			theme = theme,
@@ -114,7 +114,7 @@ function M.config()
 			lualine_y = {},
 			lualine_z = {},
 		},
-	})
+	}
 end
 
 return M

@@ -1,7 +1,11 @@
+--- @require "lazy"
+--- @type LazyPluginSpec
 local M = {
 	"junegunn/fzf",
-	build = vim.fn["fzf#install"],
-	lazy = true,
 }
+
+M.build = vim.fn["fzf#install"]
+
+M.lazy = true
 
 return M

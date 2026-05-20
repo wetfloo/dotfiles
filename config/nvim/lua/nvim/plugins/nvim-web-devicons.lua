@@ -1,6 +1,9 @@
+--- @require "lazy"
+--- @type LazyPluginSpec
 local M = {
 	"nvim-tree/nvim-web-devicons",
-	lazy = true,
 }
+
+M.lazy = true
 
 return M

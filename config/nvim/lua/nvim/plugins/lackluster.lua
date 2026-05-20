@@ -1,13 +1,19 @@
+--- @require "lazy"
+--- @type LazyPluginSpec
 local M = {
 	"slugbyte/lackluster.nvim",
-	lazy = false,
-	priority = 1000,
-	dependencies = {
-		require("common.plugins.plenary"),
-	},
 }
 
-function M.init()
+M.lazy = false
+
+M.priority = 1000
+
+M.dependencies = {
+	require("common.plugins.plenary"),
+	require("nvim.plugins.nvim-web-devicons"),
+}
+
+function M.config(_, _)
 	local lackluster = require("lackluster")
 	local color = lackluster.color -- blue, green, red, orange, black, lack, luster, gray1-9
 	lackluster.setup({
@@ -62,16 +68,15 @@ function M.init()
 			-- popup = color.black,
 		},
 	})
-	local _, devicons = pcall(require, "nvim-web-devicons")
-	if devicons ~= nil then
-		devicons.setup({
-			color_icons = false,
-			["default-icon"] = {
-				color = lackluster.color.gray4,
-				name = "Default",
-			},
-		})
-	end
+
+	local devicons = require("nvim-web-devicons")
+	devicons.setup({
+		color_icons = false,
+		["default-icon"] = {
+			color = lackluster.color.gray4,
+			name = "Default",
+		},
+	})
 
 	vim.cmd.colorscheme("lackluster")
 	-- vim.cmd.colorscheme("lackluster-hack")

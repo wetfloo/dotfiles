@@ -1,23 +1,29 @@
+--- @require "lazy"
+--- @type LazyPluginSpec
 local M = {
 	"stevearc/oil.nvim",
 	-- uncomment this line when needing to download dictionaries,
 	-- then comment it back again
 	-- cmd = 'Oil',
-	dependencies = {
-		require("nvim.plugins.nvim-web-devicons"),
-	},
-	version = "2.13",
-	init = function(_plug)
-		local oil = require("oil")
+}
 
-		vim.keymap.set("n", "<leader>tT", function()
-			oil.toggle_float(nil)
-		end, { desc = "File explorer (floating)" })
-		vim.keymap.set("n", "<leader>tt", function()
-			vim.cmd("Oil")
-		end, { desc = "File explorer (fullscreen)", silent = true })
-	end,
-	opts = {
+M.dependencies = {
+	require("nvim.plugins.nvim-web-devicons"),
+}
+
+M.version = "2.13"
+
+M.opts = function(_, _)
+	local oil = require("oil")
+
+	vim.keymap.set("n", "<leader>tT", function()
+		oil.toggle_float(nil)
+	end, { desc = "File explorer (floating)" })
+	vim.keymap.set("n", "<leader>tt", function()
+		vim.cmd("Oil")
+	end, { desc = "File explorer (fullscreen)", silent = true })
+
+	return {
 		columns = {
 			"mtime",
 			"icon",
@@ -45,7 +51,7 @@ local M = {
 			["<leader>tq"] = "actions.send_to_qflist",
 			["<leader>tQ"] = "actions.add_to_qflist",
 		},
-	},
-}
+	}
+end
 
 return M

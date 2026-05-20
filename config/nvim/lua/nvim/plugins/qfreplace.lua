@@ -1,12 +1,16 @@
+--- @require "lazy"
+--- @type LazyPluginSpec
 local M = {
 	"thinca/vim-qfreplace",
-	ft = {
-		"qf",
-		"qfreplace",
-	},
-	cmd = {
-		"Qfreplace",
-	},
+}
+
+M.ft = {
+	"qf",
+	"qfreplace",
+}
+
+M.cmd = {
+	"Qfreplace",
 }
 
 return M

@@ -1,12 +1,17 @@
+--- @require "lazy"
+--- @type LazyPluginSpec
 local M = {
 	-- Highlight, edit, and navigate code
 	"nvim-treesitter/nvim-treesitter",
 }
 
 M.build = ":TSUpdate"
+
 M.branch = "main"
+
 M.lazy = false
-function M.config()
+
+function M.config(_, _)
 	require("nvim-treesitter").install({
 		"asm",
 		"awk",

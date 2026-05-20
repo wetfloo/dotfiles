@@ -1,8 +1,11 @@
+--- @require "lazy"
+--- @type LazyPluginSpec
 local M = {
 	"kylechui/nvim-surround",
 }
 
 M.version = "*"
+
 M.keys = {
 	{ "ys", mode = "n" },
 	{ "ds", mode = "n" },

@@ -5,9 +5,6 @@ local M = {
 }
 
 M.dependencies = {
-	-- Autoformat on save, if enabled.
-	require("nvim.plugins.conform"),
-
 	-- Needed to handle the `omnisharp` LSP's nonsense `$metadata` paths
 	-- correctly.
 	{
@@ -201,7 +198,7 @@ function M.config()
 
 	-- See: `:h lsp-attach`
 	vim.api.nvim_create_autocmd("LspAttach", {
-		group = vim.api.nvim_create_augroup("nvim.rbt.lsp", {}),
+		group = vim.api.nvim_create_augroup("user.lsp", {}),
 		callback = lsp_attach,
 	})
 

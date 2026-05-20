@@ -6,10 +6,7 @@ local M = {
 
 --- Always format with these formatters, even if others are specified or an LSP
 --- formatter is being used.
-local always_formatters = {
-	"keep-sorted",
-	"treefmt",
-}
+local always_formatters = { "keep-sorted", "treefmt" }
 
 local function has_lsp_format(bufnr)
 	local lsp_format_clients = require("conform.lsp_format").get_format_clients({
@@ -50,82 +47,84 @@ local function formatters(opts)
 	end
 end
 
-function M.config()
-	vim.g.format_after_save = false
+local function format()
+	require("conform").format()
+end
 
-	local function format()
-		require("conform").format({})
-	end
-	vim.api.nvim_buf_create_user_command(0, "Format", format, { desc = "Format current buffer" })
+M.lazy = true
+
+function M.init(_)
+	vim.g.format_after_save = false
+	vim.api.nvim_create_user_command("Format", format, { desc = "Format current buffer" })
 	local keymaps = require("nvim.keymap").lsp
 	keymaps.format:map(format, { silent = true, desc = "Format current buffer" })
-
-	require("conform").setup({
-		default_format_opts = {
-			lsp_format = "fallback",
-		},
-
-		formatters_by_ft = {
-			["bzl.build"] = formatters({ "buildifier_build" }),
-			bzl = formatters({ "buildifier" }),
-			["bzl.bxl"] = formatters({ "buildifier_bzl" }),
-			c = formatters({ "clang-format" }),
-			cpp = formatters({ "clang-format" }),
-			go = formatters({ "gofmt" }),
-			json = formatters({ "jq" }),
-			lua = formatters({ "stylua" }),
-			nix = formatters({ "nixfmt" }),
-			python = formatters({
-				"ruff_format",
-				"ruff_fix",
-				lsp_format = "never",
-			}),
-			haskell = formatters({
-				lsp_format = "never",
-			}),
-			rust = formatters({
-				lsp_format_fallback = "rustfmt",
-				lsp_format = "first",
-			}),
-			toml = formatters({ "taplo" }),
-			["*"] = formatters({}),
-		},
-		notify_no_formatters = true,
-		format_after_save = function(bufnr)
-			if not vim.g.format_after_save then
-				return
-			end
-			local buf_format_after_save = vim.b[bufnr].format_after_save
-			if buf_format_after_save ~= nil and not buf_format_after_save then
-				return
-			end
-			return {}
-		end,
-
-		formatters = {
-			buildifier_build = {
-				command = "buildifier",
-				args = {
-					"-type",
-					"build",
-					"-path",
-					"$FILENAME",
-					"-",
-				},
-			},
-
-			buildifier_bzl = {
-				command = "buildifier",
-				args = {
-					"-type",
-					"bzl",
-					"-path",
-					"$FILENAME",
-					"-",
-				},
-			},
-		},
-	})
 end
+
+M.opts = {
+	default_format_opts = {
+		lsp_format = "fallback",
+	},
+
+	formatters_by_ft = {
+		["bzl.build"] = formatters({ "buildifier_build" }),
+		bzl = formatters({ "buildifier" }),
+		["bzl.bxl"] = formatters({ "buildifier_bzl" }),
+		c = formatters({ "clang-format" }),
+		cpp = formatters({ "clang-format" }),
+		go = formatters({ "gofmt" }),
+		json = formatters({ "jq" }),
+		lua = formatters({ "stylua" }),
+		nix = formatters({ "nixfmt" }),
+		python = formatters({
+			"ruff_format",
+			"ruff_fix",
+			lsp_format = "never",
+		}),
+		haskell = formatters({
+			lsp_format = "never",
+		}),
+		rust = formatters({
+			lsp_format_fallback = "rustfmt",
+			lsp_format = "first",
+		}),
+		toml = formatters({ "taplo" }),
+		["*"] = formatters({}),
+	},
+	notify_no_formatters = true,
+	format_after_save = function(bufnr)
+		if not vim.g.format_after_save then
+			return
+		end
+		local buf_format_after_save = vim.b[bufnr].format_after_save
+		if buf_format_after_save ~= nil and not buf_format_after_save then
+			return
+		end
+		return {}
+	end,
+
+	formatters = {
+		buildifier_build = {
+			command = "buildifier",
+			args = {
+				"-type",
+				"build",
+				"-path",
+				"$FILENAME",
+				"-",
+			},
+		},
+
+		buildifier_bzl = {
+			command = "buildifier",
+			args = {
+				"-type",
+				"bzl",
+				"-path",
+				"$FILENAME",
+				"-",
+			},
+		},
+	},
+}
 
 return M
