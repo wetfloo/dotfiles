@@ -4,4 +4,8 @@ local M = {
 	"tpope/vim-sleuth",
 }
 
+M.event = {
+	"BufEnter",
+}
+
 return M

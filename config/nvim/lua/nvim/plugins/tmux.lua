@@ -4,6 +4,19 @@ local M = {
 	"aserowy/tmux.nvim",
 }
 
+M.lazy = true
+
+M.keys = {
+	"<C-h>",
+	"<C-j>",
+	"<C-k>",
+	"<C-l>",
+	"<A-h>",
+	"<A-j>",
+	"<A-k>",
+	"<A-l>",
+}
+
 M.opts = {
 	copy_sync = {
 		enable = false,
