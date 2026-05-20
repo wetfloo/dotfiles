@@ -11,7 +11,7 @@ M.branch = "main"
 
 M.lazy = false
 
-function M.config(_, _)
+function M:config(_)
 	require("nvim-treesitter").install({
 		"asm",
 		"awk",

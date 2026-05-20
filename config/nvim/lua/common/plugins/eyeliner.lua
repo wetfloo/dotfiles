@@ -15,7 +15,7 @@ M.keys = {
 	modes("T"),
 }
 
-function M.init(_)
+function M:init()
 	vim.api.nvim_set_hl(0, "EyelinerPrimary", { fg = "#fa579c", bold = true, underline = false })
 	vim.api.nvim_set_hl(0, "EyelinerSecondary", { fg = "#add149", bold = true, underline = false })
 end

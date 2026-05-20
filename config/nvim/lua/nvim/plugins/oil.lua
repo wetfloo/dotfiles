@@ -13,7 +13,7 @@ M.dependencies = {
 
 M.version = "2.13"
 
-M.opts = function(_, _)
+function M:opts(_)
 	local oil = require("oil")
 
 	vim.keymap.set("n", "<leader>tT", function()

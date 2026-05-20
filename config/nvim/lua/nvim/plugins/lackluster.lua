@@ -13,7 +13,7 @@ M.dependencies = {
 	require("nvim.plugins.lib.nvim-web-devicons"),
 }
 
-function M.config(_, _)
+function M:config(_)
 	local lackluster = require("lackluster")
 	local color = lackluster.color -- blue, green, red, orange, black, lack, luster, gray1-9
 	lackluster.setup({

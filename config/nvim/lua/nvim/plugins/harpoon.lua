@@ -12,7 +12,7 @@ M.dependencies = {
 
 M.lazy = true
 
-M.init = function(_)
+function M:init()
 	local function toggle_telescope(harpoon_files)
 		local _, tsc = pcall(require, "telescope.config")
 		if tsc == nil then

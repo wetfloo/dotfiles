@@ -8,7 +8,7 @@ M.dependencies = {
 	require("nvim.plugins.lib.nvim-web-devicons"),
 }
 
-function M.opts(_, _)
+function M:opts(_)
 	-- Since we have a status line already, don't duplicate current mode display
 	vim.o.showmode = false
 

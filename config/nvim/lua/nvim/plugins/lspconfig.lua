@@ -215,7 +215,7 @@ local function lsp_attach(args)
 	-- vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
 end
 
-function M.config()
+function M:config(_)
 	-- Language server / autocomplete configuration
 
 	-- See: https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md

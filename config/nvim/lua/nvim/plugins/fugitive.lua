@@ -16,7 +16,7 @@ M.ft = {
 	"fugitiveblame",
 }
 
-function M.init()
+function M:init()
 	vim.keymap.set("n", "<leader>kb", function()
 		utils.close_win_with_ft_or("fugitiveblame", false, function()
 			vim.cmd("Git blame")

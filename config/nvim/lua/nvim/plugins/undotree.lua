@@ -15,7 +15,7 @@ M.cmd = {
 	"UndotreeRemotePlugins",
 }
 
-function M.init(_)
+function M:init()
 	vim.keymap.set("n", "<leader>tu", function()
 		vim.cmd("UndotreeToggle")
 	end, { desc = "Undo tree" })

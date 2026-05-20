@@ -9,7 +9,7 @@ M.keys = {
 	{ "<leader>X", mode = "x" },
 }
 
-function M.opts(_, _)
+function M:opts(_)
 	local exchange = require("substitute.exchange")
 	vim.keymap.set("n", "cx", exchange.operator, { desc = "Substitute text object" })
 	vim.keymap.set("n", "cxx", exchange.line, { desc = "Substitute current line " })

@@ -27,7 +27,7 @@ M.opts = {
 	},
 }
 
-M.config = function(_, opts)
+function M:config(opts)
 	require("telescope").setup(opts)
 
 	-- Enable telescope fzf native, if installed

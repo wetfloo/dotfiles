@@ -53,7 +53,7 @@ end
 
 M.lazy = true
 
-function M.init(_)
+function M:init()
 	vim.g.format_after_save = false
 	vim.api.nvim_create_user_command("Format", format, { desc = "Format current buffer" })
 	local keymaps = require("nvim.keymap").lsp
