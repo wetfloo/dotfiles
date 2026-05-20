@@ -11,6 +11,11 @@ local M = {
 	-- build = 'nix run .#build-plugin',
 }
 
+M.event = {
+	"CmdlineEnter",
+	"InsertEnter",
+}
+
 ---@module 'blink.cmp'
 ---@type blink.cmp.Config
 M.opts = {
