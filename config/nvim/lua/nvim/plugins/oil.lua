@@ -4,7 +4,7 @@ local M = {
 	-- then comment it back again
 	-- cmd = 'Oil',
 	dependencies = {
-		"nvim-tree/nvim-web-devicons",
+		require("nvim.plugins.nvim-web-devicons")
 	},
 	version = "2.13",
 	config = function()

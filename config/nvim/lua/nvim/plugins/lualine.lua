@@ -1,7 +1,7 @@
 local M = {
 	"nvim-lualine/lualine.nvim",
 	dependencies = {
-		"nvim-tree/nvim-web-devicons",
+		require("nvim.plugins.nvim-web-devicons")
 	},
 	config = function()
 		-- Since we have a status line already, don't duplicate current mode display

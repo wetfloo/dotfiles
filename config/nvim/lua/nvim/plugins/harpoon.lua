@@ -2,7 +2,7 @@ local M = {
 	"ThePrimeagen/harpoon",
 	branch = "harpoon2",
 	dependencies = {
-		"nvim-lua/plenary.nvim",
+		require("common.plugins.plenary"),
 	},
 
 	config = function()
