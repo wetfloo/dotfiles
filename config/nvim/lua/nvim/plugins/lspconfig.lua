@@ -51,38 +51,8 @@ M.dependencies = {
 	},
 }
 
-M.ft = {
-	"asm",
-	"awk",
-	"bash",
-	"c",
-	"cmake",
-	"cpp",
-	"dockerfile",
-	"fish",
-	"gitcommit",
-	"gitignore",
-	"go",
-	"gomod",
-	"gosum",
-	"gowork",
-	"groovy",
-	"java",
-	"json",
-	"kotlin",
-	"lua",
-	"make",
-	"markdown",
-	"objc",
-	"powershell",
-	"proto",
-	"python",
-	"rust",
-	"tmux",
-	"toml",
-	"vim",
-	"vimdoc",
-	"yaml",
+M.event = {
+	"User RealFileOpen",
 }
 
 --- @param ctx lsp.HandlerContext
