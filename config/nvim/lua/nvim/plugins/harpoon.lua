@@ -11,26 +11,25 @@ M.dependencies = {
 }
 
 M.opts = {
---     default = {
--- TODO: wtf, it seems that display fn affects how buffers are selected?
--- Absolute nonsense.
---         display = function(list_item)
---             local list_value = list_item.value
---             local result = list_value
---
---             if not vim.api.nvim_buf_is_loaded(current_buf) then
---                 result = "󰚌  " .. result
---             end
---
---             local current_buf_path = get_buf_path(current_buf)
---             if current_buf_path ~= nil and list_value == current_buf_path then
---                 result = "> " .. result
---             end
---
---             return result
---         end,
---     },
-
+	--     default = {
+	-- TODO: wtf, it seems that display fn affects how buffers are selected?
+	-- Absolute nonsense.
+	--         display = function(list_item)
+	--             local list_value = list_item.value
+	--             local result = list_value
+	--
+	--             if not vim.api.nvim_buf_is_loaded(current_buf) then
+	--                 result = "󰚌  " .. result
+	--             end
+	--
+	--             local current_buf_path = get_buf_path(current_buf)
+	--             if current_buf_path ~= nil and list_value == current_buf_path then
+	--                 result = "> " .. result
+	--             end
+	--
+	--             return result
+	--         end,
+	--     },
 }
 
 function M.config(_, opts)

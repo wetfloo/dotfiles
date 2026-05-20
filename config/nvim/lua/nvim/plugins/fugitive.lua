@@ -8,7 +8,7 @@ local M = {
 
 M.cmd = {
 	"G",
-	"Git"
+	"Git",
 }
 
 M.ft = {
