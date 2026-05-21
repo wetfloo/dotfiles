@@ -23,7 +23,7 @@ function M:init()
 			desc = desc .. " (git)"
 		end
 
-		vim.keymap.set(mode, "<leader>" .. keys, func, { buffer = 0, desc = desc })
+		vim.keymap.set(mode, "<leader>" .. keys, func, { desc = desc })
 	end
 
 	-- Navigation
