@@ -1,8 +1,13 @@
-return {
+--- @require "lazy"
+--- @type LazyPluginSpec
+local M = {
 	"folke/which-key.nvim",
-	event = "VeryLazy",
-	enabled = true, -- TODO: re-enable when it stops breaking LSP-related actions
-	opts = {
-		delay = 2000,
-	},
 }
+
+M.event = "VeryLazy"
+
+M.opts = {
+	delay = 2000,
+}
+
+return M

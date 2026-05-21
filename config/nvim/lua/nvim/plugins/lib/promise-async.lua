@@ -1,11 +1,9 @@
 --- @require "lazy"
 --- @type LazyPluginSpec
 local M = {
-	"tpope/vim-sleuth",
+	"kevinhwang91/promise-async",
 }
 
-M.event = {
-	"BufEnter",
-}
+M.lazy = true
 
 return M

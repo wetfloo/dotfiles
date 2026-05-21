@@ -1,14 +1,14 @@
-return {
+--- @require "lazy"
+--- @type LazyPluginSpec
+local M = {
 	"kevinhwang91/nvim-bqf",
-	ft = "qf",
-	dependencies = {
-		{
-			"junegunn/fzf",
-			build = vim.fn["fzf#install"],
-		},
-		{
-			"nvim-treesitter/nvim-treesitter",
-			build = ":TSUpdate",
-		},
-	},
 }
+
+M.ft = "qf"
+
+M.dependencies = {
+	require("nvim.plugins.lib.fzf"),
+	require("common.plugins.treesitter"),
+}
+
+return M

@@ -1,11 +1,11 @@
 --- @require "lazy"
 --- @type LazyPluginSpec
 local M = {
-	"tpope/vim-sleuth",
+	"junegunn/fzf",
 }
 
-M.event = {
-	"BufEnter",
-}
+M.build = vim.fn["fzf#install"]
+
+M.lazy = true
 
 return M

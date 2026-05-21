@@ -1,5 +1,13 @@
 -- Better buffer interactions without destroying splits
-return {
+--- @require "lazy"
+--- @type LazyPluginSpec
+local M = {
 	"moll/vim-bbye",
-	event = "BufEnter",
 }
+
+M.cmd = {
+	"Bdelete",
+	"Bwipeout",
+}
+
+return M

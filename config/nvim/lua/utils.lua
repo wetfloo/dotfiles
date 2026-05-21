@@ -9,20 +9,6 @@ local M = {}
 
 M.readonlify_table = readonlify_table
 
---- Example
----
---- M.function_name = function(params)
----     ...
---- end
----
---- Then, in the target module:
---- local module = require('utils')
---- module.function_name(params)
-
-function M.leader_prefix(keys)
-	return vim.g.mapleader .. keys
-end
-
 --- Finds all open windows that match the given {ft}
 --- @param ft string
 --- @return table

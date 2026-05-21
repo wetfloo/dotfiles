@@ -1,8 +1,22 @@
-return {
+--- @require "lazy"
+--- @type LazyPluginSpec
+local M = {
 	"catgoose/nvim-colorizer.lua",
-	priority = 1000,
-	lazy = false,
-	config = function()
-		require("colorizer").setup()
-	end,
 }
+
+M.priority = 1000
+
+M.lazy = false
+
+M.opts = {
+	filetypes = {
+		["css"] = {
+			names = true,
+		},
+	},
+	user_default_options = {
+		names = false,
+	},
+}
+
+return M

@@ -1,11 +1,17 @@
-return {
+--- @require "lazy"
+--- @type LazyPluginSpec
+local M = {
 	"kylechui/nvim-surround",
-	version = "*",
-	event = {
-		"VeryLazy",
-	},
-
-	-- This empty table is necessary, otherwise it doesn't run.
-
-	opts = {},
 }
+
+M.version = "*"
+
+M.keys = {
+	{ "ys", mode = "n" },
+	{ "ds", mode = "n" },
+	{ "cs", mode = "n" },
+	{ "<C-g>s", mode = "i" },
+	{ "S", mode = "x" },
+}
+
+return M

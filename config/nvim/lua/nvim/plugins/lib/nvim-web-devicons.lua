@@ -1,11 +1,9 @@
 --- @require "lazy"
 --- @type LazyPluginSpec
 local M = {
-	"tpope/vim-sleuth",
+	"nvim-tree/nvim-web-devicons",
 }
 
-M.event = {
-	"BufEnter",
-}
+M.lazy = true
 
 return M
