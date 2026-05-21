@@ -10,7 +10,7 @@ M.dependencies = {
 }
 
 M.event = {
-	"BufEnter",
+	"VeryLazy",
 }
 
 function M:init()
