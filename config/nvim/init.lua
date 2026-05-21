@@ -56,10 +56,3 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 		})
 	end,
 })
-
-if not vscode then
-	local status, langmapper = pcall(require, "langmapper")
-	if status then
-		langmapper.automapping({ global = true, buffer = true })
-	end
-end
