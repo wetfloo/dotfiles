@@ -40,7 +40,11 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 	pattern = "*",
 	callback = function(args)
 		-- Ignore special buffers (oil uses 'nofile' or similar, depending on configuration)
-		-- If Neovim was opened with a file, manually fire the event once lazy is ready
+		-- If Neovim was opened with a file, manually fire the event once lazy is ready.
+		--
+		-- Without the second check, nvim might fire off the event faster
+		-- then lazy initializes.
+		-- Putting this here prevents that.
 		if vim.bo[args.buf].buftype ~= "" and vim.api.nvim_buf_get_name(0) ~= "" then
 			return
 		end
