@@ -35,6 +35,24 @@ require("lazy").setup({
 	},
 })
 
+vim.api.nvim_create_autocmd("BufReadPost", {
+	desc = "Triggered only when opening an actual existing file",
+	pattern = "*",
+	callback = function(args)
+		-- Ignore special buffers (oil uses 'nofile' or similar, depending on configuration)
+		-- If Neovim was opened with a file, manually fire the event once lazy is ready
+		if vim.bo[args.buf].buftype ~= "" and vim.api.nvim_buf_get_name(0) ~= "" then
+			return
+		end
+
+		vim.api.nvim_exec_autocmds("User", {
+			pattern = "RealFileOpen",
+			modeline = false,
+			data = { buf = args.buf },
+		})
+	end,
+})
+
 if not vscode then
 	local status, langmapper = pcall(require, "langmapper")
 	if status then

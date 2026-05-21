@@ -83,20 +83,3 @@ vim.api.nvim_create_autocmd("InsertLeave", {
 		vim.opt_local.spell = false
 	end,
 })
-
-vim.api.nvim_create_autocmd("BufReadPost", {
-	desc = "Triggered only when opening an actual existing file",
-	pattern = "*",
-	callback = function(args)
-		-- Ignore special buffers (oil uses 'nofile' or similar, depending on configuration)
-		if vim.bo[args.buf].buftype ~= "" then
-			return
-		end
-
-		vim.api.nvim_exec_autocmds("User", {
-			pattern = "RealFileOpen",
-			modeline = false,
-			data = { buf = args.buf },
-		})
-	end,
-})
