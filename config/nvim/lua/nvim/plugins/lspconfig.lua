@@ -320,12 +320,6 @@ function M:config(_)
 					features = "all",
 				},
 
-				completion = {
-					autoimport = {
-						enable = false,
-					},
-				},
-
 				diagnostics = {
 					disabled = { "inactive-code" },
 				},
