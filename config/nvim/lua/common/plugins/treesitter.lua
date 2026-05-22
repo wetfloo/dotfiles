@@ -11,7 +11,7 @@ M.branch = "main"
 
 M.lazy = false
 
-function M:config(_)
+function M:build()
 	require("nvim-treesitter").install({
 		"asm",
 		"awk",
@@ -48,8 +48,17 @@ function M:config(_)
 	})
 end
 
--- TODO: incremental selection,
--- conditional highlights, etc.
---
--- See diffs for `7657f97093a33e1f5e320fec3ac7482e5964e6a9`
+function M:init()
+	-- Toggle mappings
+	vim.keymap.set("n", "<leader>st", function()
+		if vim.treesitter.highlighter.active[vim.api.nvim_get_current_buf()] ~= nil then
+			vim.treesitter.stop()
+			vim.print("Turned off treesitter highlighting...")
+		else
+			vim.treesitter.start()
+			vim.print("Turned on treesitter highlighting...")
+		end
+	end, { noremap = true, silent = true, desc = "Toggle treesitter highlighting" })
+end
+
 return M
