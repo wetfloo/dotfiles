@@ -11,6 +11,8 @@ splitter horizontal style=thin font-name="Iosevka"
     splitter vertical style=thin
      vis-spectrum bands=160
      vis-oscilloscope window-ms=100
-  tabs position=tab NSSplitViewItem.canCollapse NSSplitViewItem.behavior=NSSplitViewItemBehaviorSidebar
-   selection-properties tab-name="Properties"
-   console tab-name="Console"
+  splitter horizontal style=thin NSSplitViewItem.canCollapse NSSplitViewItem.behavior=NSSplitViewItemBehaviorSidebar
+   tabs position=tab NSSplitViewIte.canCollapse NSSplitViewItem.collapseBehavior=NSSplitViewItemCollapseBehaviorPreferResizingSplitViewWithFixedSiblings
+    selection-properties tab-name="Properties"
+    console tab-name="Console"
+   albumart NSSplitViewItem.collapseBehavior=NSSplitViewItemCollapseBehaviorPreferResizingSiblingsWithFixedSplitView NSSplitViewItem.holdingPriority=1000
