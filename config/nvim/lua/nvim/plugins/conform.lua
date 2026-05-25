@@ -77,7 +77,7 @@ M.opts = {
 		["haskell"] = formatters({
 			lsp_format = "never",
 		}),
-		["json"] = formatters({ "yq" }),
+		["json"] = formatters({ "jq", lsp_format = "never" }),
 		["lua"] = formatters({ "stylua" }),
 		["nix"] = formatters({ "nixfmt" }),
 		["python"] = formatters({
@@ -128,6 +128,21 @@ M.opts = {
 				"-",
 			},
 		},
+
+		yq = function(_bufnr)
+			local ft = vim.bo.filetype
+			return {
+				command = "yq",
+				args = {
+					"--prettyPrint",
+					"--no-colors",
+					"--input-format",
+					ft,
+					"--output-format",
+					ft,
+				},
+			}
+		end,
 	},
 }
 
