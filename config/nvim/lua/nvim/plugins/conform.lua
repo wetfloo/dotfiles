@@ -66,6 +66,7 @@ M.opts = {
 	},
 
 	formatters_by_ft = {
+		-- keep-sorted start block=yes
 		["bzl.build"] = formatters({ "buildifier_build" }),
 		bzl = formatters({ "buildifier" }),
 		["bzl.bxl"] = formatters({ "buildifier_bzl" }),
@@ -91,6 +92,7 @@ M.opts = {
 		yaml = formatters({ "yq" }),
 		xml = formatters({ "yq" }),
 		["*"] = formatters({}),
+		-- keep-sorted end
 	},
 	notify_no_formatters = true,
 	format_after_save = function(bufnr)
