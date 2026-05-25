@@ -67,12 +67,16 @@ M.opts = {
 
 	formatters_by_ft = {
 		-- keep-sorted start block=yes
-		["bzl.build"] = formatters({ "buildifier_build" }),
+		["*"] = formatters({}),
 		["bzl"] = formatters({ "buildifier" }),
+		["bzl.build"] = formatters({ "buildifier_build" }),
 		["bzl.bxl"] = formatters({ "buildifier_bzl" }),
 		["c"] = formatters({ "clang-format" }),
 		["cpp"] = formatters({ "clang-format" }),
 		["go"] = formatters({ "gofmt" }),
+		["haskell"] = formatters({
+			lsp_format = "never",
+		}),
 		["json"] = formatters({ "yq" }),
 		["lua"] = formatters({ "stylua" }),
 		["nix"] = formatters({ "nixfmt" }),
@@ -81,17 +85,13 @@ M.opts = {
 			"ruff_fix",
 			lsp_format = "never",
 		}),
-		["haskell"] = formatters({
-			lsp_format = "never",
-		}),
 		["rust"] = formatters({
 			lsp_format_fallback = "rustfmt",
 			lsp_format = "first",
 		}),
 		["toml"] = formatters({ "taplo" }),
-		["yaml"] = formatters({ "yq" }),
 		["xml"] = formatters({ "yq" }),
-		["*"] = formatters({}),
+		["yaml"] = formatters({ "yq" }),
 		-- keep-sorted end
 	},
 	notify_no_formatters = true,
