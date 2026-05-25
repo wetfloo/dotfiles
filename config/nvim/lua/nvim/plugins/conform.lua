@@ -72,7 +72,7 @@ M.opts = {
 		c = formatters({ "clang-format" }),
 		cpp = formatters({ "clang-format" }),
 		go = formatters({ "gofmt" }),
-		json = formatters({ "jq" }),
+		json = formatters({ "yq" }),
 		lua = formatters({ "stylua" }),
 		nix = formatters({ "nixfmt" }),
 		python = formatters({
@@ -88,6 +88,8 @@ M.opts = {
 			lsp_format = "first",
 		}),
 		toml = formatters({ "taplo" }),
+		yaml = formatters({ "yq" }),
+		xml = formatters({ "yq" }),
 		["*"] = formatters({}),
 	},
 	notify_no_formatters = true,
