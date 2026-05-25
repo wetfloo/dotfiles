@@ -68,29 +68,29 @@ M.opts = {
 	formatters_by_ft = {
 		-- keep-sorted start block=yes
 		["bzl.build"] = formatters({ "buildifier_build" }),
-		bzl = formatters({ "buildifier" }),
+		["bzl"] = formatters({ "buildifier" }),
 		["bzl.bxl"] = formatters({ "buildifier_bzl" }),
-		c = formatters({ "clang-format" }),
-		cpp = formatters({ "clang-format" }),
-		go = formatters({ "gofmt" }),
-		json = formatters({ "yq" }),
-		lua = formatters({ "stylua" }),
-		nix = formatters({ "nixfmt" }),
-		python = formatters({
+		["c"] = formatters({ "clang-format" }),
+		["cpp"] = formatters({ "clang-format" }),
+		["go"] = formatters({ "gofmt" }),
+		["json"] = formatters({ "yq" }),
+		["lua"] = formatters({ "stylua" }),
+		["nix"] = formatters({ "nixfmt" }),
+		["python"] = formatters({
 			"ruff_format",
 			"ruff_fix",
 			lsp_format = "never",
 		}),
-		haskell = formatters({
+		["haskell"] = formatters({
 			lsp_format = "never",
 		}),
-		rust = formatters({
+		["rust"] = formatters({
 			lsp_format_fallback = "rustfmt",
 			lsp_format = "first",
 		}),
-		toml = formatters({ "taplo" }),
-		yaml = formatters({ "yq" }),
-		xml = formatters({ "yq" }),
+		["toml"] = formatters({ "taplo" }),
+		["yaml"] = formatters({ "yq" }),
+		["xml"] = formatters({ "yq" }),
 		["*"] = formatters({}),
 		-- keep-sorted end
 	},
