@@ -1,166 +1,166 @@
 {
-  "schemes" : [
-    {
-      "buttons" : {
-        "universalBackForward" : true
-      },
-      "if" : {
-        "device" : {
-          "vendorID" : "0x1532",
-          "productID" : "0x99",
-          "category" : "mouse",
-          "productName" : "Razer Basilisk V3"
+    "schemes": [
+        {
+            "buttons": {
+                "universalBackForward": true
+            },
+            "if": {
+                "device": {
+                    "vendorID": "0x1532",
+                    "productID": "0x99",
+                    "category": "mouse",
+                    "productName": "Razer Basilisk V3"
+                }
+            },
+            "scrolling": {
+                "reverse": {
+                    "vertical": true
+                }
+            },
+            "pointer": {
+                "acceleration": 1.0,
+                "disableAcceleration": true
+            }
+        },
+        {
+            "if": {
+                "device": {
+                    "productName": "Keychron 4K Link",
+                    "productID": "0xd038",
+                    "category": "mouse",
+                    "vendorID": "0x3434"
+                }
+            },
+            "scrolling": {
+                "speed": {
+                    "vertical": 0
+                },
+                "distance": {
+                    "vertical": 3
+                },
+                "reverse": {
+                    "vertical": true
+                },
+                "acceleration": {
+                    "vertical": 1
+                }
+            },
+            "pointer": {
+                "disableAcceleration": true,
+                "acceleration": 1.0
+            }
+        },
+        {
+            "buttons": {
+                "universalBackForward": true
+            },
+            "if": {
+                "device": {
+                    "productID": "0xd041",
+                    "category": "mouse",
+                    "productName": "Keychron M3 mini 4K",
+                    "vendorID": "0x3434"
+                }
+            },
+            "scrolling": {
+                "speed": {
+                    "vertical": 0
+                },
+                "acceleration": {
+                    "vertical": 1
+                },
+                "distance": {
+                    "vertical": 3
+                },
+                "reverse": {
+                    "vertical": true
+                }
+            },
+            "pointer": {
+                "disableAcceleration": true,
+                "acceleration": 1.0
+            }
+        },
+        {
+            "buttons": {
+                "universalBackForward": true
+            },
+            "if": {
+                "device": {
+                    "vendorID": "0x1919",
+                    "productID": "0x1919",
+                    "category": "mouse",
+                    "productName": "USB Receiver"
+                }
+            },
+            "pointer": {
+                "disableAcceleration": true,
+                "acceleration": 1.0
+            }
+        },
+        {
+            "buttons": {
+                "universalBackForward": true
+            },
+            "if": {
+                "device": {
+                    "productID": "0xb02a",
+                    "serialNumber": "93DED178",
+                    "vendorID": "0x46d",
+                    "productName": "Logi M650",
+                    "category": "mouse"
+                }
+            },
+            "scrolling": {
+                "speed": {
+                    "vertical": 0
+                },
+                "reverse": {
+                    "vertical": true
+                },
+                "acceleration": {
+                    "vertical": 1
+                },
+                "distance": {
+                    "vertical": 3
+                }
+            },
+            "pointer": {
+                "disableAcceleration": true,
+                "acceleration": 1.0
+            }
+        },
+        {
+            "buttons": {
+                "universalBackForward": true
+            },
+            "if": {
+                "device": {
+                    "category": "mouse",
+                    "vendorID": "0x46d",
+                    "productID": "0xc548",
+                    "productName": "USB Receiver"
+                }
+            },
+            "scrolling": {
+                "distance": {
+                    "vertical": 3
+                },
+                "reverse": {
+                    "vertical": true
+                },
+                "acceleration": {
+                    "vertical": 1
+                },
+                "speed": {
+                    "vertical": 0
+                }
+            },
+            "pointer": {
+                "disableAcceleration": true,
+                "acceleration": 1.0
+            }
         }
-      },
-      "scrolling" : {
-        "reverse" : {
-          "vertical" : true
-        }
-      },
-      "pointer" : {
-        "acceleration" : 1.0,
-        "disableAcceleration" : true
-      }
-    },
-    {
-      "if" : {
-        "device" : {
-          "productName" : "Keychron 4K Link",
-          "productID" : "0xd038",
-          "category" : "mouse",
-          "vendorID" : "0x3434"
-        }
-      },
-      "scrolling" : {
-        "speed" : {
-          "vertical" : 0
-        },
-        "distance" : {
-          "vertical" : 3
-        },
-        "reverse" : {
-          "vertical" : true
-        },
-        "acceleration" : {
-          "vertical" : 1
-        }
-      },
-      "pointer" : {
-        "disableAcceleration" : true,
-        "acceleration" : 1.0
-      }
-    },
-    {
-      "buttons" : {
-        "universalBackForward" : true
-      },
-      "if" : {
-        "device" : {
-          "productID" : "0xd041",
-          "category" : "mouse",
-          "productName" : "Keychron M3 mini 4K",
-          "vendorID" : "0x3434"
-        }
-      },
-      "scrolling" : {
-        "speed" : {
-          "vertical" : 0
-        },
-        "acceleration" : {
-          "vertical" : 1
-        },
-        "distance" : {
-          "vertical" : 3
-        },
-        "reverse" : {
-          "vertical" : true
-        }
-      },
-      "pointer" : {
-        "disableAcceleration" : true,
-        "acceleration" : 1.0
-      }
-    },
-    {
-      "buttons" : {
-        "universalBackForward" : true
-      },
-      "if" : {
-        "device" : {
-          "vendorID" : "0x1919",
-          "productID" : "0x1919",
-          "category" : "mouse",
-          "productName" : "USB Receiver"
-        }
-      },
-      "pointer" : {
-        "disableAcceleration" : true,
-        "acceleration" : 1.0
-      }
-    },
-    {
-      "buttons" : {
-        "universalBackForward" : true
-      },
-      "if" : {
-        "device" : {
-          "productID" : "0xb02a",
-          "serialNumber" : "93DED178",
-          "vendorID" : "0x46d",
-          "productName" : "Logi M650",
-          "category" : "mouse"
-        }
-      },
-      "scrolling" : {
-        "speed" : {
-          "vertical" : 0
-        },
-        "reverse" : {
-          "vertical" : true
-        },
-        "acceleration" : {
-          "vertical" : 1
-        },
-        "distance" : {
-          "vertical" : 3
-        }
-      },
-      "pointer" : {
-        "disableAcceleration" : true,
-        "acceleration" : 1.0
-      }
-    },
-    {
-      "buttons" : {
-        "universalBackForward" : true
-      },
-      "if" : {
-        "device" : {
-          "category" : "mouse",
-          "vendorID" : "0x46d",
-          "productID" : "0xc548",
-          "productName" : "USB Receiver"
-        }
-      },
-      "scrolling" : {
-        "distance" : {
-          "vertical" : 3
-        },
-        "reverse" : {
-          "vertical" : true
-        },
-        "acceleration" : {
-          "vertical" : 1
-        },
-        "speed" : {
-          "vertical" : 0
-        }
-      },
-      "pointer" : {
-        "disableAcceleration" : true,
-        "acceleration" : 1.0
-      }
-    }
-  ],
-  "$schema" : "https:\/\/schema.linearmouse.app\/0.10.0"
+    ],
+    "$schema": "https://schema.linearmouse.app/0.10.0"
 }
