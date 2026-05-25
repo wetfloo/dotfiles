@@ -1,6 +1,9 @@
 {
   "schemes" : [
     {
+      "buttons" : {
+        "universalBackForward" : true
+      },
       "if" : {
         "device" : {
           "vendorID" : "0x1532",
@@ -48,6 +51,9 @@
       }
     },
     {
+      "buttons" : {
+        "universalBackForward" : true
+      },
       "if" : {
         "device" : {
           "productID" : "0xd041",
@@ -76,6 +82,9 @@
       }
     },
     {
+      "buttons" : {
+        "universalBackForward" : true
+      },
       "if" : {
         "device" : {
           "vendorID" : "0x1919",
@@ -90,6 +99,9 @@
       }
     },
     {
+      "buttons" : {
+        "universalBackForward" : true
+      },
       "if" : {
         "device" : {
           "productID" : "0xb02a",
@@ -119,6 +131,9 @@
       }
     },
     {
+      "buttons" : {
+        "universalBackForward" : true
+      },
       "if" : {
         "device" : {
           "category" : "mouse",
