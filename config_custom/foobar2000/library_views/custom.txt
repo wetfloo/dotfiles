@@ -9,7 +9,7 @@ $puts(discnumber,$if($greater($meta(totaldiscs),1),%discnumber%.,))
 $puts(output,$if3(
 	$if(
 		$meta_test(YT_SRC),
-		YouTube Rip$get(path_separator)$get(artist)$get(path_separator)$get(year) - %album%$get(path_separator)$get(title) '('$meta(YT_SRC)')'
+		YouTube Rip$get(path_separator)$get(artist)$get(path_separator)$get(year) - %album%$get(path_separator)$get(title) '['$meta(YT_SRC)']'
 	),
 	$if(
 		$meta_test(OST_SRC),
