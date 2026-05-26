@@ -1,0 +1,26 @@
+$puts(output,$if3(
+	$if(
+		$meta_test(YT_SRC),
+		%title% :: %artist%
+	),
+	$if(
+		$meta_test(OST_SRC),
+		%title% :: %artist%
+	),
+	$if(
+		$meta_test(COMPILATION_SRC),
+		%title% :: %artist%
+	),
+	$if(
+		$greater(
+			$strstr(
+				$trim($lowercase(%album artist%)),
+				$trim($lowercase(%artist%))
+			),
+			0
+		),
+		%title%,
+		%title% :: %artist%
+	)
+))
+$trim($get(output))
