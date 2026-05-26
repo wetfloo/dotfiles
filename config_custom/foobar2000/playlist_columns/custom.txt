@@ -5,7 +5,7 @@ $puts(output,$if3(
 	),
 	$if(
 		$meta_test(OST_SRC),
-		$meta(OST_SRC) '('%album%')'
+		$meta(OST_SRC) :: ('%album%')
 	),
 	$if(
 		$meta_test(COMPILATION_SRC),
