@@ -1,7 +1,7 @@
 $puts(output,$if3(
 	$if(
 		$meta_test(YT_SRC),
-		%album artist% - %album% [$meta(YT_SRC)]
+		%album artist% - %album% '['$meta(YT_SRC)']'
 	),
 	$if(
 		$meta_test(OST_SRC),
@@ -14,7 +14,7 @@ $puts(output,$if3(
 				0
 			),
 			$meta(OST_SRC),
-			$meta(OST_SRC) :: %album%
+			$meta(OST_SRC) - %album%
 		)
 	),
 	$if(
