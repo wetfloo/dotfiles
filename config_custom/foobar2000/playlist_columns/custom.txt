@@ -1,0 +1,16 @@
+$puts(output,$if3(
+	$if(
+		$meta_test(YT_SRC),
+		%album artist% - %album% [$meta(YT_SRC)]
+	),
+	$if(
+		$meta_test(OST_SRC),
+		$meta(OST_SRC) '('%album%')'
+	),
+	$if(
+		$meta_test(COMPILATION_SRC),
+		$meta(COMPILATION_SRC) - %album%
+	),
+	%album artist% - %album%
+))
+$trim($get(output))
