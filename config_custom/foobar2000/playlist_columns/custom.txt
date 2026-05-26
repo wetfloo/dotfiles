@@ -8,8 +8,8 @@ $puts(output,$if3(
 		$if(
 			$greater(
 				$strstr(
-					$lower($meta(OST_SRC)),
-					$lower(%album%),
+					$trim($lower($meta(OST_SRC))),
+					$trim($lower(%album%))
 				),
 				0
 			),
