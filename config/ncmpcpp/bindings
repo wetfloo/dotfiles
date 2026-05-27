@@ -161,17 +161,17 @@
 def_key "mouse"
   mouse_event
 
-def_key "up"
+def_key "k"
   scroll_up
 
-def_key "shift-up"
+def_key "K"
   select_item
   scroll_up
 
-def_key "down"
+def_key "j"
   scroll_down
 
-def_key "shift-down"
+def_key "J"
   select_item
   scroll_down
 
@@ -187,20 +187,17 @@ def_key "{"
 def_key "}"
   scroll_down_artist
 
-def_key "page_up"
+def_key "ctrl-u"
   page_up
 
-def_key "page_down"
+def_key "ctrl-d"
   page_down
 
-def_key "home"
+def_key "g"
   move_home
 
-def_key "end"
+def_key "G"
   move_end
-
-def_key "insert"
-  select_item
 
 def_key "enter"
   enter_directory
@@ -301,16 +298,13 @@ def_key "7"
 def_key "8"
   show_visualizer
 
-def_key "="
-  show_clock
-
 def_key "@"
   show_server_info
 
-def_key "s"
+def_key "ctrl-o"
   stop
 
-def_key "p"
+def_key "space"
   pause
 
 def_key ">"
@@ -564,13 +558,11 @@ def_key "up"
 
 def_key "shift-up"
   dummy
-  dummy
 
 def_key "down"
   dummy
 
 def_key "shift-down"
-  dummy
   dummy
 
 def_key "["
@@ -603,49 +595,16 @@ def_key "insert"
 def_key "enter"
   dummy
 
-def_key "enter"
-  dummy
-
-def_key "enter"
-  dummy
-
-def_key "enter"
-  dummy
-
-def_key "space"
-  dummy
-
-def_key "space"
-  dummy
-
 def_key "space"
   dummy
 
 def_key "delete"
-  dummy
-
-def_key "delete"
-  dummy
-
-def_key "delete"
-  dummy
-
-def_key "right"
-  dummy
-
-def_key "right"
   dummy
 
 def_key "right"
   dummy
 
 def_key "+"
-  dummy
-
-def_key "left"
-  dummy
-
-def_key "left"
   dummy
 
 def_key "left"
@@ -676,12 +635,6 @@ def_key "2"
   dummy
 
 def_key "3"
-  dummy
-
-def_key "3"
-  dummy
-
-def_key "4"
   dummy
 
 def_key "4"
@@ -720,15 +673,6 @@ def_key "<"
 def_key "ctrl-h"
   dummy
 
-def_key "ctrl-h"
-  dummy
-
-def_key "backspace"
-  dummy
-
-def_key "backspace"
-  dummy
-
 def_key "backspace"
   dummy
 
@@ -742,12 +686,6 @@ def_key "r"
   dummy
 
 def_key "z"
-  dummy
-
-def_key "y"
-  dummy
-
-def_key "y"
   dummy
 
 def_key "y"
@@ -783,12 +721,6 @@ def_key "u"
 def_key "ctrl-s"
   dummy
 
-def_key "ctrl-s"
-  dummy
-
-def_key "ctrl-s"
-  dummy
-
 def_key "ctrl-r"
   dummy
 
@@ -801,12 +733,6 @@ def_key "ctrl-_"
 def_key "/"
   dummy
 
-def_key "/"
-  dummy
-
-def_key "?"
-  dummy
-
 def_key "?"
   dummy
 
@@ -817,21 +743,6 @@ def_key ","
   dummy
 
 def_key "w"
-  dummy
-
-def_key "e"
-  dummy
-
-def_key "e"
-  dummy
-
-def_key "e"
-  dummy
-
-def_key "e"
-  dummy
-
-def_key "e"
   dummy
 
 def_key "e"
@@ -867,22 +778,10 @@ def_key "a"
 def_key "c"
   dummy
 
-def_key "c"
-  dummy
-
-def_key "C"
-  dummy
-
 def_key "C"
   dummy
 
 def_key "m"
-  dummy
-
-def_key "m"
-  dummy
-
-def_key "n"
   dummy
 
 def_key "n"
@@ -898,9 +797,6 @@ def_key "S"
   dummy
 
 def_key "o"
-  dummy
-
-def_key "G"
   dummy
 
 def_key "G"
@@ -934,12 +830,6 @@ def_key "alt-l"
   dummy
 
 def_key "ctrl-l"
-  dummy
-
-def_key "`"
-  dummy
-
-def_key "`"
   dummy
 
 def_key "`"
