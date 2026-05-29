@@ -274,7 +274,7 @@ max_concurrency = 3
 
 # Additional git repositories to pull or fetch
 repos = [
-	"~/Documents/projects/*",
+	"~/Documents/Projects/*",
 	"~/Documents/dotfiles/dotfiles",
 ]
 

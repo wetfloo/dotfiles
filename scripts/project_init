@@ -18,7 +18,7 @@ else
 fi
 
 
-if [[ -d ~/projects/$project_name ]]; then
+if [[ -d ~/Projects/$project_name ]]; then
     echoerr "Project with the name $project_name exists"
     exit 1
 fi
@@ -50,11 +50,11 @@ fi
 git_init=true
 git_commit_start=true
 
-"$SCRIPT_DIR"/.project_init_languages/prepare_directory "$language" "$HOME/projects/$project_name"
+"$SCRIPT_DIR"/.project_init_languages/prepare_directory "$language" "$HOME/Projects/$project_name"
 echo $project_name
 echo $git_init
 echo $git_commit_start
-echo "$HOME/projects/$project_name"
-"$SCRIPT_DIR"/.project_init_languages/$language/run $project_name $git_init $git_commit_start "$HOME/projects/$project_name"
+echo "$HOME/Projects/$project_name"
+"$SCRIPT_DIR"/.project_init_languages/$language/run $project_name $git_init $git_commit_start "$HOME/Projects/$project_name"
 
-tmux_join "$HOME/projects/$project_name"
+tmux_join "$HOME/Projects/$project_name"
