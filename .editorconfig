@@ -16,6 +16,7 @@ trim_trailing_whitespace = false
 # windows shell scripts
 [*.{cmd,bat,ps1}]
 end_of_line = crlf
+insert_final_newline = false
 
 [*.{yml,yaml}]
 indent_style = space
