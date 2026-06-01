@@ -6,7 +6,12 @@ local M = {
 
 --- Always format with these formatters, even if others are specified or an LSP
 --- formatter is being used.
-local always_formatters = { "keep-sorted", "treefmt" }
+local always_formatters = {
+	"trim_whitespace",
+	"trim_newlines",
+	"keep-sorted",
+	"treefmt",
+}
 
 local function has_lsp_format(bufnr)
 	local lsp_format_clients = require("conform.lsp_format").get_format_clients({
