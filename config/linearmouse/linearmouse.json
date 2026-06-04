@@ -1,4 +1,5 @@
 {
+    "$schema": "https://schema.linearmouse.app/0.11.2",
     "schemes": [
         {
             "buttons": {
@@ -6,34 +7,38 @@
             },
             "if": {
                 "device": {
-                    "vendorID": "0x1532",
-                    "productID": "0x99",
                     "category": "mouse",
-                    "productName": "Razer Basilisk V3"
+                    "productID": "0x99",
+                    "productName": "Razer Basilisk V3",
+                    "vendorID": "0x1532"
                 }
+            },
+            "pointer": {
+                "acceleration": 1,
+                "disableAcceleration": true
             },
             "scrolling": {
                 "reverse": {
                     "vertical": true
                 }
-            },
-            "pointer": {
-                "acceleration": 1.0,
-                "disableAcceleration": true
             }
         },
         {
             "if": {
                 "device": {
-                    "productName": "Keychron 4K Link",
-                    "productID": "0xd038",
                     "category": "mouse",
+                    "productID": "0xd038",
+                    "productName": "Keychron 4K Link",
                     "vendorID": "0x3434"
                 }
             },
+            "pointer": {
+                "acceleration": 1,
+                "disableAcceleration": true
+            },
             "scrolling": {
-                "speed": {
-                    "vertical": 0
+                "acceleration": {
+                    "vertical": 1
                 },
                 "distance": {
                     "vertical": 3
@@ -41,13 +46,9 @@
                 "reverse": {
                     "vertical": true
                 },
-                "acceleration": {
-                    "vertical": 1
+                "speed": {
+                    "vertical": 0
                 }
-            },
-            "pointer": {
-                "disableAcceleration": true,
-                "acceleration": 1.0
             }
         },
         {
@@ -56,16 +57,17 @@
             },
             "if": {
                 "device": {
-                    "productID": "0xd041",
                     "category": "mouse",
+                    "productID": "0xd041",
                     "productName": "Keychron M3 mini 4K",
                     "vendorID": "0x3434"
                 }
             },
+            "pointer": {
+                "acceleration": 1,
+                "disableAcceleration": true
+            },
             "scrolling": {
-                "speed": {
-                    "vertical": 0
-                },
                 "acceleration": {
                     "vertical": 1
                 },
@@ -74,11 +76,10 @@
                 },
                 "reverse": {
                     "vertical": true
+                },
+                "speed": {
+                    "vertical": 0
                 }
-            },
-            "pointer": {
-                "disableAcceleration": true,
-                "acceleration": 1.0
             }
         },
         {
@@ -87,15 +88,15 @@
             },
             "if": {
                 "device": {
-                    "vendorID": "0x1919",
+                    "category": "mouse",
                     "productID": "0x1919",
-                    "category": "mouse",
-                    "productName": "USB Receiver"
+                    "productName": "USB Receiver",
+                    "vendorID": "0x1919"
                 }
             },
             "pointer": {
-                "disableAcceleration": true,
-                "acceleration": 1.0
+                "acceleration": 1,
+                "disableAcceleration": true
             }
         },
         {
@@ -104,30 +105,30 @@
             },
             "if": {
                 "device": {
+                    "category": "mouse",
                     "productID": "0xb02a",
-                    "serialNumber": "93DED178",
-                    "vendorID": "0x46d",
                     "productName": "Logi M650",
-                    "category": "mouse"
+                    "serialNumber": "93DED178",
+                    "vendorID": "0x46d"
                 }
             },
+            "pointer": {
+                "acceleration": 1,
+                "disableAcceleration": true
+            },
             "scrolling": {
-                "speed": {
-                    "vertical": 0
-                },
-                "reverse": {
-                    "vertical": true
-                },
                 "acceleration": {
                     "vertical": 1
                 },
                 "distance": {
                     "vertical": 3
+                },
+                "reverse": {
+                    "vertical": true
+                },
+                "speed": {
+                    "vertical": 0
                 }
-            },
-            "pointer": {
-                "disableAcceleration": true,
-                "acceleration": 1.0
             }
         },
         {
@@ -137,30 +138,63 @@
             "if": {
                 "device": {
                     "category": "mouse",
-                    "vendorID": "0x46d",
                     "productID": "0xc548",
-                    "productName": "USB Receiver"
+                    "productName": "USB Receiver",
+                    "vendorID": "0x46d"
                 }
             },
+            "pointer": {
+                "acceleration": 1,
+                "disableAcceleration": true
+            },
             "scrolling": {
+                "acceleration": {
+                    "vertical": 1
+                },
                 "distance": {
                     "vertical": 3
                 },
                 "reverse": {
                     "vertical": true
                 },
+                "speed": {
+                    "vertical": 0
+                }
+            }
+        },
+        {
+            "if": {
+                "device": {
+                    "category": "mouse",
+                    "productID": "0xaa22",
+                    "productName": "BT5.2 Mouse",
+                    "vendorID": "0x1235"
+                }
+            },
+            "pointer": {
+                "acceleration": 1,
+                "disableAcceleration": true,
+                "redirectsToScroll": false
+            },
+            "scrolling": {
                 "acceleration": {
                     "vertical": 1
+                },
+                "distance": {
+                    "vertical": 3
+                },
+                "reverse": {
+                    "vertical": true
+                },
+                "smoothed": {
+                    "vertical": {
+                        "enabled": false
+                    }
                 },
                 "speed": {
                     "vertical": 0
                 }
-            },
-            "pointer": {
-                "disableAcceleration": true,
-                "acceleration": 1.0
             }
         }
-    ],
-    "$schema": "https://schema.linearmouse.app/0.11.2"
+    ]
 }
