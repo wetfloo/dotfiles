@@ -10,7 +10,7 @@ Use the following parameters:
 - *List of fields to retain*: `title,artist,album,album artist,tracknumber,discnumber,totaltracks,totaldiscs,genre,date,OST_SRC,YT_SRC,COMPILATION_SRC,LYRICS,UNSYNCEDLYRICS`
 - *Attached pictures*: **Move front cover to external file (discard if exists)**: `folder.jpg`
 - *Preserve ReplayGain / SoundCheck*: **No**
-- *Reduce date field to four-digit year*: **Yes**
+- *Reduce date field to four-digit year*: **No**
 - *Drop disc number for single disc albums*: **No**
 
 ## Conversions
