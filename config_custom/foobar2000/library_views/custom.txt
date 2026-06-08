@@ -1,7 +1,7 @@
 $puts(path_separator,'|')
 
 $puts(tracknumber,$if2([%tracknumber%],?))
-$puts(date,$if2([%year%],Unknown))
+$puts(date,$if2([%date%],Unknown))
 $puts(artist,$if2([%album artist%],%artist%))
 $puts(title,$if($stricmp(%artist%,%album artist%),%title%,%title% :: %artist%))
 $puts(discnumber,$if($greater($meta(totaldiscs),1),%discnumber%.,))
