@@ -8,17 +8,17 @@ $puts(discnumber,$if($greater($meta(totaldiscs),1),%discnumber%.,))
 $puts(output,$if3(
 	$if(
 		$meta_test(YT_SRC),
-		YouTube Rip$get(path_separator)$get(artist)$get(path_separator)$get(date) - %album%$get(path_separator)$meta(YT_SRC)
+		YouTube Rip$get(path_separator)$get(artist)$get(path_separator)$get(date) :: %album%$get(path_separator)$meta(YT_SRC)
 	),
 	$if(
 		$meta_test(OST_SRC),
-		OST$get(path_separator)$meta(OST_SRC)$get(path_separator)$get(date) - %album%$get(path_separator)$get(discnumber)$get(tracknumber)
+		OST$get(path_separator)$meta(OST_SRC)$get(path_separator)$get(date) :: %album%$get(path_separator)$get(discnumber)$get(tracknumber)
 	),
 	$if(
 		$meta_test(COMPILATION_SRC),
-		Compilation$get(path_separator)$meta(COMPILATION_SRC)$get(path_separator)$get(date) - %album%$get(path_separator)$get(discnumber)$get(tracknumber)
+		Compilation$get(path_separator)$meta(COMPILATION_SRC)$get(path_separator)$get(date) :: %album%$get(path_separator)$get(discnumber)$get(tracknumber)
 	),
-	Main$get(path_separator)$get(artist)$get(path_separator)$get(date) - %album%$get(path_separator)$get(discnumber)$get(tracknumber)
+	Main$get(path_separator)$get(artist)$get(path_separator)$get(date) :: %album%$get(path_separator)$get(discnumber)$get(tracknumber)
 ))
 
 $trim($ascii($get(output)))
