@@ -10,17 +10,101 @@ $puts(bad_char_replacement,-)
 $puts(output,$if3(
 	$if(
 		$meta_test(YT_SRC),
-		YouTube Rip$get(path_separator)$get(artist)$get(path_separator)$get(date) :: %album%$get(path_separator)%title% '('$meta(YT_SRC)')'
+		YouTube Rip$get(path_separator)
+		$replace(
+			$get(artist),
+			$char(47),
+			$get(bad_char_replacement),
+			$char(92),
+			$get(bad_char_replacement)
+		)$get(path_separator)
+		$replace(
+			$get(date) - %album%,
+			$char(47),
+			$get(bad_char_replacement),
+			$char(92),
+			$get(bad_char_replacement)
+		)$get(path_separator)
+		$replace(
+			%title% '('$meta(YT_SRC)')',
+			$char(47),
+			$get(bad_char_replacement),
+			$char(92),
+			$get(bad_char_replacement)
+		)
 	),
 	$if(
 		$meta_test(OST_SRC),
-		OST$get(path_separator)$meta(OST_SRC)$get(path_separator)$get(date) :: %album%$get(path_separator)$get(discnumber)$get(tracknumber). %title%
+		OST$get(path_separator)
+		$replace(
+			$meta(OST_SRC),
+			$char(47),
+			$get(bad_char_replacement),
+			$char(92),
+			$get(bad_char_replacement)
+		)$get(path_separator)
+		$replace(
+			$get(date) - %album%,
+			$char(47),
+			$get(bad_char_replacement),
+			$char(92),
+			$get(bad_char_replacement)
+		)$get(path_separator)
+		$replace(
+			$get(discnumber)$get(tracknumber). %title%,
+			$char(47),
+			$get(bad_char_replacement),
+			$char(92),
+			$get(bad_char_replacement)
+		)
 	),
 	$if(
 		$meta_test(COMPILATION_SRC),
-		Compilation$get(path_separator)$meta(COMPILATION_SRC)$get(path_separator)$get(date) :: %album%$get(path_separator)$get(discnumber)$get(tracknumber). %artist% - %title%
+		Compilation$get(path_separator)
+		$replace(
+			$meta(COMPILATION_SRC),
+			$char(47),
+			$get(bad_char_replacement),
+			$char(92),
+			$get(bad_char_replacement)
+		)$get(path_separator)
+		$replace(
+			$get(date) - %album%,
+			$char(47),
+			$get(bad_char_replacement),
+			$char(92),
+			$get(bad_char_replacement)
+		)$get(path_separator)
+		$replace(
+			$get(discnumber)$get(tracknumber). %artist% - %title%,
+			$char(47),
+			$get(bad_char_replacement),
+			$char(92),
+			$get(bad_char_replacement)
+		)
 	),
-	Main$get(path_separator)$get(artist)$get(path_separator)$get(date) :: %album%$get(path_separator)$get(discnumber)$get(tracknumber). %title%
+	Main$get(path_separator)
+	$replace(
+		$get(artist),
+		$char(47),
+		$get(bad_char_replacement),
+		$char(92),
+		$get(bad_char_replacement)
+	)$get(path_separator)
+	$replace(
+		$get(date) - %album%,
+		$char(47),
+		$get(bad_char_replacement),
+		$char(92),
+		$get(bad_char_replacement)
+	)$get(path_separator)
+	$replace(
+		$get(discnumber)$get(tracknumber). %title%,
+		$char(47),
+		$get(bad_char_replacement),
+		$char(92),
+		$get(bad_char_replacement)
+	)
 ))
 
 $puts(
@@ -93,8 +177,6 @@ $puts(
 		$get(bad_char_replacement),
 		$char(34),
 		$get(bad_char_replacement),
-		$char(47),
-		$get(bad_char_replacement),
 		$char(58),
 		$get(bad_char_replacement),
 		$char(60),
@@ -102,8 +184,6 @@ $puts(
 		$char(62),
 		$get(bad_char_replacement),
 		$char(63),
-		$get(bad_char_replacement),
-		$char(92),
 		$get(bad_char_replacement),
 		$char(94),
 		$get(bad_char_replacement),
