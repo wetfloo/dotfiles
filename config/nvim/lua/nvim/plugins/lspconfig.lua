@@ -196,7 +196,9 @@ function M:config(_)
 	-- When jumping to diagnostics, open floating windows by default.
 	vim.diagnostic.config({
 		jump = {
-			float = true,
+			on_jump = function(_, bufnr)
+				vim.diagnostic.open_float({ bufnr = bufnr })
+			end,
 		},
 	})
 
