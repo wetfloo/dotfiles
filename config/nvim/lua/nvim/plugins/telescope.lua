@@ -32,6 +32,9 @@ M.opts = {
 }
 
 function M:init()
+	--- @param keys string
+	--- @param fn function()
+	--- @param desc string
 	local function map_under_cursor(keys, fn, desc)
 		local uppered = (keys:gsub("(.)$", string.upper))
 		vim.keymap.set("n", "<leader>" .. keys, function()
