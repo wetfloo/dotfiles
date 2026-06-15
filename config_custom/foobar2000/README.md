@@ -33,6 +33,13 @@ The following options should be used when conversions between formats are perfor
 		- *Leave partial files for aborted or failed conversions*: **No**
 		- *Copy other files to the destination folder*: `*.nolrc;*.lrc;*.jpg;*.jpeg;*.png`
 
+
+### Important when converting to [opus](https://opus-codec.org/)
+
+In order to prevent clipping on devices that read header gain incorrectly
+(which [Poweramp](https://powerampapp.com/) does on Android), you should
+go to *File* > *Advanced* > *Tagging* > *Opus* > *Header gain* and set it to **Leave null**.
+
 ## Other configuration
 
 Any configuration inside the [`literal`](./literal/) directory
