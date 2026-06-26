@@ -72,21 +72,10 @@
                     "vertical": 1
                 },
                 "distance": {
-                    "vertical": "auto"
+                    "vertical": 3
                 },
                 "reverse": {
                     "vertical": true
-                },
-                "smoothed": {
-                    "vertical": {
-                        "acceleration": 0,
-                        "bouncing": true,
-                        "enabled": true,
-                        "inertia": 0,
-                        "preset": "smooth",
-                        "response": 2,
-                        "speed": 0.3
-                    }
                 },
                 "speed": {
                     "vertical": 0
