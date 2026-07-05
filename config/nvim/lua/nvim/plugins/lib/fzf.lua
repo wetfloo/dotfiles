@@ -4,8 +4,8 @@ local M = {
 	"junegunn/fzf",
 }
 
-M.build = vim.fn["fzf#install"]
-
-M.lazy = true
+M.build = function()
+	vim.fn["fzf#install"]()
+end
 
 return M
