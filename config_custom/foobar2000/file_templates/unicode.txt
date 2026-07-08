@@ -34,6 +34,31 @@ $puts(output,$if3(
 		)
 	),
 	$if(
+		$meta_test(MASHUP_SRC),
+		Mashup$get(path_separator)
+		$replace(
+			$meta(MASHUP_SRC),
+			$char(47),
+			$get(bad_char_replacement),
+			$char(92),
+			$get(bad_char_replacement)
+		)$get(path_separator)
+		$replace(
+			$get(date) - %album%,
+			$char(47),
+			$get(bad_char_replacement),
+			$char(92),
+			$get(bad_char_replacement)
+		)$get(path_separator)
+		$replace(
+			$get(discnumber)$get(tracknumber). %artist% - %title%,
+			$char(47),
+			$get(bad_char_replacement),
+			$char(92),
+			$get(bad_char_replacement)
+		)
+	),
+	$if(
 		$meta_test(OST_SRC),
 		OST$get(path_separator)
 		$replace(

@@ -12,6 +12,10 @@ $puts(output,$if3(
 		YouTube Rip$get(path_separator)$get(artist)$get(path_separator)$get(date) :: %album%$get(path_separator)$get(title) '['$meta(YT_SRC)']'
 	),
 	$if(
+		$meta_test(MASHUP_SRC),
+		Mashup$get(path_separator)$meta(MASHUP_SRC)$get(path_separator)$get(date) :: %album%$get(path_separator)$get(discnumber)$get(tracknumber). %artist% - %title%
+	),
+	$if(
 		$meta_test(OST_SRC),
 		OST$get(path_separator)$meta(OST_SRC)$get(path_separator)$get(date) :: %album%$get(path_separator)$get(discnumber)$get(tracknumber). $get(title)
 	),
