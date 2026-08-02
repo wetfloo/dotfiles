@@ -7,7 +7,7 @@ To do this, you can do something like `:%s/(\s{4}|\t|\n)//g`
 ## Sanitizing tags
 
 Use the following parameters:
-- *List of fields to retain*: `title,artist,album,album artist,tracknumber,discnumber,totaltracks,totaldiscs,genre,date,OST_SRC,YT_SRC,COMPILATION_SRC,LYRICS,UNSYNCEDLYRICS`
+- *List of fields to retain*: `title,artist,album,album artist,tracknumber,discnumber,totaltracks,totaldiscs,genre,date,OST_SRC,YT_SRC,COMPILATION_SRC,MASHUP_SRC,LYRICS,UNSYNCEDLYRICS`
 - *Attached pictures*: **Move front cover to external file (discard if exists)**: `folder.jpg`
 - *Preserve ReplayGain / SoundCheck*: **No**
 - *Reduce date field to four-digit year*: **No**
