@@ -252,15 +252,11 @@ function M:config(_)
 		settings = {
 			Lua = {
 				runtime = {
-					-- For neovim
 					version = "LuaJIT",
 				},
 				diagnostics = {
 					globals = { "vim" },
 					unusedLocalExclude = { "_*" },
-				},
-				workspace = {
-					checkThirdParty = false,
 				},
 				format = {
 					enable = false,
