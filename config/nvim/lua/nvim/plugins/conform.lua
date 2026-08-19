@@ -83,7 +83,7 @@ M.opts = {
 			lsp_format = "never",
 		}),
 		["json"] = formatters({ "jq", lsp_format = "prefer" }),
-		["lua"] = formatters({ "stylua" }),
+		["lua"] = formatters({ "stylua", lsp_format = "fallback" }),
 		["nix"] = formatters({ "nixfmt" }),
 		["python"] = formatters({
 			"ruff_format",
