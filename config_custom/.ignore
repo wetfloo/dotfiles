@@ -8,3 +8,5 @@
 !.stignore*
 !.luarc.json
 !.stylua.toml
+!/.github/*
+!/.changelog/*
