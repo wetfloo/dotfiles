@@ -33,6 +33,10 @@ if type -q brew
 	eval $(brew shellenv fish)
 end
 
+if type -q zoxide
+	zoxide init fish | source
+end
+
 if test -d /opt/homebrew/opt/llvm
 	set -x LDFLAGS "-L/opt/homebrew/opt/llvm/lib $LDFLAGS"
 	set -x CPPFLAGS "-L/opt/homebrew/opt/llvm/include $CPPFLAGS"
