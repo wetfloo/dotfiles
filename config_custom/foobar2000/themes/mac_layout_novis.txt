@@ -1,0 +1,12 @@
+splitter horizontal style=thin font-name="Iosevka"
+ playback-controls
+ splitter vertical style=thin
+  splitter horizontal style=thin NSSplitViewItem.canCollapse NSSplitViewItem.behavior=NSSplitViewItemBehaviorSidebar
+   playlist-manager
+   albumlist
+  playlist
+  splitter horizontal style=thin NSSplitViewItem.canCollapse NSSplitViewItem.behavior=NSSplitViewItemBehaviorSidebar
+   tabs position=tab NSSplitViewIte.canCollapse NSSplitViewItem.collapseBehavior=NSSplitViewItemCollapseBehaviorPreferResizingSplitViewWithFixedSiblings
+    selection-properties tab-name="Properties"
+    console tab-name="Console"
+   albumart NSSplitViewItem.collapseBehavior=NSSplitViewItemCollapseBehaviorPreferResizingSiblingsWithFixedSplitView NSSplitViewItem.holdingPriority=1000
