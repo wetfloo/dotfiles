@@ -279,6 +279,10 @@ if.app-id = "2dust.v2rayN"
 run = "move-node-to-workspace 9"
 
 [[on-window-detected]]
+if.app-id = "com.initex.proxifier.v3.macos"
+run = "move-node-to-workspace 9"
+
+[[on-window-detected]]
 if.app-id = "Powerflow"
 run = "move-node-to-workspace 9"
 
