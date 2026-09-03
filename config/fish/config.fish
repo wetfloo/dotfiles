@@ -46,6 +46,8 @@ if type -q nvim
 	set -x MANPAGER "nvim +Man! -c 'set nospell'"
 end
 
+set -x BAT_PAGER "less -S -R"
+
 alias zall='eza -al --color=auto --group-directories-first --icons' # all files and dirs, long format
 alias zal='eza -a --color=auto --group-directories-first --icons' # all files and dirs
 alias zl='eza -l --color=auto --group-directories-first --icons' # long format
