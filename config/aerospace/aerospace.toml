@@ -250,6 +250,10 @@ run = "move-node-to-workspace 7"
 if.app-id = "im.riot.app"
 run = "move-node-to-workspace 7"
 
+[[on-window-detected]]
+if.app-id = "com.hnc.Discord"
+run = "move-node-to-workspace 7"
+
 # ================
 
 [[on-window-detected]]
