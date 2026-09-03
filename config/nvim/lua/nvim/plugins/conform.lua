@@ -94,6 +94,7 @@ M.opts = {
 			lsp_format_fallback = "rustfmt",
 			lsp_format = "first",
 		}),
+		["sql"] = formatters({ "pg_format" }),
 		["toml"] = formatters({ "taplo" }),
 		["xml"] = formatters({ "yq" }),
 		["yaml"] = formatters({ "yq" }),
@@ -131,6 +132,19 @@ M.opts = {
 				"-path",
 				"$FILENAME",
 				"-",
+			},
+		},
+
+		pg_format = {
+			args = {
+				"--tabs",
+				"--function-case",
+				"1",
+				"--keyword-case",
+				"2",
+				"--type-case",
+				"1",
+				"--no-space-function",
 			},
 		},
 
