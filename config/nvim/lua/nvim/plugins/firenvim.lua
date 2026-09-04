@@ -9,7 +9,7 @@ function M.build()
 end
 
 function M.cond()
-	return vim.g.started_by_firenvim == true
+	return vim.g.started_by_firenvim
 end
 
 function M.init()

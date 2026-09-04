@@ -4,10 +4,6 @@ local M = {
 	"neovim/nvim-lspconfig",
 }
 
-function M.cond()
-	return vim.g.started_by_firenvim == false
-end
-
 M.dependencies = {
 	-- Needed to handle the `omnisharp` LSP's nonsense `$metadata` paths
 	-- correctly.
@@ -54,6 +50,10 @@ M.dependencies = {
 		end,
 	},
 }
+
+function M.cond()
+	return not vim.g.started_by_firenvim
+end
 
 M.event = {
 	"User RealFileOpen",
