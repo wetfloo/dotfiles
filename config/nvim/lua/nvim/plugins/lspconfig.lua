@@ -4,6 +4,10 @@ local M = {
 	"neovim/nvim-lspconfig",
 }
 
+function M.cond()
+	return vim.g.started_by_firenvim == false
+end
+
 M.dependencies = {
 	-- Needed to handle the `omnisharp` LSP's nonsense `$metadata` paths
 	-- correctly.
