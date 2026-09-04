@@ -54,9 +54,12 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	pattern = "*",
 })
 
+local buf_write_cleanup = vim.api.nvim_create_augroup("BufWriteCleanup", { clear = true })
+
 vim.api.nvim_create_autocmd("BufWritePre", {
 	command = [[%s/\s\+$//e]],
 	pattern = "*",
+	group = buf_write_cleanup,
 })
 
 vim.api.nvim_create_autocmd("BufEnter", {
