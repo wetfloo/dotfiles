@@ -8,6 +8,10 @@ function M.build()
 	vim.fn["firenvim#install"](0)
 end
 
+function M.cond()
+	return vim.g.started_by_firenvim == true
+end
+
 function M.init()
 	vim.g.firenvim_config = {
 		localSettings = {
