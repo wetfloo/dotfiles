@@ -20,13 +20,14 @@ function M.init()
 				priority = 0,
 			},
 
-			["https://code.yandex-team.ru/.*"] = {
+			["http(s?)://code.yandex-team.ru/.*"] = {
 				takeover = "always",
 				priority = 1,
 			},
 
-			["https://go.dev/.*"] = {
+			["http(s?)://go.dev/play/.*"] = {
 				takeover = "always",
+				selector = "textarea#code",
 				priority = 1,
 			},
 		},
