@@ -16,6 +16,10 @@ M.ft = {
 	"fugitiveblame",
 }
 
+function M.cond()
+	return not vim.g.started_by_firenvim
+end
+
 function M:init()
 	vim.keymap.set("n", "<leader>kb", function()
 		utils.close_win_with_ft_or("fugitiveblame", false, function()

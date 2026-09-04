@@ -6,6 +6,10 @@ local M = {
 
 M.lazy = true
 
+function M.cond()
+	return not vim.g.started_by_firenvim
+end
+
 M.keys = {
 	"<C-h>",
 	"<C-j>",

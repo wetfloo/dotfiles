@@ -10,6 +10,10 @@ M.event = {
 
 M.lazy = true
 
+function M.cond()
+	return not vim.g.started_by_firenvim
+end
+
 function M:init()
 	local function map(keys, func, desc, mode_override)
 		local mode

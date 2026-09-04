@@ -5,6 +5,10 @@ local M = {
 	"moll/vim-bbye",
 }
 
+function M.cond()
+	return not vim.g.started_by_firenvim
+end
+
 M.cmd = {
 	"Bdelete",
 	"Bwipeout",

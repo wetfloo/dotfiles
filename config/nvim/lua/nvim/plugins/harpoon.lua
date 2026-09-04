@@ -12,6 +12,10 @@ M.dependencies = {
 
 M.lazy = true
 
+function M.cond()
+	return not vim.g.started_by_firenvim
+end
+
 function M:init()
 	local function toggle_telescope(harpoon_files)
 		local _, tsc = pcall(require, "telescope.config")

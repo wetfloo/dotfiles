@@ -58,6 +58,10 @@ end
 
 M.lazy = true
 
+function M.cond()
+	return not vim.g.started_by_firenvim
+end
+
 function M:init()
 	vim.g.format_after_save = false
 	vim.api.nvim_create_user_command("Format", format, { desc = "Format current buffer" })
