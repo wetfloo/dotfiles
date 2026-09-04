@@ -47,6 +47,8 @@ vim.keymap.set({ "n", "x" }, "<leader>p", '"+p', { desc = "Paste from + register
 vim.keymap.set("x", "p", '"_dp')
 vim.keymap.set("x", "P", '"_dP')
 
+vim.opt.guifont = "Iosevka Term,Iosevka Fixed,Iosevka,monospace"
+
 vim.api.nvim_create_autocmd("TextYankPost", {
 	callback = function()
 		vim.hl.on_yank({ timeout = 400 })
