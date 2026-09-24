@@ -82,7 +82,16 @@ function M:opts(_)
 			lualine_c = {
 				{
 					"filename",
-					cond = buffer_not_empty,
+					path = 1,
+					-- cond = buffer_not_empty,
+					file_status = true,
+					newfile_status = true,
+					symbols = {
+						modified = "[󱩼]",
+						readonly = "[󰌾]",
+						unnamed = "[No Name]",
+						newfile = "[New]",
+					},
 				},
 				{
 					"diagnostics",
