@@ -138,6 +138,10 @@ function extract --description "Extract various archive formats"
 	end
 end
 
+if test -d "$HOME/.docker/bin"
+	fish_add_path "$HOME/.docker/bin"h
+end
+
 # https://github.com/3rd/image.nvim/tree/4007cddc4cfc1b5ddd49744a38362e7b0432b3a0?tab=readme-ov-file#installing-imagemagick
 #if type -q magick and type -q brew and [ "$(which magick)" = "$(brew --prefix)/bin/magick)" ]
 #    set -x DYLD_LIBRARY_PATH "$(brew --prefix)/lib $DYLD_LIBRARY_PATH"
