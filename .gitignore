@@ -6,7 +6,7 @@
 # Ignore os-specific settings
 **/os_local/**
 
-config/topgrade.d/*
+/config/topgrade.d/*
 
 /config_custom/codex/.tmp/
 /config_custom/codex/app-server-control/
