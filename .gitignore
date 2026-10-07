@@ -51,6 +51,7 @@ Temporary Items
 
 /config/topgrade.d/*
 
+# keep-sorted start
 /config_custom/codex/.tmp/
 /config_custom/codex/app-server-control/
 /config_custom/codex/app-server-daemon/
@@ -61,18 +62,22 @@ Temporary Items
 /config_custom/codex/plugins/
 /config_custom/codex/sessions/
 /config_custom/codex/shell_snapshots/
+/config_custom/codex/skills/.system/
 /config_custom/codex/thread-writer-locks/
 /config_custom/codex/tmp/
 /config_custom/codex/tui-thread-reference-capabilities/
-/config_custom/codex/skills/.system/
+# keep-sorted end
 
+# keep-sorted start
 /config_custom/codex/*.lock
 /config_custom/codex/*.sqlite
 /config_custom/codex/*.sqlite-shm
 /config_custom/codex/*.sqlite-wal
 /config_custom/codex/.sandbox_migration
 /config_custom/codex/auth.json
+/config_custom/codex/config.toml
 /config_custom/codex/history.jsonl
 /config_custom/codex/installation_id
 /config_custom/codex/session_index.jsonl
 /config_custom/codex/version.json
+# keep-sorted end
