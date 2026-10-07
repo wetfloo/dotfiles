@@ -79,7 +79,7 @@ relink_custom gitconfig_global ~/.gitconfig_global
 relink_custom .ignore ~/.ignore
 if ! [ -f ~/.gitconfig ]; then
     git config --global user.name 'wetfloo'
-    git config --global user.email 'yahahaha.1234567890@gmail.com'
+    git config --global user.email 'frozenyonder@gmail.com'
     git config --global user.signingKey '~/.ssh/github_personal'
     git config --global include.path '~/.gitconfig_global'
 fi
