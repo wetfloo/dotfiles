@@ -76,8 +76,14 @@ fd --hidden --type directory --type file --exact-depth 1 --search-path $CONFIG_D
 
 relink_custom ideavimrc ~/.ideavimrc
 relink_custom gitconfig_global ~/.gitconfig_global
-relink_custom codex ~/.codex
+
+mkdir -p ~/.codex
+relink_custom codex/rules ~/.codex/rules
+relink_custom codex/skills ~/.codex/skills
+relink_custom codex/AGENTS.md ~/.codex/AGENTS.md
+
 relink_custom agents ~/.agents
+
 relink_custom .ignore ~/.ignore
 if ! [ -f ~/.gitconfig ]; then
     git config --global user.name 'wetfloo'
