@@ -48,10 +48,10 @@ end
 
 set -x BAT_PAGER "less -S -R"
 
-alias zall='eza -al --color=auto --group-directories-first --icons' # all files and dirs, long format
-alias zal='eza -a --color=auto --group-directories-first --icons' # all files and dirs
-alias zl='eza -l --color=auto --group-directories-first --icons' # long format
-alias zt='eza -aT --color=auto --group-directories-first --icons' # tree listing
+alias zall='eza -al --color=auto --group-directories-first --icons=auto' # all files and dirs, long format
+alias zal='eza -a --color=auto --group-directories-first --icons=auto' # all files and dirs
+alias zl='eza -l --color=auto --group-directories-first --icons=auto' # long format
+alias zt='eza -aT --color=auto --group-directories-first --icons=auto' # tree listing
 alias zd="eza -a | rg '^\.'" # show only dotfiles
 
 if test -e "$HOME/.cargo/env.fish"
