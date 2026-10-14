@@ -52,7 +52,6 @@ For a new app, add one `symlink_app.tmpl` under `home/private_dot_config/`:
 ```
 
 Add any OS-specific destinations and select them in `home/.chezmoiignore`.
-Chezmoi creates and maintains the links; no shell linking commands are needed.
 
 Existing `~/.gitconfig` stays machine-specific. On a new machine, chezmoi creates
 only the shared include; set your Git identity and signing key separately.
