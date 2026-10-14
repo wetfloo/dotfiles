@@ -25,7 +25,6 @@ chezmoi diff
 chezmoi apply
 ```
 
-Use `--branch chezmoi` with `init` while this setup remains on that branch.
 HTTPS cloning is also supported: `chezmoi init https://github.com/wetfloo/dotfiles.git`.
 
 On Windows, enable [Developer Mode](https://www.chezmoi.io/user-guide/machines/windows/#create-symlinks)
