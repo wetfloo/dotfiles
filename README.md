@@ -1,6 +1,6 @@
 # Dotfiles
 
-Chezmoi manages the directory and file symlinks declared in `chezmoi_home/`.
+Chezmoi manages the directory and file symlinks declared in `chezmoi_template/`.
 Configuration contents stay in `config/`, `config_custom/`, and `config_windows/`.
 New files inside a linked directory need no new link definitions.
 
@@ -45,13 +45,13 @@ commit normally. `chezmoi edit` edits a link definition, not its target contents
 Run `chezmoi apply` after changing link definitions. On other machines,
 `chezmoi update` pulls and applies committed changes.
 
-For a new app, add one `symlink_app.tmpl` under `home/private_dot_config/`:
+For a new app, add one `symlink_app.tmpl` under `chezmoi_template/private_dot_config/`:
 
 ```gotemplate
 {{ joinPath .chezmoi.workingTree "config" "app" }}
 ```
 
-Add any OS-specific destinations and select them in `home/.chezmoiignore`.
+Add any OS-specific destinations and select them in `chezmoi_template/.chezmoiignore`.
 
 Existing `~/.gitconfig` stays machine-specific. On a new machine, chezmoi creates
 only the shared include; set your Git identity and signing key separately.
