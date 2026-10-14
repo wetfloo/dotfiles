@@ -1,0 +1,30 @@
+# shortcut: Windows mappings use default home folders, adjust them for redirected AppData or Documents.
+{{ if ne .chezmoi.os "windows" }}
+AppData
+Documents
+{{ end }}
+
+{{ if ne .chezmoi.os "darwin" }}
+Library
+.config/aerospace
+.config/karabiner
+.config/linearmouse
+{{ end }}
+
+{{ if ne .chezmoi.os "linux" }}
+.config/zathura
+{{ end }}
+
+{{ if eq .chezmoi.os "windows" }}
+.config/bat
+.config/fish
+.config/ghostty
+.config/kitty
+.config/lazygit
+.config/mpd
+.config/ncmpcpp
+.config/nvim
+.config/tmux
+.config/topgrade.toml
+.config/yazi
+{{ end }}
