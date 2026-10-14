@@ -82,3 +82,6 @@ Temporary Items
 /config/codex/session_index.jsonl
 /config/codex/version.json
 # keep-sorted end
+
+# Python
+*.pyc
