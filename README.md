@@ -1,8 +1,8 @@
 # Dotfiles
 
 Chezmoi manages the directory and file symlinks declared in `chezmoi_template/`.
-Configuration contents stay in `config/`, `config_custom/`, and `config_windows/`.
-New files inside a linked directory need no new link definitions.
+Configuration contents stay in `config/`.
+`config_custom/` is for other configuration that isn't meant to be linked directly.
 
 ## Setup
 
@@ -25,7 +25,7 @@ chezmoi diff
 chezmoi apply
 ```
 
-HTTPS cloning is also supported: `chezmoi init https://github.com/wetfloo/dotfiles.git`.
+HTTPS cloning is also supported.
 
 On Windows, enable [Developer Mode](https://www.chezmoi.io/user-guide/machines/windows/#create-symlinks)
 before applying. Native paths are `~/AppData/Local/nvim`,
@@ -40,8 +40,8 @@ tools and Linux-only Zathura.
 
 ## Daily use
 
-Edit the existing configuration directories or their deployed symlinks, then
-commit normally. `chezmoi edit` edits a link definition, not its target contents.
+Edit the existing configuration directories
+or their deployed symlinks, then commit normally.
 Run `chezmoi apply` after changing link definitions. On other machines,
 `chezmoi update` pulls and applies committed changes.
 
