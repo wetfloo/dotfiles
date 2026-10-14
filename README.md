@@ -1,6 +1,6 @@
 # Dotfiles
 
-Chezmoi manages the directory and file symlinks declared in `home/`.
+Chezmoi manages the directory and file symlinks declared in `chezmoi_home/`.
 Configuration contents stay in `config/`, `config_custom/`, and `config_windows/`.
 New files inside a linked directory need no new link definitions.
 

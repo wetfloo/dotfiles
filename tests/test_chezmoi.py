@@ -11,7 +11,7 @@ repo = Path(__file__).resolve().parents[1]
 for platform in ("darwin", "linux", "windows"):
     with tempfile.TemporaryDirectory(prefix="dotfiles-chezmoi-") as directory:
         scratch = Path(directory)
-        home = scratch / "home"
+        home = scratch / "chezmoi_home"
         home.mkdir()
         config = scratch / "chezmoi.toml"
         command = [
