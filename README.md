@@ -1,13 +1,14 @@
 # dotfiles
 
-Chezmoi manages the directory and file symlinks declared in `chezmoi_template/`.
-Configuration contents stay in `config/`.
-`config_custom/` is for other configuration that isn't meant to be linked directly.
+Chezmoi manages the directory and file symlinks declared in [`chezmoi_template/`](chezmoi_template/).
+Configuration contents stay in [`config/`](config/).
+[`config_custom/`](config_custom/) is meant for other configuration
+that isn't meant to be linked directly.
 
 ## Setup
 
-Install [chezmoi](https://www.chezmoi.io/install/), then initialize an existing
-checkout from its root:
+Install [`chezmoi`](https://www.chezmoi.io/install/),
+then initialize an existing checkout from its root:
 
 ```sh
 chezmoi init --source "$PWD"
@@ -16,8 +17,7 @@ chezmoi apply
 chezmoi verify
 ```
 
-The generated local config remembers this checkout. On another machine, after
-committing and pushing the setup:
+On another machine, after committing and pushing the setup:
 
 ```sh
 chezmoi init git@github.com:wetfloo/dotfiles.git
@@ -25,41 +25,31 @@ chezmoi diff
 chezmoi apply
 ```
 
-HTTPS cloning is also supported.
+On Windows, before applying,
+enable [Developer Mode](https://www.chezmoi.io/user-guide/machines/windows/#create-symlinks)
+Native paths such as `~/AppData/Local/nvim` require it.
 
-On Windows, enable [Developer Mode](https://www.chezmoi.io/user-guide/machines/windows/#create-symlinks)
-before applying. Native paths are `~/AppData/Local/nvim`,
-`~/AppData/Local/lazygit`, `~/AppData/Roaming/bat`,
-`~/AppData/Roaming/yazi/config`, and `~/Documents/PowerShell`.
-These mappings assume unredirected AppData and Documents folders.
-
-On macOS, Lazygit's native `~/Library/Application Support/lazygit/config.yml`
-also links to the shared config. The existing `.config/lazygit` link continues
-to serve shells that set `XDG_CONFIG_HOME`. `.chezmoiignore` selects macOS-only
-tools and Linux-only Zathura.
-
-## Daily use
+## Usage
 
 Edit the existing configuration directories
 or their deployed symlinks, then commit normally.
 Run `chezmoi apply` after changing link definitions. On other machines,
 `chezmoi update` pulls and applies committed changes.
 
-For a new app, add one `symlink_app.tmpl` under `chezmoi_template/private_dot_config/`:
+### Example
+
+For a new app, to link `app` file into `~/.config/`,
+add a `symlink_app.tmpl` file under [`chezmoi_template/private_dot_config/`](chezmoi_template/)
+with the following contents:
 
 ```gotemplate
 {{ joinPath .chezmoi.workingTree "config" "app" }}
 ```
 
-Add any OS-specific destinations and select them in `chezmoi_template/.chezmoiignore`.
+If needed, add any OS-specific destinations and select them in [`.chezmoiignore`](chezmoi_template/.chezmoiignore).
 
-Existing `~/.gitconfig` stays machine-specific. On a new machine, chezmoi creates
-only the shared include; set your Git identity and signing key separately.
-Shared Git settings enable signing. Applications and dependencies are installed
-separately.
-
-The legacy `scripts/dotfiles_relink` remains for rollback. Use `chezmoi apply`
-instead; chezmoi does not run its Dock or NVRAM changes.
+Legacy [`scripts/dotfiles_relink`](scripts/dotfiles_relink) remains for rollback.
+Use `chezmoi apply` instead; chezmoi does not run its macOS Dock or NVRAM changes.
 
 ## Checks
 
