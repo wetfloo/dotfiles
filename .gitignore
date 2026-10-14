@@ -51,32 +51,34 @@ Temporary Items
 
 /config/topgrade.d/*
 
+/config/agents/skills/.system/
+
 # keep-sorted start
-/config_custom/codex/.tmp/
-/config_custom/codex/app-server-control/
-/config_custom/codex/app-server-daemon/
-/config_custom/codex/cache/
-/config_custom/codex/editor/
-/config_custom/codex/generated_images/
-/config_custom/codex/packages/
-/config_custom/codex/plugins/
-/config_custom/codex/sessions/
-/config_custom/codex/shell_snapshots/
-/config_custom/codex/skills/.system/
-/config_custom/codex/thread-writer-locks/
-/config_custom/codex/tmp/
-/config_custom/codex/tui-thread-reference-capabilities/
+/config/codex/.tmp/
+/config/codex/app-server-control/
+/config/codex/app-server-daemon/
+/config/codex/cache/
+/config/codex/editor/
+/config/codex/generated_images/
+/config/codex/packages/
+/config/codex/plugins/
+/config/codex/sessions/
+/config/codex/shell_snapshots/
+/config/codex/skills/.system/
+/config/codex/thread-writer-locks/
+/config/codex/tmp/
+/config/codex/tui-thread-reference-capabilities/
 # keep-sorted end
 
 # keep-sorted start
-/config_custom/codex/*.lock
-/config_custom/codex/*.sqlite
-/config_custom/codex/*.sqlite-shm
-/config_custom/codex/*.sqlite-wal
-/config_custom/codex/.sandbox_migration
-/config_custom/codex/auth.json
-/config_custom/codex/history.jsonl
-/config_custom/codex/installation_id
-/config_custom/codex/session_index.jsonl
-/config_custom/codex/version.json
+/config/codex/*.lock
+/config/codex/*.sqlite
+/config/codex/*.sqlite-shm
+/config/codex/*.sqlite-wal
+/config/codex/.sandbox_migration
+/config/codex/auth.json
+/config/codex/history.jsonl
+/config/codex/installation_id
+/config/codex/session_index.jsonl
+/config/codex/version.json
 # keep-sorted end
