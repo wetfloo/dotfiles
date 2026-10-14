@@ -21,3 +21,7 @@ insert_final_newline = false
 [*.{yml,yaml}]
 indent_style = space
 indent_size = 2
+
+[*.{py}]
+indent_style = space
+indent_size = 4
