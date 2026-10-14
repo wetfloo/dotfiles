@@ -1,2 +1,6 @@
 [include]
 	path = ~/.gitconfig_global
+[user]
+	name = wetfloo
+	email = frozenyonder@gmail.com
+	signingKey = ~/.ssh/key
