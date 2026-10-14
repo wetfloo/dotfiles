@@ -75,7 +75,6 @@ Temporary Items
 /config_custom/codex/*.sqlite-wal
 /config_custom/codex/.sandbox_migration
 /config_custom/codex/auth.json
-/config_custom/codex/config.toml
 /config_custom/codex/history.jsonl
 /config_custom/codex/installation_id
 /config_custom/codex/session_index.jsonl

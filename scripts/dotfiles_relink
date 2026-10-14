@@ -78,6 +78,7 @@ relink_custom ideavimrc ~/.ideavimrc
 relink_custom gitconfig_global ~/.gitconfig_global
 
 mkdir -p ~/.codex
+relink_custom codex/config.toml ~/.codex/config.toml
 relink_custom codex/rules ~/.codex/rules
 relink_custom codex/skills ~/.codex/skills
 relink_custom codex/AGENTS.md ~/.codex/AGENTS.md
