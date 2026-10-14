@@ -1,4 +1,4 @@
-# Dotfiles
+# dotfiles
 
 Chezmoi manages the directory and file symlinks declared in `chezmoi_template/`.
 Configuration contents stay in `config/`.
