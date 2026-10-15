@@ -1,193 +1,89 @@
-#!/usr/bin/env perl
+#!/usr/bin/env bash
 
-use warnings;
-use strict;
-use v5.14;
-
-use Getopt::Long;
-use IPC::Open2;
-use List::Util qw(max sum);
+set -euo pipefail
+export LC_ALL=C
 
 # distantly based on the original answer at https://stackoverflow.com/questions/1029969/why-is-my-git-repository-so-big/45366030#45366030
 
-sub usage {
-    my ($exitCode) = @_;
+usage() {
+	cat <<'USAGE'
+Usage: git_fatfiles [--directories] [--[no]sum|-s] [--[no]deleted] [--[no]units|-u]
 
-    STDERR->say("args: [(--help | -h) | ([--directories | (--[no]sum | -s)] [--[no]deleted] [--[no]units | -u])]");
-    STDERR->say("\t");
-    STDERR->say("\tYou might want to run `git gc --prune=now --aggressive` before running this script.");
-    STDERR->say("\t");
-    STDERR->say("\tNo args (equivalent to `--sum --units`):");
-    STDERR->say("\t\tshow the sum of the on-disk (compressed) sizes for all objects in the history, for each path");
-    STDERR->say("\t--directories: aggregate results by directory");
-    STDERR->say("\t--nosum: show the size of the largest object in the history, rather than the sum of all objects, for each path");
-    STDERR->say("\t--deleted: only show results for paths that are *not* in the current working directory");
-    STDERR->say("\t--nodeleted: only show results for paths that *are* in the current working directory");
-    STDERR->say("\t--nounits: show results in bytes, not larger units");
+Show compressed on-disk blob sizes across all Git history, smallest first.
+  --directories  Aggregate by immediate parent directory (root files use .).
+  --nosum        Show the largest object per path instead of summing versions.
+  --deleted      Only include paths absent from the working tree.
+  --nodeleted    Only include paths present in the working tree.
+  --nounits      Print bytes instead of human-readable units.
+  --help, -h     Show this help, including outside a repository.
 
-    exit $exitCode;
+Defaults: --sum --units. Identical blobs are counted once, under one path.
+USAGE
 }
 
-sub parseArgs {
-    my ($directories, $sum, $deleted, $units, $help);
+sum=1
+directories=0
+deleted=all
+units=1
+for argument in "$@"; do
+	case $argument in
+		--sum|-s) sum=1 ;;
+		--nosum|--no-sum) sum=0 ;;
+		--directories) directories=1 ;;
+		--deleted) deleted=1 ;;
+		--nodeleted|--no-deleted) deleted=0 ;;
+		--units|-u) units=1 ;;
+		--nounits|--no-units) units=0 ;;
+		--help|-h) usage; exit 0 ;;
+		*) printf 'Unknown argument: %s\n' "$argument" >&2; usage >&2; exit 1 ;;
+	esac
+done
 
-    $sum = 1;
-    $units = 1;
-    $deleted = 'unset';
-    GetOptions('sum!' => \$sum, 'directories' => \$directories, 'deleted!' => \$deleted, 'units!' => \$units, 'help' => \$help)
-        or usage(1);
+repo_root=$(git rev-parse --show-toplevel)
+cd -- "$repo_root"
 
-    usage(0) if $help;
-
-    return ($directories, $sum, $deleted, $units);
-}
-
-my $format_bytes;
-sub formatBytes {
-    my ($units, $bytes) = @_;
-
-    if ($units && !$format_bytes) {
-        # Try to get the "format_bytes" function:
-        my $canFormat = eval {
-            require Number::Bytes::Human;
-            Number::Bytes::Human->import('format_bytes');
-            1;
-        };
-        if ($canFormat) {
-            $format_bytes = \&format_bytes;
-        } else {
-            STDERR->say("Could not load Number::Bytes::Human; output will be in bytes");
-        }
-    }
-
-    if (!$format_bytes) {
-        $format_bytes = sub { return shift; };
-    }
-
-    return $format_bytes->($bytes);
-}
-
-
-## ------------------------------- ##
-
-
-sub getGitObjects {
-    # hash => path
-    my %gitObjects;
-    for my $line (qx(git rev-list --all --objects)) {
-        my ($hash, $path) = split(' ', $line, 2);
-        $gitObjects{$hash} = $path =~ s|\s+$||r;  # trim trailing whitespace
-    }
-    return %gitObjects;
-}
-
-sub getHashSizesForBlobs {
-    my (@hashes) = @_;
-
-    my $pid = open2(my $childOut, my $childIn, "git cat-file --batch-check='%(objectname) %(objecttype) %(objectsize:disk)'");
-
-    # hash => size
-    my %hashSizes;
-    for my $hash (@hashes) {
-        $childIn->say($hash);
-
-        my ($hash, $type, $size) = split(' ', $childOut->getline());
-        if ($type eq 'blob') {
-            $hashSizes{$hash} = $size;
-        }
-    }
-
-    close($childIn);
-    waitpid($pid, 0);
-
-    return %hashSizes;
-}
-
-sub getAllSizesForPaths {
-    my ($gitObjects, $hashSizes) = @_;
-
-    # path => [size, ...]
-    my %pathSizes;
-    while (my ($hash, $path) = each %{$gitObjects}) {
-        # filter out directories
-        next unless exists $hashSizes->{$hash};
-
-        my $sizes = $pathSizes{$path} || [];
-        push(@{$sizes}, $hashSizes->{$hash});
-        $pathSizes{$path} = $sizes;
-    }
-
-    return %pathSizes;
-}
-
-sub mergeDirectories {
-    my (%pathSizes) = @_;
-
-    # dir => [size, ...]
-    my %dirSizes;
-    while (my ($path, $sizes) = each %pathSizes) {
-        my $pathOnly = $path =~ s|/[^/]*$||r;  # strip the filename part
-        if (exists $dirSizes{$pathOnly}) {
-            push(@{$sizes}, @{$dirSizes{$pathOnly}});
-        }
-        $dirSizes{$pathOnly} = $sizes;
-    }
-
-    return %dirSizes;
-}
-
-sub handleDeleted {
-    my ($deleted, %pathSizes) = @_;
-
-    if ($deleted ne "unset") {
-        if ($deleted == 1) {
-            for my $path (keys %pathSizes) {
-                delete $pathSizes{$path} if -e $path || -l $path;
-            }
-        } elsif ($deleted == 0) {
-            for my $path (keys %pathSizes) {
-                delete $pathSizes{$path} unless -e $path || -l $path;
-            }
-        }
-    }
-
-    return %pathSizes;
-}
-
-sub sumOrMaxSizes {
-    my ($sum, %pathSizes) = @_;
-
-    while (my ($path, $sizes) = each %pathSizes) {
-        $pathSizes{$path} = $sum ? sum(@{$sizes}) : max(@{$sizes});
-    }
-
-    return %pathSizes;
-}
-
-sub sortAndPrint {
-    my ($units, %pathSizes) = @_;
-
-    my @sortedPaths = sort { $pathSizes{$a} <=> $pathSizes{$b} } keys %pathSizes;
-    for my $path (@sortedPaths) {
-        printf("%s\t%s\n", formatBytes($units, $pathSizes{$path}), $path);
-    }
-}
-
-sub main {
-    my $repo_root = qx(git rev-parse --show-toplevel);
-    chomp $repo_root;
-    chdir $repo_root || die "Error: couldn't chdir to repo root ($repo_root)";
-
-    my ($directories, $sum, $deleted, $units) = parseArgs();
-
-    my %gitObjects = getGitObjects();
-    my %hashSizes = getHashSizesForBlobs(keys %gitObjects);
-    my %pathSizes = getAllSizesForPaths(\%gitObjects, \%hashSizes);
-
-    %pathSizes = mergeDirectories(%pathSizes) if $directories;
-    %pathSizes = handleDeleted($deleted, %pathSizes);
-    %pathSizes = sumOrMaxSizes($sum, %pathSizes);
-    sortAndPrint($units, %pathSizes);
-}
-
-main();
+# shortcut: rev-list provides one path per blob and strips newlines; use tree traversal for exact path attribution.
+# Prefix paths so cat-file preserves leading whitespace in its "rest" field.
+git rev-list --all --objects |
+	sed 's/ / .\//' |
+	git cat-file --buffer --batch-check='%(objecttype) %(objectsize:disk) %(rest)' |
+	while IFS= read -r record; do
+		[[ $record == blob\ * ]] || continue
+		record=${record#blob }
+		size=${record%% *}
+		path=${record#* ./}
+		if [[ $deleted == 1 && ( -e $path || -L $path ) ]]; then
+			continue
+		fi
+		if [[ $deleted == 0 && ! -e $path && ! -L $path ]]; then
+			continue
+		fi
+		if [[ $directories == 1 ]]; then
+			if [[ $path == */* ]]; then
+				path=${path%/*}
+			else
+				path=.
+			fi
+		fi
+		printf '%s\t%s\n' "$size" "$path"
+	done |
+	awk -F '\t' -v sum="$sum" '
+		{
+			path = substr($0, index($0, "\t") + 1)
+			if (sum) sizes[path] += $1
+			else if (!(path in sizes) || $1 > sizes[path]) sizes[path] = $1
+		}
+		END {
+			for (path in sizes) printf "%.0f\t%s\n", sizes[path], path
+		}' |
+	sort -n |
+	awk -F '\t' -v units="$units" '
+		BEGIN { split("B KiB MiB GiB TiB PiB EiB", labels, " ") }
+		!units { print; next }
+		{
+			size = $1
+			path = substr($0, index($0, "\t") + 1)
+			unit = 1
+			while (size >= 1024 && unit < 7) { size /= 1024; unit++ }
+			printf (unit == 1 ? "%.0f %s\t%s\n" : "%.1f %s\t%s\n"), size, labels[unit], path
+		}'
