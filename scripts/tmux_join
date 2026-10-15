@@ -1,29 +1,36 @@
 #!/usr/bin/env bash
 
-# allow tmux to error out, it's fine here
-set -o pipefail
+set -euo pipefail
 
-selected_name=$(basename "$1" | tr . _)
-
-if ! $(tmux has-session -t "$selected_name" 2> /dev/null); then
-    # Forward slash is not allowed on Unix-like OS,
-    # so this will never be used by a directory in sessionizer
-    if [[ "$selected_name" = "/" ]]; then
-        tmux new-session -ds $selected_name -c ~ 2> /dev/null
-    else
-		# Create a session with a preset
-        tmux new-session -ds $selected_name -c "$1" 2> /dev/null
-
-		tmux new-window -c "$1" -db -t "$selected_name:1"
-		tmux new-window -c "$1" -db -t "$selected_name:1"
-
-		tmux send-keys -t "$selected_name:1" "nvim ." Enter
-		tmux send-keys -t "$selected_name:2" "lazygit" Enter
-    fi
+if [[ $# -ne 1 || -z $1 ]]; then
+	printf 'Usage: tmux_join DIRECTORY\n' >&2
+	exit 1
 fi
 
-if [[ -n $TMUX ]]; then
-	tmux switch-client -t $selected_name > /dev/null
+directory=$(CDPATH= cd -- "$1" && printf '%s/' "$PWD")
+directory=${directory%/}
+selected_name=${directory##*/}
+selected_name=${selected_name//[.:]/_}
+
+# "/" selects a plain session rooted at home.
+if [[ $directory == / ]]; then
+	selected_name=/
+	directory=$HOME
+fi
+
+if ! tmux has-session -t "=$selected_name" 2>/dev/null; then
+	tmux new-session -d -s "$selected_name" -c "$directory"
+	if [[ $selected_name != / ]]; then
+		# Window IDs keep the preset independent of base-index and renumbering.
+		editor=$(tmux new-window -d -b -P -F '#{window_id}' -t "=$selected_name:^" -c "$directory")
+		git_window=$(tmux new-window -d -a -P -F '#{window_id}' -t "$editor" -c "$directory")
+		tmux send-keys -t "$editor" 'nvim .' Enter
+		tmux send-keys -t "$git_window" lazygit Enter
+	fi
+fi
+
+if [[ -n ${TMUX:-} ]]; then
+	exec tmux switch-client -t "=$selected_name"
 else
-	tmux attach-session -t $selected_name > /dev/null
+	exec tmux attach-session -t "=$selected_name"
 fi

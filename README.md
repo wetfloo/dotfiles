@@ -55,8 +55,13 @@ Use `chezmoi apply` instead; chezmoi does not run its macOS Dock or NVRAM change
 
 ```sh
 python3 tests/test_chezmoi.py
+python3 tests/test_tmux_scripts.py
+python3 tests/test_git_fatfiles.py
 ```
 
 The checks apply each OS's mappings in temporary home directories and verify
 Neovim routing, link targets, repeated application, private permissions, and
 preservation of unmanaged files. They do not run native Windows applications.
+
+The script checks use isolated command stubs and disposable Git repositories.
+They leave running tmux sessions and existing repositories alone.

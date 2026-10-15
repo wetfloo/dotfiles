@@ -2,12 +2,18 @@
 
 set -euo pipefail
 
-SESSION_INDEX=$(tmux ls -F "#{session_name}" | rg -os '^tmux_sessionizer(\d+)$' -r '$1' | sort --numeric-sort --reverse | head -n 1)
+index=$(
+	{ tmux list-sessions -F '#{session_name}' 2>/dev/null || :; } |
+		awk '/^tmux_sessionizer[0-9]+$/ {
+			sub(/^tmux_sessionizer/, "")
+			if ($0 + 0 >= next_index) next_index = $0 + 1
+		} END { printf "%.0f\n", next_index + 0 }'
+)
+session=tmux_sessionizer$index
 
-if [[ -n "$SESSION_INDEX" ]]; then
-    TARGET_INDEX=$(($SESSION_INDEX+1))
+if [[ -n ${TMUX:-} ]]; then
+	tmux new-session -d -s "$session" tmux_sessionizer
+	exec tmux switch-client -t "=$session"
 else
-    TARGET_INDEX=0
+	exec tmux new-session -s "$session" tmux_sessionizer
 fi
-
-tmux new-session -s "tmux_sessionizer$TARGET_INDEX" "tmux_sessionizer"

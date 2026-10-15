@@ -3,13 +3,24 @@
 set -euo pipefail
 
 if [[ $# -gt 0 ]]; then
-    selected=$1
+	selected=$1
 else
-    selected=$(fd . --exact-depth 1 --type directory ~/Projects ~/Documents/dotfiles 2>/dev/null | fzf --scheme path || :)
+	selected=$(
+		for root in "$HOME/Projects" "$HOME/Documents/Projects" "$HOME/Documents/dotfiles"; do
+			for directory in "$root"/*/; do
+				[[ -d $directory ]] || continue
+				printf '%s\0' "$directory"
+			done
+		done | fzf --read0 --no-multi --scheme path
+	) || {
+		status=$?
+		[[ $status == 1 || $status == 130 ]] && exit 0
+		exit "$status"
+	}
 fi
 
 if [[ -z $selected ]]; then
-    exit 0
+	exit 0
 fi
 
-tmux_join $selected
+exec tmux_join "$selected"
