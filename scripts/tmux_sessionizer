@@ -6,7 +6,7 @@ if [[ $# -gt 0 ]]; then
 	selected=$1
 else
 	selected=$(
-		for root in "$HOME/Projects" "$HOME/Documents/Projects" "$HOME/Documents/dotfiles"; do
+		for root in "$HOME/Projects"; do
 			for directory in "$root"/*/; do
 				[[ -d $directory ]] || continue
 				printf '%s\0' "$directory"
