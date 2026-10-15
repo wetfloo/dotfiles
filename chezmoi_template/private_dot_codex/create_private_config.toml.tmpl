@@ -1,0 +1,29 @@
+model = "gpt-6.1-sol"
+model_reasoning_effort = "xhigh"
+service_tier = "default"
+
+[tui]
+screen_reader_detection_done = true
+session_picker_view = "dense"
+
+[tui.keymap.approval]
+decline = "n"
+
+[tui.keymap.chat]
+interrupt_turn = "ctrl-q"
+
+[marketplaces.ponytail]
+source_type = "git"
+source = "https://github.com/DietrichGebert/ponytail.git"
+
+[plugins."ponytail@ponytail"]
+enabled = true
+
+[features]
+hooks = true
+
+[shell_environment_policy.set]
+GIT_AUTHOR_NAME = "Codex"
+GIT_AUTHOR_EMAIL = "noreply@openai.com"
+GIT_COMMITTER_NAME = "Codex"
+GIT_COMMITTER_EMAIL = "noreply@openai.com"
