@@ -87,7 +87,7 @@ function M:opts(_)
 					file_status = true,
 					newfile_status = true,
 					symbols = {
-						modified = "[+]",
+						modified = "[·]",
 						readonly = "[󰌾]",
 						unnamed = "[No Name]",
 						newfile = "[New]",
