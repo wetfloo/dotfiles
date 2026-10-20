@@ -293,3 +293,10 @@ run = "move-node-to-workspace 9"
 [[on-window-detected]]
 if.app-id = "org.localsend.localsendApp"
 run = "move-node-to-workspace 9"
+
+[[on-window-detected]]
+if.app-id = "com.yourcompany.AmneziaVPN"
+run = [
+	"layout floating",
+	"move-node-to-workspace 9",
+]
