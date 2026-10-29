@@ -65,9 +65,6 @@ function rust-cdoc
 	cargo doc $argv
 	or return
 
-	python3 "$HOME/.local/bin/rust_cdoc_replace_url.py"
-	or return
-
 	python3 -m http.server 8001 --bind 127.0.0.1 --directory target/doc
 end
 
