@@ -58,10 +58,10 @@ if test -e "$HOME/.cargo/env.fish"
 	source "$HOME/.cargo/env.fish"
 end
 
-alias rdoc='python3 -m http.server 8000 --bind 127.0.0.1 --directory "$(rustc --print sysroot)/share/doc/rust/html"'
+alias rust-rdoc='python3 -m http.server 8000 --bind 127.0.0.1 --directory "$(rustc --print sysroot)/share/doc/rust/html"'
 
 # assumes `target/doc` in the workspace root
-function cdoc
+function rust-cdoc
 	cargo doc $argv
 	or return
 
