@@ -58,6 +58,29 @@ if test -e "$HOME/.cargo/env.fish"
 	source "$HOME/.cargo/env.fish"
 end
 
+alias rdoc='python3 -m http.server 8000 --bind 127.0.0.1 --directory "$(rustc --print sysroot)/share/doc/rust/html"'
+
+# assumes `target/doc` in the workspace root
+function cdoc
+	cargo doc $argv
+	or return
+
+	python3 -c '
+from pathlib import Path
+import re
+
+pattern = r"https://doc\.rust-lang\.org/(?:[^/\s\"<>]+/)?(?=(?:std|core|alloc|proc_macro)/)"
+for page in Path("target/doc").rglob("*.html"):
+    text = page.read_text()
+    updated = re.sub(pattern, "http://127.0.0.1:8000/", text)
+    if updated != text:
+        page.write_text(updated)
+'
+	or return
+
+	python3 -m http.server 8001 --bind 127.0.0.1 --directory target/doc
+end
+
 alias shizukustart='adb shell /data/app/~~zjlb9yl1jh2ZUm-gurEdOQ==/moe.shizuku.privileged.api-Orj9Hf7am-PiiO0PTswI6g==/lib/arm64/libshizuku.so'
 
 alias rm='rm -i'
