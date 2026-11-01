@@ -173,6 +173,10 @@ if.app-id = "org.chromium.Chromium"
 run = "move-node-to-workspace 1"
 
 [[on-window-detected]]
+if.app-id = "io.ungoogled-software.ungoogled-chromium"
+run = "move-node-to-workspace 1"
+
+[[on-window-detected]]
 if.app-id = "com.google.Chrome"
 run = "move-node-to-workspace 1"
 
@@ -188,6 +192,10 @@ run = "move-node-to-workspace 1"
 
 [[on-window-detected]]
 if.app-id = "com.mitchellh.ghostty"
+run = "move-node-to-workspace 2"
+
+[[on-window-detected]]
+if.app-id = "com.electron.dockerdesktop"
 run = "move-node-to-workspace 2"
 
 [[on-window-detected]]
