@@ -274,8 +274,7 @@ max_concurrency = 3
 
 # Additional git repositories to pull or fetch
 repos = [
-	"~/Documents/Projects/*",
-	"~/Documents/dotfiles/dotfiles",
+	"~/Projects/*",
 ]
 
 # Set to `false` to skip pulling/fetching the predefined git repos
