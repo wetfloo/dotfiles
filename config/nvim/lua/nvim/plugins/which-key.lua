@@ -7,7 +7,9 @@ local M = {
 M.event = "VeryLazy"
 
 M.opts = {
-	delay = 2000,
+	delay = function(ctx)
+		return ctx.plugin and 0 or 1000
+	end,
 }
 
 return M
