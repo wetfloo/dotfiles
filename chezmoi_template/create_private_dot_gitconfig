@@ -4,6 +4,8 @@
 	name = wetfloo
 	email = frozenyonder@gmail.com
 	signingKey = ~/.ssh/key
+[core]
+	excludesFile = ~/.gitignore_global
 {{ if eq .chezmoi.os "windows" }}
 [core]
 	longpaths = true
