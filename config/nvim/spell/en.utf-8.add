@@ -157,6 +157,7 @@ whitespace
 param
 ok
 url
+uri
 destructor
 allocator
 allocators
@@ -227,3 +228,10 @@ RabbitMQ
 iosevka
 cooldown
 workspace
+parseable
+namespaces
+validators
+telecom
+KiB
+MiB
+GiB
