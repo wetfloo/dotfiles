@@ -225,3 +225,5 @@ versioned
 unroutable
 RabbitMQ
 iosevka
+cooldown
+workspace
