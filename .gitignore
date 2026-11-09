@@ -51,11 +51,8 @@ Temporary Items
 # Other
 # =========================
 
-
 # Ignore os-specific settings
 **/os_local/**
-
-/config/topgrade.d/*
 
 /config/agents/skills/.system/
 
