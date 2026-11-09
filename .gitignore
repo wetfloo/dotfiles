@@ -59,35 +59,5 @@ Temporary Items
 
 /config/agents/skills/.system/
 
-# keep-sorted start
-/config/codex/.tmp/
-/config/codex/app-server-control/
-/config/codex/app-server-daemon/
-/config/codex/cache/
-/config/codex/editor/
-/config/codex/generated_images/
-/config/codex/packages/
-/config/codex/plugins/
-/config/codex/sessions/
-/config/codex/shell_snapshots/
-/config/codex/skills/.system/
-/config/codex/thread-writer-locks/
-/config/codex/tmp/
-/config/codex/tui-thread-reference-capabilities/
-# keep-sorted end
-
-# keep-sorted start
-/config/codex/*.lock
-/config/codex/*.sqlite
-/config/codex/*.sqlite-shm
-/config/codex/*.sqlite-wal
-/config/codex/.sandbox_migration
-/config/codex/auth.json
-/config/codex/history.jsonl
-/config/codex/installation_id
-/config/codex/session_index.jsonl
-/config/codex/version.json
-# keep-sorted end
-
 # Python
 *.pyc
