@@ -28,7 +28,7 @@ sudo_loop = false
 sudo_command = "sudo"
 
 # Disable specific steps - same options as the command line flag
-disable = ["system", "vim"]
+disable = ["system"]
 
 # Run these steps before all others
 # first = ["chezmoi"]
