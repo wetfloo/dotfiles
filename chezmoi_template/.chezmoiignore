@@ -13,6 +13,7 @@ Library
 
 {{ if ne .chezmoi.os "linux" }}
 .config/zathura
+.local/share/typst
 {{ end }}
 
 {{ if eq .chezmoi.os "windows" }}
