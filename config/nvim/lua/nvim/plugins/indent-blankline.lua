@@ -5,7 +5,8 @@ local M = {
 }
 
 M.event = {
-	"BufEnter",
+	"BufReadPost",
+	"BufNewFile",
 }
 
 M.main = "ibl"
