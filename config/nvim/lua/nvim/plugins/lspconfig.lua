@@ -4,53 +4,6 @@ local M = {
 	"neovim/nvim-lspconfig",
 }
 
-M.dependencies = {
-	-- Needed to handle the `omnisharp` LSP's nonsense `$metadata` paths
-	-- correctly.
-	{
-		"Hoffs/omnisharp-extended-lsp.nvim",
-		ft = "cs",
-	},
-
-	-- Neovim Lua setup.
-	{
-		"folke/lazydev.nvim",
-		ft = "lua",
-		config = function()
-			-- Monkeypatch in a PR to remove a call to the deprecated `client.notify`
-			-- function.
-			--
-			-- See: https://github.com/folke/lazydev.nvim/pull/106
-			local config = require("lazydev.config")
-			config.have_0_11 = vim.fn.has("nvim-0.11") == 1
-
-			local lsp = require("lazydev.lsp")
-			--- @diagnostic disable-next-line: duplicate-set-field
-			lsp.update = function(client)
-				lsp.assert(client)
-				if config.have_0_11 then
-					client:notify("workspace/didChangeConfiguration", {
-						settings = { Lua = {} },
-					})
-				else
-					--- @diagnostic disable-next-line: param-type-mismatch
-					client.notify("workspace/didChangeConfiguration", {
-						settings = { Lua = {} },
-					})
-				end
-			end
-
-			require("lazydev").setup({
-				library = {
-					-- See the configuration section for more details
-					-- Load luvit types when the `vim.uv` word is found
-					{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
-				},
-			})
-		end,
-	},
-}
-
 function M.cond()
 	return not vim.g.started_by_firenvim
 end
