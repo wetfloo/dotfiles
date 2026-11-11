@@ -1,0 +1,3 @@
+[submodule "typst-cv-resume"]
+	path = external_typst-cv-resume
+	url = https://github.com/wetfloo/typst-cv-resume.git
