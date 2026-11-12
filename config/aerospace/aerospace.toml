@@ -287,6 +287,10 @@ if.app-id = "app.hiddify.com"
 run = "move-node-to-workspace 9"
 
 [[on-window-detected]]
+if.app-id = "apple.hiddify.com"
+run = "move-node-to-workspace 9"
+
+[[on-window-detected]]
 if.app-id = "2dust.v2rayN"
 run = "move-node-to-workspace 9"
 
