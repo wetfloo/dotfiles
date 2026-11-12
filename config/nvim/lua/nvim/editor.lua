@@ -31,7 +31,8 @@ vim.o.cursorline = false
 vim.opt.updatetime = 500
 vim.opt.inccommand = "nosplit"
 
-vim.o.spell = true
+-- Only activate when entering Insert mode
+vim.o.spell = false
 vim.o.spelllang = "en_us,ru_ru"
 vim.o.spelloptions = "camel"
 vim.fn.mkdir(vim.fn.stdpath("data") .. "site/spell", "p")
