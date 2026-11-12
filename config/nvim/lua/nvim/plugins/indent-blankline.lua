@@ -27,6 +27,15 @@ M.opts = {
 			},
 		},
 	},
+	exclude = {
+		filetypes = {
+			"oil",
+			"fugitive",
+			"fugitiveblame",
+			"text",
+			"diff",
+		},
+	},
 }
 
 function M:config(opts)
