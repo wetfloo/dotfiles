@@ -7,7 +7,12 @@
 	"color_align": {
 		"mode": "horizontal"
 	},
-	"backend": "fastfetch",
 	"args": null,
+	"backend": "fastfetch",
+	"custom_ascii_path": null,
+	"custom_presets": null,
+	"lightness_per_theme": null,
+	"palette_glyph": null,
+	"palette_type": null,
 	"pride_month_disable": true
 }
