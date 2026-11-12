@@ -240,3 +240,11 @@ utils
 serializable
 gradle
 toolchains
+failover
+readback
+lifecycle
+cutover
+resumable
+liveness
+CIDR
+deduplication
