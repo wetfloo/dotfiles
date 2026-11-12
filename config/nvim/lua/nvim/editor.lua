@@ -31,12 +31,6 @@ vim.o.cursorline = false
 vim.opt.updatetime = 500
 vim.opt.inccommand = "nosplit"
 
--- Only activate when entering Insert mode
-vim.o.spell = false
-vim.o.spelllang = "en_us,ru_ru"
-vim.o.spelloptions = "camel"
-vim.fn.mkdir(vim.fn.stdpath("data") .. "site/spell", "p")
-
 vim.keymap.set("", "<C-c>", "<Esc>")
 vim.keymap.set("", "<F1>", "<Nop>")
 vim.keymap.set("!", "<F1>", "<Nop>")
@@ -262,3 +256,31 @@ vim.opt.sessionoptions:append({
 -- Fix for blink highlights the source is selected.
 -- See https://www.reddit.com/r/neovim/comments/1hmuwaz/help_debugging_a_highlight_that_doesnt_go_away_in/
 vim.keymap.set({ "i", "s" }, "<Esc>", "<Esc>:lua vim.snippet.stop()<CR>", { remap = true, silent = true })
+
+-- ========
+-- Spell
+-- ========
+
+-- Only activate when entering Insert mode
+vim.o.spell = false
+vim.o.spelllang = "en_us,ru_ru"
+vim.o.spelloptions = "camel"
+vim.fn.mkdir(vim.fn.stdpath("data") .. "site/spell", "p")
+
+local insert_spell = vim.api.nvim_create_augroup("InsertSpell", { clear = true })
+
+vim.api.nvim_create_autocmd("InsertEnter", {
+	group = insert_spell,
+	pattern = "*",
+	callback = function()
+		vim.opt_local.spell = true
+	end,
+})
+
+vim.api.nvim_create_autocmd("InsertLeave", {
+	group = insert_spell,
+	pattern = "*",
+	callback = function()
+		vim.opt_local.spell = false
+	end,
+})
