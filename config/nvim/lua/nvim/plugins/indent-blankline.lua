@@ -15,8 +15,8 @@ M.main = "ibl"
 ---@type ibl.config
 M.opts = {
 	indent = {
-		char = "┋",
-		tab_char = "┃",
+		char = "┊",
+		tab_char = "│",
 	},
 	scope = {
 		show_start = false,
