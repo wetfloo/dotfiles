@@ -1,23 +1,30 @@
 # shortcut: Windows mappings use default home folders, adjust them for redirected AppData or Documents.
 {{ if ne .chezmoi.os "windows" }}
+# keep-sorted start
 AppData
 Documents
+# keep-sorted end
 {{ end }}
 
 {{ if ne .chezmoi.os "darwin" }}
-Library
+#keep-sorted start
 .config/aerospace
 .config/karabiner
 .config/linearmouse
+Library
+#keep-sorted end
 {{ end }}
 
 {{ if ne .chezmoi.os "linux" }}
+#keep-sorted start
 .config/hyfetch.json
 .config/zathura
 .local/share/typst
+#keep-sorted end
 {{ end }}
 
 {{ if eq .chezmoi.os "windows" }}
+#keep-sorted start
 .config/bat
 .config/fish
 .config/ghostty
@@ -29,4 +36,5 @@ Library
 .config/tmux
 .config/topgrade.toml
 .config/yazi
+#keep-sorted end
 {{ end }}
