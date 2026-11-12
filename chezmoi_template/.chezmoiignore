@@ -12,6 +12,7 @@ Library
 {{ end }}
 
 {{ if ne .chezmoi.os "linux" }}
+.config/hyfetch.json
 .config/zathura
 .local/share/typst
 {{ end }}
