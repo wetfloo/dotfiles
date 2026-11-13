@@ -269,17 +269,17 @@ vim.fn.mkdir(vim.fn.stdpath("data") .. "site/spell", "p")
 
 local insert_spell = vim.api.nvim_create_augroup("InsertSpell", { clear = true })
 
-vim.api.nvim_create_autocmd("InsertEnter", {
+vim.api.nvim_create_autocmd("User", {
 	group = insert_spell,
-	pattern = "*",
+	pattern = "InsertModeEnter",
 	callback = function()
 		vim.opt_local.spell = true
 	end,
 })
 
-vim.api.nvim_create_autocmd("InsertLeave", {
+vim.api.nvim_create_autocmd("User", {
 	group = insert_spell,
-	pattern = "*",
+	pattern = "InsertModeLeave",
 	callback = function()
 		vim.opt_local.spell = false
 	end,
