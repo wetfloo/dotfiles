@@ -94,14 +94,15 @@ local function hl_trailing_whitespace(is_insert)
 		return
 	end
 
-	vim.w.trailing_whitespace_match = vim.w.trailing_whitespace_match or vim.fn.matchadd("TrailingWhitespace", [[\s\+$]])
+	vim.w.trailing_whitespace_match = vim.w.trailing_whitespace_match
+		or vim.fn.matchadd("TrailingWhitespace", [[\s\+$]])
 end
 
 vim.api.nvim_create_autocmd("User", {
 	group = trailing_whitespace,
 	pattern = "InsertModeEnter",
 	callback = function()
-		 hl_trailing_whitespace(true)
+		hl_trailing_whitespace(true)
 	end,
 })
 
@@ -109,7 +110,7 @@ vim.api.nvim_create_autocmd("User", {
 	group = trailing_whitespace,
 	pattern = "InsertModeLeave",
 	callback = function()
-		 hl_trailing_whitespace(false)
+		hl_trailing_whitespace(false)
 	end,
 })
 
