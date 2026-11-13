@@ -85,8 +85,23 @@ vim.api.nvim_create_autocmd("ModeChanged", {
 
 local trailing_whitespace = vim.api.nvim_create_augroup("TrailingWhitespace", { clear = true })
 
-local function hl_trailing_whitespace(is_insert)
-	if is_insert or vim.bo.buftype ~= "" or vim.api.nvim_win_get_config(0).relative ~= "" then
+local hl_trailing_exclude_filetypes = {
+	diff = true,
+	fugitive = true,
+	fugitiveblame = true,
+	git = true,
+	oil = true,
+}
+local function hl_trailing_whitespace(is_insert, _)
+	print(vim.inspect(hl_trailing_exclude_filetypes[vim.bo.filetype]))
+	print(vim.bo.filetype)
+
+	if
+		is_insert
+		or hl_trailing_exclude_filetypes[vim.bo.filetype]
+		or vim.bo.buftype ~= ""
+		or vim.api.nvim_win_get_config(0).relative ~= ""
+	then
 		if vim.w.trailing_whitespace_match ~= nil then
 			vim.fn.matchdelete(vim.w.trailing_whitespace_match)
 			vim.w.trailing_whitespace_match = nil
