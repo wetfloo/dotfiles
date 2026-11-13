@@ -85,15 +85,23 @@ vim.api.nvim_create_autocmd("ModeChanged", {
 
 local trailing_whitespace = vim.api.nvim_create_augroup("TrailingWhitespace", { clear = true })
 
-local function hl_trailing_whitespace()
-	return vim.w.trailing_whitespace_match or vim.fn.matchadd("TrailingWhitespace", [[\s\+$]])
+local function hl_trailing_whitespace(is_insert)
+	if is_insert or vim.bo.buftype ~= "" or vim.api.nvim_win_get_config(0).relative ~= "" then
+		if vim.w.trailing_whitespace_match ~= nil then
+			vim.fn.matchdelete(vim.w.trailing_whitespace_match)
+			vim.w.trailing_whitespace_match = nil
+		end
+		return
+	end
+
+	vim.w.trailing_whitespace_match = vim.w.trailing_whitespace_match or vim.fn.matchadd("TrailingWhitespace", [[\s\+$]])
 end
 
 vim.api.nvim_create_autocmd("User", {
 	group = trailing_whitespace,
 	pattern = "InsertModeEnter",
 	callback = function()
-		vim.w.trailing_whitespace_match = hl_trailing_whitespace()
+		 hl_trailing_whitespace(true)
 	end,
 })
 
@@ -101,17 +109,13 @@ vim.api.nvim_create_autocmd("User", {
 	group = trailing_whitespace,
 	pattern = "InsertModeLeave",
 	callback = function()
-		if vim.w.trailing_whitespace_match then
-			vim.fn.matchdelete(vim.w.trailing_whitespace_match)
-		end
-
-		vim.w.trailing_whitespace_match = nil
+		 hl_trailing_whitespace(false)
 	end,
 })
 
 vim.api.nvim_create_autocmd("WinEnter", {
 	group = trailing_whitespace,
 	callback = function()
-		vim.w.trailing_whitespace_match = hl_trailing_whitespace()
+		hl_trailing_whitespace(false)
 	end,
 })
