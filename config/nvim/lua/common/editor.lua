@@ -93,9 +93,6 @@ local hl_trailing_exclude_filetypes = {
 	oil = true,
 }
 local function hl_trailing_whitespace(is_insert, _)
-	print(vim.inspect(hl_trailing_exclude_filetypes[vim.bo.filetype]))
-	print(vim.bo.filetype)
-
 	if
 		is_insert
 		or hl_trailing_exclude_filetypes[vim.bo.filetype]
