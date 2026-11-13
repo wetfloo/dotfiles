@@ -126,7 +126,7 @@ vim.api.nvim_create_autocmd("User", {
 	end,
 })
 
-vim.api.nvim_create_autocmd("WinEnter", {
+vim.api.nvim_create_autocmd({ "WinEnter", "BufWinEnter", "FileType" }, {
 	group = trailing_whitespace,
 	callback = function()
 		hl_trailing_whitespace(false)
