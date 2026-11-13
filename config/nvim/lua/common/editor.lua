@@ -67,3 +67,5 @@ vim.api.nvim_create_autocmd("BufEnter", {
 	end,
 	desc = "Disable New Line Comment",
 })
+
+vim.fn.matchadd("TrailingWhitespace", [[\s\+$]])

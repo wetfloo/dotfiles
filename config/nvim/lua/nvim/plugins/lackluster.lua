@@ -60,6 +60,10 @@ function M:config(_)
 				overwrite = true,
 				fg = color.gray7,
 			},
+			["TrailingWhitespace"] = {
+				overwrite = true,
+				bg = "#59241f",
+			},
 		},
 		tweak_background = {
 			normal = color.black,
