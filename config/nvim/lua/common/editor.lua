@@ -91,7 +91,7 @@ end
 
 vim.api.nvim_create_autocmd("User", {
 	group = trailing_whitespace,
-	pattern = { "InsertModeEnter" },
+	pattern = "InsertModeEnter",
 	callback = function()
 		vim.w.trailing_whitespace_match = hl_trailing_whitespace()
 	end,
@@ -99,7 +99,7 @@ vim.api.nvim_create_autocmd("User", {
 
 vim.api.nvim_create_autocmd("User", {
 	group = trailing_whitespace,
-	pattern = { "InsertModeLeave" },
+	pattern = "InsertModeLeave",
 	callback = function()
 		if vim.w.trailing_whitespace_match then
 			vim.fn.matchdelete(vim.w.trailing_whitespace_match)
