@@ -10,6 +10,10 @@ fi
 directory=$(CDPATH= cd -- "$1" && printf '%s/' "$PWD")
 directory=${directory%/}
 selected_name=${directory##*/}
+parent=${directory%/*}
+if [[ ${parent%/*} == "$HOME/.codex/worktrees" ]]; then
+	selected_name+="-${parent##*/}"
+fi
 selected_name=${selected_name//[.:]/_}
 
 # "/" selects a plain session rooted at home.

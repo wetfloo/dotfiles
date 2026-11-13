@@ -81,6 +81,19 @@ if args[0] == 'new-window':
         self.assertEqual(self.calls()[-1], ["switch-client", "-t", "=/"])
         self.assertEqual(len(self.calls()), 2)
 
+    def test_join_keeps_worktree_sessions_distinct(self):
+        for relative, name in (
+            ("Projects/repo", "repo"),
+            (".codex/worktrees/1234/repo", "repo-1234"),
+        ):
+            with self.subTest(relative=relative):
+                project = self.home / relative
+                project.mkdir(parents=True)
+                self.run_script("tmux_join", project)
+                self.assertEqual(self.calls()[-1], ["attach-session", "-t", f"={name}"])
+                created = [call for call in self.calls() if call[0] == "new-session"]
+                self.assertEqual(created[-1], ["new-session", "-d", "-s", name, "-c", str(project)])
+
     def test_join_reports_bad_input_and_creation_failure(self):
         self.assertNotEqual(self.run_script("tmux_join", check=False).returncode, 0)
         self.assertNotEqual(self.run_script("tmux_join", "missing", check=False).returncode, 0)
@@ -97,19 +110,26 @@ with open(os.environ['CALL_LOG'], 'w') as log:
         self.assertEqual(self.calls(), [[str(self.home / "project with spaces")]])
 
     def test_sessionizer_discovers_projects_and_handles_cancel(self):
-        project = self.home / "Documents/Projects/project with spaces"
+        project = self.home / "Projects/project with spaces"
         project.mkdir(parents=True)
+        worktree = self.home / ".codex/worktrees/1234/project with spaces"
+        worktree.mkdir(parents=True)
+        (self.home / ".codex/worktrees/empty").mkdir()
+        (project / "subdirectory").mkdir()
         self.stub("fzf", """
 import os, sys
-paths = sys.stdin.buffer.read().split(b'\\0')
-expected = os.path.join(os.environ['HOME'], 'Documents/Projects/project with spaces/')
-assert os.fsencode(expected) in paths, paths
+paths = sys.stdin.buffer.read().split(b'\\0')[:-1]
+expected = os.path.join(os.environ['HOME'], 'Projects/project with spaces/')
+worktree = os.path.join(os.environ['HOME'], '.codex/worktrees/1234/project with spaces/')
+assert set(paths) == {os.fsencode(expected), os.fsencode(worktree)}, paths
 if os.environ.get('CANCEL'):
     sys.exit(int(os.environ['CANCEL']))
-print(expected)
+print(worktree if os.environ.get('WORKTREE') else expected)
 """)
         self.run_script("tmux_sessionizer", EXISTS="1")
         self.assertEqual(self.calls()[-1], ["attach-session", "-t", "=project with spaces"])
+        self.run_script("tmux_sessionizer", EXISTS="1", WORKTREE="1")
+        self.assertEqual(self.calls()[-1], ["attach-session", "-t", "=project with spaces-1234"])
         self.log.unlink()
         self.run_script("tmux_sessionizer", CANCEL="130")
         self.assertFalse(self.log.exists())

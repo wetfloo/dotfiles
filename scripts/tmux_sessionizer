@@ -6,11 +6,9 @@ if [[ $# -gt 0 ]]; then
 	selected=$1
 else
 	selected=$(
-		for root in "$HOME/Projects"; do
-			for directory in "$root"/*/; do
-				[[ -d $directory ]] || continue
-				printf '%s\0' "$directory"
-			done
+		for directory in "$HOME/Projects"/*/ "$HOME/.codex/worktrees"/*/*/; do
+			[[ -d $directory ]] || continue
+			printf '%s\0' "$directory"
 		done | fzf --read0 --no-multi --scheme path
 	) || {
 		status=$?
