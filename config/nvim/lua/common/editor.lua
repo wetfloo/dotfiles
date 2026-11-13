@@ -68,4 +68,50 @@ vim.api.nvim_create_autocmd("BufEnter", {
 	desc = "Disable New Line Comment",
 })
 
-vim.fn.matchadd("TrailingWhitespace", [[\s\+$]])
+vim.api.nvim_create_autocmd("ModeChanged", {
+	group = vim.api.nvim_create_augroup("InsertModeEvents", { clear = true }),
+	callback = function()
+		local was_insert = vim.v.event.old_mode:sub(1, 1) == "i"
+		local is_insert = vim.v.event.new_mode:sub(1, 1) == "i"
+
+		if was_insert ~= is_insert then
+			vim.api.nvim_exec_autocmds("User", {
+				pattern = is_insert and "InsertModeEnter" or "InsertModeLeave",
+				modeline = false,
+			})
+		end
+	end,
+})
+
+local trailing_whitespace = vim.api.nvim_create_augroup("TrailingWhitespace", { clear = true })
+
+local function hl_trailing_whitespace()
+	return vim.w.trailing_whitespace_match or vim.fn.matchadd("TrailingWhitespace", [[\s\+$]])
+end
+
+vim.api.nvim_create_autocmd("User", {
+	group = trailing_whitespace,
+	pattern = { "InsertModeEnter" },
+	callback = function()
+		vim.w.trailing_whitespace_match = hl_trailing_whitespace()
+	end,
+})
+
+vim.api.nvim_create_autocmd("User", {
+	group = trailing_whitespace,
+	pattern = { "InsertModeLeave" },
+	callback = function()
+		if vim.w.trailing_whitespace_match then
+			vim.fn.matchdelete(vim.w.trailing_whitespace_match)
+		end
+
+		vim.w.trailing_whitespace_match = nil
+	end,
+})
+
+vim.api.nvim_create_autocmd("WinEnter", {
+	group = trailing_whitespace,
+	callback = function()
+		vim.w.trailing_whitespace_match = hl_trailing_whitespace()
+	end,
+})
