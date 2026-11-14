@@ -33,9 +33,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/JuliusBrussee/caveman.git",
       "skillPath": "skills/caveman-compress/SKILL.md",
-      "skillFolderHash": "4c13c5ede55ea8acefa5aba0ec0c9ae7e99dcc7e",
+      "skillFolderHash": "ee63a7e76a7f26a3f47b929568035283d89c8964",
       "installedAt": "2026-10-07T16:53:18.150Z",
-      "updatedAt": "2026-11-08T00:44:43.666Z"
+      "updatedAt": "2026-11-14T12:30:32.373Z"
     },
     "caveman-discover": {
       "source": "JuliusBrussee/caveman",
