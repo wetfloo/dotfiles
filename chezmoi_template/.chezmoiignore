@@ -17,6 +17,7 @@ Library
 
 {{ if ne .chezmoi.os "linux" }}
 #keep-sorted start
+.config/ghostty
 .config/hyfetch.json
 .config/zathura
 .local/share/typst
@@ -27,7 +28,6 @@ Library
 #keep-sorted start
 .config/bat
 .config/fish
-.config/ghostty
 .config/kitty
 .config/lazygit
 .config/mpd
