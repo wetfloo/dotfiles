@@ -1,9 +1,9 @@
 # dotfiles
 
-`chezmoi` manages the directory and file symlinks declared in [`chezmoi_template/`](chezmoi_template/).
-Configuration are located in [`config/`](config/).
-[`config_custom/`](config_custom/) is meant for other configuration
-that isn't meant to be linked directly.
+`chezmoi` manages the directory and file symlinks declared in
+[`chezmoi_template/`](chezmoi_template/). Configuration are located in [`config/`](config/).
+[`config_custom/`](config_custom/) is meant for other configuration that isn't meant to be linked
+directly.
 
 ## Setup
 
@@ -46,4 +46,5 @@ with the following contents:
 {{ joinPath .chezmoi.workingTree "config" "app" }}
 ```
 
-If needed, add any OS-specific destinations and select them in [`.chezmoiignore`](chezmoi_template/.chezmoiignore).
+If needed, add any OS-specific destinations and select them in
+[`.chezmoiignore`](chezmoi_template/.chezmoiignore).

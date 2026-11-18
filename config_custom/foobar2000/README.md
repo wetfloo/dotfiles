@@ -1,3 +1,5 @@
+# foobar2000
+
 ## Usage
 
 Before using any templates in foobar2000, you should replace any
@@ -8,7 +10,8 @@ To do this, you can do something like `:%s/(\s{4}|\t|\n)//g`
 
 Use the following parameters:
 
-- *List of fields to retain*: `title,artist,album,album artist,tracknumber,discnumber,totaltracks,totaldiscs,genre,date,OST_SRC,YT_SRC,COMPILATION_SRC,MASHUP_SRC,LYRICS,UNSYNCEDLYRICS`
+- *List of fields to retain*:
+  `title,artist,album,album artist,tracknumber,discnumber,totaltracks,totaldiscs,genre,date,OST_SRC,YT_SRC,COMPILATION_SRC,MASHUP_SRC,LYRICS,UNSYNCEDLYRICS`
 - *Attached pictures*: **Move front cover to external file (discard if exists)**: `folder.jpg`
 - *Preserve ReplayGain / SoundCheck*: **No**
 - *Reduce date field to four-digit year*: **No**
@@ -19,9 +22,11 @@ Use the following parameters:
 The following options should be used when conversions between formats are performed:
 
 - *Destination*
-  - *Output path*: **Specify folder** (consult [templates](./file_templates/) for guidance on where to put what)
+  - *Output path*: **Specify folder** (consult [templates](./file_templates/) for guidance on where
+    to put what)
   - *If file already exists*: **Ask**
-  - *Output style and file name formatting*: **Convert each track to an individual file** (again, consult [templates](./file_templates/) for formatting help)
+  - *Output style and file name formatting*: **Convert each track to an individual file** (again,
+    consult [templates](./file_templates/) for formatting help)
 - *Processing*: **None**
 - *Other*
   - *Preview generation*: **No**
