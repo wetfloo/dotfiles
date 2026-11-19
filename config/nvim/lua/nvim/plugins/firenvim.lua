@@ -33,7 +33,7 @@ function M.init()
 		},
 	}
 
-	vim.api.nvim_del_augroup_by_name("BufWriteCleanup")
+	pcall(vim.api.nvim_del_augroup_by_name, "BufWriteCleanup")
 
 	vim.api.nvim_create_autocmd({ "TextChanged", "TextChangedI" }, {
 		callback = function(_e)
