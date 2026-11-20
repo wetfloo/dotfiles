@@ -1,5 +1,9 @@
 # vim:ft=gitignore
 
+# =========================
+# Windows
+# =========================
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
@@ -20,9 +24,6 @@ $RECYCLE.BIN/
 *.lnk
 
 # =========================
-# Operating System Files
-# =========================
-
 # OSX
 # =========================
 
@@ -47,3 +48,10 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# =========================
+# Other
+# =========================
+
+# Python
+*.pyc
