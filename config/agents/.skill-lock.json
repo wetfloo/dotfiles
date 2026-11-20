@@ -78,9 +78,10 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/JuliusBrussee/caveman.git",
       "skillPath": "skills/caveman-learn/SKILL.md",
-      "skillFolderHash": "5603fb348d1eb6c28bd24f07aa51d3a432923e1f",
+      "skillFolderHash": "cb9dd3d805a2f2e38db97a333fbe511416957861",
       "installedAt": "2026-10-07T16:53:18.151Z",
-      "updatedAt": "2026-10-18T18:37:31.601Z"
+      "updatedAt": "2026-11-20T13:23:40.559Z",
+      "commit": "a192894723a8f47e7f504c7b5041967ff1f18e55"
     },
     "caveman-manage": {
       "source": "JuliusBrussee/caveman",
