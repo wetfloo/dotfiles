@@ -27,6 +27,7 @@ Library
 {{ if eq .chezmoi.os "windows" }}
 #keep-sorted start
 .config/bat
+.config/btop
 .config/fish
 .config/kitty
 .config/lazygit
